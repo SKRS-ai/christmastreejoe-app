@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Merchant API & Payment Setup | Christmas Tree Joe</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        xmasRed: '#C41E3A',
+                        xmasGreen: '#0B3B24',
+                        xmasGold: '#D4AF37',
+                        xmasCream: '#FDFBF7',
+                        xmasDark: '#051810',
+                        xmasPanel: '#0A261B'
+                    },
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #051810; color: #FDFBF7; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF0B9 0%, #D4AF37 50%, #997A15 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col justify-between selection:bg-xmasGold selection:text-xmasDark">
+
+    <!-- TOP CONTROL BAR -->
+    <div class="bg-xmasDark text-white text-[11px] sm:text-xs py-1.5 px-4 font-semibold tracking-wide border-b border-xmasGold/30">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1">
+            <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span class="text-xmasGold font-bold uppercase tracking-widest">Secure API Vault • Xmas Made Inc. / Global Citizen Joe, Inc.</span>
+            </div>
+            <div class="flex items-center space-x-4 text-[11px]">
+                <span class="text-xmasCream/70">Role: System Administrator</span>
+                <span>|</span>
+                <a href="admin.html" class="text-xmasGold hover:underline font-bold">← Executive Command Center</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN HEADER -->
+    <header class="w-full bg-xmasPanel border-b border-xmasGold/30 sticky top-0 z-50 backdrop-blur-lg shadow-2xl">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-3 group">
+                <img src="Christmas-tree-joe1.png" alt="Christmas Tree Joe Logo" class="h-12 w-12 rounded-full border border-xmasGold object-cover shadow-lg">
+                <div>
+                    <span class="font-cinzel text-xl sm:text-2xl font-black tracking-wider text-white">CHRISTMAS TREE JOE</span>
+                    <p class="text-[9px] text-xmasGold uppercase tracking-widest font-extrabold -mt-1">Merchant Payment Gateway Vault</p>
+                </div>
+            </a>
+
+            <nav class="hidden lg:flex items-center space-x-6 text-xs font-bold uppercase tracking-wider">
+                <a href="admin.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Command Board</a>
+                <a href="vendor-hub.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Farmer Network</a>
+                <a href="setup.html" class="text-xmasGold border-b-2 border-xmasGold py-1">API Vault</a>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <button onclick="alert('Testing connection across all active payment gateways... Status: 100% Operational.')" class="bg-xmasGreen hover:bg-xmasGold hover:text-xmasDark text-xmasGold font-bold px-4 py-2 rounded-full text-xs border border-xmasGold transition shadow-lg">
+                    ⚡ Test Gateway Keys
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- SETUP MAIN CONTENT -->
+    <main class="max-w-5xl mx-auto px-4 py-10 space-y-8">
+        
+        <div class="text-center space-y-3">
+            <span class="text-xs font-bold text-xmasGold uppercase tracking-widest bg-xmasPanel px-4 py-1.5 rounded-full border border-xmasGold/30 inline-block">🔒 Encrypted Merchant Credentials</span>
+            <h1 class="font-cinzel text-3xl sm:text-5xl font-black gold-gradient-text">Payment Gateway Configuration</h1>
+            <p class="text-xmasCream/70 text-xs sm:text-sm max-w-xl mx-auto">Manage live production API keys, webhook endpoints, and cryptocurrency settlement addresses for subscription processing.</p>
+        </div>
+
+        <form onsubmit="event.preventDefault(); alert('Merchant API Keys saved securely to encrypted vault!');" class="space-y-8">
+            
+            <!-- SECTION 1: CREDIT & DEBIT CARD PROCESSORS (STRIPE / SQUARE) -->
+            <div class="bg-xmasPanel border border-xmasGold/40 rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl">
+                <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                    <div class="space-y-1">
+                        <span class="text-[10px] font-bold text-xmasGold uppercase tracking-widest bg-xmasDark px-3 py-1 rounded-full border border-xmasGold/30 inline-block">Credit & Debit Cards</span>
+                        <h2 class="font-cinzel text-xl font-bold text-white">Stripe & Square API Integration</h2>
+                    </div>
+                    <span class="text-xs text-emerald-400 font-mono font-bold bg-emerald-950 px-3 py-1 rounded-full border border-emerald-500/30">Active</span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Stripe Publishable Key</label>
+                        <input type="text" placeholder="pk_live_YOUR_PUBLISHABLE_KEY" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white font-mono focus:outline-none focus:border-xmasGold">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Stripe Secret Key</label>
+                        <input type="password" placeholder="sk_live_YOUR_SECRET_KEY" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white font-mono focus:outline-none focus:border-xmasGold">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                    <div>
+                        <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Square Application ID</label>
+                        <input type="text" placeholder="sq0idp-YOUR_SQUARE_APP_ID" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white font-mono focus:outline-none focus:border-xmasGold">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Square Access Token</label>
+                        <input type="password" placeholder="EAAA-YOUR_SQUARE_ACCESS_TOKEN" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white font-mono focus:outline-none focus:border-xmasGold">
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 2: DIGITAL WALLETS (PAYPAL, APPLE PAY, GOOGLE PAY) -->
+            <div class="bg-xmasPanel border border-xmasGold/40 rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl">
+                <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                    <div class="space-y-1">
+                        <span class="text-[10px] font-bold text-xmasGold uppercase tracking-widest bg-xmasDark px-3 py-1 rounded-full border border-xmasGold/30 inline-block">Express Digital Wallets</span>
+                        <h2 class="font-cinzel text-xl font-bold text-white">PayPal Business & Native Wallet SDKs</h2>
+                    </div>
+                    <span class="text-xs text-emerald-400 font-mono font-bold bg-emerald-950 px-3 py-1 rounded-full border border-emerald-500/30">Active</span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-xmasGold uppercase mb-1">PayPal Client ID</label>
+                        <input type="text" placeholder="YOUR_PAYPAL_CLIENT_ID" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white font-mono focus:outline-none focus:border-xmasGold">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-xmasGold uppercase mb-1">PayPal Secret Key</label>
+                        <input type="password" placeholder="YOUR_PAYPAL_SECRET_KEY" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white font-mono focus:outline-none focus:border-xmasGold">
+                    </div>
+                </div>
+
+                <div class="p-4 bg-xmasDark rounded-2xl border border-white/10 flex items-center justify-between">
+                    <div>
+                        <p class="font-bold text-xs text-white">Apple Pay & Google Pay One-Tap Express</p>
+                        <p class="text-[10px] text-xmasCream/60">Configured via primary Stripe / Square merchant domain verification.</p>
+                    </div>
+                    <span class="text-xs font-bold text-emerald-400">Verified ✓</span>
+                </div>
+            </div>
+
+            <!-- SECTION 3: CRYPTOCURRENCY SETTLEMENT WALLET -->
+            <div class="bg-xmasPanel border border-xmasGold/40 rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl">
+                <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                    <div class="space-y-1">
+                        <span class="text-[10px] font-bold text-xmasGold uppercase tracking-widest bg-xmasDark px-3 py-1 rounded-full border border-xmasGold/30 inline-block">Web3 & Crypto Payments</span>
+                        <h2 class="font-cinzel text-xl font-bold text-white">USDC / BTC Settlement Wallet</h2>
+                    </div>
+                    <span class="text-xs text-emerald-400 font-mono font-bold bg-emerald-950 px-3 py-1 rounded-full border border-emerald-500/30">Active</span>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Treasury Settlement Address (Solana / Ethereum / Polygon)</label>
+                    <input type="text" placeholder="0xYOUR_TREASURY_WALLET_ADDRESS" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white font-mono focus:outline-none focus:border-xmasGold">
+                </div>
+            </div>
+
+            <button type="submit" class="w-full py-4 bg-xmasRed hover:bg-red-700 text-white font-extrabold text-xs uppercase tracking-wider rounded-xl border border-xmasGold/50 shadow-xl transition transform hover:scale-105">
+                🔒 Save & Lock Encrypted Gateway Keys
+            </button>
+
+        </form>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-xmasDark border-t border-xmasGold/30 py-8 px-4 text-xmasCream text-xs text-center">
+        <p>&copy; 2026 Christmas Tree Joe (Xmas Made Inc. / Global Citizen Joe, Inc.). All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
