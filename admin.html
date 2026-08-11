@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Executive Command Center | Christmas Tree Joe</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        xmasRed: '#C41E3A',
+                        xmasGreen: '#0B3B24',
+                        xmasGold: '#D4AF37',
+                        xmasCream: '#FDFBF7',
+                        xmasDark: '#051810',
+                        xmasPanel: '#0A261B'
+                    },
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #051810; color: #FDFBF7; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF0B9 0%, #D4AF37 50%, #997A15 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col justify-between selection:bg-xmasGold selection:text-xmasDark">
+
+    <!-- TOP CONTROL BAR -->
+    <div class="bg-xmasDark text-white text-[11px] sm:text-xs py-1.5 px-4 font-semibold tracking-wide border-b border-xmasGold/30">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1">
+            <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span class="text-xmasGold font-bold uppercase tracking-widest">Executive Terminal • Xmas Made Inc. / Global Citizen Joe, Inc.</span>
+            </div>
+            <div class="flex items-center space-x-4 text-[11px]">
+                <span class="text-xmasCream/70">Role: CEO / System Admin</span>
+                <span>|</span>
+                <a href="setup.html" class="text-xmasGold hover:underline font-bold">⚙️ Gateway Config</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN HEADER -->
+    <header class="w-full bg-xmasPanel border-b border-xmasGold/30 sticky top-0 z-50 backdrop-blur-lg shadow-2xl">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-3 group">
+                <img src="Christmas-tree-joe1.png" alt="Christmas Tree Joe Logo" class="h-12 w-12 rounded-full border border-xmasGold object-cover shadow-lg">
+                <div>
+                    <span class="font-cinzel text-xl sm:text-2xl font-black tracking-wider text-white">CHRISTMAS TREE JOE</span>
+                    <p class="text-[9px] text-xmasGold uppercase tracking-widest font-extrabold -mt-1">Executive Dispatch & Escrow Engine</p>
+                </div>
+            </a>
+
+            <nav class="hidden lg:flex items-center space-x-6 text-xs font-bold uppercase tracking-wider">
+                <a href="admin.html" class="text-xmasGold border-b-2 border-xmasGold py-1">Command Board</a>
+                <a href="vendor-hub.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Farmer Network</a>
+                <a href="track.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Live Fleet Map</a>
+                <a href="setup.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">API Key Vault</a>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <button onclick="alert('Exporting full 2026 manifest report in CSV format...')" class="bg-xmasGreen hover:bg-xmasGold hover:text-xmasDark text-xmasGold font-bold px-4 py-2 rounded-full text-xs border border-xmasGold transition shadow-lg">
+                    📥 Export CSV Report
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ADMIN MAIN CONTENT -->
+    <main class="max-w-7xl mx-auto px-4 py-8 space-y-8">
+        
+        <!-- DASHBOARD HEADER METRICS -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            <!-- TOTAL SUBSCRIBERS -->
+            <div class="bg-xmasPanel border border-xmasGold/40 rounded-3xl p-6 space-y-2 shadow-xl">
+                <p class="text-[10px] text-xmasGold uppercase font-bold tracking-widest">Active Subscriptions</p>
+                <p class="font-cinzel text-3xl font-black text-white">450 <span class="text-xs text-emerald-400 font-sans font-bold">(100% Target Met)</span></p>
+                <p class="text-[10px] text-xmasCream/60">Philadelphia & Tri-State Pre-Order Pool</p>
+            </div>
+
+            <!-- ESCROW FLOAT HELD -->
+            <div class="bg-xmasPanel border border-xmasGold/40 rounded-3xl p-6 space-y-2 shadow-xl">
+                <p class="text-[10px] text-xmasGold uppercase font-bold tracking-widest">Money Market Escrow Float</p>
+                <p class="font-cinzel text-3xl font-black text-xmasGold">$84,370.50</p>
+                <p class="text-[10px] text-xmasCream/60">Deferred Multi-Year Prepaid Revenue</p>
+            </div>
+
+            <!-- SEASONAL NET REVENUE -->
+            <div class="bg-xmasPanel border border-xmasGold/40 rounded-3xl p-6 space-y-2 shadow-xl">
+                <p class="text-[10px] text-xmasGold uppercase font-bold tracking-widest">2026 Operating Cash</p>
+                <p class="font-cinzel text-3xl font-black text-white">$94,495.50</p>
+                <p class="text-[10px] text-emerald-400 font-bold">Ready for Harvesting & Dispatch</p>
+            </div>
+
+            <!-- SUPPLIER FULFILLMENT -->
+            <div class="bg-xmasPanel border border-xmasGold/40 rounded-3xl p-6 space-y-2 shadow-xl">
+                <p class="text-[10px] text-xmasGold uppercase font-bold tracking-widest">NC Farmer Manifests</p>
+                <p class="font-cinzel text-3xl font-black text-white">3 Batches <span class="text-xs text-xmasGold font-sans font-bold">Active</span></p>
+                <p class="text-[10px] text-xmasCream/60">Jefferson & Ashe County, NC Partners</p>
+            </div>
+
+        </div>
+
+        <!-- DISPATCH & SUPPLIER FORWARDING ENGINE -->
+        <div class="bg-xmasPanel border-2 border-xmasGold/40 rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/10 pb-4 gap-4">
+                <div>
+                    <span class="text-[10px] font-bold text-xmasGold uppercase tracking-widest bg-xmasDark px-3 py-1 rounded-full border border-xmasGold/30 inline-block">Order Dispatch Engine</span>
+                    <h2 class="font-cinzel text-2xl font-bold text-white mt-1">Pre-Sold Order Manifest Routing</h2>
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="alert('Dispatched 120-tree manifest to Ashe County NC Farm supplier!')" class="py-2.5 px-4 bg-xmasRed hover:bg-red-700 text-white font-bold text-xs uppercase tracking-wider rounded-xl border border-xmasGold/40 transition shadow-lg">
+                        🚀 Dispatch Batch To NC Farm
+                    </button>
+                    <button onclick="alert('Assigned 45 Center City orders to Philly Box Truck #PA-04!')" class="py-2.5 px-4 bg-xmasGreen hover:bg-xmasGold hover:text-xmasDark text-xmasGold font-bold text-xs uppercase tracking-wider rounded-xl border border-xmasGold transition shadow-lg">
+                        🚚 Assign To Philly Fleet
+                    </button>
+                </div>
+            </div>
+
+            <!-- LIVE ORDERS TABLE -->
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs text-xmasCream/80">
+                    <thead class="bg-xmasDark text-xmasGold uppercase text-[10px] font-bold tracking-wider border-b border-white/10">
+                        <tr>
+                            <th class="p-3">Order ID</th>
+                            <th class="p-3">Customer Name</th>
+                            <th class="p-3">Tier / Size</th>
+                            <th class="p-3">Term Duration</th>
+                            <th class="p-3">Delivery Address</th>
+                            <th class="p-3">Escrow Status</th>
+                            <th class="p-3 text-right">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/10 font-medium">
+                        <tr class="hover:bg-xmasDark/50 transition">
+                            <td class="p-3 font-mono font-bold text-white">#CTJ-2026-8841</td>
+                            <td class="p-3 text-white">Nehemiah Brown</td>
+                            <td class="p-3 text-xmasGold font-bold">Holiday Hearth (6–7 ft)</td>
+                            <td class="p-3">3 Years (15% Lock)</td>
+                            <td class="p-3">Center City, Philadelphia, PA 19103</td>
+                            <td class="p-3"><span class="px-2 py-0.5 bg-emerald-950 text-emerald-400 border border-emerald-500/30 rounded-full text-[10px]">Held ($178.49)</span></td>
+                            <td class="p-3 text-right">
+                                <button onclick="alert('Viewing full order details for #CTJ-2026-8841...')" class="text-xmasGold hover:underline font-bold">Inspect</button>
+                            </td>
+                        </tr>
+
+                        <tr class="hover:bg-xmasDark/50 transition">
+                            <td class="p-3 font-mono font-bold text-white">#CTJ-2026-8842</td>
+                            <td class="p-3 text-white">Sarah Jenkins</td>
+                            <td class="p-3 text-xmasGold font-bold">Yuletide Monarch (8–9 ft)</td>
+                            <td class="p-3">5 Years (15% Lock)</td>
+                            <td class="p-3">Main Line, Bryn Mawr, PA 19010</td>
+                            <td class="p-3"><span class="px-2 py-0.5 bg-emerald-950 text-emerald-400 border border-emerald-500/30 rounded-full text-[10px]">Held ($254.99)</span></td>
+                            <td class="p-3 text-right">
+                                <button onclick="alert('Viewing full order details for #CTJ-2026-8842...')" class="text-xmasGold hover:underline font-bold">Inspect</button>
+                            </td>
+                        </tr>
+
+                        <tr class="hover:bg-xmasDark/50 transition">
+                            <td class="p-3 font-mono font-bold text-white">#CTJ-2026-8843</td>
+                            <td class="p-3 text-white">Marcus Sterling</td>
+                            <td class="p-3 text-xmasGold font-bold">Evergreen Sprout (4–5 ft)</td>
+                            <td class="p-3">1 Year Standard</td>
+                            <td class="p-3">Northern Liberties, Philly 19123</td>
+                            <td class="p-3"><span class="px-2 py-0.5 bg-xmasDark text-xmasCream/60 border border-white/20 rounded-full text-[10px]">Settled ($149.99)</span></td>
+                            <td class="p-3 text-right">
+                                <button onclick="alert('Viewing full order details for #CTJ-2026-8843...')" class="text-xmasGold hover:underline font-bold">Inspect</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ESCROW & TERRITORY MAPPING GRID -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            
+            <!-- ESCROW FLOAT REVENUE BREAKDOWN -->
+            <div class="bg-xmasDark border border-xmasGold/30 rounded-3xl p-6 space-y-4 shadow-xl">
+                <h3 class="font-cinzel text-xl font-bold text-xmasGold border-b border-white/10 pb-3">Escrow Money Market Allocation</h3>
+                <p class="text-xs text-xmasCream/70 leading-relaxed">
+                    Prepaid multi-year subscription revenue is split between current-year fulfillment cash and deferred money-market reserves.
+                </p>
+
+                <div class="space-y-3 text-xs">
+                    <div class="flex justify-between items-center p-3 bg-xmasPanel rounded-xl">
+                        <span>2026 Active Harvest Allocation:</span>
+                        <span class="font-bold text-emerald-400">$94,495.50</span>
+                    </div>
+                    <div class="flex justify-between items-center p-3 bg-xmasPanel rounded-xl">
+                        <span>2027 Deferred Escrow Reserve (Year 2):</span>
+                        <span class="font-bold text-xmasGold">$42,185.25</span>
+                    </div>
+                    <div class="flex justify-between items-center p-3 bg-xmasPanel rounded-xl">
+                        <span>2028+ Long-Term Multi-Year Reserve:</span>
+                        <span class="font-bold text-xmasGold">$42,185.25</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- REGIONAL TERRITORY AUTO-MAPPING -->
+            <div class="bg-xmasDark border border-xmasGold/30 rounded-3xl p-6 space-y-4 shadow-xl">
+                <h3 class="font-cinzel text-xl font-bold text-xmasGold border-b border-white/10 pb-3">Automated Territory Expansion</h3>
+                <p class="text-xs text-xmasCream/70 leading-relaxed">
+                    When out-of-territory vendors register on <code>christmastreejoe.net</code>, the system pins their GPS coordinates and prompts new market coverage zone creation.
+                </p>
+
+                <div class="space-y-3 text-xs">
+                    <div class="p-3 bg-xmasPanel rounded-xl flex items-center justify-between">
+                        <div>
+                            <p class="font-bold text-white">Active Primary Zone: Philadelphia & Tri-State</p>
+                            <p class="text-[10px] text-xmasCream/50">Covered ZIPs: 19102, 19103, 19106, 19010 + 42 Others</p>
+                        </div>
+                        <span class="px-2.5 py-1 bg-emerald-950 text-emerald-400 border border-emerald-500/30 rounded-full font-bold text-[10px]">Active</span>
+                    </div>
+
+                    <div class="p-3 bg-xmasPanel rounded-xl flex items-center justify-between">
+                        <div>
+                            <p class="font-bold text-white">Pending Expansion: Miami / South Florida Hub</p>
+                            <p class="text-[10px] text-xmasCream/50">Triggered by vendor registration #VEND-FL-08</p>
+                        </div>
+                        <button onclick="alert('Unlocking Miami / South Florida market zone for customer pre-orders!')" class="py-1 px-3 bg-xmasRed text-white font-bold text-[10px] rounded-lg">
+                            Unlock Zone
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-xmasDark border-t border-xmasGold/30 py-8 px-4 text-xmasCream text-xs text-center">
+        <p>&copy; 2026 Christmas Tree Joe (Xmas Made Inc. / Global Citizen Joe, Inc.). All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
