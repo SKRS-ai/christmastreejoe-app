@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Customer Dashboard | Christmas Tree Joe</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        xmasRed: '#C41E3A',
+                        xmasGreen: '#0B3B24',
+                        xmasGold: '#D4AF37',
+                        xmasCream: '#FDFBF7',
+                        xmasDark: '#051810',
+                        xmasPanel: '#0A261B'
+                    },
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #051810; color: #FDFBF7; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF0B9 0%, #D4AF37 50%, #997A15 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col justify-between selection:bg-xmasGold selection:text-xmasDark">
+
+    <!-- TOP ANNOUNCEMENT BAR -->
+    <div class="bg-xmasRed text-white text-[11px] sm:text-xs py-1.5 px-4 font-semibold tracking-wide border-b border-xmasGold/30">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1 text-center sm:text-left">
+            <div class="flex items-center gap-2">
+                <span class="bg-white/20 text-white text-[9px] uppercase px-2 py-0.5 rounded-full font-bold">Free Delivery</span>
+                <span>🎄 Reserve Your 2026 Philadelphia & Tri-State Christmas Tree Subscription Today!</span>
+            </div>
+            <div class="flex items-center space-x-4 text-[11px]">
+                <a href="tel:1800555XMAS" class="hover:text-xmasGold transition hidden md:inline">📞 1-800-XMAS-JOE</a>
+                <span class="hidden md:inline">|</span>
+                <a href="mailto:support@christmastreejoe.com" class="hover:text-xmasGold transition">✉️ support@christmastreejoe.com</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN HEADER & NAVIGATION -->
+    <header class="w-full bg-xmasDark/95 border-b border-xmasGold/30 sticky top-0 z-50 backdrop-blur-lg shadow-2xl">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-3 group">
+                <img src="Christmas-tree-joe1.png" alt="Christmas Tree Joe Logo" class="h-12 w-12 rounded-full border border-xmasGold object-cover shadow-lg group-hover:scale-105 transition">
+                <div>
+                    <span class="font-cinzel text-xl sm:text-2xl font-black tracking-wider text-white group-hover:text-xmasGold transition">CHRISTMAS TREE JOE</span>
+                    <p class="text-[9px] text-xmasGold uppercase tracking-widest font-extrabold -mt-1">A Global Citizen Joe Enterprise</p>
+                </div>
+            </a>
+
+            <nav class="hidden lg:flex items-center space-x-7 text-xs font-bold uppercase tracking-wider">
+                <a href="index.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Home</a>
+                <a href="tree-types.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Tree Varieties</a>
+                <a href="marketplace.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Recycled Goods</a>
+                <a href="about.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Our Mission</a>
+                <a href="contact.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Support & Schedule</a>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <a href="checkout.html" class="bg-xmasRed hover:bg-red-700 text-white font-bold px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm border border-xmasGold/50 transition shadow-xl transform hover:scale-105">
+                    Order Panel
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- CUSTOMER DASHBOARD MAIN CONTENT -->
+    <main class="max-w-7xl mx-auto px-4 py-10 space-y-8">
+        
+        <!-- WELCOME HEADER -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between bg-xmasPanel border border-xmasGold/40 rounded-3xl p-6 sm:p-8 shadow-2xl gap-4">
+            <div class="space-y-1">
+                <div class="flex items-center gap-2">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span class="text-xs font-bold text-xmasGold uppercase tracking-widest">Active Subscriber</span>
+                </div>
+                <h1 class="font-cinzel text-3xl sm:text-4xl font-black text-white">Welcome Back, <span class="gold-gradient-text">Nehemiah</span></h1>
+                <p class="text-xs text-xmasCream/70">Manage your subscription term, schedule delivery/pickup windows, and access invoices.</p>
+            </div>
+            <div class="flex items-center gap-3">
+                <a href="track.html" class="py-2.5 px-4 rounded-xl bg-xmasGreen border border-xmasGold text-xmasGold text-xs font-bold hover:bg-xmasGold hover:text-xmasDark transition shadow">
+                    🚚 Live Driver Tracker
+                </a>
+                <button onclick="alert('Signed out successfully.')" class="py-2.5 px-4 rounded-xl bg-xmasDark border border-white/20 text-white text-xs font-bold hover:bg-xmasRed transition">
+                    Sign Out
+                </button>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            <!-- LEFT COLUMN: ACTIVE SUBSCRIPTION CARDS & STATS -->
+            <div class="lg:col-span-8 space-y-6">
+                
+                <!-- ACTIVE SUBSCRIPTION CARD -->
+                <div class="bg-xmasPanel border-2 border-xmasGold rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-xmasGreen border-b border-l border-xmasGold/40 text-xmasGold text-[10px] font-extrabold uppercase px-4 py-1.5 rounded-bl-2xl tracking-widest">
+                        3-Year Locked Rate
+                    </div>
+
+                    <div class="space-y-2">
+                        <span class="text-[10px] font-bold text-xmasGold uppercase tracking-widest bg-xmasDark px-3 py-1 rounded-full border border-xmasGold/30 inline-block">Subscription ID: #CTJ-2026-8841</span>
+                        <h2 class="font-cinzel text-2xl sm:text-3xl font-black text-white">Holiday Hearth Tier (6–7 ft)</h2>
+                        <p class="text-xs text-xmasCream/70">Variety: <strong>Fraser Fir (Grade #1)</strong> • Sourced from Ashe County / Jefferson, NC</p>
+                    </div>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 py-4 border-y border-white/10 text-xs">
+                        <div>
+                            <p class="text-xmasCream/50 text-[10px] uppercase font-bold">Annual Rate</p>
+                            <p class="text-lg font-extrabold text-xmasGold">$178.49 <span class="text-[10px] text-white/50">(15% Off)</span></p>
+                        </div>
+                        <div>
+                            <p class="text-xmasCream/50 text-[10px] uppercase font-bold">Term Duration</p>
+                            <p class="text-sm font-bold text-white">2026 – 2029 (3 Yrs)</p>
+                        </div>
+                        <div>
+                            <p class="text-xmasCream/50 text-[10px] uppercase font-bold">Upcoming Delivery</p>
+                            <p class="text-sm font-bold text-emerald-400">Nov 28, 2026</p>
+                        </div>
+                        <div>
+                            <p class="text-xmasCream/50 text-[10px] uppercase font-bold">Eco-Pickup Status</p>
+                            <p class="text-sm font-bold text-xmasGold">Scheduled (Jan 8)</p>
+                        </div>
+                    </div>
+
+                    <!-- SUBSCRIPTION CONTROLS BUTTONS -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-bold">
+                        <button onclick="alert('Opening Delivery Window Adjustment...')" class="py-3 rounded-xl bg-xmasDark border border-xmasGold/50 text-xmasGold hover:bg-xmasGold hover:text-xmasDark transition text-center">
+                            🗓️ Change Delivery Date
+                        </button>
+                        <button onclick="alert('Address update modal opened.')" class="py-3 rounded-xl bg-xmasDark border border-white/20 text-white hover:border-xmasGold transition text-center">
+                            📍 Edit Delivery Address
+                        </button>
+                        <button onclick="alert('Subscription paused for 2026 season. Term extended by 1 year.')" class="py-3 rounded-xl bg-xmasDark border border-white/20 text-xmasCream/70 hover:text-xmasRed transition text-center">
+                            ⏸️ Pause / Extend Term
+                        </button>
+                    </div>
+                </div>
+
+                <!-- JANUARY ECO-PICKUP SCHEDULER WIDGET -->
+                <div class="bg-xmasDark border border-white/10 rounded-3xl p-6 space-y-4 shadow-xl">
+                    <div class="flex items-center justify-between border-b border-white/10 pb-3">
+                        <h3 class="font-cinzel text-xl font-bold text-xmasGold">January Eco-Pickup Scheduler</h3>
+                        <span class="text-[10px] bg-xmasGreen text-xmasGold px-2.5 py-1 rounded-full font-bold uppercase">100% Zero-Waste</span>
+                    </div>
+                    <p class="text-xs text-xmasCream/70 leading-relaxed">
+                        Select your preferred post-holiday removal date. Our white-glove team will arrive, sweep remaining needles, and transport your tree to our facility for conversion into organic mulch and essential oils.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+                        <label class="bg-xmasPanel border-2 border-xmasGold rounded-xl p-3 flex flex-col justify-between cursor-pointer">
+                            <input type="radio" name="pickup-date" checked class="accent-xmasGold">
+                            <span class="text-xs font-bold text-white mt-2">Friday, Jan 8</span>
+                            <span class="text-[10px] text-xmasGold">Morning (8am - 12pm)</span>
+                        </label>
+                        <label class="bg-xmasPanel border border-white/20 rounded-xl p-3 flex flex-col justify-between cursor-pointer hover:border-xmasGold transition">
+                            <input type="radio" name="pickup-date" class="accent-xmasGold">
+                            <span class="text-xs font-bold text-white mt-2">Saturday, Jan 9</span>
+                            <span class="text-[10px] text-xmasCream/60">Afternoon (1pm - 5pm)</span>
+                        </label>
+                        <label class="bg-xmasPanel border border-white/20 rounded-xl p-3 flex flex-col justify-between cursor-pointer hover:border-xmasGold transition">
+                            <input type="radio" name="pickup-date" class="accent-xmasGold">
+                            <span class="text-xs font-bold text-white mt-2">Monday, Jan 11</span>
+                            <span class="text-[10px] text-xmasCream/60">Flexible Window</span>
+                        </label>
+                    </div>
+                    <button onclick="alert('January pickup schedule updated successfully!')" class="w-full py-3 bg-xmasGreen border border-xmasGold text-xmasGold font-bold text-xs rounded-xl hover:bg-xmasGold hover:text-xmasDark transition">
+                        Confirm Pickup Window
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- RIGHT COLUMN: INVOICE DOWNLOADS & RECENT ORDERS -->
+            <div class="lg:col-span-4 space-y-6">
+                
+                <!-- INVOICE & RECEIPT DOWNLOAD CENTER -->
+                <div class="bg-xmasPanel border border-xmasGold/30 rounded-3xl p-6 space-y-4 shadow-xl">
+                    <h3 class="font-cinzel text-xl font-bold text-xmasGold border-b border-white/10 pb-3">Invoices & PDF Statements</h3>
+                    
+                    <div class="space-y-3 text-xs">
+                        <div class="flex items-center justify-between p-3 bg-xmasDark rounded-xl border border-white/10">
+                            <div>
+                                <p class="font-bold text-white">2026 Season Receipt</p>
+                                <p class="text-[10px] text-xmasCream/50">Inv #INV-2026-001 • $535.47</p>
+                            </div>
+                            <button onclick="alert('Downloading PDF Invoice #INV-2026-001...')" class="text-xmasGold hover:underline font-bold text-[11px]">
+                                📄 Download
+                            </button>
+                        </div>
+
+                        <div class="flex items-center justify-between p-3 bg-xmasDark rounded-xl border border-white/10">
+                            <div>
+                                <p class="font-bold text-white">3-Year Contract Agreement</p>
+                                <p class="text-[10px] text-xmasCream/50">Doc #CTR-2026-3YR • Locked Rate</p>
+                            </div>
+                            <button onclick="alert('Downloading Multi-Year Agreement PDF...')" class="text-xmasGold hover:underline font-bold text-[11px]">
+                                📄 Download
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ADD-ON RECYCLED GOODS QUICK ORDER -->
+                <div class="bg-xmasDark border border-white/10 rounded-3xl p-6 space-y-4 shadow-xl">
+                    <h3 class="font-cinzel text-lg font-bold text-xmasGold">Subscriber Add-Ons</h3>
+                    <p class="text-xs text-xmasCream/70">Add recycled mulch or essential oils to your upcoming delivery with 1-click checkout.</p>
+                    
+                    <div class="space-y-3 text-xs">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="font-bold text-white">Fraser Fir Mulch Bag (20lb)</p>
+                                <p class="text-xmasGold">$18.99</p>
+                            </div>
+                            <button onclick="alert('Added Mulch Bag to upcoming 2026 delivery!')" class="py-1.5 px-3 rounded-lg bg-xmasRed text-white font-bold text-[10px]">Add +</button>
+                        </div>
+
+                        <div class="flex items-center justify-between border-t border-white/10 pt-2">
+                            <div>
+                                <p class="font-bold text-white">Pure Pine Essential Oil (15ml)</p>
+                                <p class="text-xmasGold">$24.99</p>
+                            </div>
+                            <button onclick="alert('Added Essential Oil to upcoming 2026 delivery!')" class="py-1.5 px-3 rounded-lg bg-xmasRed text-white font-bold text-[10px]">Add +</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- FULL EXTENDED ENTERPRISE FOOTER -->
+    <footer class="bg-xmasDark border-t border-xmasGold/30 pt-16 pb-8 px-4 text-xmasCream">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
+            <div class="space-y-4 lg:col-span-1">
+                <div class="flex items-center space-x-3">
+                    <img src="Christmas-tree-joe3.png" alt="Joe Mascot" class="h-14 w-14 rounded-full border-2 border-xmasGold object-cover shadow-lg">
+                    <div>
+                        <h4 class="font-cinzel text-base font-bold text-white">Christmas Tree Joe</h4>
+                        <p class="text-[9px] text-xmasGold uppercase tracking-widest font-bold">Xmas Made Inc.</p>
+                    </div>
+                </div>
+                <p class="text-xs text-xmasCream/70 leading-relaxed">Connecting households with fresh North Carolina timber farms through white-glove tree subscriptions and 100% zero-waste eco-recycling.</p>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Subscription Tiers</h4>
+                <ul class="text-xs space-y-2 text-xmasCream/80">
+                    <li><a href="index.html#subscriptions" class="hover:text-xmasGold transition">Evergreen Sprout (4–5 ft)</a></li>
+                    <li><a href="index.html#subscriptions" class="hover:text-xmasGold transition">Holiday Hearth (6–7 ft)</a></li>
+                    <li><a href="index.html#subscriptions" class="hover:text-xmasGold transition">Yuletide Monarch (8–9 ft)</a></li>
+                </ul>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Our Brand Network</h4>
+                <ul class="text-xs space-y-2 text-xmasCream/80">
+                    <li><a href="https://christmastreejoe.com" class="hover:text-xmasGold transition font-semibold">christmastreejoe.com</a></li>
+                    <li><a href="https://christmastreejoe.store" class="hover:text-xmasGold transition">christmastreejoe.store</a></li>
+                    <li><a href="https://christmastreejoe.net" class="hover:text-xmasGold transition">christmastreejoe.net</a></li>
+                </ul>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Customer Care</h4>
+                <ul class="text-xs space-y-2 text-xmasCream/80">
+                    <li><a href="mailto:support@christmastreejoe.com" class="hover:text-xmasGold transition underline">support@christmastreejoe.com</a></li>
+                    <li><a href="mailto:sales@christmastreejoe.com" class="hover:text-xmasGold transition underline">sales@christmastreejoe.com</a></li>
+                </ul>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Corporate Family</h4>
+                <p class="text-xs text-xmasCream/70">Operated under <strong>Xmas Made Inc.</strong>, sister company to <a href="https://globalcitizenjoecoffee.com" target="_blank" class="text-xmasGold underline">Global Citizen Joe Coffee Company</a>, under parent enterprise <strong>Global Citizen Joe, Inc.</strong></p>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-xmasCream/50">
+            <p>&copy; 2026 Christmas Tree Joe (Xmas Made Inc. / Global Citizen Joe, Inc.). All Rights Reserved.</p>
+            <div class="flex items-center space-x-6 text-[11px] mt-2 md:mt-0">
+                <a href="privacy.html" class="hover:text-xmasGold transition">Privacy Policy</a>
+                <a href="terms.html" class="hover:text-xmasGold transition">Terms of Service</a>
+                <a href="sitemap.html" class="hover:text-xmasGold transition">Sitemap</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
