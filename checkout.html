@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Secure Checkout & Subscription Engine | Christmas Tree Joe</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        xmasRed: '#C41E3A',
+                        xmasGreen: '#0B3B24',
+                        xmasGold: '#D4AF37',
+                        xmasCream: '#FDFBF7',
+                        xmasDark: '#051810',
+                        xmasPanel: '#0A261B'
+                    },
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #051810; color: #FDFBF7; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF0B9 0%, #D4AF37 50%, #997A15 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col justify-between selection:bg-xmasGold selection:text-xmasDark">
+
+    <!-- TOP ANNOUNCEMENT BAR -->
+    <div class="bg-xmasRed text-white text-[11px] sm:text-xs py-1.5 px-4 font-semibold tracking-wide border-b border-xmasGold/30">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1 text-center sm:text-left">
+            <div class="flex items-center gap-2">
+                <span class="bg-white/20 text-white text-[9px] uppercase px-2 py-0.5 rounded-full font-bold">256-Bit SSL Encrypted</span>
+                <span>🔒 Direct Farm Escrow • White-Glove Setup & Eco-Pickup Included</span>
+            </div>
+            <div class="flex items-center space-x-4 text-[11px]">
+                <a href="tel:1800555XMAS" class="hover:text-xmasGold transition hidden md:inline">📞 Dispatch: 1-800-XMAS-JOE</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN HEADER -->
+    <header class="w-full bg-xmasDark/95 border-b border-xmasGold/30 sticky top-0 z-50 backdrop-blur-lg shadow-2xl">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-3 group">
+                <img src="Christmas-tree-joe1.png" onerror="this.src='public/Christmas-tree-joe1.png'" alt="Logo" class="h-12 w-12 rounded-full border border-xmasGold object-cover shadow-lg group-hover:scale-105 transition">
+                <div>
+                    <span class="font-cinzel text-xl sm:text-2xl font-black tracking-wider text-white group-hover:text-xmasGold transition">CHRISTMAS TREE JOE</span>
+                    <p class="text-[9px] text-xmasGold uppercase tracking-widest font-extrabold -mt-1">A Global Citizen Joe Enterprise</p>
+                </div>
+            </a>
+
+            <nav class="hidden lg:flex items-center space-x-7 text-xs font-bold uppercase tracking-wider">
+                <a href="index.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Home</a>
+                <a href="trees.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Tree Selection</a>
+                <a href="tree-types.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Tree Varieties</a>
+                <a href="marketplace.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Recycled Goods</a>
+                <a href="about.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Our Mission</a>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <a href="trees.html" class="bg-xmasDark hover:border-xmasGold border border-white/20 text-xmasGold font-bold px-4 py-2 rounded-full text-xs transition">
+                    ← Modify Tree
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- CHECKOUT & ESCROW SYSTEM -->
+    <main class="max-w-7xl mx-auto px-4 py-10 space-y-10">
+        
+        <div class="text-center space-y-3">
+            <span class="text-xs font-bold text-xmasGold uppercase tracking-widest bg-xmasPanel px-4 py-1.5 rounded-full border border-xmasGold/30 inline-block">Direct Reservation Terminal</span>
+            <h1 class="font-cinzel text-4xl sm:text-5xl font-black gold-gradient-text">Complete Your Reservation</h1>
+            <p class="text-xmasCream/70 text-xs sm:text-sm max-w-xl mx-auto">All subscriptions lock in fixed annual pricing, money-market escrow security, and guaranteed Thanksgiving delivery.</p>
+        </div>
+
+        <form id="checkoutForm" onsubmit="processOrder(event)" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- LEFT COLUMN: CUSTOMER, DELIVERY & PAYMENT DETAILS -->
+            <div class="lg:col-span-7 space-y-6">
+                
+                <!-- SECTION 1: SUBSCRIBER CONTACT -->
+                <div class="bg-xmasPanel border border-xmasGold/40 rounded-3xl p-6 sm:p-8 space-y-4 shadow-xl">
+                    <h3 class="font-cinzel text-lg font-bold text-xmasGold border-b border-white/10 pb-3">1. Subscriber Information</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-xmasCream/80 uppercase mb-1">Full Legal Name</label>
+                            <input type="text" id="custName" required placeholder="Nehemiah Brown" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-xmasGold">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-xmasCream/80 uppercase mb-1">Email Address (Invoicing & Receipt)</label>
+                            <input type="email" id="custEmail" required placeholder="contact@example.com" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-xmasGold">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-xmasCream/80 uppercase mb-1">Mobile Phone (Driver SMS Arrival Alert)</label>
+                        <input type="tel" id="custPhone" required placeholder="(215) 555-0192" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-xmasGold">
+                    </div>
+                </div>
+
+                <!-- SECTION 2: WHITE-GLOVE DELIVERY DESTINATION -->
+                <div class="bg-xmasPanel border border-xmasGold/40 rounded-3xl p-6 sm:p-8 space-y-4 shadow-xl">
+                    <h3 class="font-cinzel text-lg font-bold text-xmasGold border-b border-white/10 pb-3">2. White-Glove In-Home Delivery Address</h3>
+                    <div>
+                        <label class="block text-xs font-bold text-xmasCream/80 uppercase mb-1">Street Address / Unit #</label>
+                        <input type="text" id="custAddress" required placeholder="1800 JFK Blvd, Suite 400" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-xmasGold">
+                    </div>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-xmasCream/80 uppercase mb-1">City</label>
+                            <input type="text" id="custCity" required value="Philadelphia" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-xmasGold">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-xmasCream/80 uppercase mb-1">State</label>
+                            <input type="text" id="custState" required value="PA" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-xmasGold">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-xmasCream/80 uppercase mb-1">ZIP Code</label>
+                            <input type="text" id="custZip" required value="19103" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-xmasGold">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-xmasCream/80 uppercase mb-1">Preferred November Delivery Window</label>
+                        <select id="custWindow" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-xmasGold">
+                            <option value="Nov 27 (Morning: 8 AM - 12 PM)">Friday, Nov 27 (Morning: 8 AM - 12 PM)</option>
+                            <option value="Nov 27 (Afternoon: 12 PM - 5 PM)">Friday, Nov 27 (Afternoon: 12 PM - 5 PM)</option>
+                            <option value="Nov 28 (Morning: 8 AM - 12 PM)" selected>Saturday, Nov 28 (Morning: 8 AM - 12 PM)</option>
+                            <option value="Nov 28 (Afternoon: 12 PM - 5 PM)">Saturday, Nov 28 (Afternoon: 12 PM - 5 PM)</option>
+                            <option value="Dec 01 (Evening: 5 PM - 9 PM)">Tuesday, Dec 01 (Evening: 5 PM - 9 PM)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- SECTION 3: MULTI-GATEWAY PAYMENT PROCESSOR -->
+                <div class="bg-xmasPanel border border-xmasGold/40 rounded-3xl p-6 sm:p-8 space-y-4 shadow-xl">
+                    <h3 class="font-cinzel text-lg font-bold text-xmasGold border-b border-white/10 pb-3">3. Payment Gateway & Settlement</h3>
+                    
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-bold">
+                        <button type="button" onclick="setPaymentMethod('card')" id="btn-pay-card" class="p-3 bg-xmasDark border-2 border-xmasGold rounded-xl text-white text-center">💳 Card</button>
+                        <button type="button" onclick="setPaymentMethod('paypal')" id="btn-pay-paypal" class="p-3 bg-xmasDark border border-white/20 rounded-xl text-white/70 hover:border-xmasGold text-center">🅿️ PayPal</button>
+                        <button type="button" onclick="setPaymentMethod('wallet')" id="btn-pay-wallet" class="p-3 bg-xmasDark border border-white/20 rounded-xl text-white/70 hover:border-xmasGold text-center">📱 Apple/Google</button>
+                        <button type="button" onclick="setPaymentMethod('crypto')" id="btn-pay-crypto" class="p-3 bg-xmasDark border border-white/20 rounded-xl text-white/70 hover:border-xmasGold text-center">🪙 Web3 USDC</button>
+                    </div>
+
+                    <!-- CARD INPUTS -->
+                    <div id="cardInputs" class="space-y-3 pt-2">
+                        <div>
+                            <label class="block text-xs font-bold text-xmasCream/80 uppercase mb-1">Card Number</label>
+                            <input type="text" placeholder="4242 •••• •••• 4242" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white font-mono focus:outline-none focus:border-xmasGold">
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-xmasCream/80 uppercase mb-1">Exp Date</label>
+                                <input type="text" placeholder="MM / YY" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white font-mono focus:outline-none focus:border-xmasGold">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-xmasCream/80 uppercase mb-1">CVC Code</label>
+                                <input type="text" placeholder="CVC" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white font-mono focus:outline-none focus:border-xmasGold">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- RIGHT COLUMN: ORDER SUMMARY & ESCROW FLOAT -->
+            <div class="lg:col-span-5 bg-xmasPanel border-2 border-xmasGold/40 rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl sticky top-24">
+                
+                <div class="space-y-1 border-b border-white/10 pb-4">
+                    <span class="text-[10px] font-bold text-xmasGold uppercase tracking-widest bg-xmasDark px-3 py-1 rounded-full border border-xmasGold/30 inline-block">Order Ledger & Escrow</span>
+                    <h3 class="font-cinzel text-2xl font-bold text-white">Subscription Summary</h3>
+                </div>
+
+                <!-- CONFIGURATION SELECTION -->
+                <div class="space-y-3 text-xs">
+                    <div>
+                        <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Selected Size Tier</label>
+                        <select id="checkoutTier" onchange="recalculateSummary()" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-xmasGold">
+                            <option value="149.99|Evergreen Sprout (4–5 ft)">Evergreen Sprout (4–5 ft) — $149.99/yr</option>
+                            <option value="209.99|Holiday Hearth (6–7 ft)" selected>Holiday Hearth (6–7 ft) — $209.99/yr</option>
+                            <option value="299.99|Yuletide Monarch (8–9 ft)">Yuletide Monarch (8–9 ft) — $299.99/yr</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Species Preference</label>
+                        <select id="checkoutSpecies" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-xmasGold">
+                            <option value="Fraser Fir (Grade #1)">Fraser Fir (Grade #1 - Blue-Green Fragrance)</option>
+                            <option value="Douglas Fir">Douglas Fir (Dense Pyramid & Sweet Pine)</option>
+                            <option value="Noble Fir">Noble Fir (Stiff Branches & Heavy Decor)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Term Lock Duration</label>
+                        <select id="checkoutTerm" onchange="recalculateSummary()" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-xmasGold">
+                            <option value="1|0">1 Year — Standard Single Season</option>
+                            <option value="2|0.10">2 Years — 10% Off Locked Rate</option>
+                            <option value="3|0.15" selected>3 Years — 15% Off Locked Rate (Best Value)</option>
+                            <option value="5|0.15">5 Years — 15% Off Locked Rate</option>
+                            <option value="10|0.15">10 Years — 15% Off Locked Rate</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- ADD-ONS -->
+                <div class="space-y-2 text-xs border-t border-white/10 pt-4">
+                    <p class="font-bold text-xmasGold uppercase text-[10px]">Optional Holiday Add-Ons</p>
+                    <label class="flex items-center justify-between p-2.5 bg-xmasDark rounded-xl border border-white/10 cursor-pointer">
+                        <div class="flex items-center gap-2">
+                            <input type="checkbox" id="addonStand" onchange="recalculateSummary()" class="accent-xmasGold">
+                            <span>Heavy-Duty Cast Iron Stand</span>
+                        </div>
+                        <span class="text-xmasGold font-bold">+$39.99</span>
+                    </label>
+                    <label class="flex items-center justify-between p-2.5 bg-xmasDark rounded-xl border border-white/10 cursor-pointer">
+                        <div class="flex items-center gap-2">
+                            <input type="checkbox" id="addonWreath" onchange="recalculateSummary()" class="accent-xmasGold">
+                            <span>Fresh 24" Fraser Fir Door Wreath</span>
+                        </div>
+                        <span class="text-xmasGold font-bold">+$29.99</span>
+                    </label>
+                </div>
+
+                <!-- ESCROW FINANCIAL BREAKDOWN -->
+                <div class="bg-xmasDark p-4 rounded-2xl border border-xmasGold/30 space-y-2 text-xs">
+                    <div class="flex justify-between text-xmasCream/70">
+                        <span>Annual Base Rate:</span>
+                        <span id="txtBase" class="text-white font-bold">$209.99</span>
+                    </div>
+                    <div class="flex justify-between text-xmasCream/70">
+                        <span>Term Discount:</span>
+                        <span id="txtDiscount" class="text-emerald-400 font-bold">-15% ($31.50)</span>
+                    </div>
+                    <div class="flex justify-between text-xmasCream/70">
+                        <span>White-Glove In-Home Setup:</span>
+                        <span class="text-emerald-400 font-bold">FREE ($0.00)</span>
+                    </div>
+                    <div class="flex justify-between text-xmasCream/70">
+                        <span>January Eco-Pickup & Mulch:</span>
+                        <span class="text-emerald-400 font-bold">INCLUDED ($0.00)</span>
+                    </div>
+                    <div class="flex justify-between text-xmasCream/70 border-t border-white/10 pt-2">
+                        <span>Add-Ons Total:</span>
+                        <span id="txtAddons" class="text-white font-bold">$0.00</span>
+                    </div>
+                    <div class="flex justify-between text-sm font-extrabold border-t border-white/10 pt-2">
+                        <span class="text-white">Due Today (2026 Season):</span>
+                        <span id="txtDueToday" class="text-xmasGold font-black text-lg">$178.49</span>
+                    </div>
+                    <p class="text-[9px] text-xmasCream/50 text-center italic">Future multi-year terms are locked and billed with Money-Market Escrow Protection.</p>
+                </div>
+
+                <!-- SUBMIT BUTTON -->
+                <button type="submit" id="btnSubmit" class="w-full py-4 bg-xmasRed hover:bg-red-700 text-white font-extrabold text-xs uppercase tracking-wider rounded-xl border border-xmasGold/50 shadow-xl transition transform hover:scale-105">
+                    🔒 Confirm Subscription & Lock Rate →
+                </button>
+
+            </div>
+
+        </form>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-xmasDark border-t border-xmasGold/30 py-8 px-4 text-xmasCream text-xs text-center">
+        <p>&copy; 2026 Christmas Tree Joe (Xmas Made Inc. / Global Citizen Joe, Inc.). All Rights Reserved.</p>
+    </footer>
+
+    <!-- INTERACTIVE STATE & CHECKOUT JAVASCRIPT -->
+    <script>
+        let currentPayment = 'card';
+
+        function setPaymentMethod(method) {
+            currentPayment = method;
+            ['card', 'paypal', 'wallet', 'crypto'].forEach(m => {
+                const btn = document.getElementById('btn-pay-' + m);
+                if (m === method) {
+                    btn.classList.add('border-2', 'border-xmasGold', 'text-white');
+                    btn.classList.remove('border-white/20', 'text-white/70');
+                } else {
+                    btn.classList.remove('border-2', 'border-xmasGold', 'text-white');
+                    btn.classList.add('border-white/20', 'text-white/70');
+                }
+            });
+
+            const cardBox = document.getElementById('cardInputs');
+            if (method === 'card') {
+                cardBox.classList.remove('hidden');
+            } else {
+                cardBox.classList.add('hidden');
+            }
+        }
+
+        function recalculateSummary() {
+            const tierVal = document.getElementById('checkoutTier').value.split('|');
+            const basePrice = parseFloat(tierVal[0]);
+
+            const termVal = document.getElementById('checkoutTerm').value.split('|');
+            const discountPct = parseFloat(termVal[1]);
+
+            let addons = 0;
+            if (document.getElementById('addonStand').checked) addons += 39.99;
+            if (document.getElementById('addonWreath').checked) addons += 29.99;
+
+            const discountAmount = basePrice * discountPct;
+            const annualTreePrice = basePrice - discountAmount;
+            const totalDue = annualTreePrice + addons;
+
+            document.getElementById('txtBase').innerText = '$' + basePrice.toFixed(2);
+            document.getElementById('txtDiscount').innerText = discountPct > 0 ? `-${discountPct * 100}% ($${discountAmount.toFixed(2)})` : '$0.00';
+            document.getElementById('txtAddons').innerText = '$' + addons.toFixed(2);
+            document.getElementById('txtDueToday').innerText = '$' + totalDue.toFixed(2);
+        }
+
+        function processOrder(e) {
+            e.preventDefault();
+            const btn = document.getElementById('btnSubmit');
+            btn.disabled = true;
+            btn.innerText = 'Encrypting & Transmitting to Escrow Ledger...';
+
+            const tierVal = document.getElementById('checkoutTier').value.split('|')[1];
+            const speciesVal = document.getElementById('checkoutSpecies').value;
+            const termVal = document.getElementById('checkoutTerm').value.split('|')[0] + ' Year(s)';
+            const dueToday = document.getElementById('txtDueToday').innerText;
+            const windowVal = document.getElementById('custWindow').value;
+
+            // Generate Mock Order Object
+            const orderData = {
+                orderId: 'CTJ-2026-' + Math.floor(1000 + Math.random() * 9000),
+                name: document.getElementById('custName').value,
+                email: document.getElementById('custEmail').value,
+                tier: tierVal,
+                species: speciesVal,
+                term: termVal,
+                deliveryWindow: windowVal,
+                total: dueToday,
+                date: new Date().toLocaleDateString()
+            };
+
+            // Store in LocalStorage for dynamic receipt on order-success.html
+            localStorage.setItem('lastOrder', JSON.stringify(orderData));
+
+            setTimeout(() => {
+                window.location.href = 'order-success.html';
+            }, 1200);
+        }
+
+        // Initialize on load
+        window.addEventListener('DOMContentLoaded', () => {
+            recalculateSummary();
+        });
+    </script>
+</body>
+</html>

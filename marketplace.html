@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Eco-Recycled Goods & Timber Products | Christmas Tree Joe</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        xmasRed: '#C41E3A',
+                        xmasGreen: '#0B3B24',
+                        xmasGold: '#D4AF37',
+                        xmasCream: '#FDFBF7',
+                        xmasDark: '#051810',
+                        xmasPanel: '#0A261B'
+                    },
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #051810; color: #FDFBF7; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF0B9 0%, #D4AF37 50%, #997A15 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col justify-between selection:bg-xmasGold selection:text-xmasDark">
+
+    <!-- TOP ANNOUNCEMENT BAR -->
+    <div class="bg-xmasRed text-white text-[11px] sm:text-xs py-1.5 px-4 font-semibold tracking-wide border-b border-xmasGold/30">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1 text-center sm:text-left">
+            <div class="flex items-center gap-2">
+                <span class="bg-white/20 text-white text-[9px] uppercase px-2 py-0.5 rounded-full font-bold">100% Zero-Waste</span>
+                <span>🌲 Year-Round Recycled North Carolina Timber Byproducts</span>
+            </div>
+            <div class="flex items-center space-x-4 text-[11px]">
+                <a href="tel:1800555XMAS" class="hover:text-xmasGold transition hidden md:inline">📞 Bulk Wholesale Desk: 1-800-XMAS-JOE</a>
+                <span class="hidden md:inline">|</span>
+                <a href="mailto:sales@christmastreejoe.com" class="hover:text-xmasGold transition">✉️ sales@christmastreejoe.com</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN HEADER & NAVIGATION -->
+    <header class="w-full bg-xmasDark/95 border-b border-xmasGold/30 sticky top-0 z-50 backdrop-blur-lg shadow-2xl">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-3 group">
+                <img src="Christmas-tree-joe1.png" onerror="this.src='public/Christmas-tree-joe1.png'" alt="Logo" class="h-12 w-12 rounded-full border border-xmasGold object-cover shadow-lg group-hover:scale-105 transition">
+                <div>
+                    <span class="font-cinzel text-xl sm:text-2xl font-black tracking-wider text-white group-hover:text-xmasGold transition">CHRISTMAS TREE JOE</span>
+                    <p class="text-[9px] text-xmasGold uppercase tracking-widest font-extrabold -mt-1">Eco-Recycled Marketplace</p>
+                </div>
+            </a>
+
+            <nav class="hidden lg:flex items-center space-x-7 text-xs font-bold uppercase tracking-wider">
+                <a href="index.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Home</a>
+                <a href="trees.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Tree Selection</a>
+                <a href="tree-types.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Tree Varieties</a>
+                <a href="marketplace.html" class="text-xmasGold border-b-2 border-xmasGold py-1">Recycled Goods</a>
+                <a href="about.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Our Mission</a>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <button onclick="toggleCartModal()" class="relative bg-xmasPanel hover:border-xmasGold border border-white/20 text-white font-bold px-4 py-2 rounded-full text-xs transition flex items-center gap-2 shadow-lg">
+                    <span>🛒 Cart</span>
+                    <span id="cartBadge" class="bg-xmasRed text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-black">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MARKETPLACE HERO -->
+    <main class="max-w-7xl mx-auto px-4 py-10 space-y-12">
+        
+        <div class="text-center space-y-3">
+            <span class="text-xs font-bold text-xmasGold uppercase tracking-widest bg-xmasPanel px-4 py-1.5 rounded-full border border-xmasGold/30 inline-block">The Circular Timber Economy</span>
+            <h1 class="font-cinzel text-4xl sm:text-5xl font-black gold-gradient-text">Recycled Goods & Timber Store</h1>
+            <p class="text-xmasCream/70 text-xs sm:text-sm max-w-2xl mx-auto">Every tree collected in January is 100% reprocessed. We steam-distill the needles into essential oils, chip the hardwood into organic garden mulch, and press timber fiber into clean biofuel pellets.</p>
+        </div>
+
+        <!-- CATEGORY FILTER BUTTONS -->
+        <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs font-bold uppercase tracking-wider">
+            <button onclick="filterCategory('all')" id="btn-cat-all" class="px-5 py-2.5 rounded-full bg-xmasRed text-white border border-xmasGold/40 transition shadow-lg">All Goods</button>
+            <button onclick="filterCategory('mulch')" id="btn-cat-mulch" class="px-5 py-2.5 rounded-full bg-xmasDark text-xmasCream/70 border border-white/10 hover:border-xmasGold transition">Mulch & Compost</button>
+            <button onclick="filterCategory('oils')" id="btn-cat-oils" class="px-5 py-2.5 rounded-full bg-xmasDark text-xmasCream/70 border border-white/10 hover:border-xmasGold transition">Essential Oils & Sprays</button>
+            <button onclick="filterCategory('firewood')" id="btn-cat-firewood" class="px-5 py-2.5 rounded-full bg-xmasDark text-xmasCream/70 border border-white/10 hover:border-xmasGold transition">Firewood & Pellets</button>
+        </div>
+
+        <!-- PRODUCT GRID -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- PRODUCT 1: AROMATIC EVERGREEN MULCH -->
+            <div class="product-card" data-category="mulch">
+                <div class="bg-xmasPanel border border-xmasGold/30 hover:border-xmasGold rounded-3xl p-6 space-y-4 transition duration-300 shadow-xl flex flex-col justify-between h-full group">
+                    <div class="space-y-3">
+                        <div class="h-44 bg-xmasDark rounded-2xl border border-white/10 flex items-center justify-center text-5xl relative overflow-hidden group-hover:scale-102 transition">
+                            🪵
+                            <span class="absolute top-3 right-3 bg-emerald-950 border border-emerald-500/30 text-emerald-400 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">In Stock</span>
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <span class="text-[10px] text-xmasGold uppercase font-bold tracking-widest">Landscape & Garden</span>
+                                <h3 class="font-cinzel text-lg font-bold text-white">Pure Fraser Evergreen Mulch (2 Cu Ft)</h3>
+                            </div>
+                            <span class="font-cinzel text-xl font-extrabold text-xmasGold">$14.99</span>
+                        </div>
+                        <p class="text-xs text-xmasCream/70 leading-relaxed">
+                            Triple-shredded aromatic mulch chipped directly from holiday evergreens. Naturally repels garden pests and retains soil hydration.
+                        </p>
+                    </div>
+                    <button onclick="addToCart('Pure Fraser Evergreen Mulch (2 Cu Ft)', 14.99)" class="w-full py-3 bg-xmasDark hover:bg-xmasGold hover:text-xmasDark text-white font-bold text-xs uppercase tracking-wider rounded-xl border border-white/20 hover:border-xmasGold transition shadow-md">
+                        + Add To Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- PRODUCT 2: PURE FRASER ESSENTIAL OIL -->
+            <div class="product-card" data-category="oils">
+                <div class="bg-xmasPanel border border-xmasGold/30 hover:border-xmasGold rounded-3xl p-6 space-y-4 transition duration-300 shadow-xl flex flex-col justify-between h-full group">
+                    <div class="space-y-3">
+                        <div class="h-44 bg-xmasDark rounded-2xl border border-white/10 flex items-center justify-center text-5xl relative overflow-hidden group-hover:scale-102 transition">
+                            🧪
+                            <span class="absolute top-3 right-3 bg-emerald-950 border border-emerald-500/30 text-emerald-400 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Small Batch</span>
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <span class="text-[10px] text-xmasGold uppercase font-bold tracking-widest">Aromatherapy & Home</span>
+                                <h3 class="font-cinzel text-lg font-bold text-white">Steam-Distilled Fraser Needle Oil (30ml)</h3>
+                            </div>
+                            <span class="font-cinzel text-xl font-extrabold text-xmasGold">$24.99</span>
+                        </div>
+                        <p class="text-xs text-xmasCream/70 leading-relaxed">
+                            100% therapeutic grade essential oil extracted from recovered needles. Bring the authentic Appalachian winter fragrance into your home year-round.
+                        </p>
+                    </div>
+                    <button onclick="addToCart('Steam-Distilled Fraser Needle Oil (30ml)', 24.99)" class="w-full py-3 bg-xmasDark hover:bg-xmasGold hover:text-xmasDark text-white font-bold text-xs uppercase tracking-wider rounded-xl border border-white/20 hover:border-xmasGold transition shadow-md">
+                        + Add To Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- PRODUCT 3: HIGH-HEAT BIOFUEL PELLETS -->
+            <div class="product-card" data-category="firewood">
+                <div class="bg-xmasPanel border border-xmasGold/30 hover:border-xmasGold rounded-3xl p-6 space-y-4 transition duration-300 shadow-xl flex flex-col justify-between h-full group">
+                    <div class="space-y-3">
+                        <div class="h-44 bg-xmasDark rounded-2xl border border-white/10 flex items-center justify-center text-5xl relative overflow-hidden group-hover:scale-102 transition">
+                            🔥
+                            <span class="absolute top-3 right-3 bg-emerald-950 border border-emerald-500/30 text-emerald-400 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Clean Energy</span>
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <span class="text-[10px] text-xmasGold uppercase font-bold tracking-widest">Heating & Stoves</span>
+                                <h3 class="font-cinzel text-lg font-bold text-white">Hardwood Timber Bio-Pellets (40 lb Bag)</h3>
+                            </div>
+                            <span class="font-cinzel text-xl font-extrabold text-xmasGold">$18.50</span>
+                        </div>
+                        <p class="text-xs text-xmasCream/70 leading-relaxed">
+                            Ultra-dense, low-ash heating pellets manufactured from compressed recycled evergreen trunk fiber. 100% chemical and additive-free.
+                        </p>
+                    </div>
+                    <button onclick="addToCart('Hardwood Timber Bio-Pellets (40 lb Bag)', 18.50)" class="w-full py-3 bg-xmasDark hover:bg-xmasGold hover:text-xmasDark text-white font-bold text-xs uppercase tracking-wider rounded-xl border border-white/20 hover:border-xmasGold transition shadow-md">
+                        + Add To Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- PRODUCT 4: ORGANIC EVERGREEN COMPOST -->
+            <div class="product-card" data-category="mulch">
+                <div class="bg-xmasPanel border border-xmasGold/30 hover:border-xmasGold rounded-3xl p-6 space-y-4 transition duration-300 shadow-xl flex flex-col justify-between h-full group">
+                    <div class="space-y-3">
+                        <div class="h-44 bg-xmasDark rounded-2xl border border-white/10 flex items-center justify-center text-5xl relative overflow-hidden group-hover:scale-102 transition">
+                            🌱
+                            <span class="absolute top-3 right-3 bg-emerald-950 border border-emerald-500/30 text-emerald-400 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">USDA Organic</span>
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <span class="text-[10px] text-xmasGold uppercase font-bold tracking-widest">Soil Enrichment</span>
+                                <h3 class="font-cinzel text-lg font-bold text-white">Aged Evergreen Rich Compost (1 Cu Ft)</h3>
+                            </div>
+                            <span class="font-cinzel text-xl font-extrabold text-xmasGold">$12.99</span>
+                        </div>
+                        <p class="text-xs text-xmasCream/70 leading-relaxed">
+                            Microbe-rich organic compost cured for 8 months. Balances pH levels and provides steady micronutrient release for gardens and urban planters.
+                        </p>
+                    </div>
+                    <button onclick="addToCart('Aged Evergreen Rich Compost (1 Cu Ft)', 12.99)" class="w-full py-3 bg-xmasDark hover:bg-xmasGold hover:text-xmasDark text-white font-bold text-xs uppercase tracking-wider rounded-xl border border-white/20 hover:border-xmasGold transition shadow-md">
+                        + Add To Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- PRODUCT 5: KILN-DRIED FIREPLACE CORD BUNDLE -->
+            <div class="product-card" data-category="firewood">
+                <div class="bg-xmasPanel border border-xmasGold/30 hover:border-xmasGold rounded-3xl p-6 space-y-4 transition duration-300 shadow-xl flex flex-col justify-between h-full group">
+                    <div class="space-y-3">
+                        <div class="h-44 bg-xmasDark rounded-2xl border border-white/10 flex items-center justify-center text-5xl relative overflow-hidden group-hover:scale-102 transition">
+                            🪵
+                            <span class="absolute top-3 right-3 bg-emerald-950 border border-emerald-500/30 text-emerald-400 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Kiln Cured</span>
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <span class="text-[10px] text-xmasGold uppercase font-bold tracking-widest">Hearth & Firepits</span>
+                                <h3 class="font-cinzel text-lg font-bold text-white">Seasoned Pine Firewood Bundle (.75 Cu Ft)</h3>
+                            </div>
+                            <span class="font-cinzel text-xl font-extrabold text-xmasGold">$16.00</span>
+                        </div>
+                        <p class="text-xs text-xmasCream/70 leading-relaxed">
+                            Split, cured, and moisture-tested for immediate fireplace or outdoor pit lighting. Crackles cleanly with pleasant pine notes.
+                        </p>
+                    </div>
+                    <button onclick="addToCart('Seasoned Pine Firewood Bundle (.75 Cu Ft)', 16.00)" class="w-full py-3 bg-xmasDark hover:bg-xmasGold hover:text-xmasDark text-white font-bold text-xs uppercase tracking-wider rounded-xl border border-white/20 hover:border-xmasGold transition shadow-md">
+                        + Add To Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- PRODUCT 6: APPALACHIAN ROOM ROOM MIST -->
+            <div class="product-card" data-category="oils">
+                <div class="bg-xmasPanel border border-xmasGold/30 hover:border-xmasGold rounded-3xl p-6 space-y-4 transition duration-300 shadow-xl flex flex-col justify-between h-full group">
+                    <div class="space-y-3">
+                        <div class="h-44 bg-xmasDark rounded-2xl border border-white/10 flex items-center justify-center text-5xl relative overflow-hidden group-hover:scale-102 transition">
+                            🌲
+                            <span class="absolute top-3 right-3 bg-emerald-950 border border-emerald-500/30 text-emerald-400 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Handcrafted</span>
+                        </div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <span class="text-[10px] text-xmasGold uppercase font-bold tracking-widest">Home Fragrance</span>
+                                <h3 class="font-cinzel text-lg font-bold text-white">Evergreen Hydrosol Room Spray (8 oz)</h3>
+                            </div>
+                            <span class="font-cinzel text-xl font-extrabold text-xmasGold">$19.99</span>
+                        </div>
+                        <p class="text-xs text-xmasCream/70 leading-relaxed">
+                            Plant-based floral water produced during essential oil distillation. Pure botanical mist that revitalizes fabrics and room air naturally.
+                        </p>
+                    </div>
+                    <button onclick="addToCart('Evergreen Hydrosol Room Spray (8 oz)', 19.99)" class="w-full py-3 bg-xmasDark hover:bg-xmasGold hover:text-xmasDark text-white font-bold text-xs uppercase tracking-wider rounded-xl border border-white/20 hover:border-xmasGold transition shadow-md">
+                        + Add To Cart
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- SLIDE-OVER CART MODAL -->
+    <div id="cartModal" class="fixed inset-0 bg-black/80 z-50 hidden backdrop-blur-sm flex justify-end">
+        <div class="w-full max-w-md bg-xmasPanel h-full border-l border-xmasGold/30 p-6 flex flex-col justify-between shadow-2xl">
+            <div class="space-y-4">
+                <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                    <h3 class="font-cinzel text-xl font-bold text-xmasGold">Your Eco-Goods Cart</h3>
+                    <button onclick="toggleCartModal()" class="text-white hover:text-xmasGold font-bold text-lg">✕</button>
+                </div>
+                <div id="cartItemList" class="space-y-3 overflow-y-auto max-h-[60vh] text-xs">
+                    <p class="text-xmasCream/50 text-center py-8">Your cart is currently empty.</p>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 pt-4 space-y-3">
+                <div class="flex justify-between font-bold text-sm">
+                    <span class="text-white">Subtotal:</span>
+                    <span id="cartSubtotal" class="text-xmasGold">$0.00</span>
+                </div>
+                <button onclick="window.location.href='checkout.html'" class="w-full py-3.5 bg-xmasRed hover:bg-red-700 text-white font-bold text-xs uppercase tracking-wider rounded-xl border border-xmasGold/50 transition shadow-lg">
+                    Proceed To Secure Checkout →
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FULL EXTENDED ENTERPRISE FOOTER -->
+    <footer class="bg-xmasDark border-t border-xmasGold/30 pt-16 pb-8 px-4 text-xmasCream">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
+            <div class="space-y-4 lg:col-span-1">
+                <div class="flex items-center space-x-3">
+                    <img src="Christmas-tree-joe3.png" onerror="this.src='public/Christmas-tree-joe3.png'" alt="Joe Mascot" class="h-14 w-14 rounded-full border-2 border-xmasGold object-cover shadow-lg">
+                    <div>
+                        <h4 class="font-cinzel text-base font-bold text-white">Christmas Tree Joe</h4>
+                        <p class="text-[9px] text-xmasGold uppercase tracking-widest font-bold">Xmas Made Inc.</p>
+                    </div>
+                </div>
+                <p class="text-xs text-xmasCream/70 leading-relaxed">Connecting households with fresh North Carolina timber farms through white-glove tree subscriptions and 100% zero-waste eco-recycling.</p>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Subscription Tiers</h4>
+                <ul class="text-xs space-y-2 text-xmasCream/80">
+                    <li><a href="trees.html" class="hover:text-xmasGold transition">Evergreen Sprout (4–5 ft)</a></li>
+                    <li><a href="trees.html" class="hover:text-xmasGold transition">Holiday Hearth (6–7 ft)</a></li>
+                    <li><a href="trees.html" class="hover:text-xmasGold transition">Yuletide Monarch (8–9 ft)</a></li>
+                </ul>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Our Brand Network</h4>
+                <ul class="text-xs space-y-2 text-xmasCream/80">
+                    <li><a href="https://christmastreejoe.com" class="hover:text-xmasGold transition font-semibold">christmastreejoe.com</a></li>
+                    <li><a href="https://christmastreejoe.store" class="hover:text-xmasGold transition">christmastreejoe.store</a></li>
+                    <li><a href="https://christmastreejoe.net" class="hover:text-xmasGold transition">christmastreejoe.net</a></li>
+                </ul>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Customer Care</h4>
+                <ul class="text-xs space-y-2 text-xmasCream/80">
+                    <li><a href="mailto:support@christmastreejoe.com" class="hover:text-xmasGold transition underline">support@christmastreejoe.com</a></li>
+                    <li><a href="mailto:sales@christmastreejoe.com" class="hover:text-xmasGold transition underline">sales@christmastreejoe.com</a></li>
+                </ul>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Corporate Family</h4>
+                <p class="text-xs text-xmasCream/70">Operated under <strong>Xmas Made Inc.</strong>, sister company to <a href="https://globalcitizenjoecoffee.com" target="_blank" class="text-xmasGold underline">Global Citizen Joe Coffee Company</a>, under parent enterprise <strong>Global Citizen Joe, Inc.</strong></p>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-xmasCream/50">
+            <p>&copy; 2026 Christmas Tree Joe (Xmas Made Inc. / Global Citizen Joe, Inc.). All Rights Reserved.</p>
+            <div class="flex items-center space-x-6 text-[11px] mt-2 md:mt-0">
+                <a href="privacy.html" class="hover:text-xmasGold transition">Privacy Policy</a>
+                <a href="terms.html" class="hover:text-xmasGold transition">Terms of Service</a>
+                <a href="sitemap.html" class="hover:text-xmasGold transition">Sitemap</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE STORE JAVASCRIPT -->
+    <script>
+        let cart = [];
+
+        function filterCategory(cat) {
+            const cards = document.querySelectorAll('.product-card');
+            cards.forEach(card => {
+                if (cat === 'all' || card.getAttribute('data-category') === cat) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            ['all', 'mulch', 'oils', 'firewood'].forEach(c => {
+                const btn = document.getElementById('btn-cat-' + c);
+                if (c === cat) {
+                    btn.classList.add('bg-xmasRed', 'text-white', 'border-xmasGold/40');
+                    btn.classList.remove('bg-xmasDark', 'text-xmasCream/70', 'border-white/10');
+                } else {
+                    btn.classList.remove('bg-xmasRed', 'text-white', 'border-xmasGold/40');
+                    btn.classList.add('bg-xmasDark', 'text-xmasCream/70', 'border-white/10');
+                }
+            });
+        }
+
+        function addToCart(title, price) {
+            cart.push({ title, price });
+            updateCartDisplay();
+            toggleCartModal(true);
+        }
+
+        function updateCartDisplay() {
+            document.getElementById('cartBadge').innerText = cart.length;
+            const container = document.getElementById('cartItemList');
+            
+            if (cart.length === 0) {
+                container.innerHTML = '<p class="text-xmasCream/50 text-center py-8">Your cart is currently empty.</p>';
+                document.getElementById('cartSubtotal').innerText = '$0.00';
+                return;
+            }
+
+            let html = '';
+            let total = 0;
+            cart.forEach((item, index) => {
+                total += item.price;
+                html += `
+                    <div class="flex justify-between items-center p-3 bg-xmasDark rounded-xl border border-white/10">
+                        <div>
+                            <p class="font-bold text-white">${item.title}</p>
+                            <p class="text-[10px] text-xmasGold font-bold">$${item.price.toFixed(2)}</p>
+                        </div>
+                        <button onclick="removeFromCart(${index})" class="text-xmasRed hover:underline text-xs">Remove</button>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+            document.getElementById('cartSubtotal').innerText = '$' + total.toFixed(2);
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartDisplay();
+        }
+
+        function toggleCartModal(forceOpen = false) {
+            const modal = document.getElementById('cartModal');
+            if (forceOpen) {
+                modal.classList.remove('hidden');
+            } else {
+                modal.classList.toggle('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
