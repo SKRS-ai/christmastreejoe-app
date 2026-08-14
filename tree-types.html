@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Tree Varieties & 3D Selector | Christmas Tree Joe</title>
+    <title>Tree Varieties & Species Guide | Christmas Tree Joe</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Three.js CDN for WebGL 3D Tree Renderer -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Hero & Component Stylesheet -->
+    <link rel="stylesheet" href="styles/hero.css">
     
     <script>
         tailwind.config = {
@@ -33,10 +35,14 @@
     </script>
     <style>
         body { background-color: #051810; color: #FDFBF7; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .gold-border { border: 1px solid #D4AF37; }
         .gold-gradient-text {
             background: linear-gradient(135deg, #FFF0B9 0%, #D4AF37 50%, #997A15 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+        .hero-glow {
+            background: radial-gradient(circle, rgba(212,175,55,0.12) 0%, rgba(5,24,16,0) 70%);
         }
     </style>
 </head>
@@ -46,8 +52,8 @@
     <div class="bg-xmasRed text-white text-[11px] sm:text-xs py-1.5 px-4 font-semibold tracking-wide border-b border-xmasGold/30">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1 text-center sm:text-left">
             <div class="flex items-center gap-2">
-                <span class="bg-white/20 text-white text-[9px] uppercase px-2 py-0.5 rounded-full font-bold">Free Delivery</span>
-                <span>🎄 Reserve Your 2026 Philadelphia & Tri-State Christmas Tree Subscription Today!</span>
+                <span class="bg-white/20 text-white text-[9px] uppercase px-2 py-0.5 rounded-full font-bold">Species Guide</span>
+                <span>🎄 North Carolina Mountain Harvest — Fraser, Douglas & Noble Firs</span>
             </div>
             <div class="flex items-center space-x-4 text-[11px]">
                 <a href="tel:1800555XMAS" class="hover:text-xmasGold transition hidden md:inline">📞 1-800-XMAS-JOE</a>
@@ -57,41 +63,166 @@
         </div>
     </div>
 
-    <!-- MAIN HEADER -->
+    <!-- MAIN RESPONSIVE HEADER & NAVIGATION -->
     <header class="w-full bg-xmasDark/95 border-b border-xmasGold/30 sticky top-0 z-50 backdrop-blur-lg shadow-2xl">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-            <a href="index.html" class="flex items-center space-x-3 group">
-                <img src="Christmas-tree-joe1.png" alt="Christmas Tree Joe Logo" class="h-12 w-12 rounded-full border border-xmasGold object-cover shadow-lg group-hover:scale-105 transition">
+        <div class="max-w-7xl mx-auto px-4 py-2.5 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-3 group flex-shrink-0">
+                <img src="public/Christmas-tree-joe1.png" onerror="this.src='Christmas-tree-joe1.png'" alt="Christmas Tree Joe Badge Logo" class="h-14 w-14 sm:h-16 sm:w-16 rounded-full border-2 border-xmasGold object-cover shadow-lg group-hover:scale-105 transition">
                 <div>
-                    <span class="font-cinzel text-xl sm:text-2xl font-black tracking-wider text-white group-hover:text-xmasGold transition">CHRISTMAS TREE JOE</span>
-                    <p class="text-[9px] text-xmasGold uppercase tracking-widest font-extrabold -mt-1">A Global Citizen Joe Enterprise</p>
+                    <span class="font-cinzel text-lg sm:text-2xl font-black tracking-wider text-white group-hover:text-xmasGold transition block">CHRISTMAS TREE JOE</span>
+                    <p class="text-[9px] sm:text-[10px] text-xmasGold uppercase tracking-widest font-extrabold -mt-1">A Global Citizen Joe Enterprise</p>
                 </div>
             </a>
 
-            <nav class="hidden lg:flex items-center space-x-7 text-xs font-bold uppercase tracking-wider">
+            <nav class="hidden xl:flex items-center space-x-6 text-[11px] font-bold uppercase tracking-wider">
                 <a href="index.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Home</a>
+                <a href="trees.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Tree Selection</a>
                 <a href="tree-types.html" class="text-xmasGold border-b-2 border-xmasGold py-1">Tree Varieties</a>
                 <a href="marketplace.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Recycled Goods</a>
                 <a href="about.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Our Mission</a>
+                <a href="track.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Live Tracker</a>
             </nav>
 
             <div class="flex items-center space-x-3">
-                <a href="checkout.html" class="bg-xmasRed hover:bg-red-700 text-white font-bold px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm border border-xmasGold/50 transition shadow-xl transform hover:scale-105">
-                    Order Panel
+                <a href="account.html" class="hidden sm:inline-flex text-xs font-semibold text-xmasGold hover:text-white border border-xmasGold/40 px-3.5 py-2 rounded-full hover:bg-xmasGold/10 transition">
+                    Sign In
                 </a>
+                <a href="trees.html" class="bg-xmasRed hover:bg-red-700 text-white font-bold px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm border border-xmasGold/50 transition shadow-xl transform hover:scale-105 flex-shrink-0">
+                    Reserve Tree
+                </a>
+
+                <button onclick="toggleMobileNav()" aria-label="Toggle Menu" class="xl:hidden p-2 rounded-xl bg-xmasPanel border border-xmasGold/40 text-xmasGold hover:text-white transition focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
             </div>
+        </div>
+
+        <div id="mobileMenu" class="hidden xl:hidden bg-xmasDark/98 border-b-2 border-xmasGold/40 px-6 py-6 space-y-4 shadow-2xl">
+            <nav class="flex flex-col space-y-3 text-xs font-bold uppercase tracking-wider">
+                <a href="index.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>🏡 Home</span> <span>→</span>
+                </a>
+                <a href="trees.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>🎁 Tree Selection</span> <span>→</span>
+                </a>
+                <a href="tree-types.html" class="text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>📐 Tree Varieties Matrix</span> <span>→</span>
+                </a>
+                <a href="marketplace.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>♻️ Recycled Goods Store</span> <span>→</span>
+                </a>
+                <a href="about.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>📜 Our Mission & NC Roots</span> <span>→</span>
+                </a>
+                <a href="track.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>🚚 Live Delivery Tracker</span> <span>→</span>
+                </a>
+                <a href="account.html" class="text-xmasGold py-2 flex items-center justify-between">
+                    <span>👤 Customer Sign In</span> <span>→</span>
+                </a>
+            </nav>
         </div>
     </header>
 
-    <!-- MAIN CONTENT: 3D SPECIES INSPECTOR & DEEP DIVE -->
-    <main class="max-w-7xl mx-auto px-4 py-12 space-y-16">
-        
-        <!-- HEADER TITLE -->
-        <div class="text-center space-y-4">
-            <span class="text-xs font-bold text-xmasGold uppercase tracking-widest bg-xmasPanel px-4 py-1.5 rounded-full border border-xmasGold/30 inline-block">Sourced From Ashe County & Jefferson, NC</span>
-            <h1 class="font-cinzel text-4xl sm:text-6xl font-black gold-gradient-text">Our Signature Tree Varieties</h1>
-            <p class="text-xmasCream/80 max-w-2xl mx-auto text-sm sm:text-base">Explore the distinct needle structures, natural fragrances, and ornament capacities of our sustainably grown fir trees.</p>
+    <!-- ==========================================
+         MEDIUM HERO SECTION (16:9 Landscape Frame)
+    =========================================== -->
+    <section class="relative pt-8 pb-12 px-4 hero-glow overflow-hidden">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            <div class="lg:col-span-6 space-y-5 text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-xmasPanel border border-xmasGold/40 text-xmasGold text-xs font-bold uppercase tracking-widest shadow-md">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>Sourced From Ashe County & Jefferson, NC</span>
+                </div>
+                
+                <h1 class="font-cinzel text-3xl sm:text-5xl font-black leading-tight tracking-tight text-white">
+                    Our Signature <span class="gold-gradient-text">Tree Varieties</span>
+                </h1>
+                
+                <p class="text-xmasCream/80 text-sm sm:text-base max-w-xl leading-relaxed mx-auto lg:mx-0">
+                    Explore the distinct needle structures, mountain fragrances, and ornament capacities of our sustainably harvested evergreen species.
+                </p>
+
+                <div class="grid grid-cols-3 gap-3 pt-3 border-t border-white/10 text-center lg:text-left">
+                    <div>
+                        <strong class="block text-xmasGold font-cinzel text-base sm:text-lg">Fraser Fir</strong>
+                        <span class="text-[11px] text-xmasCream/70">#1 Needle Retention</span>
+                    </div>
+                    <div>
+                        <strong class="block text-xmasGold font-cinzel text-base sm:text-lg">Douglas Fir</strong>
+                        <span class="text-[11px] text-xmasCream/70">Sweet Citrus Aroma</span>
+                    </div>
+                    <div>
+                        <strong class="block text-xmasGold font-cinzel text-base sm:text-lg">Noble Fir</strong>
+                        <span class="text-[11px] text-xmasCream/70">Heavy Ornament Tiers</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-6">
+                <div class="relative rounded-2xl overflow-hidden border-2 border-xmasGold/40 shadow-2xl aspect-video bg-xmasDark">
+                    <div class="relative w-full h-full" id="heroSlider">
+                        
+                        <!-- Slide 1: Fraser Fir -->
+                        <div class="hero-slide active">
+                            <img 
+                                src="public/species-fraser-fir.png" 
+                                onerror="this.src='species-fraser-fir.png'"
+                                alt="North Carolina Fraser Fir species presentation" 
+                                class="w-full h-full object-cover"
+                                loading="eager"
+                            />
+                            <div class="slide-caption">
+                                <span>North Carolina Fraser Fir — Appalachian Mountain Fragrance</span>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2: Douglas Fir -->
+                        <div class="hero-slide">
+                            <img 
+                                src="public/species-douglas-fir.png" 
+                                onerror="this.src='species-douglas-fir.png'"
+                                alt="Douglas Fir species presentation" 
+                                class="w-full h-full object-cover"
+                                loading="lazy"
+                            />
+                            <div class="slide-caption">
+                                <span>Douglas Fir — Lush Emerald Density & Sweet Citrus Aroma</span>
+                            </div>
+                        </div>
+
+                        <!-- Slide 3: Noble Fir -->
+                        <div class="hero-slide">
+                            <img 
+                                src="public/species-noble-fir.png" 
+                                onerror="this.src='species-noble-fir.png'"
+                                alt="Noble Fir species presentation" 
+                                class="w-full h-full object-cover"
+                                loading="lazy"
+                            />
+                            <div class="slide-caption">
+                                <span>Noble Fir — Architected Horizontal Branch Tiers</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="slider-nav">
+                        <button class="slider-dot active" aria-label="Slide 1" onclick="setSlide(0)"></button>
+                        <button class="slider-dot" aria-label="Slide 2" onclick="setSlide(1)"></button>
+                        <button class="slider-dot" aria-label="Slide 3" onclick="setSlide(2)"></button>
+                    </div>
+                </div>
+            </div>
+
         </div>
+    </section>
+
+    <!-- MAIN CONTENT: 3D SPECIES INSPECTOR & DIRECT ORDER -->
+    <main class="max-w-7xl mx-auto px-4 py-8 space-y-16">
 
         <!-- 3D INTERACTIVE SPECIES SELECTOR & ORDER PANEL -->
         <div class="bg-xmasPanel border-2 border-xmasGold/50 rounded-3xl p-6 sm:p-10 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -105,7 +236,7 @@
                 
                 <div id="webgl-container" class="w-full h-80 bg-emerald-950/20 rounded-xl relative overflow-hidden">
                     <canvas id="tree-canvas" class="w-full h-full cursor-grab"></canvas>
-                    <div class="absolute bottom-3 left-3 text-[10px] text-white/70 bg-black/60 px-2 py-1 rounded backdrop-blur-sm">Drag to inspect branches 360°</div>
+                    <div class="absolute bottom-3 left-3 text-[10px] text-white/70 bg-black/60 px-2.5 py-1 rounded backdrop-blur-sm">Drag to inspect branches 360°</div>
                 </div>
 
                 <div class="grid grid-cols-3 gap-3 w-full mt-4">
@@ -118,15 +249,15 @@
             <!-- Fast Order Panel -->
             <div class="lg:col-span-5 space-y-6">
                 <div class="space-y-2">
-                    <span class="text-xs font-bold text-xmasGold uppercase tracking-widest">Instant Reservation</span>
+                    <span class="text-xs font-bold text-xmasGold uppercase tracking-widest bg-xmasDark px-3 py-1 rounded-full border border-xmasGold/30 inline-block">Instant Reservation</span>
                     <h3 class="font-cinzel text-3xl font-extrabold text-white">Direct Order Panel</h3>
-                    <p class="text-xs text-xmasCream/70">Select your specs and send directly to checkout.</p>
+                    <p class="text-xs text-xmasCream/70">Select your preferred height and duration term lock.</p>
                 </div>
 
                 <div class="space-y-4">
                     <div>
                         <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Select Height / Tier</label>
-                        <select id="tier-select" class="w-full bg-xmasDark border border-xmasGold/50 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-xmasGold">
+                        <select id="tier-select" class="w-full bg-xmasDark border border-xmasGold/50 rounded-xl p-3.5 text-xs text-white focus:outline-none focus:border-xmasGold">
                             <option value="Sprout - 4 to 5 ft ($149.99)">Evergreen Sprout (4–5 ft) — $149.99/yr</option>
                             <option value="Hearth - 6 to 7 ft ($209.99)" selected>Holiday Hearth (6–7 ft) — $209.99/yr</option>
                             <option value="Monarch - 8 to 9 ft ($299.99)">Yuletide Monarch (8–9 ft) — $299.99/yr</option>
@@ -134,16 +265,17 @@
                     </div>
 
                     <div>
-                        <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Subscription Duration</label>
-                        <select class="w-full bg-xmasDark border border-xmasGold/50 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-xmasGold">
+                        <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Subscription Duration Lock</label>
+                        <select class="w-full bg-xmasDark border border-xmasGold/50 rounded-xl p-3.5 text-xs text-white focus:outline-none focus:border-xmasGold">
                             <option value="1">1 Year Standard Purchase</option>
                             <option value="2">2 Year Subscription (10% Off)</option>
-                            <option value="3" selected>3 Year Subscription (15% Off - Locked Rate)</option>
+                            <option value="3" selected>3 Year Subscription (15% Off - Best Value)</option>
                             <option value="5">5 Year Subscription (15% Off - VIP Delivery)</option>
+                            <option value="10">10 Year Subscription (15% Off - Locked Rate)</option>
                         </select>
                     </div>
 
-                    <a href="checkout.html" class="block w-full py-4 text-center bg-xmasRed hover:bg-red-700 text-white font-extrabold text-sm uppercase tracking-wider rounded-xl border border-xmasGold/50 shadow-xl transition transform hover:scale-105">
+                    <a href="checkout.html" class="block w-full py-4 text-center bg-xmasRed hover:bg-red-700 text-white font-extrabold text-xs uppercase tracking-wider rounded-xl border border-xmasGold/50 shadow-xl transition transform hover:scale-105">
                         Proceed To Checkout →
                     </a>
                 </div>
@@ -153,30 +285,36 @@
 
         <!-- SPECIES COMPARISON CARDS -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-xmasDark border border-white/10 rounded-3xl p-6 space-y-4">
+            <div class="bg-xmasDark border border-white/10 rounded-3xl p-6 space-y-4 hover:border-xmasGold transition shadow-xl">
+                <span class="text-[10px] font-bold text-xmasGold uppercase tracking-widest bg-xmasGreen/80 px-2.5 py-1 rounded-full border border-xmasGold/30 inline-block">Appalachian Classic</span>
                 <h3 class="font-cinzel text-2xl font-bold text-xmasGold">Fraser Fir</h3>
-                <p class="text-xs text-xmasCream/70 leading-relaxed">Dark green needles with silvery-green undersides. Rigid, upward-facing branches engineered by nature to support heavy heirloom ornaments.</p>
-                <div class="text-xs space-y-1 text-xmasCream/80 border-t border-white/10 pt-3">
-                    <p><strong>Needle Retention:</strong> Excellent (5/5)</p>
-                    <p><strong>Fragrance:</strong> Rich Woodsy Pine</p>
+                <p class="text-xs text-xmasCream/70 leading-relaxed">Dark green needles with silvery-green undersides. Rigid, upward-facing branches engineered by nature to support heavy heirloom glass ornaments.</p>
+                <div class="text-xs space-y-1.5 text-xmasCream/80 border-t border-white/10 pt-3 font-medium">
+                    <p class="flex justify-between"><span>Needle Retention:</span> <strong class="text-emerald-400">Superior (5/5)</strong></p>
+                    <p class="flex justify-between"><span>Branch Rigidity:</span> <strong class="text-emerald-400">High Support</strong></p>
+                    <p class="flex justify-between"><span>Aroma Profile:</span> <strong class="text-xmasGold">Rich Mountain Pine</strong></p>
                 </div>
             </div>
 
-            <div class="bg-xmasDark border border-white/10 rounded-3xl p-6 space-y-4">
+            <div class="bg-xmasDark border border-white/10 rounded-3xl p-6 space-y-4 hover:border-xmasGold transition shadow-xl">
+                <span class="text-[10px] font-bold text-xmasGold uppercase tracking-widest bg-xmasGreen/80 px-2.5 py-1 rounded-full border border-xmasGold/30 inline-block">Lush & Fragrant</span>
                 <h3 class="font-cinzel text-2xl font-bold text-xmasGold">Douglas Fir</h3>
-                <p class="text-xs text-xmasCream/70 leading-relaxed">Soft, light-green to blue-green needles that radiate in all directions. Famous for its dense, bushy appearance and sweet citrus-pine aroma.</p>
-                <div class="text-xs space-y-1 text-xmasCream/80 border-t border-white/10 pt-3">
-                    <p><strong>Needle Retention:</strong> Very Good (4/5)</p>
-                    <p><strong>Fragrance:</strong> Sweet Citrus Pine</p>
+                <p class="text-xs text-xmasCream/70 leading-relaxed">Soft, light-green needles radiating in all directions. Famous for its exceptionally dense, pyramidal symmetry and sweet refreshing citrus aroma.</p>
+                <div class="text-xs space-y-1.5 text-xmasCream/80 border-t border-white/10 pt-3 font-medium">
+                    <p class="flex justify-between"><span>Needle Retention:</span> <strong class="text-emerald-400">Very Good (4/5)</strong></p>
+                    <p class="flex justify-between"><span>Branch Rigidity:</span> <strong class="text-emerald-400">Medium Support</strong></p>
+                    <p class="flex justify-between"><span>Aroma Profile:</span> <strong class="text-xmasGold">Sweet Citrus Pine</strong></p>
                 </div>
             </div>
 
-            <div class="bg-xmasDark border border-white/10 rounded-3xl p-6 space-y-4">
+            <div class="bg-xmasDark border border-white/10 rounded-3xl p-6 space-y-4 hover:border-xmasGold transition shadow-xl">
+                <span class="text-[10px] font-bold text-xmasGold uppercase tracking-widest bg-xmasGreen/80 px-2.5 py-1 rounded-full border border-xmasGold/30 inline-block">Architectural Elegance</span>
                 <h3 class="font-cinzel text-2xl font-bold text-xmasGold">Noble Fir</h3>
-                <p class="text-xs text-xmasCream/70 leading-relaxed">Short, stiff, upward-curving bluish-green needles. Features sturdy, evenly spaced horizontal tiers perfect for layered decorating.</p>
-                <div class="text-xs space-y-1 text-xmasCream/80 border-t border-white/10 pt-3">
-                    <p><strong>Needle Retention:</strong> Superior (5/5)</p>
-                    <p><strong>Fragrance:</strong> Woodsy Mint</p>
+                <p class="text-xs text-xmasCream/70 leading-relaxed">Short, stiff, upward-curving bluish-green needles. Features beautifully tiered horizontal branches designed for layered ornament styling.</p>
+                <div class="text-xs space-y-1.5 text-xmasCream/80 border-t border-white/10 pt-3 font-medium">
+                    <p class="flex justify-between"><span>Needle Retention:</span> <strong class="text-emerald-400">Superior (5/5)</strong></p>
+                    <p class="flex justify-between"><span>Branch Rigidity:</span> <strong class="text-emerald-400">Maximum Support</strong></p>
+                    <p class="flex justify-between"><span>Aroma Profile:</span> <strong class="text-xmasGold">Woodsy Mint & Pine</strong></p>
                 </div>
             </div>
         </div>
@@ -188,7 +326,7 @@
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
             <div class="space-y-4 lg:col-span-1">
                 <div class="flex items-center space-x-3">
-                    <img src="Christmas-tree-joe3.png" alt="Joe Mascot" class="h-14 w-14 rounded-full border-2 border-xmasGold object-cover shadow-lg">
+                    <img src="public/Christmas-tree-joe3.png" onerror="this.src='Christmas-tree-joe3.png'" alt="Joe Mascot" class="h-14 w-14 rounded-full border-2 border-xmasGold object-cover shadow-lg">
                     <div>
                         <h4 class="font-cinzel text-base font-bold text-white">Christmas Tree Joe</h4>
                         <p class="text-[9px] text-xmasGold uppercase tracking-widest font-bold">Xmas Made Inc.</p>
@@ -200,9 +338,9 @@
             <div class="space-y-3">
                 <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Subscription Tiers</h4>
                 <ul class="text-xs space-y-2 text-xmasCream/80">
-                    <li><a href="index.html#subscriptions" class="hover:text-xmasGold transition">Evergreen Sprout (4–5 ft)</a></li>
-                    <li><a href="index.html#subscriptions" class="hover:text-xmasGold transition">Holiday Hearth (6–7 ft)</a></li>
-                    <li><a href="index.html#subscriptions" class="hover:text-xmasGold transition">Yuletide Monarch (8–9 ft)</a></li>
+                    <li><a href="trees.html" class="hover:text-xmasGold transition">Evergreen Sprout (4–5 ft)</a></li>
+                    <li><a href="trees.html" class="hover:text-xmasGold transition">Holiday Hearth (6–7 ft)</a></li>
+                    <li><a href="trees.html" class="hover:text-xmasGold transition">Yuletide Monarch (8–9 ft)</a></li>
                 </ul>
             </div>
 
@@ -230,17 +368,50 @@
         </div>
 
         <div class="max-w-7xl mx-auto pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-xmasCream/50">
-            <p>&copy; 2026 Christmas Tree Joe. All Rights Reserved.</p>
+            <p>&copy; 2026 Christmas Tree Joe (Xmas Made Inc. / Global Citizen Joe, Inc.). All Rights Reserved.</p>
+            <div class="flex items-center space-x-6 text-[11px] mt-2 md:mt-0">
+                <a href="privacy.html" class="hover:text-xmasGold transition">Privacy Policy</a>
+                <a href="terms.html" class="hover:text-xmasGold transition">Terms of Service</a>
+                <a href="sitemap.html" class="hover:text-xmasGold transition">Sitemap</a>
+            </div>
         </div>
     </footer>
 
-    <!-- THREE.JS 3D SCRIPT -->
+    <!-- INTERACTIVE JAVASCRIPT & THREE.JS 3D ENGINE -->
     <script>
+        // Hero Slider Logic
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        const dots = document.querySelectorAll('.slider-dot');
+
+        function setSlide(index) {
+            slides.forEach((s, i) => {
+                s.classList.toggle('active', i === index);
+                if (dots[i]) dots[i].classList.toggle('active', i === index);
+            });
+            currentSlide = index;
+        }
+
+        if (slides.length > 1) {
+            setInterval(() => {
+                let next = (currentSlide + 1) % slides.length;
+                setSlide(next);
+            }, 5000);
+        }
+
+        // Mobile Nav Drawer Toggle
+        function toggleMobileNav() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // WebGL 3D Interactive Model
         let scene, camera, renderer, treeGroup;
 
         function init3D() {
             const container = document.getElementById('webgl-container');
             const canvas = document.getElementById('tree-canvas');
+            if(!container || !canvas) return;
 
             scene = new THREE.Scene();
             camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
@@ -282,9 +453,48 @@
 
             scene.add(treeGroup);
 
+            // Drag Controls
+            let isDragging = false;
+            let previousMousePosition = { x: 0, y: 0 };
+
+            canvas.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                previousMousePosition = { x: e.clientX, y: e.clientY };
+            });
+
+            window.addEventListener('mouseup', () => { isDragging = false; });
+
+            canvas.addEventListener('mousemove', (e) => {
+                if (isDragging && treeGroup) {
+                    const deltaX = e.clientX - previousMousePosition.x;
+                    treeGroup.rotation.y += deltaX * 0.01;
+                    previousMousePosition = { x: e.clientX, y: e.clientY };
+                }
+            });
+
+            // Touch Controls
+            canvas.addEventListener('touchstart', (e) => {
+                if(e.touches.length === 1) {
+                    isDragging = true;
+                    previousMousePosition = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+                }
+            });
+
+            window.addEventListener('touchend', () => { isDragging = false; });
+
+            canvas.addEventListener('touchmove', (e) => {
+                if (isDragging && treeGroup && e.touches.length === 1) {
+                    const deltaX = e.touches[0].clientX - previousMousePosition.x;
+                    treeGroup.rotation.y += deltaX * 0.01;
+                    previousMousePosition = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+                }
+            });
+
             function animate() {
                 requestAnimationFrame(animate);
-                treeGroup.rotation.y += 0.005;
+                if(!isDragging && treeGroup) {
+                    treeGroup.rotation.y += 0.005;
+                }
                 renderer.render(scene, camera);
             }
             animate();
@@ -292,6 +502,7 @@
 
         function setSpecies(name, colorHex, title) {
             document.getElementById('species-title').innerText = title;
+            if(!treeGroup) return;
             treeGroup.children.forEach(child => {
                 if(child.geometry && child.geometry.type === 'ConeGeometry') {
                     child.material.color.setHex(colorHex);
@@ -299,7 +510,15 @@
             });
         }
 
-        window.onload = init3D;
+        window.addEventListener('DOMContentLoaded', init3D);
+        window.addEventListener('resize', () => {
+            const container = document.getElementById('webgl-container');
+            if(container && renderer && camera) {
+                camera.aspect = container.clientWidth / container.clientHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(container.clientWidth, container.clientHeight);
+            }
+        });
     </script>
 </body>
 </html>

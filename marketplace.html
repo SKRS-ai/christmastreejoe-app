@@ -8,6 +8,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Hero & Component Stylesheet -->
+    <link rel="stylesheet" href="styles/hero.css">
     
     <script>
         tailwind.config = {
@@ -31,10 +33,14 @@
     </script>
     <style>
         body { background-color: #051810; color: #FDFBF7; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .gold-border { border: 1px solid #D4AF37; }
         .gold-gradient-text {
             background: linear-gradient(135deg, #FFF0B9 0%, #D4AF37 50%, #997A15 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+        .hero-glow {
+            background: radial-gradient(circle, rgba(212,175,55,0.12) 0%, rgba(5,24,16,0) 70%);
         }
     </style>
 </head>
@@ -55,23 +61,24 @@
         </div>
     </div>
 
-    <!-- MAIN HEADER & NAVIGATION -->
+    <!-- MAIN RESPONSIVE HEADER & NAVIGATION -->
     <header class="w-full bg-xmasDark/95 border-b border-xmasGold/30 sticky top-0 z-50 backdrop-blur-lg shadow-2xl">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-            <a href="index.html" class="flex items-center space-x-3 group">
-                <img src="Christmas-tree-joe1.png" onerror="this.src='public/Christmas-tree-joe1.png'" alt="Logo" class="h-12 w-12 rounded-full border border-xmasGold object-cover shadow-lg group-hover:scale-105 transition">
+        <div class="max-w-7xl mx-auto px-4 py-2.5 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-3 group flex-shrink-0">
+                <img src="public/Christmas-tree-joe1.png" onerror="this.src='Christmas-tree-joe1.png'" alt="Christmas Tree Joe Badge Logo" class="h-14 w-14 sm:h-16 sm:w-16 rounded-full border-2 border-xmasGold object-cover shadow-lg group-hover:scale-105 transition">
                 <div>
-                    <span class="font-cinzel text-xl sm:text-2xl font-black tracking-wider text-white group-hover:text-xmasGold transition">CHRISTMAS TREE JOE</span>
-                    <p class="text-[9px] text-xmasGold uppercase tracking-widest font-extrabold -mt-1">Eco-Recycled Marketplace</p>
+                    <span class="font-cinzel text-lg sm:text-2xl font-black tracking-wider text-white group-hover:text-xmasGold transition block">CHRISTMAS TREE JOE</span>
+                    <p class="text-[9px] sm:text-[10px] text-xmasGold uppercase tracking-widest font-extrabold -mt-1">Eco-Recycled Marketplace</p>
                 </div>
             </a>
 
-            <nav class="hidden lg:flex items-center space-x-7 text-xs font-bold uppercase tracking-wider">
+            <nav class="hidden xl:flex items-center space-x-6 text-[11px] font-bold uppercase tracking-wider">
                 <a href="index.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Home</a>
                 <a href="trees.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Tree Selection</a>
                 <a href="tree-types.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Tree Varieties</a>
                 <a href="marketplace.html" class="text-xmasGold border-b-2 border-xmasGold py-1">Recycled Goods</a>
                 <a href="about.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Our Mission</a>
+                <a href="track.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Live Tracker</a>
             </nav>
 
             <div class="flex items-center space-x-3">
@@ -79,19 +86,140 @@
                     <span>🛒 Cart</span>
                     <span id="cartBadge" class="bg-xmasRed text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-black">0</span>
                 </button>
+
+                <button onclick="toggleMobileNav()" aria-label="Toggle Menu" class="xl:hidden p-2 rounded-xl bg-xmasPanel border border-xmasGold/40 text-xmasGold hover:text-white transition focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
             </div>
+        </div>
+
+        <div id="mobileMenu" class="hidden xl:hidden bg-xmasDark/98 border-b-2 border-xmasGold/40 px-6 py-6 space-y-4 shadow-2xl">
+            <nav class="flex flex-col space-y-3 text-xs font-bold uppercase tracking-wider">
+                <a href="index.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>🏡 Home</span> <span>→</span>
+                </a>
+                <a href="trees.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>🎁 Tree Selection</span> <span>→</span>
+                </a>
+                <a href="tree-types.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>📐 Tree Varieties</span> <span>→</span>
+                </a>
+                <a href="marketplace.html" class="text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>♻️ Recycled Goods Store</span> <span>→</span>
+                </a>
+                <a href="about.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>📜 Our Mission & NC Roots</span> <span>→</span>
+                </a>
+                <a href="track.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>🚚 Live Delivery Tracker</span> <span>→</span>
+                </a>
+                <a href="account.html" class="text-xmasGold py-2 flex items-center justify-between">
+                    <span>👤 Customer Sign In</span> <span>→</span>
+                </a>
+            </nav>
         </div>
     </header>
 
-    <!-- MARKETPLACE HERO -->
-    <main class="max-w-7xl mx-auto px-4 py-10 space-y-12">
-        
-        <div class="text-center space-y-3">
-            <span class="text-xs font-bold text-xmasGold uppercase tracking-widest bg-xmasPanel px-4 py-1.5 rounded-full border border-xmasGold/30 inline-block">The Circular Timber Economy</span>
-            <h1 class="font-cinzel text-4xl sm:text-5xl font-black gold-gradient-text">Recycled Goods & Timber Store</h1>
-            <p class="text-xmasCream/70 text-xs sm:text-sm max-w-2xl mx-auto">Every tree collected in January is 100% reprocessed. We steam-distill the needles into essential oils, chip the hardwood into organic garden mulch, and press timber fiber into clean biofuel pellets.</p>
-        </div>
+    <!-- ==========================================
+         MEDIUM HERO SECTION (16:9 Landscape Frame)
+    =========================================== -->
+    <section class="relative pt-8 pb-12 px-4 hero-glow overflow-hidden">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            <div class="lg:col-span-6 space-y-5 text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-xmasPanel border border-xmasGold/40 text-xmasGold text-xs font-bold uppercase tracking-widest shadow-md">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>The Circular Timber Economy</span>
+                </div>
+                
+                <h1 class="font-cinzel text-3xl sm:text-5xl font-black leading-tight tracking-tight text-white">
+                    Recycled Goods & <span class="gold-gradient-text">Timber Store</span>
+                </h1>
+                
+                <p class="text-xmasCream/80 text-sm sm:text-base max-w-xl leading-relaxed mx-auto lg:mx-0">
+                    Every tree collected in January is 100% reprocessed. We steam-distill needles into pure essential oils, chip hardwood into aromatic mulch, and press timber into clean biofuel pellets.
+                </p>
 
+                <div class="grid grid-cols-3 gap-3 pt-3 border-t border-white/10 text-center lg:text-left">
+                    <div>
+                        <strong class="block text-xmasGold font-cinzel text-base sm:text-lg">0% Waste</strong>
+                        <span class="text-[11px] text-xmasCream/70">Landfill Diverted</span>
+                    </div>
+                    <div>
+                        <strong class="block text-xmasGold font-cinzel text-base sm:text-lg">Small Batch</strong>
+                        <span class="text-[11px] text-xmasCream/70">Needle Distillation</span>
+                    </div>
+                    <div>
+                        <strong class="block text-xmasGold font-cinzel text-base sm:text-lg">High BTU</strong>
+                        <span class="text-[11px] text-xmasCream/70">Clean Bio-Pellets</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-6">
+                <div class="relative rounded-2xl overflow-hidden border-2 border-xmasGold/40 shadow-2xl aspect-video bg-xmasDark">
+                    <div class="relative w-full h-full" id="heroSlider">
+                        
+                        <!-- Slide 1: Aromatic Mulch -->
+                        <div class="hero-slide active">
+                            <img 
+                                src="public/product-mulch-bag.png" 
+                                onerror="this.src='product-mulch-bag.png'"
+                                alt="Fraser Fir organic landscape mulch" 
+                                class="w-full h-full object-cover"
+                                loading="eager"
+                            />
+                            <div class="slide-caption">
+                                <span>Triple-Shredded Appalachian Fraser Fir Landscape Mulch</span>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2: Biofuel Pellets -->
+                        <div class="hero-slide">
+                            <img 
+                                src="public/product-bio-pellets.png" 
+                                onerror="this.src='product-bio-pellets.png'"
+                                alt="Timber bio-pellets clean heating fuel" 
+                                class="w-full h-full object-cover"
+                                loading="lazy"
+                            />
+                            <div class="slide-caption">
+                                <span>Ultra-Dense Low-Ash Timber Heating Bio-Pellets</span>
+                            </div>
+                        </div>
+
+                        <!-- Slide 3: Essential Oil -->
+                        <div class="hero-slide">
+                            <img 
+                                src="public/product-essential-oil.png" 
+                                onerror="this.src='product-essential-oil.png'"
+                                alt="Steam-distilled pure Fraser Fir essential oil" 
+                                class="w-full h-full object-cover"
+                                loading="lazy"
+                            />
+                            <div class="slide-caption">
+                                <span>100% Pure Steam-Distilled Fraser Needle Essential Oil</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="slider-nav">
+                        <button class="slider-dot active" aria-label="Slide 1" onclick="setSlide(0)"></button>
+                        <button class="slider-dot" aria-label="Slide 2" onclick="setSlide(1)"></button>
+                        <button class="slider-dot" aria-label="Slide 3" onclick="setSlide(2)"></button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- MARKETPLACE CATALOG -->
+    <main class="max-w-7xl mx-auto px-4 py-8 space-y-12">
+        
         <!-- CATEGORY FILTER BUTTONS -->
         <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs font-bold uppercase tracking-wider">
             <button onclick="filterCategory('all')" id="btn-cat-all" class="px-5 py-2.5 rounded-full bg-xmasRed text-white border border-xmasGold/40 transition shadow-lg">All Goods</button>
@@ -107,8 +235,8 @@
             <div class="product-card" data-category="mulch">
                 <div class="bg-xmasPanel border border-xmasGold/30 hover:border-xmasGold rounded-3xl p-6 space-y-4 transition duration-300 shadow-xl flex flex-col justify-between h-full group">
                     <div class="space-y-3">
-                        <div class="h-44 bg-xmasDark rounded-2xl border border-white/10 flex items-center justify-center text-5xl relative overflow-hidden group-hover:scale-102 transition">
-                            🪵
+                        <div class="h-48 bg-xmasDark rounded-2xl border border-white/10 relative overflow-hidden flex items-center justify-center">
+                            <img src="public/product-mulch-bag.png" onerror="this.src='product-mulch-bag.png'" alt="Fraser Fir Mulch Bag" class="h-full w-full object-cover group-hover:scale-105 transition duration-300">
                             <span class="absolute top-3 right-3 bg-emerald-950 border border-emerald-500/30 text-emerald-400 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">In Stock</span>
                         </div>
                         <div class="flex justify-between items-start">
@@ -132,8 +260,8 @@
             <div class="product-card" data-category="oils">
                 <div class="bg-xmasPanel border border-xmasGold/30 hover:border-xmasGold rounded-3xl p-6 space-y-4 transition duration-300 shadow-xl flex flex-col justify-between h-full group">
                     <div class="space-y-3">
-                        <div class="h-44 bg-xmasDark rounded-2xl border border-white/10 flex items-center justify-center text-5xl relative overflow-hidden group-hover:scale-102 transition">
-                            🧪
+                        <div class="h-48 bg-xmasDark rounded-2xl border border-white/10 relative overflow-hidden flex items-center justify-center">
+                            <img src="public/product-essential-oil.png" onerror="this.src='product-essential-oil.png'" alt="Fraser Essential Oil" class="h-full w-full object-cover group-hover:scale-105 transition duration-300">
                             <span class="absolute top-3 right-3 bg-emerald-950 border border-emerald-500/30 text-emerald-400 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Small Batch</span>
                         </div>
                         <div class="flex justify-between items-start">
@@ -157,8 +285,8 @@
             <div class="product-card" data-category="firewood">
                 <div class="bg-xmasPanel border border-xmasGold/30 hover:border-xmasGold rounded-3xl p-6 space-y-4 transition duration-300 shadow-xl flex flex-col justify-between h-full group">
                     <div class="space-y-3">
-                        <div class="h-44 bg-xmasDark rounded-2xl border border-white/10 flex items-center justify-center text-5xl relative overflow-hidden group-hover:scale-102 transition">
-                            🔥
+                        <div class="h-48 bg-xmasDark rounded-2xl border border-white/10 relative overflow-hidden flex items-center justify-center">
+                            <img src="public/product-bio-pellets.png" onerror="this.src='product-bio-pellets.png'" alt="Biofuel Pellets" class="h-full w-full object-cover group-hover:scale-105 transition duration-300">
                             <span class="absolute top-3 right-3 bg-emerald-950 border border-emerald-500/30 text-emerald-400 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Clean Energy</span>
                         </div>
                         <div class="flex justify-between items-start">
@@ -182,8 +310,8 @@
             <div class="product-card" data-category="mulch">
                 <div class="bg-xmasPanel border border-xmasGold/30 hover:border-xmasGold rounded-3xl p-6 space-y-4 transition duration-300 shadow-xl flex flex-col justify-between h-full group">
                     <div class="space-y-3">
-                        <div class="h-44 bg-xmasDark rounded-2xl border border-white/10 flex items-center justify-center text-5xl relative overflow-hidden group-hover:scale-102 transition">
-                            🌱
+                        <div class="h-48 bg-xmasDark rounded-2xl border border-white/10 relative overflow-hidden flex items-center justify-center">
+                            <img src="public/product-mulch-bag.png" onerror="this.src='product-mulch-bag.png'" alt="Organic Evergreen Compost" class="h-full w-full object-cover group-hover:scale-105 transition duration-300">
                             <span class="absolute top-3 right-3 bg-emerald-950 border border-emerald-500/30 text-emerald-400 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">USDA Organic</span>
                         </div>
                         <div class="flex justify-between items-start">
@@ -194,7 +322,7 @@
                             <span class="font-cinzel text-xl font-extrabold text-xmasGold">$12.99</span>
                         </div>
                         <p class="text-xs text-xmasCream/70 leading-relaxed">
-                            Microbe-rich organic compost cured for 8 months. Balances pH levels and provides steady micronutrient release for gardens and urban planters.
+                            Microbe-rich organic compost cured for 8 months. Balances pH levels and provides steady micronutrient release for gardens and planters.
                         </p>
                     </div>
                     <button onclick="addToCart('Aged Evergreen Rich Compost (1 Cu Ft)', 12.99)" class="w-full py-3 bg-xmasDark hover:bg-xmasGold hover:text-xmasDark text-white font-bold text-xs uppercase tracking-wider rounded-xl border border-white/20 hover:border-xmasGold transition shadow-md">
@@ -207,8 +335,8 @@
             <div class="product-card" data-category="firewood">
                 <div class="bg-xmasPanel border border-xmasGold/30 hover:border-xmasGold rounded-3xl p-6 space-y-4 transition duration-300 shadow-xl flex flex-col justify-between h-full group">
                     <div class="space-y-3">
-                        <div class="h-44 bg-xmasDark rounded-2xl border border-white/10 flex items-center justify-center text-5xl relative overflow-hidden group-hover:scale-102 transition">
-                            🪵
+                        <div class="h-48 bg-xmasDark rounded-2xl border border-white/10 relative overflow-hidden flex items-center justify-center">
+                            <img src="public/product-firewood-bundle.png" onerror="this.src='product-firewood-bundle.png'" alt="Firewood Bundle" class="h-full w-full object-cover group-hover:scale-105 transition duration-300">
                             <span class="absolute top-3 right-3 bg-emerald-950 border border-emerald-500/30 text-emerald-400 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Kiln Cured</span>
                         </div>
                         <div class="flex justify-between items-start">
@@ -228,12 +356,12 @@
                 </div>
             </div>
 
-            <!-- PRODUCT 6: APPALACHIAN ROOM ROOM MIST -->
+            <!-- PRODUCT 6: APPALACHIAN ROOM MIST -->
             <div class="product-card" data-category="oils">
                 <div class="bg-xmasPanel border border-xmasGold/30 hover:border-xmasGold rounded-3xl p-6 space-y-4 transition duration-300 shadow-xl flex flex-col justify-between h-full group">
                     <div class="space-y-3">
-                        <div class="h-44 bg-xmasDark rounded-2xl border border-white/10 flex items-center justify-center text-5xl relative overflow-hidden group-hover:scale-102 transition">
-                            🌲
+                        <div class="h-48 bg-xmasDark rounded-2xl border border-white/10 relative overflow-hidden flex items-center justify-center">
+                            <img src="public/product-room-spray.png" onerror="this.src='product-room-spray.png'" alt="Room Spray Mist" class="h-full w-full object-cover group-hover:scale-105 transition duration-300">
                             <span class="absolute top-3 right-3 bg-emerald-950 border border-emerald-500/30 text-emerald-400 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Handcrafted</span>
                         </div>
                         <div class="flex justify-between items-start">
@@ -244,7 +372,7 @@
                             <span class="font-cinzel text-xl font-extrabold text-xmasGold">$19.99</span>
                         </div>
                         <p class="text-xs text-xmasCream/70 leading-relaxed">
-                            Plant-based floral water produced during essential oil distillation. Pure botanical mist that revitalizes fabrics and room air naturally.
+                            Plant-based botanical water produced during essential oil distillation. Pure evergreen mist that revitalizes room air naturally.
                         </p>
                     </div>
                     <button onclick="addToCart('Evergreen Hydrosol Room Spray (8 oz)', 19.99)" class="w-full py-3 bg-xmasDark hover:bg-xmasGold hover:text-xmasDark text-white font-bold text-xs uppercase tracking-wider rounded-xl border border-white/20 hover:border-xmasGold transition shadow-md">
@@ -287,7 +415,7 @@
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
             <div class="space-y-4 lg:col-span-1">
                 <div class="flex items-center space-x-3">
-                    <img src="Christmas-tree-joe3.png" onerror="this.src='public/Christmas-tree-joe3.png'" alt="Joe Mascot" class="h-14 w-14 rounded-full border-2 border-xmasGold object-cover shadow-lg">
+                    <img src="public/Christmas-tree-joe3.png" onerror="this.src='Christmas-tree-joe3.png'" alt="Joe Mascot" class="h-14 w-14 rounded-full border-2 border-xmasGold object-cover shadow-lg">
                     <div>
                         <h4 class="font-cinzel text-base font-bold text-white">Christmas Tree Joe</h4>
                         <p class="text-[9px] text-xmasGold uppercase tracking-widest font-bold">Xmas Made Inc.</p>
@@ -340,6 +468,33 @@
 
     <!-- INTERACTIVE STORE JAVASCRIPT -->
     <script>
+        // Hero Slider Logic
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        const dots = document.querySelectorAll('.slider-dot');
+
+        function setSlide(index) {
+            slides.forEach((s, i) => {
+                s.classList.toggle('active', i === index);
+                if (dots[i]) dots[i].classList.toggle('active', i === index);
+            });
+            currentSlide = index;
+        }
+
+        if (slides.length > 1) {
+            setInterval(() => {
+                let next = (currentSlide + 1) % slides.length;
+                setSlide(next);
+            }, 5000);
+        }
+
+        // Mobile Navigation Drawer Toggle
+        function toggleMobileNav() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Marketplace Filtering & Cart Engine
         let cart = [];
 
         function filterCategory(cat) {
@@ -354,12 +509,14 @@
 
             ['all', 'mulch', 'oils', 'firewood'].forEach(c => {
                 const btn = document.getElementById('btn-cat-' + c);
-                if (c === cat) {
-                    btn.classList.add('bg-xmasRed', 'text-white', 'border-xmasGold/40');
-                    btn.classList.remove('bg-xmasDark', 'text-xmasCream/70', 'border-white/10');
-                } else {
-                    btn.classList.remove('bg-xmasRed', 'text-white', 'border-xmasGold/40');
-                    btn.classList.add('bg-xmasDark', 'text-xmasCream/70', 'border-white/10');
+                if (btn) {
+                    if (c === cat) {
+                        btn.classList.add('bg-xmasRed', 'text-white', 'border-xmasGold/40');
+                        btn.classList.remove('bg-xmasDark', 'text-xmasCream/70', 'border-white/10');
+                    } else {
+                        btn.classList.remove('bg-xmasRed', 'text-white', 'border-xmasGold/40');
+                        btn.classList.add('bg-xmasDark', 'text-xmasCream/70', 'border-white/10');
+                    }
                 }
             });
         }
@@ -371,9 +528,12 @@
         }
 
         function updateCartDisplay() {
-            document.getElementById('cartBadge').innerText = cart.length;
+            const badge = document.getElementById('cartBadge');
+            if (badge) badge.innerText = cart.length;
             const container = document.getElementById('cartItemList');
             
+            if (!container) return;
+
             if (cart.length === 0) {
                 container.innerHTML = '<p class="text-xmasCream/50 text-center py-8">Your cart is currently empty.</p>';
                 document.getElementById('cartSubtotal').innerText = '$0.00';
@@ -406,6 +566,7 @@
 
         function toggleCartModal(forceOpen = false) {
             const modal = document.getElementById('cartModal');
+            if (!modal) return;
             if (forceOpen) {
                 modal.classList.remove('hidden');
             } else {

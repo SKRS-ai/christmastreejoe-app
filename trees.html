@@ -8,6 +8,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Hero & Component Stylesheet -->
+    <link rel="stylesheet" href="styles/hero.css">
     
     <script>
         tailwind.config = {
@@ -31,10 +33,14 @@
     </script>
     <style>
         body { background-color: #051810; color: #FDFBF7; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .gold-border { border: 1px solid #D4AF37; }
         .gold-gradient-text {
             background: linear-gradient(135deg, #FFF0B9 0%, #D4AF37 50%, #997A15 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+        .hero-glow {
+            background: radial-gradient(circle, rgba(212,175,55,0.12) 0%, rgba(5,24,16,0) 70%);
         }
     </style>
 </head>
@@ -55,104 +61,221 @@
         </div>
     </div>
 
-    <!-- MAIN HEADER & NAVIGATION -->
+    <!-- MAIN RESPONSIVE HEADER & NAVIGATION -->
     <header class="w-full bg-xmasDark/95 border-b border-xmasGold/30 sticky top-0 z-50 backdrop-blur-lg shadow-2xl">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-            <a href="index.html" class="flex items-center space-x-3 group">
-                <img src="Christmas-tree-joe1.png" onerror="this.src='public/Christmas-tree-joe1.png'" alt="Logo" class="h-12 w-12 rounded-full border border-xmasGold object-cover shadow-lg group-hover:scale-105 transition">
+        <div class="max-w-7xl mx-auto px-4 py-2.5 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-3 group flex-shrink-0">
+                <img src="public/Christmas-tree-joe1.png" onerror="this.src='Christmas-tree-joe1.png'" alt="Christmas Tree Joe Badge Logo" class="h-14 w-14 sm:h-16 sm:w-16 rounded-full border-2 border-xmasGold object-cover shadow-lg group-hover:scale-105 transition">
                 <div>
-                    <span class="font-cinzel text-xl sm:text-2xl font-black tracking-wider text-white group-hover:text-xmasGold transition">CHRISTMAS TREE JOE</span>
-                    <p class="text-[9px] text-xmasGold uppercase tracking-widest font-extrabold -mt-1">A Global Citizen Joe Enterprise</p>
+                    <span class="font-cinzel text-lg sm:text-2xl font-black tracking-wider text-white group-hover:text-xmasGold transition block">CHRISTMAS TREE JOE</span>
+                    <p class="text-[9px] sm:text-[10px] text-xmasGold uppercase tracking-widest font-extrabold -mt-1">A Global Citizen Joe Enterprise</p>
                 </div>
             </a>
 
-            <nav class="hidden lg:flex items-center space-x-7 text-xs font-bold uppercase tracking-wider">
+            <nav class="hidden xl:flex items-center space-x-6 text-[11px] font-bold uppercase tracking-wider">
                 <a href="index.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Home</a>
                 <a href="trees.html" class="text-xmasGold border-b-2 border-xmasGold py-1">Tree Selection</a>
                 <a href="tree-types.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Tree Varieties</a>
                 <a href="marketplace.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Recycled Goods</a>
                 <a href="about.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Our Mission</a>
+                <a href="track.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Live Tracker</a>
             </nav>
 
             <div class="flex items-center space-x-3">
-                <a href="checkout.html" class="bg-xmasRed hover:bg-red-700 text-white font-bold px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm border border-xmasGold/50 transition shadow-xl transform hover:scale-105">
+                <a href="account.html" class="hidden sm:inline-flex text-xs font-semibold text-xmasGold hover:text-white border border-xmasGold/40 px-3.5 py-2 rounded-full hover:bg-xmasGold/10 transition">
+                    Sign In
+                </a>
+                <a href="checkout.html" class="bg-xmasRed hover:bg-red-700 text-white font-bold px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm border border-xmasGold/50 transition shadow-xl transform hover:scale-105 flex-shrink-0">
                     Checkout Engine
                 </a>
+
+                <button onclick="toggleMobileNav()" aria-label="Toggle Menu" class="xl:hidden p-2 rounded-xl bg-xmasPanel border border-xmasGold/40 text-xmasGold hover:text-white transition focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
             </div>
+        </div>
+
+        <div id="mobileMenu" class="hidden xl:hidden bg-xmasDark/98 border-b-2 border-xmasGold/40 px-6 py-6 space-y-4 shadow-2xl">
+            <nav class="flex flex-col space-y-3 text-xs font-bold uppercase tracking-wider">
+                <a href="index.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>🏡 Home</span> <span>→</span>
+                </a>
+                <a href="trees.html" class="text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>🎁 Tree Selection</span> <span>→</span>
+                </a>
+                <a href="tree-types.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>📐 Tree Varieties</span> <span>→</span>
+                </a>
+                <a href="marketplace.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>♻️ Recycled Goods Store</span> <span>→</span>
+                </a>
+                <a href="about.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>📜 Our Mission</span> <span>→</span>
+                </a>
+                <a href="track.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>🚚 Live Tracker</span> <span>→</span>
+                </a>
+                <a href="account.html" class="text-xmasGold py-2 flex items-center justify-between">
+                    <span>👤 Customer Sign In</span> <span>→</span>
+                </a>
+            </nav>
         </div>
     </header>
 
-    <!-- MAIN TREE SELECTION BUILDER -->
-    <main class="max-w-7xl mx-auto px-4 py-10 space-y-12">
-        
-        <div class="text-center space-y-3">
-            <span class="text-xs font-bold text-xmasGold uppercase tracking-widest bg-xmasPanel px-4 py-1.5 rounded-full border border-xmasGold/30 inline-block">Direct Farm-To-Door Subscription</span>
-            <h1 class="font-cinzel text-4xl sm:text-5xl font-black gold-gradient-text">Build Your Christmas Tree Subscription</h1>
-            <p class="text-xmasCream/70 text-xs sm:text-sm max-w-2xl mx-auto">Choose your size tier, select your preferred evergreen species, and lock in multi-year savings with white-glove setup and January zero-waste pickup included.</p>
-        </div>
+    <!-- ==========================================
+         MEDIUM HERO SECTION (16:9 Landscape Frame)
+    =========================================== -->
+    <section class="relative pt-8 pb-12 px-4 hero-glow overflow-hidden">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            <div class="lg:col-span-6 space-y-5 text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-xmasPanel border border-xmasGold/40 text-xmasGold text-xs font-bold uppercase tracking-widest shadow-md">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>Direct Farm-To-Door Subscription</span>
+                </div>
+                
+                <h1 class="font-cinzel text-3xl sm:text-5xl font-black leading-tight tracking-tight text-white">
+                    Build Your <span class="gold-gradient-text">Subscription</span>
+                </h1>
+                
+                <p class="text-xmasCream/80 text-sm sm:text-base max-w-xl leading-relaxed mx-auto lg:mx-0">
+                    Choose your size tier, select your preferred evergreen species, and lock in multi-year savings with white-glove setup and January zero-waste pickup included.
+                </p>
 
+                <div class="grid grid-cols-3 gap-3 pt-3 border-t border-white/10 text-center lg:text-left">
+                    <div>
+                        <strong class="block text-xmasGold font-cinzel text-base sm:text-lg">In-Home</strong>
+                        <span class="text-[11px] text-xmasCream/70">Setup & Stand Hydration</span>
+                    </div>
+                    <div>
+                        <strong class="block text-xmasGold font-cinzel text-base sm:text-lg">Up to 15%</strong>
+                        <span class="text-[11px] text-xmasCream/70">Multi-Year Savings</span>
+                    </div>
+                    <div>
+                        <strong class="block text-xmasGold font-cinzel text-base sm:text-lg">January</strong>
+                        <span class="text-[11px] text-xmasCream/70">Zero-Waste Mulching</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-6">
+                <div class="relative rounded-2xl overflow-hidden border-2 border-xmasGold/40 shadow-2xl aspect-video bg-xmasDark">
+                    <div class="relative w-full h-full" id="heroSlider">
+                        <div class="hero-slide active">
+                            <img 
+                                src="public/white-glove-delivery.png" 
+                                onerror="this.src='white-glove-delivery.png'"
+                                alt="White Glove Delivery and tree placement" 
+                                class="w-full h-full object-cover"
+                                loading="eager"
+                            />
+                            <div class="slide-caption">
+                                <span>Complete In-Home Stand Installation & Branch Netting Removal</span>
+                            </div>
+                        </div>
+
+                        <div class="hero-slide">
+                            <img 
+                                src="public/hero-family-livingroom.png" 
+                                onerror="this.src='hero-family-livingroom.png'"
+                                alt="Signature Fraser Fir living room presentation" 
+                                class="w-full h-full object-cover"
+                                loading="lazy"
+                            />
+                            <div class="slide-caption">
+                                <span>Appalachian Fraser Fir Fragrance & Needle Retention</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="slider-nav">
+                        <button class="slider-dot active" aria-label="Slide 1" onclick="setSlide(0)"></button>
+                        <button class="slider-dot" aria-label="Slide 2" onclick="setSlide(1)"></button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- MAIN TREE SELECTION BUILDER -->
+    <main class="max-w-7xl mx-auto px-4 py-8 space-y-12">
+        
         <!-- CONFIGURATOR GRID -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
-            <!-- LEFT COLUMN: TIER SELECTION CARDS -->
-            <div class="lg:col-span-7 space-y-6">
+            <!-- LEFT COLUMN: TIER & SPECIES SELECTION -->
+            <div class="lg:col-span-7 space-y-8">
                 
-                <h3 class="font-cinzel text-xl font-bold text-xmasGold">Step 1: Choose Your Size Tier</h3>
-                
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <!-- STEP 1 -->
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between border-b border-white/10 pb-2">
+                        <h3 class="font-cinzel text-xl font-bold text-xmasGold">Step 1: Choose Your Size Tier</h3>
+                        <span class="text-xs text-xmasCream/60">Click card to select</span>
+                    </div>
                     
-                    <!-- TIER 1 -->
-                    <div onclick="selectTier('sprout', 149.99)" id="card-sprout" class="bg-xmasPanel border-2 border-white/20 hover:border-xmasGold rounded-2xl p-5 cursor-pointer transition space-y-3">
-                        <span class="text-[10px] bg-xmasDark text-xmasGold px-2.5 py-0.5 rounded-full border border-xmasGold/30 font-bold uppercase">Apartment / Cozy</span>
-                        <h4 class="font-cinzel text-lg font-bold text-white">Evergreen Sprout</h4>
-                        <p class="text-xs text-xmasCream/70">4 – 5 Feet</p>
-                        <p class="text-xl font-extrabold text-xmasGold">$149.99 <span class="text-[10px] text-white/50">/ yr</span></p>
-                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        
+                        <!-- TIER 1 -->
+                        <div onclick="selectTier('sprout', 149.99)" id="card-sprout" class="bg-xmasPanel border-2 border-white/20 hover:border-xmasGold rounded-2xl p-5 cursor-pointer transition space-y-3">
+                            <span class="text-[10px] bg-xmasDark text-xmasGold px-2.5 py-0.5 rounded-full border border-xmasGold/30 font-bold uppercase">Apartment / Cozy</span>
+                            <h4 class="font-cinzel text-lg font-bold text-white">Evergreen Sprout</h4>
+                            <p class="text-xs text-xmasCream/70">4 – 5 Feet</p>
+                            <p class="text-xl font-extrabold text-xmasGold">$149.99 <span class="text-[10px] text-white/50">/ yr</span></p>
+                        </div>
 
-                    <!-- TIER 2 (FEATURED) -->
-                    <div onclick="selectTier('hearth', 209.99)" id="card-hearth" class="bg-xmasPanel border-2 border-xmasGold rounded-2xl p-5 cursor-pointer transition space-y-3 relative shadow-xl">
-                        <span class="text-[10px] bg-xmasRed text-white px-2.5 py-0.5 rounded-full font-bold uppercase">Most Popular</span>
-                        <h4 class="font-cinzel text-lg font-bold text-white">Holiday Hearth</h4>
-                        <p class="text-xs text-xmasCream/70">6 – 7 Feet</p>
-                        <p class="text-xl font-extrabold text-xmasGold">$209.99 <span class="text-[10px] text-white/50">/ yr</span></p>
-                    </div>
+                        <!-- TIER 2 (FEATURED) -->
+                        <div onclick="selectTier('hearth', 209.99)" id="card-hearth" class="bg-xmasPanel border-2 border-xmasGold rounded-2xl p-5 cursor-pointer transition space-y-3 relative shadow-xl">
+                            <div class="absolute -top-2.5 right-4 bg-xmasRed text-white text-[9px] font-extrabold uppercase px-2.5 py-0.5 rounded-full border border-xmasGold/50">Most Popular</div>
+                            <span class="text-[10px] bg-xmasDark text-xmasGold px-2.5 py-0.5 rounded-full border border-xmasGold/30 font-bold uppercase">Traditional Family</span>
+                            <h4 class="font-cinzel text-lg font-bold text-white">Holiday Hearth</h4>
+                            <p class="text-xs text-xmasCream/70">6 – 7 Feet</p>
+                            <p class="text-xl font-extrabold text-xmasGold">$209.99 <span class="text-[10px] text-white/50">/ yr</span></p>
+                        </div>
 
-                    <!-- TIER 3 -->
-                    <div onclick="selectTier('monarch', 299.99)" id="card-monarch" class="bg-xmasPanel border-2 border-white/20 hover:border-xmasGold rounded-2xl p-5 cursor-pointer transition space-y-3">
-                        <span class="text-[10px] bg-xmasDark text-xmasGold px-2.5 py-0.5 rounded-full border border-xmasGold/30 font-bold uppercase">Grand Foyer</span>
-                        <h4 class="font-cinzel text-lg font-bold text-white">Yuletide Monarch</h4>
-                        <p class="text-xs text-xmasCream/70">8 – 9 Feet</p>
-                        <p class="text-xl font-extrabold text-xmasGold">$299.99 <span class="text-[10px] text-white/50">/ yr</span></p>
-                    </div>
+                        <!-- TIER 3 -->
+                        <div onclick="selectTier('monarch', 299.99)" id="card-monarch" class="bg-xmasPanel border-2 border-white/20 hover:border-xmasGold rounded-2xl p-5 cursor-pointer transition space-y-3">
+                            <span class="text-[10px] bg-xmasDark text-xmasGold px-2.5 py-0.5 rounded-full border border-xmasGold/30 font-bold uppercase">Grand Foyer</span>
+                            <h4 class="font-cinzel text-lg font-bold text-white">Yuletide Monarch</h4>
+                            <p class="text-xs text-xmasCream/70">8 – 9 Feet</p>
+                            <p class="text-xl font-extrabold text-xmasGold">$299.99 <span class="text-[10px] text-white/50">/ yr</span></p>
+                        </div>
 
+                    </div>
                 </div>
 
-                <!-- SPECIES SELECTION -->
-                <div class="space-y-3 pt-4">
-                    <h3 class="font-cinzel text-xl font-bold text-xmasGold">Step 2: Select Evergreen Species</h3>
+                <!-- STEP 2: SPECIES SELECTION -->
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between border-b border-white/10 pb-2">
+                        <h3 class="font-cinzel text-xl font-bold text-xmasGold">Step 2: Select Evergreen Species</h3>
+                        <a href="tree-types.html" class="text-xs text-xmasGold hover:underline">View species comparison guide →</a>
+                    </div>
+                    
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-                        <label class="bg-xmasDark border border-xmasGold p-3.5 rounded-xl flex items-center justify-between cursor-pointer">
+                        <label class="bg-xmasDark border-2 border-xmasGold p-4 rounded-xl flex items-center justify-between cursor-pointer">
                             <div>
-                                <p class="font-bold text-white">Fraser Fir</p>
-                                <p class="text-[10px] text-xmasCream/60">Heavy ornaments, #1 scent</p>
+                                <p class="font-bold text-white text-sm">Fraser Fir</p>
+                                <p class="text-[11px] text-xmasCream/70">Sturdy branches, mountain pine scent</p>
                             </div>
-                            <input type="radio" name="species" value="Fraser Fir" checked class="accent-xmasGold">
+                            <input type="radio" name="species" value="Fraser Fir" checked class="accent-xmasGold w-4 h-4">
                         </label>
 
-                        <label class="bg-xmasDark border border-white/20 p-3.5 rounded-xl flex items-center justify-between cursor-pointer hover:border-xmasGold transition">
+                        <label class="bg-xmasDark border border-white/20 p-4 rounded-xl flex items-center justify-between cursor-pointer hover:border-xmasGold transition">
                             <div>
-                                <p class="font-bold text-white">Douglas Fir</p>
-                                <p class="text-[10px] text-xmasCream/60">Full pyramidal density</p>
+                                <p class="font-bold text-white text-sm">Douglas Fir</p>
+                                <p class="text-[11px] text-xmasCream/70">Soft needles, sweet citrus aroma</p>
                             </div>
-                            <input type="radio" name="species" value="Douglas Fir" class="accent-xmasGold">
+                            <input type="radio" name="species" value="Douglas Fir" class="accent-xmasGold w-4 h-4">
                         </label>
 
-                        <label class="bg-xmasDark border border-white/20 p-3.5 rounded-xl flex items-center justify-between cursor-pointer hover:border-xmasGold transition">
+                        <label class="bg-xmasDark border border-white/20 p-4 rounded-xl flex items-center justify-between cursor-pointer hover:border-xmasGold transition">
                             <div>
-                                <p class="font-bold text-white">Noble Fir</p>
-                                <p class="text-[10px] text-xmasCream/60">Stiff horizontal tiers</p>
+                                <p class="font-bold text-white text-sm">Noble Fir</p>
+                                <p class="text-[11px] text-xmasCream/70">Layered tiers for heavy decor</p>
                             </div>
-                            <input type="radio" name="species" value="Noble Fir" class="accent-xmasGold">
+                            <input type="radio" name="species" value="Noble Fir" class="accent-xmasGold w-4 h-4">
                         </label>
                     </div>
                 </div>
@@ -160,7 +283,7 @@
             </div>
 
             <!-- RIGHT COLUMN: MULTI-YEAR CALCULATOR & SUMMARY -->
-            <div class="lg:col-span-5 bg-xmasPanel border-2 border-xmasGold/40 rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl">
+            <div class="lg:col-span-5 bg-xmasPanel border-2 border-xmasGold/40 rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl sticky top-24">
                 <div class="space-y-1 border-b border-white/10 pb-4">
                     <span class="text-[10px] font-bold text-xmasGold uppercase tracking-widest bg-xmasDark px-3 py-1 rounded-full border border-xmasGold/30 inline-block">Step 3: Multi-Year Term Lock</span>
                     <h3 class="font-cinzel text-2xl font-bold text-white">Term & Pricing Engine</h3>
@@ -180,7 +303,7 @@
 
                 <!-- ADD-ONS -->
                 <div class="space-y-2 text-xs">
-                    <label class="block text-xs font-bold text-xmasGold uppercase">Included Add-Ons & Services</label>
+                    <label class="block text-xs font-bold text-xmasGold uppercase">Included Services</label>
                     <div class="bg-xmasDark p-3.5 rounded-xl border border-white/10 space-y-2">
                         <div class="flex justify-between text-xmasCream/80">
                             <span>🚚 White-Glove In-Home Setup</span>
@@ -227,7 +350,7 @@
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
             <div class="space-y-4 lg:col-span-1">
                 <div class="flex items-center space-x-3">
-                    <img src="Christmas-tree-joe3.png" onerror="this.src='public/Christmas-tree-joe3.png'" alt="Joe Mascot" class="h-14 w-14 rounded-full border-2 border-xmasGold object-cover shadow-lg">
+                    <img src="public/Christmas-tree-joe3.png" onerror="this.src='Christmas-tree-joe3.png'" alt="Joe Mascot" class="h-14 w-14 rounded-full border-2 border-xmasGold object-cover shadow-lg">
                     <div>
                         <h4 class="font-cinzel text-base font-bold text-white">Christmas Tree Joe</h4>
                         <p class="text-[9px] text-xmasGold uppercase tracking-widest font-bold">Xmas Made Inc.</p>
@@ -278,8 +401,35 @@
         </div>
     </footer>
 
-    <!-- INTERACTIVE CALCULATOR SCRIPT -->
+    <!-- INTERACTIVE JAVASCRIPT LOGIC -->
     <script>
+        // Hero Slider Logic
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        const dots = document.querySelectorAll('.slider-dot');
+
+        function setSlide(index) {
+            slides.forEach((s, i) => {
+                s.classList.toggle('active', i === index);
+                if (dots[i]) dots[i].classList.toggle('active', i === index);
+            });
+            currentSlide = index;
+        }
+
+        if (slides.length > 1) {
+            setInterval(() => {
+                let next = (currentSlide + 1) % slides.length;
+                setSlide(next);
+            }, 5000);
+        }
+
+        // Mobile Nav Drawer Toggle
+        function toggleMobileNav() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Pricing Calculator Logic
         let currentBasePrice = 209.99;
 
         function selectTier(tier, price) {

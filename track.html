@@ -8,6 +8,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Hero & Component Stylesheet -->
+    <link rel="stylesheet" href="styles/hero.css">
     
     <script>
         tailwind.config = {
@@ -31,10 +33,14 @@
     </script>
     <style>
         body { background-color: #051810; color: #FDFBF7; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .gold-border { border: 1px solid #D4AF37; }
         .gold-gradient-text {
             background: linear-gradient(135deg, #FFF0B9 0%, #D4AF37 50%, #997A15 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+        .hero-glow {
+            background: radial-gradient(circle, rgba(212,175,55,0.12) 0%, rgba(5,24,16,0) 70%);
         }
     </style>
 </head>
@@ -55,19 +61,20 @@
         </div>
     </div>
 
-    <!-- MAIN HEADER & NAVIGATION -->
+    <!-- MAIN RESPONSIVE HEADER & NAVIGATION -->
     <header class="w-full bg-xmasDark/95 border-b border-xmasGold/30 sticky top-0 z-50 backdrop-blur-lg shadow-2xl">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-            <a href="index.html" class="flex items-center space-x-3 group">
-                <img src="Christmas-tree-joe1.png" alt="Christmas Tree Joe Logo" class="h-12 w-12 rounded-full border border-xmasGold object-cover shadow-lg group-hover:scale-105 transition">
+        <div class="max-w-7xl mx-auto px-4 py-2.5 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-3 group flex-shrink-0">
+                <img src="public/Christmas-tree-joe1.png" onerror="this.src='Christmas-tree-joe1.png'" alt="Christmas Tree Joe Logo" class="h-14 w-14 sm:h-16 sm:w-16 rounded-full border-2 border-xmasGold object-cover shadow-lg group-hover:scale-105 transition">
                 <div>
-                    <span class="font-cinzel text-xl sm:text-2xl font-black tracking-wider text-white group-hover:text-xmasGold transition">CHRISTMAS TREE JOE</span>
-                    <p class="text-[9px] text-xmasGold uppercase tracking-widest font-extrabold -mt-1">A Global Citizen Joe Enterprise</p>
+                    <span class="font-cinzel text-lg sm:text-2xl font-black tracking-wider text-white group-hover:text-xmasGold transition block">CHRISTMAS TREE JOE</span>
+                    <p class="text-[9px] sm:text-[10px] text-xmasGold uppercase tracking-widest font-extrabold -mt-1">A Global Citizen Joe Enterprise</p>
                 </div>
             </a>
 
-            <nav class="hidden lg:flex items-center space-x-7 text-xs font-bold uppercase tracking-wider">
+            <nav class="hidden xl:flex items-center space-x-6 text-[11px] font-bold uppercase tracking-wider">
                 <a href="index.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Home</a>
+                <a href="trees.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Tree Selection</a>
                 <a href="tree-types.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Tree Varieties</a>
                 <a href="account.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Dashboard</a>
                 <a href="track.html" class="text-xmasGold border-b-2 border-xmasGold py-1">Live Tracker</a>
@@ -75,30 +82,132 @@
             </nav>
 
             <div class="flex items-center space-x-3">
-                <a href="checkout.html" class="bg-xmasRed hover:bg-red-700 text-white font-bold px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm border border-xmasGold/50 transition shadow-xl transform hover:scale-105">
+                <a href="checkout.html" class="bg-xmasRed hover:bg-red-700 text-white font-bold px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm border border-xmasGold/50 transition shadow-xl transform hover:scale-105 flex-shrink-0">
                     Order Panel
                 </a>
+
+                <button onclick="toggleMobileNav()" aria-label="Toggle Menu" class="xl:hidden p-2 rounded-xl bg-xmasPanel border border-xmasGold/40 text-xmasGold hover:text-white transition focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
             </div>
+        </div>
+
+        <div id="mobileMenu" class="hidden xl:hidden bg-xmasDark/98 border-b-2 border-xmasGold/40 px-6 py-6 space-y-4 shadow-2xl">
+            <nav class="flex flex-col space-y-3 text-xs font-bold uppercase tracking-wider">
+                <a href="index.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>🏡 Home</span> <span>→</span>
+                </a>
+                <a href="trees.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>🎁 Tree Selection</span> <span>→</span>
+                </a>
+                <a href="tree-types.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>📐 Tree Varieties</span> <span>→</span>
+                </a>
+                <a href="account.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>👤 Dashboard</span> <span>→</span>
+                </a>
+                <a href="track.html" class="text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>🚚 Live Fleet Tracker</span> <span>→</span>
+                </a>
+                <a href="about.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>📜 Our Mission</span> <span>→</span>
+                </a>
+            </nav>
         </div>
     </header>
 
-    <!-- TRACKER MAIN CONTENT -->
-    <main class="max-w-6xl mx-auto px-4 py-10 space-y-10">
-        
-        <!-- HEADER & LOOKUP SEARCH -->
-        <div class="text-center space-y-4">
-            <span class="text-xs font-bold text-xmasGold uppercase tracking-widest bg-xmasPanel px-4 py-1.5 rounded-full border border-xmasGold/30 inline-block">GPS Fleet Telemetry</span>
-            <h1 class="font-cinzel text-4xl sm:text-5xl font-black gold-gradient-text">Real-Time Delivery & Dispatch Tracker</h1>
-            <p class="text-xmasCream/70 text-xs sm:text-sm max-w-xl mx-auto">Track your tree from harvesting at Jefferson, NC timber plantations to white-glove setup inside your home.</p>
+    <!-- ==========================================
+         MEDIUM HERO SECTION (16:9 Landscape Frame)
+    =========================================== -->
+    <section class="relative pt-8 pb-12 px-4 hero-glow overflow-hidden">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            <div class="lg:col-span-6 space-y-5 text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-xmasPanel border border-xmasGold/40 text-xmasGold text-xs font-bold uppercase tracking-widest shadow-md">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>GPS Fleet Telemetry</span>
+                </div>
+                
+                <h1 class="font-cinzel text-3xl sm:text-5xl font-black leading-tight tracking-tight text-white">
+                    Real-Time Delivery & <span class="gold-gradient-text">Dispatch Tracker</span>
+                </h1>
+                
+                <p class="text-xmasCream/80 text-sm sm:text-base max-w-xl leading-relaxed mx-auto lg:mx-0">
+                    Track your tree from harvesting at Jefferson, NC timber plantations through regional transport to white-glove setup inside your home.
+                </p>
 
-            <!-- TRACKING LOOKUP BAR -->
-            <form onsubmit="event.preventDefault(); alert('Tracking data updated for order CTJ-2026-8841.');" class="max-w-xl mx-auto flex gap-2 pt-2">
-                <input type="text" value="CTJ-2026-8841" placeholder="Enter Order # or Email" class="w-full bg-xmasDark border border-xmasGold/50 rounded-xl px-4 py-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
-                <button type="submit" class="bg-xmasRed hover:bg-red-700 text-white font-bold px-6 py-3 rounded-xl text-xs uppercase tracking-wider transition border border-xmasGold/40 shadow-lg">
-                    Track
-                </button>
-            </form>
+                <!-- TRACKING LOOKUP BAR -->
+                <form onsubmit="event.preventDefault(); alert('Tracking data updated for order CTJ-2026-8841.');" class="max-w-xl mx-auto lg:mx-0 flex gap-2 pt-1">
+                    <input type="text" value="CTJ-2026-8841" placeholder="Enter Order # or Email" class="w-full bg-xmasDark border border-xmasGold/50 rounded-xl px-4 py-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
+                    <button type="submit" class="bg-xmasRed hover:bg-red-700 text-white font-bold px-6 py-3 rounded-xl text-xs uppercase tracking-wider transition border border-xmasGold/40 shadow-lg flex-shrink-0">
+                        Track
+                    </button>
+                </form>
+
+                <div class="grid grid-cols-3 gap-3 pt-3 border-t border-white/10 text-center lg:text-left">
+                    <div>
+                        <strong class="block text-xmasGold font-cinzel text-base sm:text-lg">Live GPS</strong>
+                        <span class="text-[11px] text-xmasCream/70">Truck Routing</span>
+                    </div>
+                    <div>
+                        <strong class="block text-xmasGold font-cinzel text-base sm:text-lg">15-Min</strong>
+                        <span class="text-[11px] text-xmasCream/70">Arrival Window Alert</span>
+                    </div>
+                    <div>
+                        <strong class="block text-xmasGold font-cinzel text-base sm:text-lg">Full Setup</strong>
+                        <span class="text-[11px] text-xmasCream/70">Stand & Sweep Included</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-6">
+                <div class="relative rounded-2xl overflow-hidden border-2 border-xmasGold/40 shadow-2xl aspect-video bg-xmasDark">
+                    <div class="relative w-full h-full" id="heroSlider">
+                        
+                        <!-- Slide 1: Driver Truck Dispatch Presentation -->
+                        <div class="hero-slide active">
+                            <img 
+                                src="public/driver-truck-dispatch.png" 
+                                onerror="this.src='driver-truck-dispatch.png'"
+                                alt="White-glove driver and truck dispatch in Philadelphia" 
+                                class="w-full h-full object-cover"
+                                loading="eager"
+                            />
+                            <div class="slide-caption">
+                                <span>Philadelphia Metro Fleet Dispatch & White-Glove Installation Crew</span>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2: Living Room In-Home Delivery -->
+                        <div class="hero-slide">
+                            <img 
+                                src="public/white-glove-delivery.png" 
+                                onerror="this.src='white-glove-delivery.png'"
+                                alt="White-glove in-home installation" 
+                                class="w-full h-full object-cover"
+                                loading="lazy"
+                            />
+                            <div class="slide-caption">
+                                <span>Doorstep Arrival, Living Room Placement & Stand Hydration</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="slider-nav">
+                        <button class="slider-dot active" aria-label="Slide 1" onclick="setSlide(0)"></button>
+                        <button class="slider-dot" aria-label="Slide 2" onclick="setSlide(1)"></button>
+                    </div>
+                </div>
+            </div>
+
         </div>
+    </section>
+
+    <!-- TRACKER MAIN CONTENT -->
+    <main class="max-w-6xl mx-auto px-4 py-8 space-y-10">
 
         <!-- TRACKING STATUS BOARD -->
         <div class="bg-xmasPanel border-2 border-xmasGold/40 rounded-3xl p-6 sm:p-10 space-y-8 shadow-2xl">
@@ -172,7 +281,7 @@
             <!-- DRIVER DETAILS & SMS SHORTCUT -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-xmasDark p-6 rounded-2xl border border-white/10">
                 <div class="flex items-center space-x-4">
-                    <img src="Christmas-tree-joe3.png" alt="Driver Avatar" class="h-16 w-16 rounded-full border-2 border-xmasGold object-cover shadow-md">
+                    <img src="public/Christmas-tree-joe3.png" onerror="this.src='Christmas-tree-joe3.png'" alt="Driver Avatar" class="h-16 w-16 rounded-full border-2 border-xmasGold object-cover shadow-md">
                     <div class="space-y-1">
                         <span class="text-[10px] text-xmasGold uppercase font-bold tracking-widest">Assigned Delivery Crew</span>
                         <h4 class="font-cinzel text-lg font-bold text-white">Driver: Marcus V. (Truck #PA-04)</h4>
@@ -199,7 +308,7 @@
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
             <div class="space-y-4 lg:col-span-1">
                 <div class="flex items-center space-x-3">
-                    <img src="Christmas-tree-joe3.png" alt="Joe Mascot" class="h-14 w-14 rounded-full border-2 border-xmasGold object-cover shadow-lg">
+                    <img src="public/Christmas-tree-joe3.png" onerror="this.src='Christmas-tree-joe3.png'" alt="Joe Mascot" class="h-14 w-14 rounded-full border-2 border-xmasGold object-cover shadow-lg">
                     <div>
                         <h4 class="font-cinzel text-base font-bold text-white">Christmas Tree Joe</h4>
                         <p class="text-[9px] text-xmasGold uppercase tracking-widest font-bold">Xmas Made Inc.</p>
@@ -211,9 +320,9 @@
             <div class="space-y-3">
                 <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Subscription Tiers</h4>
                 <ul class="text-xs space-y-2 text-xmasCream/80">
-                    <li><a href="index.html#subscriptions" class="hover:text-xmasGold transition">Evergreen Sprout (4–5 ft)</a></li>
-                    <li><a href="index.html#subscriptions" class="hover:text-xmasGold transition">Holiday Hearth (6–7 ft)</a></li>
-                    <li><a href="index.html#subscriptions" class="hover:text-xmasGold transition">Yuletide Monarch (8–9 ft)</a></li>
+                    <li><a href="trees.html" class="hover:text-xmasGold transition">Evergreen Sprout (4–5 ft)</a></li>
+                    <li><a href="trees.html" class="hover:text-xmasGold transition">Holiday Hearth (6–7 ft)</a></li>
+                    <li><a href="trees.html" class="hover:text-xmasGold transition">Yuletide Monarch (8–9 ft)</a></li>
                 </ul>
             </div>
 
@@ -249,5 +358,32 @@
             </div>
         </div>
     </footer>
+
+    <!-- HERO SLIDER & MOBILE DRAWER SCRIPT -->
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        const dots = document.querySelectorAll('.slider-dot');
+
+        function setSlide(index) {
+            slides.forEach((s, i) => {
+                s.classList.toggle('active', i === index);
+                if (dots[i]) dots[i].classList.toggle('active', i === index);
+            });
+            currentSlide = index;
+        }
+
+        if (slides.length > 1) {
+            setInterval(() => {
+                let next = (currentSlide + 1) % slides.length;
+                setSlide(next);
+            }, 5000);
+        }
+
+        function toggleMobileNav() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+    </script>
 </body>
 </html>

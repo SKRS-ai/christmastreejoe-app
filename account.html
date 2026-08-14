@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Customer Dashboard | Christmas Tree Joe</title>
+    <title>Customer Dashboard & Member Portal | Christmas Tree Joe</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Hero & Component Stylesheet -->
+    <link rel="stylesheet" href="styles/hero.css">
     
     <script>
         tailwind.config = {
@@ -31,10 +33,14 @@
     </script>
     <style>
         body { background-color: #051810; color: #FDFBF7; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .gold-border { border: 1px solid #D4AF37; }
         .gold-gradient-text {
             background: linear-gradient(135deg, #FFF0B9 0%, #D4AF37 50%, #997A15 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+        .hero-glow {
+            background: radial-gradient(circle, rgba(212,175,55,0.12) 0%, rgba(5,24,16,0) 70%);
         }
     </style>
 </head>
@@ -44,8 +50,8 @@
     <div class="bg-xmasRed text-white text-[11px] sm:text-xs py-1.5 px-4 font-semibold tracking-wide border-b border-xmasGold/30">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1 text-center sm:text-left">
             <div class="flex items-center gap-2">
-                <span class="bg-white/20 text-white text-[9px] uppercase px-2 py-0.5 rounded-full font-bold">Free Delivery</span>
-                <span>🎄 Reserve Your 2026 Philadelphia & Tri-State Christmas Tree Subscription Today!</span>
+                <span class="bg-white/20 text-white text-[9px] uppercase px-2 py-0.5 rounded-full font-bold">Member Portal</span>
+                <span>🎄 Manage Your Subscription, Invoices & January Pickup Dates</span>
             </div>
             <div class="flex items-center space-x-4 text-[11px]">
                 <a href="tel:1800555XMAS" class="hover:text-xmasGold transition hidden md:inline">📞 1-800-XMAS-JOE</a>
@@ -55,196 +61,440 @@
         </div>
     </div>
 
-    <!-- MAIN HEADER & NAVIGATION -->
+    <!-- MAIN RESPONSIVE HEADER & NAVIGATION -->
     <header class="w-full bg-xmasDark/95 border-b border-xmasGold/30 sticky top-0 z-50 backdrop-blur-lg shadow-2xl">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-            <a href="index.html" class="flex items-center space-x-3 group">
-                <img src="Christmas-tree-joe1.png" alt="Christmas Tree Joe Logo" class="h-12 w-12 rounded-full border border-xmasGold object-cover shadow-lg group-hover:scale-105 transition">
+        <div class="max-w-7xl mx-auto px-4 py-2.5 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-3 group flex-shrink-0">
+                <img src="public/Christmas-tree-joe1.png" onerror="this.src='Christmas-tree-joe1.png'" alt="Christmas Tree Joe Logo" class="h-14 w-14 sm:h-16 sm:w-16 rounded-full border-2 border-xmasGold object-cover shadow-lg group-hover:scale-105 transition">
                 <div>
-                    <span class="font-cinzel text-xl sm:text-2xl font-black tracking-wider text-white group-hover:text-xmasGold transition">CHRISTMAS TREE JOE</span>
-                    <p class="text-[9px] text-xmasGold uppercase tracking-widest font-extrabold -mt-1">A Global Citizen Joe Enterprise</p>
+                    <span class="font-cinzel text-lg sm:text-2xl font-black tracking-wider text-white group-hover:text-xmasGold transition block">CHRISTMAS TREE JOE</span>
+                    <p class="text-[9px] sm:text-[10px] text-xmasGold uppercase tracking-widest font-extrabold -mt-1">Member Dashboard</p>
                 </div>
             </a>
 
-            <nav class="hidden lg:flex items-center space-x-7 text-xs font-bold uppercase tracking-wider">
+            <nav class="hidden xl:flex items-center space-x-6 text-[11px] font-bold uppercase tracking-wider">
                 <a href="index.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Home</a>
+                <a href="trees.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Tree Selection</a>
                 <a href="tree-types.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Tree Varieties</a>
                 <a href="marketplace.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Recycled Goods</a>
+                <a href="account.html" class="text-xmasGold border-b-2 border-xmasGold py-1">Dashboard</a>
                 <a href="about.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Our Mission</a>
-                <a href="contact.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Support & Schedule</a>
             </nav>
 
             <div class="flex items-center space-x-3">
-                <a href="checkout.html" class="bg-xmasRed hover:bg-red-700 text-white font-bold px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm border border-xmasGold/50 transition shadow-xl transform hover:scale-105">
-                    Order Panel
+                <a href="trees.html" class="bg-xmasRed hover:bg-red-700 text-white font-bold px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm border border-xmasGold/50 transition shadow-xl transform hover:scale-105 flex-shrink-0">
+                    Reserve Tree
                 </a>
-            </div>
-        </div>
-    </header>
 
-    <!-- CUSTOMER DASHBOARD MAIN CONTENT -->
-    <main class="max-w-7xl mx-auto px-4 py-10 space-y-8">
-        
-        <!-- WELCOME HEADER -->
-        <div class="flex flex-col md:flex-row md:items-center justify-between bg-xmasPanel border border-xmasGold/40 rounded-3xl p-6 sm:p-8 shadow-2xl gap-4">
-            <div class="space-y-1">
-                <div class="flex items-center gap-2">
-                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span class="text-xs font-bold text-xmasGold uppercase tracking-widest">Active Subscriber</span>
-                </div>
-                <h1 class="font-cinzel text-3xl sm:text-4xl font-black text-white">Welcome Back, <span class="gold-gradient-text">Nehemiah</span></h1>
-                <p class="text-xs text-xmasCream/70">Manage your subscription term, schedule delivery/pickup windows, and access invoices.</p>
-            </div>
-            <div class="flex items-center gap-3">
-                <a href="track.html" class="py-2.5 px-4 rounded-xl bg-xmasGreen border border-xmasGold text-xmasGold text-xs font-bold hover:bg-xmasGold hover:text-xmasDark transition shadow">
-                    🚚 Live Driver Tracker
-                </a>
-                <button onclick="alert('Signed out successfully.')" class="py-2.5 px-4 rounded-xl bg-xmasDark border border-white/20 text-white text-xs font-bold hover:bg-xmasRed transition">
-                    Sign Out
+                <button onclick="toggleMobileNav()" aria-label="Toggle Menu" class="xl:hidden p-2 rounded-xl bg-xmasPanel border border-xmasGold/40 text-xmasGold hover:text-white transition focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
                 </button>
             </div>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div id="mobileMenu" class="hidden xl:hidden bg-xmasDark/98 border-b-2 border-xmasGold/40 px-6 py-6 space-y-4 shadow-2xl">
+            <nav class="flex flex-col space-y-3 text-xs font-bold uppercase tracking-wider">
+                <a href="index.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>🏡 Home</span> <span>→</span>
+                </a>
+                <a href="trees.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>🎁 Tree Selection</span> <span>→</span>
+                </a>
+                <a href="tree-types.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>📐 Tree Varieties</span> <span>→</span>
+                </a>
+                <a href="marketplace.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>♻️ Recycled Goods Store</span> <span>→</span>
+                </a>
+                <a href="account.html" class="text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>👤 Member Portal</span> <span>→</span>
+                </a>
+                <a href="track.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>🚚 Live Fleet Tracker</span> <span>→</span>
+                </a>
+                <a href="about.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>📜 Our Mission</span> <span>→</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ==========================================
+         MEDIUM HERO SECTION (16:9 Landscape Frame)
+    =========================================== -->
+    <section class="relative pt-8 pb-12 px-4 hero-glow overflow-hidden">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
-            <!-- LEFT COLUMN: ACTIVE SUBSCRIPTION CARDS & STATS -->
-            <div class="lg:col-span-8 space-y-6">
+            <div class="lg:col-span-6 space-y-5 text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-xmasPanel border border-xmasGold/40 text-xmasGold text-xs font-bold uppercase tracking-widest shadow-md">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>Year-Round Subscription Management</span>
+                </div>
                 
-                <!-- ACTIVE SUBSCRIPTION CARD -->
-                <div class="bg-xmasPanel border-2 border-xmasGold rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl relative overflow-hidden">
-                    <div class="absolute top-0 right-0 bg-xmasGreen border-b border-l border-xmasGold/40 text-xmasGold text-[10px] font-extrabold uppercase px-4 py-1.5 rounded-bl-2xl tracking-widest">
-                        3-Year Locked Rate
+                <h1 class="font-cinzel text-3xl sm:text-5xl font-black leading-tight tracking-tight text-white">
+                    Member Dashboard & <span class="gold-gradient-text">Account Portal</span>
+                </h1>
+                
+                <p class="text-xmasCream/80 text-sm sm:text-base max-w-xl leading-relaxed mx-auto lg:mx-0">
+                    Sign in to track your upcoming holiday deliveries, adjust delivery windows, book January zero-waste recycling, and download statements.
+                </p>
+
+                <div class="grid grid-cols-3 gap-3 pt-3 border-t border-white/10 text-center lg:text-left">
+                    <div>
+                        <strong class="block text-xmasGold font-cinzel text-base sm:text-lg">1-Click</strong>
+                        <span class="text-[11px] text-xmasCream/70">Social Auth</span>
+                    </div>
+                    <div>
+                        <strong class="block text-xmasGold font-cinzel text-base sm:text-lg">Flexible</strong>
+                        <span class="text-[11px] text-xmasCream/70">Window Rescheduling</span>
+                    </div>
+                    <div>
+                        <strong class="block text-xmasGold font-cinzel text-base sm:text-lg">Invoices</strong>
+                        <span class="text-[11px] text-xmasCream/70">Instant PDF Download</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-6">
+                <div class="relative rounded-2xl overflow-hidden border-2 border-xmasGold/40 shadow-2xl aspect-video bg-xmasDark">
+                    <div class="relative w-full h-full" id="heroSlider">
+                        
+                        <!-- Slide 1: January Zero-Waste Pickup Lifestyle -->
+                        <div class="hero-slide active">
+                            <img 
+                                src="public/january-pickup-lifestyle.png" 
+                                onerror="this.src='january-pickup-lifestyle.png'"
+                                alt="Joe and crew assisting post-holiday January tree recycling pickup" 
+                                class="w-full h-full object-cover"
+                                loading="eager"
+                            />
+                            <div class="slide-caption">
+                                <span>Curbside & In-Home January Zero-Waste Eco-Pickup Coordination</span>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2: In-Home White Glove Delivery Setup -->
+                        <div class="hero-slide">
+                            <img 
+                                src="public/white-glove-delivery.png" 
+                                onerror="this.src='white-glove-delivery.png'"
+                                alt="White-glove tree setup in living room" 
+                                class="w-full h-full object-cover"
+                                loading="lazy"
+                            />
+                            <div class="slide-caption">
+                                <span>White-Glove Living Room Installation & Stand Hydration</span>
+                            </div>
+                        </div>
+
                     </div>
 
-                    <div class="space-y-2">
-                        <span class="text-[10px] font-bold text-xmasGold uppercase tracking-widest bg-xmasDark px-3 py-1 rounded-full border border-xmasGold/30 inline-block">Subscription ID: #CTJ-2026-8841</span>
-                        <h2 class="font-cinzel text-2xl sm:text-3xl font-black text-white">Holiday Hearth Tier (6–7 ft)</h2>
-                        <p class="text-xs text-xmasCream/70">Variety: <strong>Fraser Fir (Grade #1)</strong> • Sourced from Ashe County / Jefferson, NC</p>
+                    <div class="slider-nav">
+                        <button class="slider-dot active" aria-label="Slide 1" onclick="setSlide(0)"></button>
+                        <button class="slider-dot" aria-label="Slide 2" onclick="setSlide(1)"></button>
                     </div>
+                </div>
+            </div>
 
-                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 py-4 border-y border-white/10 text-xs">
-                        <div>
-                            <p class="text-xmasCream/50 text-[10px] uppercase font-bold">Annual Rate</p>
-                            <p class="text-lg font-extrabold text-xmasGold">$178.49 <span class="text-[10px] text-white/50">(15% Off)</span></p>
-                        </div>
-                        <div>
-                            <p class="text-xmasCream/50 text-[10px] uppercase font-bold">Term Duration</p>
-                            <p class="text-sm font-bold text-white">2026 – 2029 (3 Yrs)</p>
-                        </div>
-                        <div>
-                            <p class="text-xmasCream/50 text-[10px] uppercase font-bold">Upcoming Delivery</p>
-                            <p class="text-sm font-bold text-emerald-400">Nov 28, 2026</p>
-                        </div>
-                        <div>
-                            <p class="text-xmasCream/50 text-[10px] uppercase font-bold">Eco-Pickup Status</p>
-                            <p class="text-sm font-bold text-xmasGold">Scheduled (Jan 8)</p>
-                        </div>
+        </div>
+    </section>
+
+    <!-- MAIN DYNAMIC AUTH & DASHBOARD CONTAINER -->
+    <main class="max-w-7xl mx-auto px-4 py-8 space-y-8">
+        
+        <!-- DYNAMIC WELCOME BANNER (Updates to Guest or User Name) -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between bg-xmasPanel border border-xmasGold/40 rounded-3xl p-6 sm:p-8 shadow-2xl gap-4">
+            <div class="space-y-1">
+                <div class="flex items-center gap-2">
+                    <span id="userStatusDot" class="w-2.5 h-2.5 rounded-full bg-gray-400"></span>
+                    <span id="userStatusBadge" class="text-xs font-bold text-xmasGold uppercase tracking-widest">Guest Visitor</span>
+                </div>
+                <h1 class="font-cinzel text-3xl sm:text-4xl font-black text-white">
+                    Welcome, <span id="userNameDisplay" class="gold-gradient-text">Guest</span>
+                </h1>
+                <p id="userDescDisplay" class="text-xs text-xmasCream/70">
+                    Sign in with Google, X, or email to access your subscription, invoices, and scheduled deliveries.
+                </p>
+            </div>
+            
+            <div class="flex items-center gap-3">
+                <a href="track.html" class="py-2.5 px-4 rounded-xl bg-xmasGreen border border-xmasGold text-xmasGold text-xs font-bold hover:bg-xmasGold hover:text-xmasDark transition shadow">
+                    🚚 Live Driver Tracker
+                </a>
+                <button id="authHeaderBtn" onclick="handleAuthAction()" class="py-2.5 px-4 rounded-xl bg-xmasDark border border-white/20 text-white text-xs font-bold hover:bg-xmasRed transition">
+                    Sign In
+                </button>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             VIEW A: GUEST / SIGN-IN & REGISTRATION FORM
+        =========================================== -->
+        <div id="guestAuthSection" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- LEFT: 1-CLICK SOCIAL & FORM LOGIN -->
+            <div class="lg:col-span-7 bg-xmasPanel border-2 border-xmasGold/40 rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl">
+                
+                <!-- TAB SELECTOR -->
+                <div class="flex border-b border-white/10 pb-4 justify-between items-center">
+                    <div class="flex gap-4">
+                        <button onclick="switchAuthTab('login')" id="tabLoginBtn" class="font-cinzel text-lg font-bold text-xmasGold border-b-2 border-xmasGold pb-1 transition">Sign In</button>
+                        <button onclick="switchAuthTab('register')" id="tabRegisterBtn" class="font-cinzel text-lg font-bold text-xmasCream/50 hover:text-white pb-1 transition">Create Account</button>
                     </div>
+                    <span class="text-[10px] text-emerald-400 bg-emerald-950/60 border border-emerald-500/30 px-2.5 py-1 rounded-full font-bold uppercase">SSL Encrypted</span>
+                </div>
 
-                    <!-- SUBSCRIPTION CONTROLS BUTTONS -->
+                <!-- 1-CLICK SOCIAL AUTH BUTTONS -->
+                <div class="space-y-3">
+                    <p class="text-xs text-xmasGold font-bold uppercase tracking-wider">Fast 1-Click Authentication</p>
+                    
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-bold">
-                        <button onclick="alert('Opening Delivery Window Adjustment...')" class="py-3 rounded-xl bg-xmasDark border border-xmasGold/50 text-xmasGold hover:bg-xmasGold hover:text-xmasDark transition text-center">
-                            🗓️ Change Delivery Date
+                        <!-- Google -->
+                        <button onclick="loginWithOAuth('Google')" class="flex items-center justify-center gap-2 py-3 px-4 bg-white text-gray-800 rounded-xl hover:bg-gray-100 transition shadow-md">
+                            <svg class="w-4 h-4" viewBox="0 0 24 24">
+                                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                            </svg>
+                            <span>Google</span>
                         </button>
-                        <button onclick="alert('Address update modal opened.')" class="py-3 rounded-xl bg-xmasDark border border-white/20 text-white hover:border-xmasGold transition text-center">
-                            📍 Edit Delivery Address
+
+                        <!-- X (Twitter) -->
+                        <button onclick="loginWithOAuth('X')" class="flex items-center justify-center gap-2 py-3 px-4 bg-black text-white rounded-xl hover:bg-neutral-900 border border-white/20 transition shadow-md">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                            <span>X Account</span>
                         </button>
-                        <button onclick="alert('Subscription paused for 2026 season. Term extended by 1 year.')" class="py-3 rounded-xl bg-xmasDark border border-white/20 text-xmasCream/70 hover:text-xmasRed transition text-center">
-                            ⏸️ Pause / Extend Term
+
+                        <!-- Apple -->
+                        <button onclick="loginWithOAuth('Apple')" class="flex items-center justify-center gap-2 py-3 px-4 bg-neutral-900 text-white rounded-xl hover:bg-black border border-white/20 transition shadow-md">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.85c.66-.8 1.11-1.92.99-3.04-.96.04-2.12.64-2.8 1.44-.6.69-1.13 1.83-1 2.93 1.07.08 2.15-.53 2.81-1.33z"/>
+                            </svg>
+                            <span>Apple ID</span>
                         </button>
                     </div>
                 </div>
 
-                <!-- JANUARY ECO-PICKUP SCHEDULER WIDGET -->
-                <div class="bg-xmasDark border border-white/10 rounded-3xl p-6 space-y-4 shadow-xl">
-                    <div class="flex items-center justify-between border-b border-white/10 pb-3">
-                        <h3 class="font-cinzel text-xl font-bold text-xmasGold">January Eco-Pickup Scheduler</h3>
-                        <span class="text-[10px] bg-xmasGreen text-xmasGold px-2.5 py-1 rounded-full font-bold uppercase">100% Zero-Waste</span>
+                <div class="flex items-center my-4">
+                    <div class="flex-grow border-t border-white/10"></div>
+                    <span class="px-3 text-[11px] text-xmasCream/50 font-bold uppercase tracking-wider">or sign in with email</span>
+                    <div class="flex-grow border-t border-white/10"></div>
+                </div>
+
+                <!-- EMAIL / PASSWORD FORM -->
+                <form onsubmit="handleManualAuth(event)" class="space-y-4">
+                    <div id="nameFieldContainer" class="hidden">
+                        <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Full Name</label>
+                        <input type="text" id="authFullName" placeholder="e.g. Eleanor Vance" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
                     </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Email Address</label>
+                        <input type="email" required id="authEmail" placeholder="yourname@example.com" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between items-center mb-1">
+                            <label class="block text-xs font-bold text-xmasGold uppercase">Password</label>
+                            <a href="#" onclick="alert('Password reset link sent to your email.')" class="text-[10px] text-xmasCream/60 hover:text-xmasGold">Forgot?</a>
+                        </div>
+                        <input type="password" required id="authPassword" placeholder="••••••••" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
+                    </div>
+
+                    <button type="submit" id="authSubmitBtn" class="w-full py-4 bg-xmasRed hover:bg-red-700 text-white font-extrabold text-xs uppercase tracking-wider rounded-xl border border-xmasGold/50 shadow-xl transition transform hover:scale-105">
+                        Sign In To Account →
+                    </button>
+                </form>
+
+            </div>
+
+            <!-- RIGHT: GUEST BENEFITS & SUBSCRIPTION SHORTCUT -->
+            <div class="lg:col-span-5 space-y-6">
+                <div class="bg-xmasDark border border-xmasGold/30 rounded-3xl p-6 sm:p-8 space-y-4 shadow-xl">
+                    <h3 class="font-cinzel text-xl font-bold text-xmasGold">Member Privileges</h3>
                     <p class="text-xs text-xmasCream/70 leading-relaxed">
-                        Select your preferred post-holiday removal date. Our white-glove team will arrive, sweep remaining needles, and transport your tree to our facility for conversion into organic mulch and essential oils.
+                        Access self-service controls for your holiday deliveries and seasonal home setup.
                     </p>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
-                        <label class="bg-xmasPanel border-2 border-xmasGold rounded-xl p-3 flex flex-col justify-between cursor-pointer">
-                            <input type="radio" name="pickup-date" checked class="accent-xmasGold">
-                            <span class="text-xs font-bold text-white mt-2">Friday, Jan 8</span>
-                            <span class="text-[10px] text-xmasGold">Morning (8am - 12pm)</span>
-                        </label>
-                        <label class="bg-xmasPanel border border-white/20 rounded-xl p-3 flex flex-col justify-between cursor-pointer hover:border-xmasGold transition">
-                            <input type="radio" name="pickup-date" class="accent-xmasGold">
-                            <span class="text-xs font-bold text-white mt-2">Saturday, Jan 9</span>
-                            <span class="text-[10px] text-xmasCream/60">Afternoon (1pm - 5pm)</span>
-                        </label>
-                        <label class="bg-xmasPanel border border-white/20 rounded-xl p-3 flex flex-col justify-between cursor-pointer hover:border-xmasGold transition">
-                            <input type="radio" name="pickup-date" class="accent-xmasGold">
-                            <span class="text-xs font-bold text-white mt-2">Monday, Jan 11</span>
-                            <span class="text-[10px] text-xmasCream/60">Flexible Window</span>
-                        </label>
-                    </div>
-                    <button onclick="alert('January pickup schedule updated successfully!')" class="w-full py-3 bg-xmasGreen border border-xmasGold text-xmasGold font-bold text-xs rounded-xl hover:bg-xmasGold hover:text-xmasDark transition">
-                        Confirm Pickup Window
-                    </button>
-                </div>
+                    <ul class="text-xs text-xmasCream/80 space-y-3 pt-2 font-medium">
+                        <li class="flex items-start gap-2.5">
+                            <span class="text-emerald-400 font-bold">✔</span>
+                            <span><strong>Live GPS Driver Telemetry:</strong> Track delivery crew arrival in real-time.</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <span class="text-emerald-400 font-bold">✔</span>
+                            <span><strong>January Pickup Booking:</strong> 1-click scheduling for zero-waste tree collection.</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <span class="text-emerald-400 font-bold">✔</span>
+                            <span><strong>Multi-Year Rate Locks:</strong> Save up to 15% across 3, 5, or 10-year subscriptions.</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <span class="text-emerald-400 font-bold">✔</span>
+                            <span><strong>Digital Statements:</strong> Download annual invoices and phytosanitary certificates.</span>
+                        </li>
+                    </ul>
 
+                    <div class="pt-4 border-t border-white/10">
+                        <button onclick="demoLogin()" class="w-full py-2.5 px-4 rounded-xl bg-xmasGreen/80 border border-xmasGold text-xmasGold text-xs font-bold hover:bg-xmasGold hover:text-xmasDark transition">
+                            ⚡ Quick Demo Member Login
+                        </button>
+                    </div>
+                </div>
             </div>
 
-            <!-- RIGHT COLUMN: INVOICE DOWNLOADS & RECENT ORDERS -->
-            <div class="lg:col-span-4 space-y-6">
+        </div>
+
+        <!-- ==========================================
+             VIEW B: ACTIVE SUBSCRIBER DASHBOARD (Shows when logged in)
+        =========================================== -->
+        <div id="memberDashboardSection" class="hidden space-y-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
                 
-                <!-- INVOICE & RECEIPT DOWNLOAD CENTER -->
-                <div class="bg-xmasPanel border border-xmasGold/30 rounded-3xl p-6 space-y-4 shadow-xl">
-                    <h3 class="font-cinzel text-xl font-bold text-xmasGold border-b border-white/10 pb-3">Invoices & PDF Statements</h3>
+                <!-- LEFT: ACTIVE SUBSCRIPTION CARDS & STATS -->
+                <div class="lg:col-span-8 space-y-6">
                     
-                    <div class="space-y-3 text-xs">
-                        <div class="flex items-center justify-between p-3 bg-xmasDark rounded-xl border border-white/10">
-                            <div>
-                                <p class="font-bold text-white">2026 Season Receipt</p>
-                                <p class="text-[10px] text-xmasCream/50">Inv #INV-2026-001 • $535.47</p>
-                            </div>
-                            <button onclick="alert('Downloading PDF Invoice #INV-2026-001...')" class="text-xmasGold hover:underline font-bold text-[11px]">
-                                📄 Download
-                            </button>
+                    <!-- ACTIVE SUBSCRIPTION CARD -->
+                    <div class="bg-xmasPanel border-2 border-xmasGold rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-xmasGreen border-b border-l border-xmasGold/40 text-xmasGold text-[10px] font-extrabold uppercase px-4 py-1.5 rounded-bl-2xl tracking-widest">
+                            3-Year Locked Rate
                         </div>
 
-                        <div class="flex items-center justify-between p-3 bg-xmasDark rounded-xl border border-white/10">
+                        <div class="space-y-2">
+                            <span class="text-[10px] font-bold text-xmasGold uppercase tracking-widest bg-xmasDark px-3 py-1 rounded-full border border-xmasGold/30 inline-block">Subscription ID: #CTJ-2026-8841</span>
+                            <h2 class="font-cinzel text-2xl sm:text-3xl font-black text-white">Holiday Hearth Tier (6–7 ft)</h2>
+                            <p class="text-xs text-xmasCream/70">Variety: <strong>Fraser Fir (Grade #1)</strong> • Sourced from Ashe County / Jefferson, NC</p>
+                        </div>
+
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 py-4 border-y border-white/10 text-xs">
                             <div>
-                                <p class="font-bold text-white">3-Year Contract Agreement</p>
-                                <p class="text-[10px] text-xmasCream/50">Doc #CTR-2026-3YR • Locked Rate</p>
+                                <p class="text-xmasCream/50 text-[10px] uppercase font-bold">Annual Rate</p>
+                                <p class="text-lg font-extrabold text-xmasGold">$178.49 <span class="text-[10px] text-white/50">(15% Off)</span></p>
                             </div>
-                            <button onclick="alert('Downloading Multi-Year Agreement PDF...')" class="text-xmasGold hover:underline font-bold text-[11px]">
-                                📄 Download
+                            <div>
+                                <p class="text-xmasCream/50 text-[10px] uppercase font-bold">Term Duration</p>
+                                <p class="text-sm font-bold text-white">2026 – 2029 (3 Yrs)</p>
+                            </div>
+                            <div>
+                                <p class="text-xmasCream/50 text-[10px] uppercase font-bold">Upcoming Delivery</p>
+                                <p class="text-sm font-bold text-emerald-400">Nov 28, 2026</p>
+                            </div>
+                            <div>
+                                <p class="text-xmasCream/50 text-[10px] uppercase font-bold">Eco-Pickup Status</p>
+                                <p class="text-sm font-bold text-xmasGold">Scheduled (Jan 8)</p>
+                            </div>
+                        </div>
+
+                        <!-- SUBSCRIPTION CONTROLS -->
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-bold">
+                            <button onclick="alert('Opening Delivery Window Adjustment...')" class="py-3 rounded-xl bg-xmasDark border border-xmasGold/50 text-xmasGold hover:bg-xmasGold hover:text-xmasDark transition text-center">
+                                🗓️ Change Delivery Date
+                            </button>
+                            <button onclick="alert('Address update modal opened.')" class="py-3 rounded-xl bg-xmasDark border border-white/20 text-white hover:border-xmasGold transition text-center">
+                                📍 Edit Delivery Address
+                            </button>
+                            <button onclick="alert('Subscription paused for 2026 season. Term extended by 1 year.')" class="py-3 rounded-xl bg-xmasDark border border-white/20 text-xmasCream/70 hover:text-xmasRed transition text-center">
+                                ⏸️ Pause / Extend Term
                             </button>
                         </div>
                     </div>
+
+                    <!-- JANUARY ECO-PICKUP SCHEDULER WIDGET -->
+                    <div class="bg-xmasDark border border-white/10 rounded-3xl p-6 space-y-4 shadow-xl">
+                        <div class="flex items-center justify-between border-b border-white/10 pb-3">
+                            <h3 class="font-cinzel text-xl font-bold text-xmasGold">January Eco-Pickup Scheduler</h3>
+                            <span class="text-[10px] bg-xmasGreen text-xmasGold px-2.5 py-1 rounded-full font-bold uppercase">100% Zero-Waste</span>
+                        </div>
+                        <p class="text-xs text-xmasCream/70 leading-relaxed">
+                            Select your preferred post-holiday removal date. Our white-glove team will arrive, sweep remaining needles, and transport your tree to our facility for conversion into organic mulch and essential oils.
+                        </p>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+                            <label class="bg-xmasPanel border-2 border-xmasGold rounded-xl p-3 flex flex-col justify-between cursor-pointer">
+                                <input type="radio" name="pickup-date" checked class="accent-xmasGold">
+                                <span class="text-xs font-bold text-white mt-2">Friday, Jan 8</span>
+                                <span class="text-[10px] text-xmasGold">Morning (8am - 12pm)</span>
+                            </label>
+                            <label class="bg-xmasPanel border border-white/20 rounded-xl p-3 flex flex-col justify-between cursor-pointer hover:border-xmasGold transition">
+                                <input type="radio" name="pickup-date" class="accent-xmasGold">
+                                <span class="text-xs font-bold text-white mt-2">Saturday, Jan 9</span>
+                                <span class="text-[10px] text-xmasCream/60">Afternoon (1pm - 5pm)</span>
+                            </label>
+                            <label class="bg-xmasPanel border border-white/20 rounded-xl p-3 flex flex-col justify-between cursor-pointer hover:border-xmasGold transition">
+                                <input type="radio" name="pickup-date" class="accent-xmasGold">
+                                <span class="text-xs font-bold text-white mt-2">Monday, Jan 11</span>
+                                <span class="text-[10px] text-xmasCream/60">Flexible Window</span>
+                            </label>
+                        </div>
+                        <button onclick="alert('January pickup schedule updated successfully!')" class="w-full py-3 bg-xmasGreen border border-xmasGold text-xmasGold font-bold text-xs rounded-xl hover:bg-xmasGold hover:text-xmasDark transition">
+                            Confirm Pickup Window
+                        </button>
+                    </div>
+
                 </div>
 
-                <!-- ADD-ON RECYCLED GOODS QUICK ORDER -->
-                <div class="bg-xmasDark border border-white/10 rounded-3xl p-6 space-y-4 shadow-xl">
-                    <h3 class="font-cinzel text-lg font-bold text-xmasGold">Subscriber Add-Ons</h3>
-                    <p class="text-xs text-xmasCream/70">Add recycled mulch or essential oils to your upcoming delivery with 1-click checkout.</p>
+                <!-- RIGHT: INVOICE DOWNLOADS & QUICK RE-ORDER -->
+                <div class="lg:col-span-4 space-y-6">
                     
-                    <div class="space-y-3 text-xs">
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <p class="font-bold text-white">Fraser Fir Mulch Bag (20lb)</p>
-                                <p class="text-xmasGold">$18.99</p>
+                    <!-- INVOICE & RECEIPT DOWNLOAD CENTER -->
+                    <div class="bg-xmasPanel border border-xmasGold/30 rounded-3xl p-6 space-y-4 shadow-xl">
+                        <h3 class="font-cinzel text-xl font-bold text-xmasGold border-b border-white/10 pb-3">Invoices & PDF Statements</h3>
+                        
+                        <div class="space-y-3 text-xs">
+                            <div class="flex items-center justify-between p-3 bg-xmasDark rounded-xl border border-white/10">
+                                <div>
+                                    <p class="font-bold text-white">2026 Season Receipt</p>
+                                    <p class="text-[10px] text-xmasCream/50">Inv #INV-2026-001 • $178.49</p>
+                                </div>
+                                <button onclick="alert('Downloading PDF Invoice #INV-2026-001...')" class="text-xmasGold hover:underline font-bold text-[11px]">
+                                    📄 Download
+                                </button>
                             </div>
-                            <button onclick="alert('Added Mulch Bag to upcoming 2026 delivery!')" class="py-1.5 px-3 rounded-lg bg-xmasRed text-white font-bold text-[10px]">Add +</button>
-                        </div>
 
-                        <div class="flex items-center justify-between border-t border-white/10 pt-2">
-                            <div>
-                                <p class="font-bold text-white">Pure Pine Essential Oil (15ml)</p>
-                                <p class="text-xmasGold">$24.99</p>
+                            <div class="flex items-center justify-between p-3 bg-xmasDark rounded-xl border border-white/10">
+                                <div>
+                                    <p class="font-bold text-white">3-Year Contract Agreement</p>
+                                    <p class="text-[10px] text-xmasCream/50">Doc #CTR-2026-3YR • Locked Rate</p>
+                                </div>
+                                <button onclick="alert('Downloading Multi-Year Agreement PDF...')" class="text-xmasGold hover:underline font-bold text-[11px]">
+                                    📄 Download
+                                </button>
                             </div>
-                            <button onclick="alert('Added Essential Oil to upcoming 2026 delivery!')" class="py-1.5 px-3 rounded-lg bg-xmasRed text-white font-bold text-[10px]">Add +</button>
                         </div>
                     </div>
+
+                    <!-- ADD-ON RECYCLED GOODS QUICK ORDER -->
+                    <div class="bg-xmasDark border border-white/10 rounded-3xl p-6 space-y-4 shadow-xl">
+                        <h3 class="font-cinzel text-lg font-bold text-xmasGold">Subscriber Add-Ons</h3>
+                        <p class="text-xs text-xmasCream/70">Add recycled mulch or essential oils to your upcoming delivery with 1-click checkout.</p>
+                        
+                        <div class="space-y-3 text-xs">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="font-bold text-white">Fraser Fir Mulch Bag (20lb)</p>
+                                    <p class="text-xmasGold">$14.99</p>
+                                </div>
+                                <button onclick="alert('Added Mulch Bag to upcoming 2026 delivery!')" class="py-1.5 px-3 rounded-lg bg-xmasRed text-white font-bold text-[10px]">Add +</button>
+                            </div>
+
+                            <div class="flex items-center justify-between border-t border-white/10 pt-2">
+                                <div>
+                                    <p class="font-bold text-white">Pure Pine Essential Oil (30ml)</p>
+                                    <p class="text-xmasGold">$24.99</p>
+                                </div>
+                                <button onclick="alert('Added Essential Oil to upcoming 2026 delivery!')" class="py-1.5 px-3 rounded-lg bg-xmasRed text-white font-bold text-[10px]">Add +</button>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
             </div>
-
         </div>
 
     </main>
@@ -254,7 +504,7 @@
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
             <div class="space-y-4 lg:col-span-1">
                 <div class="flex items-center space-x-3">
-                    <img src="Christmas-tree-joe3.png" alt="Joe Mascot" class="h-14 w-14 rounded-full border-2 border-xmasGold object-cover shadow-lg">
+                    <img src="public/Christmas-tree-joe3.png" onerror="this.src='Christmas-tree-joe3.png'" alt="Joe Mascot" class="h-14 w-14 rounded-full border-2 border-xmasGold object-cover shadow-lg">
                     <div>
                         <h4 class="font-cinzel text-base font-bold text-white">Christmas Tree Joe</h4>
                         <p class="text-[9px] text-xmasGold uppercase tracking-widest font-bold">Xmas Made Inc.</p>
@@ -266,9 +516,9 @@
             <div class="space-y-3">
                 <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Subscription Tiers</h4>
                 <ul class="text-xs space-y-2 text-xmasCream/80">
-                    <li><a href="index.html#subscriptions" class="hover:text-xmasGold transition">Evergreen Sprout (4–5 ft)</a></li>
-                    <li><a href="index.html#subscriptions" class="hover:text-xmasGold transition">Holiday Hearth (6–7 ft)</a></li>
-                    <li><a href="index.html#subscriptions" class="hover:text-xmasGold transition">Yuletide Monarch (8–9 ft)</a></li>
+                    <li><a href="trees.html" class="hover:text-xmasGold transition">Evergreen Sprout (4–5 ft)</a></li>
+                    <li><a href="trees.html" class="hover:text-xmasGold transition">Holiday Hearth (6–7 ft)</a></li>
+                    <li><a href="trees.html" class="hover:text-xmasGold transition">Yuletide Monarch (8–9 ft)</a></li>
                 </ul>
             </div>
 
@@ -304,5 +554,152 @@
             </div>
         </div>
     </footer>
+
+    <!-- DYNAMIC AUTH & INTERACTION LOGIC -->
+    <script>
+        // Hero Slider Logic
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        const dots = document.querySelectorAll('.slider-dot');
+
+        function setSlide(index) {
+            slides.forEach((s, i) => {
+                s.classList.toggle('active', i === index);
+                if (dots[i]) dots[i].classList.toggle('active', i === index);
+            });
+            currentSlide = index;
+        }
+
+        if (slides.length > 1) {
+            setInterval(() => {
+                let next = (currentSlide + 1) % slides.length;
+                setSlide(next);
+            }, 5000);
+        }
+
+        function toggleMobileNav() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // ==========================================
+        // DYNAMIC AUTH STATE ENGINE
+        // ==========================================
+        let authTabMode = 'login'; // 'login' or 'register'
+
+        function checkUserSession() {
+            const storedUser = localStorage.getItem('ctj_user_session');
+            if (storedUser) {
+                try {
+                    const user = JSON.parse(storedUser);
+                    renderMemberDashboard(user);
+                    return;
+                } catch (e) {
+                    localStorage.removeItem('ctj_user_session');
+                }
+            }
+            renderGuestView();
+        }
+
+        function renderGuestView() {
+            document.getElementById('userNameDisplay').innerText = 'Guest';
+            document.getElementById('userStatusBadge').innerText = 'Guest Visitor';
+            document.getElementById('userStatusDot').className = 'w-2.5 h-2.5 rounded-full bg-gray-400';
+            document.getElementById('userDescDisplay').innerText = 'Sign in with Google, X, or email to access your subscription, invoices, and scheduled deliveries.';
+            
+            document.getElementById('authHeaderBtn').innerText = 'Sign In';
+            document.getElementById('authHeaderBtn').className = 'py-2.5 px-4 rounded-xl bg-xmasDark border border-white/20 text-white text-xs font-bold hover:bg-xmasRed transition';
+            
+            document.getElementById('guestAuthSection').classList.remove('hidden');
+            document.getElementById('memberDashboardSection').classList.add('hidden');
+        }
+
+        function renderMemberDashboard(user) {
+            const displayName = user.name || user.email.split('@')[0];
+            document.getElementById('userNameDisplay').innerText = displayName;
+            document.getElementById('userStatusBadge').innerText = 'Active Subscriber';
+            document.getElementById('userStatusDot').className = 'w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse';
+            document.getElementById('userDescDisplay').innerText = 'Manage your subscription term, schedule delivery/pickup windows, and access invoices.';
+            
+            document.getElementById('authHeaderBtn').innerText = 'Sign Out';
+            document.getElementById('authHeaderBtn').className = 'py-2.5 px-4 rounded-xl bg-xmasDark border border-xmasRed text-xmasRed text-xs font-bold hover:bg-xmasRed hover:text-white transition';
+            
+            document.getElementById('guestAuthSection').classList.add('hidden');
+            document.getElementById('memberDashboardSection').classList.remove('hidden');
+        }
+
+        function switchAuthTab(mode) {
+            authTabMode = mode;
+            const tabLoginBtn = document.getElementById('tabLoginBtn');
+            const tabRegisterBtn = document.getElementById('tabRegisterBtn');
+            const nameContainer = document.getElementById('nameFieldContainer');
+            const submitBtn = document.getElementById('authSubmitBtn');
+
+            if (mode === 'login') {
+                tabLoginBtn.className = 'font-cinzel text-lg font-bold text-xmasGold border-b-2 border-xmasGold pb-1 transition';
+                tabRegisterBtn.className = 'font-cinzel text-lg font-bold text-xmasCream/50 hover:text-white pb-1 transition';
+                nameContainer.classList.add('hidden');
+                submitBtn.innerText = 'Sign In To Account →';
+            } else {
+                tabRegisterBtn.className = 'font-cinzel text-lg font-bold text-xmasGold border-b-2 border-xmasGold pb-1 transition';
+                tabLoginBtn.className = 'font-cinzel text-lg font-bold text-xmasCream/50 hover:text-white pb-1 transition';
+                nameContainer.classList.remove('hidden');
+                submitBtn.innerText = 'Create Account & Continue →';
+            }
+        }
+
+        function loginWithOAuth(provider) {
+            const simulatedUser = {
+                name: provider + ' Subscriber',
+                email: 'member@' + provider.toLowerCase() + '.com',
+                provider: provider,
+                loggedInAt: new Date().toISOString()
+            };
+            localStorage.setItem('ctj_user_session', JSON.stringify(simulatedUser));
+            checkUserSession();
+        }
+
+        function handleManualAuth(e) {
+            e.preventDefault();
+            const email = document.getElementById('authEmail').value;
+            const fullName = document.getElementById('authFullName').value;
+            
+            const user = {
+                name: fullName.trim() || email.split('@')[0],
+                email: email,
+                provider: 'email',
+                loggedInAt: new Date().toISOString()
+            };
+            
+            localStorage.setItem('ctj_user_session', JSON.stringify(user));
+            checkUserSession();
+        }
+
+        function demoLogin() {
+            const demoUser = {
+                name: 'Verified Member',
+                email: 'subscriber@christmastreejoe.com',
+                provider: 'demo',
+                loggedInAt: new Date().toISOString()
+            };
+            localStorage.setItem('ctj_user_session', JSON.stringify(demoUser));
+            checkUserSession();
+        }
+
+        function handleAuthAction() {
+            const storedUser = localStorage.getItem('ctj_user_session');
+            if (storedUser) {
+                // Sign Out
+                localStorage.removeItem('ctj_user_session');
+                checkUserSession();
+            } else {
+                // Scroll to auth box
+                document.getElementById('guestAuthSection').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Initialize state on load
+        window.addEventListener('DOMContentLoaded', checkUserSession);
+    </script>
 </body>
 </html>

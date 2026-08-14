@@ -10,6 +10,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Hero & Component Stylesheet -->
+    <link rel="stylesheet" href="styles/hero.css">
     
     <script>
         tailwind.config = {
@@ -46,136 +48,6 @@
 </head>
 <body class="antialiased min-h-screen flex flex-col justify-between selection:bg-xmasGold selection:text-xmasDark">
 
-    <!-- ==========================================
-     GLOBAL NAVIGATION HEADER
-=========================================== -->
-<header class="site-header">
-  <div class="header-container">
-    <a href="index.html" class="brand-logo">
-      <span class="logo-badge">🎄</span>
-      <div class="logo-text">
-        <span class="brand-name">Christmas Tree Joe</span>
-        <span class="brand-sub">A Global Citizen Joe Enterprise</span>
-      </div>
-    </a>
-
-    <nav class="main-nav">
-      <ul class="nav-links">
-        <li><a href="index.html" class="nav-link active">Home</a></li>
-        <li><a href="trees.html" class="nav-link">Tree Delivery</a></li>
-        <li><a href="tree-types.html" class="nav-link">Species Guide</a></li>
-        <li><a href="marketplace.html" class="nav-link">Recycled Goods</a></li>
-        <li><a href="about.html" class="nav-link">Our Story</a></li>
-        <li><a href="track.html" class="nav-link">Live Tracker</a></li>
-      </ul>
-    </nav>
-
-    <div class="header-actions">
-      <a href="trees.html" class="btn btn-primary-nav">Reserve Your Tree</a>
-    </div>
-  </div>
-</header>
-
-<!-- ==========================================
-     MEDIUM HERO SECTION (16:9 Landscape Frame)
-=========================================== -->
-<section class="hero-section">
-  <div class="hero-container">
-    
-    <!-- Left Column: Copy & Trust Signals -->
-    <div class="hero-content">
-      <div class="hero-pill">
-        <span class="pill-dot"></span>
-        Now Reserving for Holiday 2026 Deliveries
-      </div>
-
-      <h1 class="hero-title">
-        Skip The Roof Straps.<br>
-        <span class="highlight-gold">White-Glove Trees</span> Delivered & Set Up.
-      </h1>
-
-      <p class="hero-subtitle">
-        Fresh, farm-cut Appalachian Fraser Firs brought directly to your living room, placed in the stand, and recycled in January into clean mulch and bio-pellets.
-      </p>
-
-      <div class="hero-cta-group">
-        <a href="trees.html" class="btn btn-hero-gold">Select Your Species & Size</a>
-        <a href="tree-types.html" class="btn btn-hero-outline">Compare Trees</a>
-      </div>
-
-      <!-- Trust Badges & Supported Payments -->
-      <div class="hero-trust-bar">
-        <div class="trust-stat">
-          <strong>100%</strong>
-          <span>Zero-Waste Recycled</span>
-        </div>
-        <div class="trust-stat">
-          <strong>White-Glove</strong>
-          <span>In-Home Setup Included</span>
-        </div>
-        <div class="trust-stat">
-          <strong>Direct</strong>
-          <span>NC Mountain Harvest</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Right Column: Horizontal Medium-Height Visual Showcase -->
-    <div class="hero-visual-stage">
-      <div class="hero-slider" id="heroSlider">
-        <!-- Slide 1: Primary Hybrid Lifestyle (16:9 Landscape) -->
-        <div class="hero-slide active">
-          <img 
-            src="hero-vision-appalachian.png" 
-            alt="Joe showing a fresh Fraser Fir tree to a couple in a warm Philadelphia living room" 
-            width="1280" 
-            height="720" 
-            loading="eager"
-          />
-          <div class="slide-caption">
-            <span>Signature Fraser Firs & Living Room Installation</span>
-          </div>
-        </div>
-
-        <!-- Slide 2: White-Glove Decorating & Setup -->
-        <div class="hero-slide">
-          <img 
-            src="hero-service-whiteglove.png" 
-            alt="Joe and delivery crew completing tree setup and gold star placement" 
-            width="1280" 
-            height="720" 
-            loading="lazy"
-          />
-          <div class="slide-caption">
-            <span>White-Glove Placement & Star Topper Setup</span>
-          </div>
-        </div>
-
-        <!-- Slide 3: Circular Recycling & Bio-Products -->
-        <div class="hero-slide">
-          <img 
-            src="hero-circular-goods.png" 
-            alt="Joe showcasing clean evergreen mulch and timber bio-pellets" 
-            width="1280" 
-            height="720" 
-            loading="lazy"
-          />
-          <div class="slide-caption">
-            <span>January Zero-Waste Recycling Guarantee</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Slide Indicator Controls -->
-      <div class="slider-nav">
-        <button class="slider-dot active" aria-label="Slide 1"></button>
-        <button class="slider-dot" aria-label="Slide 2"></button>
-        <button class="slider-dot" aria-label="Slide 3"></button>
-      </div>
-    </div>
-
-  </div>
-</section>
     <!-- TOP ANNOUNCEMENT BAR -->
     <div class="bg-xmasRed text-white text-[11px] sm:text-xs py-1.5 px-4 font-semibold tracking-wide border-b border-xmasGold/30">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1 text-center sm:text-left">
@@ -197,14 +69,14 @@
             
             <!-- BRAND LOGO & TITLE -->
             <a href="index.html" class="flex items-center space-x-3 group flex-shrink-0">
-                <img src="Christmas-tree-joe1.png" onerror="this.src='public/Christmas-tree-joe1.png'" alt="Christmas Tree Joe Badge Logo" class="h-14 w-14 sm:h-16 sm:w-16 rounded-full border-2 border-xmasGold object-cover shadow-lg group-hover:scale-105 transition">
+                <img src="public/Christmas-tree-joe1.png" onerror="this.src='Christmas-tree-joe1.png'" alt="Christmas Tree Joe Badge Logo" class="h-14 w-14 sm:h-16 sm:w-16 rounded-full border-2 border-xmasGold object-cover shadow-lg group-hover:scale-105 transition">
                 <div>
                     <span class="font-cinzel text-lg sm:text-2xl font-black tracking-wider text-white group-hover:text-xmasGold transition block">CHRISTMAS TREE JOE</span>
                     <p class="text-[9px] sm:text-[10px] text-xmasGold uppercase tracking-widest font-extrabold -mt-1">A Global Citizen Joe Enterprise</p>
                 </div>
             </a>
 
-            <!-- DESKTOP NAVIGATION LINKS (Visible on Wide Displays) -->
+            <!-- DESKTOP NAVIGATION LINKS -->
             <nav class="hidden xl:flex items-center space-x-6 text-[11px] font-bold uppercase tracking-wider">
                 <a href="index.html" class="text-xmasGold border-b-2 border-xmasGold py-1">Home</a>
                 <a href="#3d-studio" class="text-xmasCream/90 hover:text-xmasGold transition py-1">3D Studio</a>
@@ -223,7 +95,7 @@
                     Reserve Tree
                 </a>
 
-                <!-- MOBILE & HALF-SCREEN HAMBURGER BUTTON -->
+                <!-- MOBILE HAMBURGER BUTTON -->
                 <button onclick="toggleMobileNav()" aria-label="Toggle Menu" class="xl:hidden p-2 rounded-xl bg-xmasPanel border border-xmasGold/40 text-xmasGold hover:text-white transition focus:outline-none">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16" />
@@ -232,7 +104,7 @@
             </div>
         </div>
 
-        <!-- COLLAPSIBLE MOBILE / HALF-SCREEN DRAWER -->
+        <!-- COLLAPSIBLE MOBILE MENU -->
         <div id="mobileMenu" class="hidden xl:hidden bg-xmasDark/98 border-b-2 border-xmasGold/40 px-6 py-6 space-y-4 shadow-2xl">
             <nav class="flex flex-col space-y-3 text-xs font-bold uppercase tracking-wider">
                 <a href="index.html" class="text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
@@ -260,50 +132,151 @@
         </div>
     </header>
 
-    <!-- HERO SECTION -->
-    <section class="relative pt-10 pb-16 px-4 hero-glow overflow-hidden">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+    <!-- ==========================================
+         MEDIUM HERO SECTION (16:9 Landscape Showcase)
+    =========================================== -->
+    <section class="relative pt-8 pb-12 px-4 hero-glow overflow-hidden">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
-            <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+            <!-- Left Column: Copy & Trust Value Prop -->
+            <div class="lg:col-span-6 space-y-5 text-center lg:text-left">
                 <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-xmasPanel border border-xmasGold/40 text-xmasGold text-xs font-bold uppercase tracking-widest shadow-md">
-                    <span>✨ White-Glove Delivery & January Pickup Included</span>
-                </div>
-                <h1 class="font-cinzel text-4xl sm:text-6xl font-black leading-tight tracking-tight">
-                    Never Buy A <span class="gold-gradient-text">Christmas Tree</span> The Old Way Again.
-                </h1>
-                <p class="text-xmasCream/80 text-base sm:text-lg max-w-2xl leading-relaxed">
-                    Sourced fresh from our timber farm partners in Jefferson, NC. Delivered directly to your home with full in-home setup, post-holiday collection, and 100% eco-recycling into everyday products.
-                </p>
-
-                <!-- BRAND ASSETS SHOWCASE -->
-                <div class="flex items-center justify-center lg:justify-start space-x-4 pt-2">
-                    <img src="Christmas-tree-joe1.png" onerror="this.src='public/Christmas-tree-joe1.png'" alt="Christmas Tree Joe Main Badge" class="h-14 w-14 rounded-full border-2 border-xmasGold shadow-xl object-cover hover:scale-110 transition">
-                    <img src="Christmas-tree-joe2.png" onerror="this.src='public/Christmas-tree-joe2.png'" alt="Christmas Tree Joe Minimal Icon" class="h-14 w-14 rounded-full border-2 border-xmasGold shadow-xl object-cover hover:scale-110 transition">
-                    <img src="Christmas-tree-joe3.png" onerror="this.src='public/Christmas-tree-joe3.png'" alt="Joe the Evergreen Farmer Mascot" class="h-14 w-14 rounded-full border-2 border-xmasGold object-cover shadow-xl hover:scale-110 transition">
-                </div>
-            </div>
-
-            <!-- 3D INTERACTIVE CANVAS & VISUALIZER -->
-            <div id="3d-studio" class="lg:col-span-5 bg-xmasPanel p-6 rounded-3xl border border-xmasGold/40 shadow-2xl relative">
-                <div class="flex items-center justify-between mb-4">
-                    <h3 class="font-cinzel text-lg font-bold text-xmasGold">Interactive 3D Tree Studio</h3>
-                    <span class="text-[10px] bg-xmasRed text-white px-2 py-0.5 rounded font-bold uppercase tracking-wider">360° Inspection</span>
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>Now Reserving for Holiday 2026 Deliveries</span>
                 </div>
                 
-                <!-- WebGL Canvas Container -->
-                <div id="webgl-container" class="w-full h-72 bg-xmasDark/80 rounded-2xl relative overflow-hidden flex items-center justify-center border border-white/10">
-                    <canvas id="tree-canvas" class="w-full h-full cursor-grab"></canvas>
-                    <div class="absolute bottom-2 left-2 text-[10px] text-white/70 bg-black/60 px-2 py-1 rounded backdrop-blur-sm">Drag to rotate 3D model</div>
+                <h1 class="font-cinzel text-3xl sm:text-5xl font-black leading-tight tracking-tight text-white">
+                    Skip The Roof Straps.<br>
+                    <span class="gold-gradient-text">White-Glove Trees</span> Delivered & Set Up.
+                </h1>
+                
+                <p class="text-xmasCream/80 text-sm sm:text-base max-w-xl leading-relaxed mx-auto lg:mx-0">
+                    Fresh, farm-cut Appalachian Fraser Firs brought directly to your living room, placed in the stand, and recycled in January into clean mulch and bio-pellets.
+                </p>
+
+                <!-- CTA Actions -->
+                <div class="flex flex-wrap gap-3 justify-center lg:justify-start pt-2">
+                    <a href="trees.html" class="bg-xmasRed hover:bg-red-700 text-white font-bold px-6 py-3 rounded-full text-sm border border-xmasGold/50 transition shadow-xl transform hover:scale-105">
+                        Select Your Tree & Size
+                    </a>
+                    <a href="tree-types.html" class="border border-white/30 hover:border-xmasGold text-white hover:text-xmasGold px-5 py-3 rounded-full text-sm font-semibold transition">
+                        Compare Species
+                    </a>
                 </div>
 
-                <!-- 3D CONTROLS -->
-                <div class="grid grid-cols-3 gap-2 mt-4 text-xs font-bold">
-                    <button onclick="updateTreeSpecies('Fraser')" class="py-2.5 px-1 rounded-xl bg-xmasGreen border border-xmasGold text-xmasGold hover:bg-xmasGold hover:text-xmasDark transition shadow">Fraser Fir</button>
-                    <button onclick="updateTreeSpecies('Douglas')" class="py-2.5 px-1 rounded-xl bg-xmasGreen/40 border border-white/20 text-white hover:bg-xmasGold hover:text-xmasDark transition">Douglas Fir</button>
-                    <button onclick="updateTreeSpecies('Noble')" class="py-2.5 px-1 rounded-xl bg-xmasGreen/40 border border-white/20 text-white hover:bg-xmasGold hover:text-xmasDark transition">Noble Fir</button>
+                <!-- Three Pillar Trust Strip -->
+                <div class="grid grid-cols-3 gap-3 pt-4 border-t border-white/10 text-center lg:text-left">
+                    <div>
+                        <strong class="block text-xmasGold font-cinzel text-base sm:text-lg">100%</strong>
+                        <span class="text-[11px] text-xmasCream/70">Zero-Waste Recycled</span>
+                    </div>
+                    <div>
+                        <strong class="block text-xmasGold font-cinzel text-base sm:text-lg">White-Glove</strong>
+                        <span class="text-[11px] text-xmasCream/70">Living Room Setup</span>
+                    </div>
+                    <div>
+                        <strong class="block text-xmasGold font-cinzel text-base sm:text-lg">Direct</strong>
+                        <span class="text-[11px] text-xmasCream/70">NC Mountain Harvest</span>
+                    </div>
+                </div>
+
+                <!-- Brand Mascot Avatars -->
+                <div class="flex items-center justify-center lg:justify-start space-x-3 pt-2">
+                    <img src="public/Christmas-tree-joe1.png" onerror="this.src='Christmas-tree-joe1.png'" alt="Christmas Tree Joe Main Badge" class="h-10 w-10 rounded-full border border-xmasGold shadow-md object-cover">
+                    <img src="public/Christmas-tree-joe2.png" onerror="this.src='Christmas-tree-joe2.png'" alt="Christmas Tree Joe Minimal Icon" class="h-10 w-10 rounded-full border border-xmasGold shadow-md object-cover">
+                    <img src="public/Christmas-tree-joe3.png" onerror="this.src='Christmas-tree-joe3.png'" alt="Joe the Evergreen Farmer Mascot" class="h-10 w-10 rounded-full border border-xmasGold shadow-md object-cover">
                 </div>
             </div>
 
+            <!-- Right Column: 16:9 Visual Showcase Slider Stage -->
+            <div class="lg:col-span-6">
+                <div class="relative rounded-2xl overflow-hidden border-2 border-xmasGold/40 shadow-2xl aspect-video bg-xmasDark">
+                    <div class="relative w-full h-full" id="heroSlider">
+                        
+                        <!-- Slide 1: In-Home Tree Presentation -->
+                        <div class="hero-slide active">
+                            <img 
+                                src="public/hero-family-livingroom.png" 
+                                onerror="this.src='hero-family-livingroom.png'"
+                                alt="Joe showing a fresh Fraser Fir tree to a couple in a warm Philadelphia living room" 
+                                class="w-full h-full object-cover"
+                                loading="eager"
+                            />
+                            <div class="slide-caption">
+                                <span>Signature Fraser Firs & Living Room Installation</span>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2: White-Glove Installation -->
+                        <div class="hero-slide">
+                            <img 
+                                src="public/white-glove-delivery.png" 
+                                onerror="this.src='white-glove-delivery.png'"
+                                alt="White-Glove Delivery and in-home tree stand placement" 
+                                class="w-full h-full object-cover"
+                                loading="lazy"
+                            />
+                            <div class="slide-caption">
+                                <span>White-Glove Placement & Star Topper Setup</span>
+                            </div>
+                        </div>
+
+                        <!-- Slide 3: Circular Recycling Guarantee -->
+                        <div class="hero-slide">
+                            <img 
+                                src="public/about-circular-recycling.png" 
+                                onerror="this.src='about-circular-recycling.png'"
+                                alt="Joe showcasing clean evergreen mulch and timber recycling" 
+                                class="w-full h-full object-cover"
+                                loading="lazy"
+                            />
+                            <div class="slide-caption">
+                                <span>January Zero-Waste Recycling Guarantee</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Slide Navigation Controls -->
+                    <div class="slider-nav">
+                        <button class="slider-dot active" aria-label="Slide 1" onclick="setSlide(0)"></button>
+                        <button class="slider-dot" aria-label="Slide 2" onclick="setSlide(1)"></button>
+                        <button class="slider-dot" aria-label="Slide 3" onclick="setSlide(2)"></button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- INTERACTIVE 3D TREE INSPECTION SECTION -->
+    <section id="3d-studio" class="py-12 px-4 bg-xmasDark border-t border-xmasGold/20">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-5 space-y-4">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-xmasPanel border border-xmasGold/40 text-xmasGold text-xs font-bold uppercase">
+                    <span>🌲 Interactive 3D Tree Studio</span>
+                </div>
+                <h2 class="font-cinzel text-3xl sm:text-4xl font-extrabold text-white">Inspect Your Tree In 360°</h2>
+                <p class="text-xmasCream/75 text-sm leading-relaxed">
+                    Rotate and inspect our signature North Carolina evergreen species before you reserve. Every tree is freshly cut, balanced, and delivered ready for display.
+                </p>
+                <div class="grid grid-cols-3 gap-2 pt-2 text-xs font-bold">
+                    <button onclick="updateTreeSpecies('Fraser')" class="py-2.5 px-2 rounded-xl bg-xmasGreen border border-xmasGold text-xmasGold hover:bg-xmasGold hover:text-xmasDark transition shadow">Fraser Fir</button>
+                    <button onclick="updateTreeSpecies('Douglas')" class="py-2.5 px-2 rounded-xl bg-xmasGreen/40 border border-white/20 text-white hover:bg-xmasGold hover:text-xmasDark transition">Douglas Fir</button>
+                    <button onclick="updateTreeSpecies('Noble')" class="py-2.5 px-2 rounded-xl bg-xmasGreen/40 border border-white/20 text-white hover:bg-xmasGold hover:text-xmasDark transition">Noble Fir</button>
+                </div>
+            </div>
+
+            <div class="lg:col-span-7 bg-xmasPanel p-4 sm:p-6 rounded-3xl border border-xmasGold/40 shadow-2xl relative">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs font-cinzel text-xmasGold font-bold tracking-wider">WebGL Live Render Stage</span>
+                    <span class="text-[10px] bg-xmasRed text-white px-2 py-0.5 rounded font-bold uppercase tracking-wider">360° Inspection</span>
+                </div>
+                <div id="webgl-container" class="w-full h-80 sm:h-96 bg-xmasDark/80 rounded-2xl relative overflow-hidden flex items-center justify-center border border-white/10">
+                    <canvas id="tree-canvas" class="w-full h-full cursor-grab"></canvas>
+                    <div class="absolute bottom-3 left-3 text-[10px] text-white/70 bg-black/60 px-2.5 py-1 rounded backdrop-blur-sm">Drag to rotate 3D model</div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -378,7 +351,7 @@
             <!-- COLUMN 1: BRAND & MASCOT -->
             <div class="space-y-4 lg:col-span-1">
                 <div class="flex items-center space-x-3">
-                    <img src="Christmas-tree-joe3.png" onerror="this.src='public/Christmas-tree-joe3.png'" alt="Joe the Evergreen Tree Farmer" class="h-14 w-14 rounded-full border-2 border-xmasGold object-cover shadow-lg">
+                    <img src="public/Christmas-tree-joe3.png" onerror="this.src='Christmas-tree-joe3.png'" alt="Joe the Evergreen Tree Farmer" class="h-14 w-14 rounded-full border-2 border-xmasGold object-cover shadow-lg">
                     <div>
                         <h4 class="font-cinzel text-base font-bold text-white">Christmas Tree Joe</h4>
                         <p class="text-[9px] text-xmasGold uppercase tracking-widest font-bold">Xmas Made Inc.</p>
@@ -462,12 +435,34 @@
 
     <!-- INTERACTIVE JAVASCRIPT & THREE.JS 3D TREE ENGINE -->
     <script>
-        let scene, camera, renderer, treeGroup;
+        // Hero Slider Rotation Logic
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        const dots = document.querySelectorAll('.slider-dot');
 
+        function setSlide(index) {
+            slides.forEach((s, i) => {
+                s.classList.toggle('active', i === index);
+                if (dots[i]) dots[i].classList.toggle('active', i === index);
+            });
+            currentSlide = index;
+        }
+
+        if (slides.length > 1) {
+            setInterval(() => {
+                let next = (currentSlide + 1) % slides.length;
+                setSlide(next);
+            }, 5000);
+        }
+
+        // Mobile Nav Drawer Toggle
         function toggleMobileNav() {
             const menu = document.getElementById('mobileMenu');
             menu.classList.toggle('hidden');
         }
+
+        // Three.js 3D Interactive Model
+        let scene, camera, renderer, treeGroup;
 
         function init3D() {
             const container = document.getElementById('webgl-container');
