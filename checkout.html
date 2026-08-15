@@ -78,6 +78,8 @@
             <nav class="hidden xl:flex items-center space-x-6 text-[11px] font-bold uppercase tracking-wider">
                 <a href="index.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Home</a>
                 <a href="trees.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Tree Selection</a>
+                <a href="events.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Seasonal Events</a>
+                <a href="community.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Community (TBBLUSA)</a>
                 <a href="marketplace.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Recycled Goods</a>
                 <a href="climate.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">1% Stripe Climate</a>
                 <a href="driver-hub.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Driver Hub</a>
@@ -105,6 +107,12 @@
                 </a>
                 <a href="trees.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
                     <span>🎁 Tree Selection</span> <span>→</span>
+                </a>
+                <a href="events.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>🌲 Seasonal Events & Staging</span> <span>→</span>
+                </a>
+                <a href="community.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>🤝 Civic Alliance (TBBLUSA)</span> <span>→</span>
                 </a>
                 <a href="marketplace.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
                     <span>♻️ Recycled Goods Store</span> <span>→</span>
@@ -382,16 +390,31 @@
                     </div>
                 </div>
 
-                <!-- FINAL PRICE TOTALS -->
+                <!-- FINAL PRICE TOTALS & GAME REWARD DISPLAY -->
                 <div class="bg-xmasDark p-5 rounded-2xl border border-xmasGold/30 space-y-2.5 text-xs">
+                    
+                    <!-- Mini Game Winner Alert (Revealed only if game was won) -->
+                    <div id="gameBonusBadge" class="hidden p-2.5 rounded-xl bg-emerald-950/80 border border-emerald-500/50 flex items-center justify-between text-emerald-300 font-bold">
+                        <span>🌟 Mini-Game Winner Bonus Active!</span>
+                        <span class="text-[10px] uppercase bg-emerald-500/20 px-2 py-0.5 rounded-md">-$10.00 OFF</span>
+                    </div>
+
                     <div class="flex justify-between">
                         <span id="priceLabelBase" class="text-xmasCream/60">Base Annual Rate:</span>
                         <span id="priceBase" class="font-bold text-white">$209.99</span>
                     </div>
+                    
                     <div class="flex justify-between">
                         <span class="text-xmasCream/60">Multi-Year Discount:</span>
                         <span id="priceDiscount" class="font-bold text-emerald-400">15% Off</span>
                     </div>
+
+                    <!-- Dynamic -$10 Row -->
+                    <div id="gameRewardRow" class="hidden flex justify-between text-emerald-400 font-bold">
+                        <span>Deck-the-Tree Game Reward:</span>
+                        <span>-$10.00</span>
+                    </div>
+
                     <div class="flex justify-between border-t border-white/10 pt-3 text-base font-extrabold">
                         <span id="priceLabelTotal" class="text-white">Annual Locked Total:</span>
                         <span id="priceTotal" class="text-xmasGold text-lg font-black">$178.49 / yr</span>
@@ -465,7 +488,7 @@
         </div>
     </footer>
 
-    <!-- INTERACTIVE PRICING, STRIPE PAYMENT ROUTER & ASYNC FORMSPREE BACKUP -->
+    <!-- INTERACTIVE PRICING, STRIPE PAYMENT ROUTER, GAME PROMO & ASYNC FORMSPREE BACKUP -->
     <script>
         // Master Mapping of All 12 Stripe Payment Links
         const STRIPE_PAYMENT_LINKS = {
@@ -495,8 +518,9 @@
         let currentBasePrice = 209.99;
         let currentTermYears = 3;
         let currentCalculatedTotal = 178.49;
+        let gameBonusDiscount = 0; // Triggered only when mini game was won
 
-        // Hero Slider Logic[cite: 7]
+        // Hero Slider Logic
         let currentSlide = 0;
         const slides = document.querySelectorAll('.hero-slide');
         const dots = document.querySelectorAll('.slider-dot');
@@ -521,7 +545,22 @@
             menu.classList.toggle('hidden');
         }
 
-        // Fast Checkout Price Engine[cite: 7]
+        // Mini-Game Win Verification
+        function checkMiniGameWinner() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const hasUrlPromo = urlParams.get('promo') === 'HOLIDAYJOY10';
+            const hasStoragePromo = localStorage.getItem('ctj_game_won') === 'true';
+
+            if (hasUrlPromo || hasStoragePromo) {
+                gameBonusDiscount = 10.00;
+                const badge = document.getElementById('gameBonusBadge');
+                if (badge) badge.classList.remove('hidden');
+                const row = document.getElementById('gameRewardRow');
+                if (row) row.classList.remove('hidden');
+            }
+        }
+
+        // Fast Checkout Price Engine
         function updateSummary() {
             const tierSelect = document.getElementById('checkoutTier');
             const selectedOption = tierSelect.options[tierSelect.selectedIndex];
@@ -529,36 +568,41 @@
             currentTierKey = selectedOption.getAttribute('data-tier-key') || 'hearth';
             currentBasePrice = parseFloat(tierSelect.value);
             currentTermYears = parseInt(document.getElementById('checkoutTerm').value);
-            
             const oneOffPrice = parseFloat(selectedOption.getAttribute('data-oneoff'));
+
+            let subtotal = currentBasePrice;
 
             if (currentTermYears === 0) {
                 // One-off single buy
-                currentCalculatedTotal = oneOffPrice;
+                subtotal = oneOffPrice;
                 document.getElementById('priceLabelBase').innerText = 'Single-Season Rate:';
                 document.getElementById('priceBase').innerText = '$' + oneOffPrice.toFixed(2);
                 document.getElementById('priceDiscount').innerText = 'None (One-Off Buy)';
-                document.getElementById('priceLabelTotal').innerText = 'Total Due Today:';
-                document.getElementById('priceTotal').innerText = '$' + oneOffPrice.toFixed(2);
             } else {
                 // Subscription locks
                 let discount = 0;
                 if (currentTermYears === 2) discount = 0.10;
                 if (currentTermYears >= 3) discount = 0.15;
 
-                currentCalculatedTotal = currentBasePrice * (1 - discount);
+                subtotal = currentBasePrice * (1 - discount);
                 
                 document.getElementById('priceLabelBase').innerText = 'Base Annual Rate:';
                 document.getElementById('priceBase').innerText = '$' + currentBasePrice.toFixed(2);
                 document.getElementById('priceDiscount').innerText = discount > 0 ? (discount * 100) + '% Off' : '0%';
-                document.getElementById('priceLabelTotal').innerText = 'Annual Locked Total:';
-                document.getElementById('priceTotal').innerText = '$' + currentCalculatedTotal.toFixed(2) + ' / yr';
             }
 
-            // Sync hidden summary field for Formspree intake[cite: 7]
+            // Apply $10 Game Bonus deduction
+            currentCalculatedTotal = Math.max(0, subtotal - gameBonusDiscount);
+
+            const periodSuffix = currentTermYears === 0 ? ' (One-Time)' : ' / yr';
+            document.getElementById('priceLabelTotal').innerText = currentTermYears === 0 ? 'Total Due Today:' : 'Annual Locked Total:';
+            document.getElementById('priceTotal').innerText = '$' + currentCalculatedTotal.toFixed(2) + periodSuffix;
+
+            // Sync hidden summary field for Formspree intake
             const tierName = selectedOption.getAttribute('data-name');
             const termLabel = currentTermYears === 0 ? 'One-Off Single Season' : `${currentTermYears}-Year Lock`;
-            document.getElementById('formOrderSummary').value = `${tierName} | ${termLabel} | Total: $${currentCalculatedTotal.toFixed(2)}`;
+            const bonusTag = gameBonusDiscount > 0 ? ' (+$10 Mini-Game Reward Applied)' : '';
+            document.getElementById('formOrderSummary').value = `${tierName} | ${termLabel} | Total: $${currentCalculatedTotal.toFixed(2)}${bonusTag}`;
         }
 
         function getTargetStripeLink() {
@@ -577,11 +621,16 @@
             const emailInput = document.getElementById('custEmail');
             const email = (emailInput && emailInput.value) ? emailInput.value : '';
             const targetLink = getTargetStripeLink();
-            const redirectUrl = email ? `${targetLink}?prefilled_email=${encodeURIComponent(email)}` : targetLink;
+            
+            const params = new URLSearchParams();
+            if (email) params.append('prefilled_email', email);
+            if (gameBonusDiscount > 0) params.append('prefilled_promo_code', 'HOLIDAYJOY10');
+
+            const redirectUrl = params.toString() ? `${targetLink}?${params.toString()}` : targetLink;
             window.location.href = redirectUrl;
         }
 
-        // Formspree Async Submission & Direct Stripe Gateway Transfer[cite: 7]
+        // Formspree Async Submission & Direct Stripe Gateway Transfer
         async function handleCheckoutSubmit(e) {
             e.preventDefault();
             const submitBtn = document.getElementById('checkoutSubmitBtn');
@@ -606,12 +655,19 @@
             // 2. Resolve matching Stripe Payment Link
             const targetStripeUrl = getTargetStripeLink();
 
-            // 3. Pre-fill customer email into Stripe and redirect directly to payment terminal
-            const checkoutUrl = email ? `${targetStripeUrl}?prefilled_email=${encodeURIComponent(email)}` : targetStripeUrl;
+            // 3. Pre-fill customer email & promo code into Stripe and redirect directly to payment terminal
+            const params = new URLSearchParams();
+            if (email) params.append('prefilled_email', email);
+            if (gameBonusDiscount > 0) params.append('prefilled_promo_code', 'HOLIDAYJOY10');
+
+            const checkoutUrl = params.toString() ? `${targetStripeUrl}?${params.toString()}` : targetStripeUrl;
             window.location.href = checkoutUrl;
         }
 
-        window.addEventListener('DOMContentLoaded', updateSummary);
+        window.addEventListener('DOMContentLoaded', () => {
+            checkMiniGameWinner();
+            updateSummary();
+        });
     </script>
 </body>
 </html>
