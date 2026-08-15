@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Driver Dispatch Hub & CDL Route Bidding | Christmas Tree Joe</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        xmasRed: '#C41E3A',
+                        xmasGreen: '#0B3B24',
+                        xmasGold: '#D4AF37',
+                        xmasCream: '#FDFBF7',
+                        xmasDark: '#051810',
+                        xmasPanel: '#0A261B'
+                    },
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #051810; color: #FDFBF7; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF0B9 0%, #D4AF37 50%, #997A15 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col justify-between selection:bg-xmasGold selection:text-xmasDark">
+
+    <!-- TOP ANNOUNCEMENT BAR -->
+    <div class="bg-xmasRed text-white text-[11px] sm:text-xs py-1.5 px-4 font-semibold tracking-wide border-b border-xmasGold/30">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1 text-center sm:text-left">
+            <div class="flex items-center gap-2">
+                <span class="bg-white/20 text-white text-[9px] uppercase px-2 py-0.5 rounded-full font-bold">Fleet Operations</span>
+                <span>🚛 Dedicated Carrier Staging Hub • Philadelphia Metro & Appalachian Regional Runs</span>
+            </div>
+            <div class="flex items-center space-x-4 text-[11px]">
+                <a href="tel:18005559627" class="hover:text-xmasGold transition hidden md:inline">📞 Dispatch: 1-800-XMAS-JOE</a>
+                <span class="hidden md:inline">|</span>
+                <a href="mailto:dispatch@christmastreejoe.com" class="hover:text-xmasGold transition">✉️ dispatch@christmastreejoe.com</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN HEADER & NAVIGATION -->
+    <header class="w-full bg-xmasDark/95 border-b border-xmasGold/30 sticky top-0 z-50 backdrop-blur-lg shadow-2xl">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-3 group">
+                <img src="christmas-tree-joe-logo.png" onerror="this.src='Christmas-tree-joe1.png'" alt="Christmas Tree Joe Logo" class="h-12 w-12 rounded-full border border-xmasGold object-cover shadow-lg group-hover:scale-105 transition">
+                <div>
+                    <span class="font-cinzel text-xl sm:text-2xl font-black tracking-wider text-white group-hover:text-xmasGold transition">CHRISTMAS TREE JOE</span>
+                    <p class="text-[9px] text-xmasGold uppercase tracking-widest font-extrabold -mt-1">Logistics & Fleet Dispatch Hub</p>
+                </div>
+            </a>
+
+            <nav class="hidden lg:flex items-center space-x-7 text-xs font-bold uppercase tracking-wider">
+                <a href="index.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Home</a>
+                <a href="trees.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Tree Varieties</a>
+                <a href="marketplace.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Recycled Goods</a>
+                <a href="impact.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Impact</a>
+                <a href="driver-hub.html" class="text-xmasGold border-b-2 border-xmasGold py-1">Driver Hub</a>
+                <a href="vendor-hub.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Grower Hub</a>
+                <a href="contact.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Support & Dispatch</a>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <a href="#driver-onboarding" class="bg-xmasGold hover:bg-[#FFE082] text-xmasDark font-bold px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm border border-xmasGold/50 transition shadow-xl transform hover:scale-105">
+                    Carrier Onboarding
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- DRIVER DISPATCH DASHBOARD CONTENT -->
+    <main class="max-w-7xl mx-auto px-4 py-12 space-y-12">
+        
+        <!-- Header Banner -->
+        <div class="text-center space-y-3">
+            <span class="text-xs font-bold text-xmasGold uppercase tracking-widest bg-xmasPanel px-4 py-1.5 rounded-full border border-xmasGold/30 inline-block">Direct Payouts • Same-Day Dispatch Confirmation</span>
+            <h1 class="font-cinzel text-4xl sm:text-6xl font-black gold-gradient-text">Logistics Driver Dispatch Board</h1>
+            <p class="text-xmasCream/80 max-w-2xl mx-auto text-sm sm:text-base">Claim available delivery waves, track route payouts, and manage living room setup staging across Philadelphia, South Jersey, and Appalachian regional corridors.</p>
+        </div>
+
+        <!-- Driver Status & Earnings Bar -->
+        <div class="bg-xmasPanel border border-xmasGold/40 rounded-3xl p-6 sm:p-8 flex flex-col md:flex-row justify-between items-center gap-6 shadow-2xl">
+            <div>
+                <div class="flex items-center gap-2 mb-1">
+                    <span class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span class="text-xs font-bold text-xmasGold uppercase tracking-widest">Active Dispatch Driver Status</span>
+                </div>
+                <h2 class="font-cinzel text-2xl font-black text-white">Available Delivery Runs</h2>
+                <p class="text-xs text-xmasCream/70">Claim available delivery routes in your local territory. Payouts release automatically upon photo delivery confirmation.</p>
+            </div>
+            
+            <div class="flex gap-4 text-center">
+                <div class="bg-xmasDark px-5 py-3 rounded-2xl border border-white/10 shadow-inner">
+                    <span class="text-[10px] text-xmasCream/60 uppercase block">Completed Runs</span>
+                    <p id="completedRuns" class="text-2xl font-black text-white">12</p>
+                </div>
+                <div class="bg-xmasDark px-5 py-3 rounded-2xl border border-xmasGold/40 shadow-inner">
+                    <span class="text-[10px] text-xmasGold uppercase font-bold block">Earned Payouts</span>
+                    <p id="earnedPayouts" class="text-2xl font-black text-xmasGold">$510.00</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Available Job Cards Grid -->
+        <div class="space-y-4">
+            <h3 class="font-cinzel text-2xl font-bold text-white flex items-center gap-2">
+                <span>📍 Live Dispatch Batches</span>
+                <span class="text-xs font-sans text-emerald-400 bg-emerald-950/80 border border-emerald-500/40 px-2.5 py-0.5 rounded-full uppercase tracking-wider font-semibold">3 Open Batches</span>
+            </h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Job Card 1: Philadelphia Metro Center City -->
+                <div id="card-PHL-CC-08" class="bg-xmasDark border-2 border-xmasGold/40 hover:border-xmasGold rounded-3xl p-6 space-y-4 shadow-xl flex flex-col justify-between transition transform hover:-translate-y-1">
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-start">
+                            <span class="text-[10px] bg-xmasGreen text-xmasGold px-3 py-1 rounded-full font-bold uppercase tracking-wider">Philly Metro Hub</span>
+                            <span class="text-lg font-black text-emerald-400">$180.00</span>
+                        </div>
+                        <h4 class="font-cinzel text-xl font-bold text-white">Batch #PHL-CC-08</h4>
+                        <p class="text-xs text-xmasCream/70">4 Living Room Setups • Center City & Fairmount</p>
+                        
+                        <div class="bg-xmasPanel p-3.5 rounded-xl border border-white/10 space-y-1.5 text-xs text-xmasCream/80">
+                            <div class="flex justify-between"><span>Pickup Depot:</span> <strong class="text-white">Philly Logistics Hub</strong></div>
+                            <div class="flex justify-between"><span>Delivery Date:</span> <strong class="text-white">Nov 28 (Morning Wave)</strong></div>
+                            <div class="flex justify-between"><span>Est. Route:</span> <strong class="text-xmasGold">14.2 Miles (~3 hrs)</strong></div>
+                        </div>
+                    </div>
+                    
+                    <button onclick="claimRoute('PHL-CC-08', 180.00)" class="claim-btn w-full py-3 bg-xmasRed hover:bg-red-700 text-white font-bold text-xs uppercase rounded-xl border border-xmasGold/40 shadow-lg transition">
+                        Claim & Lock Route →
+                    </button>
+                </div>
+
+                <!-- Job Card 2: Main Line & King of Prussia -->
+                <div id="card-PHL-ML-14" class="bg-xmasDark border-2 border-xmasGold/40 hover:border-xmasGold rounded-3xl p-6 space-y-4 shadow-xl flex flex-col justify-between transition transform hover:-translate-y-1">
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-start">
+                            <span class="text-[10px] bg-xmasGreen text-xmasGold px-3 py-1 rounded-full font-bold uppercase tracking-wider">Main Line Corridor</span>
+                            <span class="text-lg font-black text-emerald-400">$240.00</span>
+                        </div>
+                        <h4 class="font-cinzel text-xl font-bold text-white">Batch #PHL-ML-14</h4>
+                        <p class="text-xs text-xmasCream/70">5 Estate Installations (8–9 ft Monarch) • Bryn Mawr & Wayne</p>
+                        
+                        <div class="bg-xmasPanel p-3.5 rounded-xl border border-white/10 space-y-1.5 text-xs text-xmasCream/80">
+                            <div class="flex justify-between"><span>Pickup Depot:</span> <strong class="text-white">Philly Logistics Hub</strong></div>
+                            <div class="flex justify-between"><span>Delivery Date:</span> <strong class="text-white">Nov 29 (Morning Wave)</strong></div>
+                            <div class="flex justify-between"><span>Est. Route:</span> <strong class="text-xmasGold">19.5 Miles (~3.5 hrs)</strong></div>
+                        </div>
+                    </div>
+                    
+                    <button onclick="claimRoute('PHL-ML-14', 240.00)" class="claim-btn w-full py-3 bg-xmasRed hover:bg-red-700 text-white font-bold text-xs uppercase rounded-xl border border-xmasGold/40 shadow-lg transition">
+                        Claim & Lock Route →
+                    </button>
+                </div>
+
+                <!-- Job Card 3: North Carolina Regional Hub -->
+                <div id="card-NC-RDU-02" class="bg-xmasDark border-2 border-white/10 hover:border-xmasGold rounded-3xl p-6 space-y-4 shadow-xl flex flex-col justify-between transition transform hover:-translate-y-1">
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-start">
+                            <span class="text-[10px] bg-xmasPanel text-xmasGold px-3 py-1 rounded-full font-bold uppercase tracking-wider">NC Regional Run</span>
+                            <span class="text-lg font-black text-emerald-400">$220.00</span>
+                        </div>
+                        <h4 class="font-cinzel text-xl font-bold text-white">Batch #NC-RDU-02</h4>
+                        <p class="text-xs text-xmasCream/70">5 Living Room Setups • Raleigh / Cary Area</p>
+                        
+                        <div class="bg-xmasPanel p-3.5 rounded-xl border border-white/10 space-y-1.5 text-xs text-xmasCream/80">
+                            <div class="flex justify-between"><span>Pickup Depot:</span> <strong class="text-white">Jefferson Staging Depot</strong></div>
+                            <div class="flex justify-between"><span>Delivery Date:</span> <strong class="text-white">Nov 29 (Afternoon)</strong></div>
+                            <div class="flex justify-between"><span>Est. Route:</span> <strong class="text-xmasGold">26.0 Miles (~4 hrs)</strong></div>
+                        </div>
+                    </div>
+                    
+                    <button onclick="claimRoute('NC-RDU-02', 220.00)" class="claim-btn w-full py-3 bg-xmasGreen hover:bg-xmasGold hover:text-xmasDark text-xmasGold font-bold text-xs uppercase rounded-xl border border-xmasGold transition">
+                        Claim & Lock Route →
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- DRIVER ONBOARDING & CARRIER REGISTRATION (FORMSPREE POWERED) -->
+        <section id="driver-onboarding" class="bg-xmasPanel border border-xmasGold/40 rounded-3xl p-6 sm:p-10 space-y-8 shadow-2xl">
+            <div class="max-w-3xl space-y-2">
+                <span class="text-xs font-bold text-xmasGold uppercase tracking-widest">Fleet Partner Intake</span>
+                <h3 class="font-cinzel text-3xl font-black text-white">Apply as an Independent Carrier or Dispatch Driver</h3>
+                <p class="text-xs sm:text-sm text-xmasCream/80">Own a box truck, cargo van, or heavy-duty pickup? Join the 2026 seasonal dispatch network with direct weekly Stripe deposits and route bonuses.</p>
+            </div>
+
+            <form id="driverForm" action="https://formspree.io/f/xrpzlnok" method="POST" class="space-y-6">
+                <!-- Formspree Routing Headers -->
+                <input type="hidden" name="_to" value="dispatch@christmastreejoe.com">
+                <input type="hidden" name="_subject" value="🚛 New Carrier / Dispatch Driver Application — Christmas Tree Joe">
+                <input type="text" name="_gotcha" style="display:none">
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Full Legal Name / LLC</label>
+                        <input type="text" name="driver_name" required placeholder="Marcus Vance / MV Logistics LLC" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Driver Email Address</label>
+                        <input type="email" name="driver_email" required placeholder="marcus@mvlogistics.com" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Direct Phone / Mobile</label>
+                        <input type="tel" name="driver_phone" required placeholder="(215) 555-0192" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Primary Vehicle / Equipment</label>
+                        <select name="vehicle_type" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-xmasGold">
+                            <option value="Sprinter / High-Roof Cargo Van">High-Roof Cargo Van (Sprinter/Transit)</option>
+                            <option value="16-26ft Box Truck (Liftgate)">16ft–26ft Box Truck (w/ Liftgate)</option>
+                            <option value="Pickup Truck with Enclosed Trailer">Pickup Truck + Enclosed Trailer</option>
+                            <option value="Class A CDL Freight Semi">Class A CDL Freight Semi (Long-Haul Farm Ingest)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Operating Region</label>
+                        <select name="preferred_territory" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-xmasGold">
+                            <option value="Philadelphia Metro & Center City">Philadelphia Metro & Center City</option>
+                            <option value="PA Main Line & Montgomery County">PA Main Line & Montgomery County</option>
+                            <option value="South Jersey & Cherry Hill Corridor">South Jersey & Cherry Hill Corridor</option>
+                            <option value="Appalachian NC Farm Logistics (Long Haul)">Appalachian NC Farm Logistics (Long Haul)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Commercial Insurance Status</label>
+                        <select name="insurance_status" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-xmasGold">
+                            <option value="Active Commercial Auto ($1M+)">Active Commercial Auto ($1M+)</option>
+                            <option value="Active Cargo Insurance ($100k+)">Active Cargo Insurance ($100k+)</option>
+                            <option value="Standard Business Auto">Standard Business Auto</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Equipment Capacity & Experience Notes</label>
+                    <textarea name="experience_notes" rows="3" placeholder="Detail your daily capacity (e.g., 20 trees/day), crew availability for living room setups, and liftgate specs..." class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold"></textarea>
+                </div>
+
+                <button id="driverSubmitBtn" type="submit" class="w-full sm:w-auto px-8 py-3.5 bg-xmasRed hover:bg-red-700 text-white font-extrabold text-xs uppercase tracking-wider rounded-xl border border-xmasGold/50 shadow-xl transition transform hover:scale-105">
+                    Submit Carrier Application
+                </button>
+                <div id="driverStatus" class="hidden text-xs font-bold py-2"></div>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- FULL EXTENDED ENTERPRISE FOOTER -->
+    <footer class="bg-xmasDark border-t border-xmasGold/30 pt-16 pb-8 px-4 text-xmasCream">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
+            <div class="space-y-4 lg:col-span-1">
+                <div class="flex items-center space-x-3">
+                    <img src="christmas-tree-joe-logo.png" onerror="this.src='Christmas-tree-joe3.png'" alt="Joe Mascot" class="h-14 w-14 rounded-full border-2 border-xmasGold object-cover shadow-lg">
+                    <div>
+                        <h4 class="font-cinzel text-base font-bold text-white">Christmas Tree Joe</h4>
+                        <p class="text-[9px] text-xmasGold uppercase tracking-widest font-bold">Xmas Made Inc.</p>
+                    </div>
+                </div>
+                <p class="text-xs text-xmasCream/70 leading-relaxed">Direct-to-consumer North Carolina mountain tree subscriptions with white-glove doorstep placement and 100% circular zero-waste recycling.</p>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Subscription Tiers</h4>
+                <ul class="text-xs space-y-2 text-xmasCream/80">
+                    <li><a href="trees.html" class="hover:text-xmasGold transition">Evergreen Sprout (4–5 ft)</a></li>
+                    <li><a href="trees.html" class="hover:text-xmasGold transition">Holiday Hearth (6–7 ft)</a></li>
+                    <li><a href="trees.html" class="hover:text-xmasGold transition">Yuletide Monarch (8–9 ft)</a></li>
+                </ul>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Logistics & Operations</h4>
+                <ul class="text-xs space-y-2 text-xmasCream/80">
+                    <li><a href="driver-hub.html" class="hover:text-xmasGold transition font-semibold text-xmasGold">Driver Staging Hub</a></li>
+                    <li><a href="vendor-hub.html" class="hover:text-xmasGold transition">Grower & Vendor Intake</a></li>
+                    <li><a href="track.html" class="hover:text-xmasGold transition">Real-Time Delivery Tracker</a></li>
+                    <li><a href="account.html" class="hover:text-xmasGold transition">Subscriber Portal</a></li>
+                </ul>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Direct Support</h4>
+                <ul class="text-xs space-y-2 text-xmasCream/80">
+                    <li><a href="mailto:dispatch@christmastreejoe.com" class="hover:text-xmasGold transition underline">dispatch@christmastreejoe.com</a></li>
+                    <li><a href="mailto:sales@christmastreejoe.com" class="hover:text-xmasGold transition underline">sales@christmastreejoe.com</a></li>
+                    <li><a href="impact.html" class="hover:text-xmasGold transition">Stripe Climate Impact</a></li>
+                </ul>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Corporate Family</h4>
+                <p class="text-xs text-xmasCream/70">Operated by <strong>Global Citizen Joe, LLC.</strong> in partnership with <strong>Xmas Made Inc.</strong></p>
+                <p class="text-[11px] text-xmasCream/50 mt-1">1880 John F Kennedy Boulevard, Ste 104, Philadelphia, PA 19103 US</p>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-xmasCream/50 gap-4">
+            <p>&copy; 2026 Global Citizen Joe, LLC. All Rights Reserved.</p>
+            <div class="flex space-x-6">
+                <a href="privacy.html" class="hover:text-xmasGold transition">Privacy Policy</a>
+                <a href="terms.html" class="hover:text-xmasGold transition">Terms of Service</a>
+                <a href="impact.html" class="hover:text-xmasGold transition">Zero-Waste Commitment</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE DISPATCH CLAIMING & FORMSPREE SCRIPT -->
+    <script>
+        let completedRuns = 12;
+        let totalEarnings = 510.00;
+
+        function claimRoute(batchId, payout) {
+            const card = document.getElementById(`card-${batchId}`);
+            if (!card) return;
+
+            const btn = card.querySelector('.claim-btn');
+            btn.disabled = true;
+            btn.className = 'w-full py-3 bg-emerald-800 text-white font-bold text-xs uppercase rounded-xl border border-emerald-400 cursor-not-allowed opacity-90';
+            btn.innerText = '✓ Route Claimed & Dispatched';
+
+            card.classList.remove('hover:border-xmasGold', 'hover:-translate-y-1');
+            card.classList.add('opacity-75', 'border-emerald-500/50');
+
+            completedRuns += 1;
+            totalEarnings += payout;
+
+            document.getElementById('completedRuns').innerText = completedRuns;
+            document.getElementById('earnedPayouts').innerText = `$${totalEarnings.toFixed(2)}`;
+
+            alert(`Batch #${batchId} has been locked to your carrier credentials. Dispatch manifest transmitted.`);
+        }
+
+        // Formspree Asynchronous Driver Intake
+        const driverForm = document.getElementById('driverForm');
+        const driverSubmitBtn = document.getElementById('driverSubmitBtn');
+        const driverStatus = document.getElementById('driverStatus');
+
+        driverForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            driverSubmitBtn.disabled = true;
+            driverSubmitBtn.innerText = 'Submitting Application...';
+
+            const formData = new FormData(driverForm);
+
+            try {
+                const response = await fetch(driverForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    driverStatus.className = 'text-xs font-bold py-2 text-green-400 block';
+                    driverStatus.innerText = '✓ Carrier registration received! Central dispatch will verify your credentials within 24 hours.';
+                    driverForm.reset();
+                } else {
+                    driverStatus.className = 'text-xs font-bold py-2 text-red-400 block';
+                    driverStatus.innerText = 'Submission error. Please email dispatch@christmastreejoe.com directly.';
+                }
+            } catch (err) {
+                driverStatus.className = 'text-xs font-bold py-2 text-red-400 block';
+                driverStatus.innerText = 'Network error. Please try again.';
+            } finally {
+                driverSubmitBtn.disabled = false;
+                driverSubmitBtn.innerText = 'Submit Carrier Application';
+            }
+        });
+    </script>
+</body>
+</html>

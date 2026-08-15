@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>1% Stripe Climate Commitment & Carbon Removal | Christmas Tree Joe</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        xmasRed: '#C41E3A',
+                        xmasGreen: '#0B3B24',
+                        xmasGold: '#D4AF37',
+                        xmasCream: '#FDFBF7',
+                        xmasDark: '#051810',
+                        xmasPanel: '#0A261B',
+                        stripeViolet: '#635BFF'
+                    },
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #051810; color: #FDFBF7; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF0B9 0%, #D4AF37 50%, #997A15 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .climate-glow {
+            background: radial-gradient(circle, rgba(99, 91, 255, 0.15) 0%, rgba(212, 175, 55, 0.08) 40%, rgba(5, 24, 16, 0) 70%);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col justify-between selection:bg-xmasGold selection:text-xmasDark">
+
+    <!-- TOP ANNOUNCEMENT BAR -->
+    <div class="bg-gradient-to-r from-xmasGreen via-[#0E3526] to-xmasGreen text-white text-[11px] sm:text-xs py-1.5 px-4 font-semibold tracking-wide border-b border-xmasGold/30">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1 text-center sm:text-left">
+            <div class="flex items-center gap-2">
+                <span class="bg-stripeViolet/80 text-white text-[9px] uppercase px-2 py-0.5 rounded-full font-bold">Verified Climate Partner</span>
+                <span>🌍 1% of Every Order Directly Funds Permanent Carbon Removal via Stripe Climate</span>
+            </div>
+            <div class="flex items-center space-x-4 text-[11px]">
+                <a href="checkout.html" class="hover:text-xmasGold transition font-bold">Reserve With Purpose →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN RESPONSIVE HEADER & NAVIGATION -->
+    <header class="w-full bg-xmasDark/95 border-b border-xmasGold/30 sticky top-0 z-50 backdrop-blur-lg shadow-2xl">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-3 group flex-shrink-0">
+                <img src="christmas-tree-joe-logo.png" onerror="this.src='Christmas-tree-joe1.png'" alt="Christmas Tree Joe Logo" class="h-12 w-12 sm:h-14 sm:w-14 rounded-full border-2 border-xmasGold object-cover shadow-lg group-hover:scale-105 transition">
+                <div>
+                    <span class="font-cinzel text-lg sm:text-2xl font-black tracking-wider text-white group-hover:text-xmasGold transition block">CHRISTMAS TREE JOE</span>
+                    <p class="text-[9px] sm:text-[10px] text-xmasGold uppercase tracking-widest font-extrabold -mt-1">Stripe Climate Founding Contributor</p>
+                </div>
+            </a>
+
+            <nav class="hidden xl:flex items-center space-x-7 text-xs font-bold uppercase tracking-wider">
+                <a href="index.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Home</a>
+                <a href="trees.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Tree Tiers</a>
+                <a href="marketplace.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Recycled Goods</a>
+                <a href="impact.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Zero-Waste Impact</a>
+                <a href="climate.html" class="text-xmasGold border-b-2 border-xmasGold py-1">1% Stripe Climate</a>
+                <a href="driver-hub.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Driver Hub</a>
+                <a href="contact.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Support</a>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <a href="checkout.html" class="bg-xmasRed hover:bg-red-700 text-white font-bold px-4 sm:px-6 py-2.5 rounded-full text-xs sm:text-sm border border-xmasGold/50 transition shadow-xl transform hover:scale-105">
+                    Order With Climate Impact
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <main class="flex-grow">
+        <section class="relative pt-16 pb-20 px-4 climate-glow overflow-hidden text-center">
+            <div class="max-w-4xl mx-auto space-y-6">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#1A1836] border border-stripeViolet/50 text-[#A5A0FF] text-xs font-bold uppercase tracking-widest shadow-lg">
+                    <span class="w-2 h-2 rounded-full bg-stripeViolet animate-ping"></span>
+                    <span>Direct Atmospheric Carbon Removal</span>
+                </div>
+
+                <h1 class="font-cinzel text-4xl sm:text-6xl font-black text-white leading-tight">
+                    Beyond Net-Zero: <br><span class="gold-gradient-text">1% For Frontier Climate</span>
+                </h1>
+
+                <p class="text-xmasCream/85 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+                    Every time you reserve a Christmas Tree Joe Fraser Fir or order from our circular marketplace, <strong class="text-white">1.0% of your total purchase</strong> is automatically routed to fund permanent, next-generation carbon removal technologies through <strong>Stripe Climate</strong>.
+                </p>
+
+                <!-- Official Stripe Climate Badge Anchor -->
+                <div class="pt-4 flex flex-wrap justify-center items-center gap-4">
+                    <div class="bg-[#08241A] border-2 border-xmasGold/40 px-6 py-3.5 rounded-2xl flex items-center gap-3 shadow-xl">
+                        <div class="w-8 h-8 rounded-full bg-stripeViolet flex items-center justify-center font-bold text-white text-xs">S</div>
+                        <div class="text-left">
+                            <span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider block">Official Contributor</span>
+                            <span class="text-sm font-black text-white">Stripe Climate Program</span>
+                        </div>
+                    </div>
+                    <div class="bg-[#08241A] border-2 border-xmasGold/40 px-6 py-3.5 rounded-2xl flex items-center gap-3 shadow-xl">
+                        <div class="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center font-bold text-black text-xs">✓</div>
+                        <div class="text-left">
+                            <span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider block">Carbon Integrity</span>
+                            <span class="text-sm font-black text-white">1000+ Year Sequestration</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LIVE IMPACT PILLARS & STATS -->
+        <section class="max-w-7xl mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="bg-xmasDark border border-xmasGold/30 rounded-3xl p-6 text-center space-y-2 shadow-xl">
+                    <p class="font-cinzel text-3xl font-black text-xmasGold">1.0%</p>
+                    <p class="text-xs font-bold text-white uppercase tracking-wider">Top-Line Revenue</p>
+                    <p class="text-[11px] text-xmasCream/70">Deducted automatically at Stripe checkout with zero middleman administrative fees.</p>
+                </div>
+                <div class="bg-xmasDark border border-xmasGold/30 rounded-3xl p-6 text-center space-y-2 shadow-xl">
+                    <p class="font-cinzel text-3xl font-black text-stripeViolet font-sans">100%</p>
+                    <p class="text-xs font-bold text-white uppercase tracking-wider">Permanent Removal</p>
+                    <p class="text-[11px] text-xmasCream/70">We do not buy unverified avoidance offsets; we fund scientific carbon mineralization.</p>
+                </div>
+                <div class="bg-xmasDark border border-xmasGold/30 rounded-3xl p-6 text-center space-y-2 shadow-xl">
+                    <p class="font-cinzel text-3xl font-black text-emerald-400 font-sans">0%</p>
+                    <p class="text-xs font-bold text-white uppercase tracking-wider">Landfill Waste</p>
+                    <p class="text-[11px] text-xmasCream/70">Paired with our January curbside pickup upcycling trees into mulch and essential oils.</p>
+                </div>
+                <div class="bg-xmasDark border border-xmasGold/30 rounded-3xl p-6 text-center space-y-2 shadow-xl">
+                    <p class="font-cinzel text-3xl font-black text-xmasGold">1000+ Yrs</p>
+                    <p class="text-xs font-bold text-white uppercase tracking-wider">Storage Durability</p>
+                    <p class="text-[11px] text-xmasCream/70">Carbon is permanently locked into geological stone formations and ocean alkalinity.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHERE THE FUNDS GO: NEXT-GEN TECHNOLOGIES -->
+        <section class="max-w-7xl mx-auto px-4 py-16 space-y-12">
+            <div class="text-center space-y-3">
+                <span class="text-xs font-bold text-xmasGold uppercase tracking-widest bg-xmasPanel px-4 py-1.5 rounded-full border border-xmasGold/30 inline-block">Frontier Science Portfolio</span>
+                <h2 class="font-cinzel text-3xl sm:text-4xl font-black text-white">Where Your 1% Contributes</h2>
+                <p class="text-xmasCream/80 text-sm max-w-xl mx-auto">Stripe Climate works with leading independent scientific advisors (including CarbonPlan) to evaluate and purchase permanent removal.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Pillar 1: Enhanced Rock Weathering -->
+                <div class="bg-xmasPanel border border-xmasGold/40 rounded-3xl p-8 space-y-5 shadow-2xl flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-900/50 border border-emerald-400/40 flex items-center justify-center text-2xl">🪨</div>
+                        <h3 class="font-cinzel text-xl font-bold text-white">Enhanced Rock Weathering</h3>
+                        <p class="text-xs text-xmasCream/80 leading-relaxed">
+                            Spreading crushed silicate minerals (like basalt) onto agricultural soils accelerates the natural earth reaction that chemically binds CO₂ into durable dissolved bicarbonates for thousands of years.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 text-[11px] text-xmasGold font-bold">
+                        Target Durability: 10,000+ Years
+                    </div>
+                </div>
+
+                <!-- Pillar 2: Direct Air Capture (DAC) -->
+                <div class="bg-xmasPanel border border-stripeViolet/40 rounded-3xl p-8 space-y-5 shadow-2xl flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="w-12 h-12 rounded-2xl bg-purple-900/50 border border-stripeViolet/40 flex items-center justify-center text-2xl">⚡</div>
+                        <h3 class="font-cinzel text-xl font-bold text-white">Direct Air Capture (DAC)</h3>
+                        <p class="text-xs text-xmasCream/80 leading-relaxed">
+                            Industrial chemical systems pull ambient air across specialized absorbent filters, concentrate the trapped $CO_2$, and inject it deep underground into basaltic rock formations where it permanently turns to stone.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 text-[11px] text-[#A5A0FF] font-bold">
+                        Zero Land Competition • 1,000+ Years
+                    </div>
+                </div>
+
+                <!-- Pillar 3: Ocean Alkalinity Enhancement -->
+                <div class="bg-xmasPanel border border-xmasGold/40 rounded-3xl p-8 space-y-5 shadow-2xl flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="w-12 h-12 rounded-2xl bg-blue-900/50 border border-blue-400/40 flex items-center justify-center text-2xl">🌊</div>
+                        <h3 class="font-cinzel text-xl font-bold text-white">Ocean Alkalinity Enhancement</h3>
+                        <p class="text-xs text-xmasCream/80 leading-relaxed">
+                            Adding safe alkaline materials to ocean surface water increases its natural capacity to absorb atmospheric carbon while directly combating marine acidification that harms coral reefs and marine life.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 text-[11px] text-xmasGold font-bold">
+                        Marine Restoration • Permanent Storage
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CTA CONVERSION PANEL -->
+        <section class="max-w-5xl mx-auto px-4 py-10">
+            <div class="bg-gradient-to-br from-[#0A261B] via-[#0E3526] to-[#051810] border-2 border-xmasGold/50 rounded-3xl p-8 sm:p-12 text-center space-y-6 shadow-2xl">
+                <span class="text-xs font-bold text-xmasGold uppercase tracking-widest">Celebrate Sustainably</span>
+                <h3 class="font-cinzel text-3xl sm:text-5xl font-black text-white">A Greener Holiday Tradition</h3>
+                <p class="text-xmasCream/80 text-sm sm:text-base max-w-2xl mx-auto">
+                    Enjoy an authentic Appalachian mountain Fraser Fir delivered to your living room, knowing your reservation helps remove carbon and supports 100% circular post-holiday recycling.
+                </p>
+                <div class="pt-2">
+                    <a href="checkout.html" class="inline-block px-8 py-4 bg-xmasRed hover:bg-red-700 text-white font-extrabold text-xs uppercase tracking-wider rounded-xl border border-xmasGold/50 shadow-xl transition transform hover:scale-105">
+                        Select Your Tree & Contribution Plan →
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FULL EXTENDED ENTERPRISE FOOTER -->
+    <footer class="bg-xmasDark border-t border-xmasGold/30 pt-16 pb-8 px-4 text-xmasCream">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
+            <div class="space-y-4 lg:col-span-1">
+                <div class="flex items-center space-x-3">
+                    <img src="christmas-tree-joe-logo.png" onerror="this.src='Christmas-tree-joe3.png'" alt="Joe Mascot" class="h-14 w-14 rounded-full border-2 border-xmasGold object-cover shadow-lg">
+                    <div>
+                        <h4 class="font-cinzel text-base font-bold text-white">Christmas Tree Joe</h4>
+                        <p class="text-[9px] text-xmasGold uppercase tracking-widest font-bold">Xmas Made Inc.</p>
+                    </div>
+                </div>
+                <p class="text-xs text-xmasCream/70 leading-relaxed">Connecting households with fresh North Carolina timber farms through white-glove tree subscriptions and 100% zero-waste eco-recycling.</p>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Subscription Tiers</h4>
+                <ul class="text-xs space-y-2 text-xmasCream/80">
+                    <li><a href="trees.html" class="hover:text-xmasGold transition">Evergreen Sprout (4–5 ft)</a></li>
+                    <li><a href="trees.html" class="hover:text-xmasGold transition">Holiday Hearth (6–7 ft)</a></li>
+                    <li><a href="trees.html" class="hover:text-xmasGold transition">Yuletide Monarch (8–9 ft)</a></li>
+                </ul>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Logistics & Operations</h4>
+                <ul class="text-xs space-y-2 text-xmasCream/80">
+                    <li><a href="driver-hub.html" class="hover:text-xmasGold transition font-semibold text-xmasGold">Driver Staging Hub</a></li>
+                    <li><a href="vendor-hub.html" class="hover:text-xmasGold transition">Grower & Vendor Intake</a></li>
+                    <li><a href="track.html" class="hover:text-xmasGold transition">Real-Time Delivery Tracker</a></li>
+                    <li><a href="account.html" class="hover:text-xmasGold transition">Subscriber Portal</a></li>
+                </ul>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Direct Support</h4>
+                <ul class="text-xs space-y-2 text-xmasCream/80">
+                    <li><a href="mailto:dispatch@christmastreejoe.com" class="hover:text-xmasGold transition underline">dispatch@christmastreejoe.com</a></li>
+                    <li><a href="mailto:sales@christmastreejoe.com" class="hover:text-xmasGold transition underline">sales@christmastreejoe.com</a></li>
+                    <li><a href="climate.html" class="hover:text-xmasGold transition text-xmasGold font-bold">1% Stripe Climate Portal</a></li>
+                </ul>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Corporate Family</h4>
+                <p class="text-xs text-xmasCream/70">Operated by <strong>Global Citizen Joe, LLC.</strong> in partnership with <strong>Xmas Made Inc.</strong></p>
+                <p class="text-[11px] text-xmasCream/50 mt-1">1880 John F Kennedy Boulevard, Ste 104, Philadelphia, PA 19103 US</p>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-xmasCream/50 gap-4">
+            <p>&copy; 2026 Global Citizen Joe, LLC. All Rights Reserved.</p>
+            <div class="flex space-x-6">
+                <a href="privacy.html" class="hover:text-xmasGold transition">Privacy Policy</a>
+                <a href="terms.html" class="hover:text-xmasGold transition">Terms of Service</a>
+                <a href="impact.html" class="hover:text-xmasGold transition">Zero-Waste Commitment</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

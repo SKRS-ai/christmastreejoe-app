@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Customer Support & Delivery Scheduling | Christmas Tree Joe</title>
+    <title>Customer Care, Logistics Dispatch & Support | Christmas Tree Joe</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
@@ -48,9 +48,9 @@
                 <span>🎄 Reserve Your 2026 Philadelphia & Tri-State Christmas Tree Subscription Today!</span>
             </div>
             <div class="flex items-center space-x-4 text-[11px]">
-                <a href="tel:1800555XMAS" class="hover:text-xmasGold transition hidden md:inline">📞 1-800-XMAS-JOE</a>
+                <a href="tel:18005559627" class="hover:text-xmasGold transition hidden md:inline">📞 1-800-XMAS-JOE</a>
                 <span class="hidden md:inline">|</span>
-                <a href="mailto:support@christmastreejoe.com" class="hover:text-xmasGold transition">✉️ support@christmastreejoe.com</a>
+                <a href="mailto:dispatch@christmastreejoe.com" class="hover:text-xmasGold transition">✉️ dispatch@christmastreejoe.com</a>
             </div>
         </div>
     </div>
@@ -59,7 +59,7 @@
     <header class="w-full bg-xmasDark/95 border-b border-xmasGold/30 sticky top-0 z-50 backdrop-blur-lg shadow-2xl">
         <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
             <a href="index.html" class="flex items-center space-x-3 group">
-                <img src="Christmas-tree-joe1.png" alt="Christmas Tree Joe Logo" class="h-12 w-12 rounded-full border border-xmasGold object-cover shadow-lg group-hover:scale-105 transition">
+                <img src="christmas-tree-joe-logo.png" onerror="this.src='Christmas-tree-joe1.png'" alt="Christmas Tree Joe Logo" class="h-12 w-12 rounded-full border border-xmasGold object-cover shadow-lg group-hover:scale-105 transition">
                 <div>
                     <span class="font-cinzel text-xl sm:text-2xl font-black tracking-wider text-white group-hover:text-xmasGold transition">CHRISTMAS TREE JOE</span>
                     <p class="text-[9px] text-xmasGold uppercase tracking-widest font-extrabold -mt-1">A Global Citizen Joe Enterprise</p>
@@ -68,10 +68,12 @@
 
             <nav class="hidden lg:flex items-center space-x-7 text-xs font-bold uppercase tracking-wider">
                 <a href="index.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Home</a>
-                <a href="tree-types.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Tree Varieties</a>
+                <a href="trees.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Tree Tiers</a>
                 <a href="marketplace.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Recycled Goods</a>
-                <a href="about.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Our Mission</a>
-                <a href="contact.html" class="text-xmasGold border-b-2 border-xmasGold py-1">Support & Schedule</a>
+                <a href="impact.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Impact</a>
+                <a href="driver-hub.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Driver Hub</a>
+                <a href="vendor-hub.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Grower Hub</a>
+                <a href="contact.html" class="text-xmasGold border-b-2 border-xmasGold py-1">Support & Dispatch</a>
             </nav>
 
             <div class="flex items-center space-x-3">
@@ -86,9 +88,9 @@
     <main class="max-w-7xl mx-auto px-4 py-12 space-y-12">
         
         <div class="text-center space-y-3">
-            <span class="text-xs font-bold text-xmasGold uppercase tracking-widest bg-xmasPanel px-4 py-1.5 rounded-full border border-xmasGold/30 inline-block">White-Glove Service & Assistance</span>
+            <span class="text-xs font-bold text-xmasGold uppercase tracking-widest bg-xmasPanel px-4 py-1.5 rounded-full border border-xmasGold/30 inline-block">White-Glove Service & Logistics Dispatch</span>
             <h1 class="font-cinzel text-4xl sm:text-6xl font-black gold-gradient-text">Customer Care & Scheduling Hub</h1>
-            <p class="text-xmasCream/80 max-w-2xl mx-auto text-sm sm:text-base">Have questions about your subscription, delivery dates, or post-holiday pickup? Our team is here to assist you.</p>
+            <p class="text-xmasCream/80 max-w-2xl mx-auto text-sm sm:text-base">Have questions about your annual subscription, scheduled delivery windows, or January curbside eco-recycling? Our regional dispatch team is on standby.</p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -96,47 +98,55 @@
             <!-- CONTACT FORM (LEFT) -->
             <div class="lg:col-span-7 bg-xmasPanel border border-xmasGold/40 rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl">
                 <div class="space-y-1">
-                    <span class="text-xs font-bold text-xmasGold uppercase tracking-widest">Direct Inquiry</span>
-                    <h3 class="font-cinzel text-2xl font-bold text-white">Send Us A Message</h3>
-                    <p class="text-xs text-xmasCream/70">Fill out the form below and a team representative will respond within 24 hours.</p>
+                    <span class="text-xs font-bold text-xmasGold uppercase tracking-widest">Direct Ingest System</span>
+                    <h3 class="font-cinzel text-2xl font-bold text-white">Send A Message To Dispatch</h3>
+                    <p class="text-xs text-xmasCream/70">Submissions route directly to our logistics team for expedited resolution.</p>
                 </div>
 
-                <form onsubmit="event.preventDefault(); alert('Message sent! Our support team will contact you shortly.');" class="space-y-4">
+                <form id="contactForm" action="https://formspree.io/f/xrpzlnok" method="POST" class="space-y-4">
+                    <!-- Formspree Routing Headers -->
+                    <input type="hidden" name="_to" value="dispatch@christmastreejoe.com">
+                    <input type="hidden" name="_subject" value="🎄 Inbound Customer / Dispatch Inquiry — Christmas Tree Joe">
+                    <input type="text" name="_gotcha" style="display:none">
+
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Full Name</label>
-                            <input type="text" required placeholder="John Doe" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
+                            <input type="text" name="name" required placeholder="John Doe" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Email Address</label>
-                            <input type="email" required placeholder="john@example.com" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
+                            <input type="email" name="email" required placeholder="john@example.com" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Inquiry Category</label>
+                            <select name="category" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-xmasGold">
+                                <option value="Delivery Scheduling">Delivery Scheduling / Window Change</option>
+                                <option value="January Eco-Pickup">January Eco-Pickup Request</option>
+                                <option value="Subscription Modification">Subscription Management / Price Lock</option>
+                                <option value="Fleet / Driver Application">Fleet / Carrier Route Inquiries</option>
+                                <option value="Commercial / B2B">Commercial / Estate Custom Installs</option>
+                                <option value="General Support">General Support</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Order # or Account Ref (Optional)</label>
+                            <input type="text" name="order_number" placeholder="e.g. CTJ-2026-8841" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
                         </div>
                     </div>
 
                     <div>
-                        <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Inquiry Topic</label>
-                        <select class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-xmasGold">
-                            <option value="delivery">Delivery Scheduling / Window Update</option>
-                            <option value="pickup">January Eco-Pickup Request</option>
-                            <option value="subscription">Subscription Management / Renewal</option>
-                            <option value="commercial">Commercial / B2B Bulk Order</option>
-                            <option value="general">General Support</option>
-                        </select>
+                        <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Message & Specific Instructions</label>
+                        <textarea name="message" rows="4" required placeholder="Provide gate codes, special delivery instructions, or subscription queries..." class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold"></textarea>
                     </div>
 
-                    <div>
-                        <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Order # (Optional)</label>
-                        <input type="text" placeholder="e.g. CTJ-2026-8841" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Message</label>
-                        <textarea rows="4" required placeholder="How can Joe's team help you today?" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold"></textarea>
-                    </div>
-
-                    <button type="submit" class="w-full py-3.5 bg-xmasRed hover:bg-red-700 text-white font-extrabold text-xs uppercase tracking-wider rounded-xl border border-xmasGold/50 shadow-xl transition transform hover:scale-105">
-                        Submit Inquiry
+                    <button id="submitBtn" type="submit" class="w-full py-3.5 bg-xmasRed hover:bg-red-700 text-white font-extrabold text-xs uppercase tracking-wider rounded-xl border border-xmasGold/50 shadow-xl transition transform hover:scale-[1.02]">
+                        Submit to Dispatch
                     </button>
+                    <div id="formStatus" class="hidden text-center text-xs font-bold py-2"></div>
                 </form>
             </div>
 
@@ -145,34 +155,38 @@
                 
                 <!-- CONTACT CARDS -->
                 <div class="bg-xmasDark border border-xmasGold/30 rounded-3xl p-6 space-y-4 shadow-xl">
-                    <h3 class="font-cinzel text-xl font-bold text-xmasGold">Direct Channels</h3>
+                    <h3 class="font-cinzel text-xl font-bold text-xmasGold">Direct Corporate Channels</h3>
                     <div class="space-y-3 text-xs text-xmasCream/80">
                         <div>
-                            <p class="font-bold text-white">Order Support Email:</p>
-                            <a href="mailto:support@christmastreejoe.com" class="text-xmasGold underline">support@christmastreejoe.com</a>
+                            <p class="font-bold text-white">Central Dispatch Desk:</p>
+                            <a href="mailto:dispatch@christmastreejoe.com" class="text-xmasGold underline">dispatch@christmastreejoe.com</a>
                         </div>
                         <div>
-                            <p class="font-bold text-white">Sales & Commercial Partnerships:</p>
+                            <p class="font-bold text-white">Commercial Logistics & Estates:</p>
                             <a href="mailto:sales@christmastreejoe.com" class="text-xmasGold underline">sales@christmastreejoe.com</a>
                         </div>
                         <div>
-                            <p class="font-bold text-white">Phone Concierge:</p>
-                            <a href="tel:1800555XMAS" class="text-xmasGold">1-800-XMAS-JOE (1-800-962-7563)</a>
+                            <p class="font-bold text-white">Toll-Free Concierge:</p>
+                            <a href="tel:18005559627" class="text-xmasGold">1-800-XMAS-JOE (1-800-555-9627)</a>
+                        </div>
+                        <div class="pt-2 border-t border-white/10">
+                            <p class="font-bold text-white">Corporate Headquarters:</p>
+                            <p class="text-slate-300">Global Citizen Joe, LLC.<br>1880 John F Kennedy Boulevard, Ste 104<br>Philadelphia, PA 19103 US</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- DELIVERY & PICKUP PROTOCOLS -->
                 <div class="bg-xmasPanel border border-white/10 rounded-3xl p-6 space-y-4 shadow-xl text-xs text-xmasCream/80">
-                    <h3 class="font-cinzel text-xl font-bold text-xmasGold">White-Glove Protocols</h3>
+                    <h3 class="font-cinzel text-xl font-bold text-xmasGold">Logistics Timelines</h3>
                     <div class="space-y-3">
                         <div class="border-b border-white/10 pb-2">
-                            <p class="font-bold text-white">🚚 Delivery Windows (Nov 20 – Dec 20)</p>
-                            <p class="text-[11px] text-xmasCream/70 mt-0.5">Trees are brought directly inside your home or office, unbaled, placed on your stand, and watered for immediate enjoyment.</p>
+                            <p class="font-bold text-white">🚚 Scheduled Delivery Waves (Nov 20 – Dec 20)</p>
+                            <p class="text-[11px] text-xmasCream/70 mt-0.5">Trees are delivered direct to your doorstep or living room, unbaled, placed on your water stand, and hydrated for maximum needle retention.</p>
                         </div>
                         <div>
-                            <p class="font-bold text-white">♻️ January Eco-Pickup (Jan 2 – Jan 15)</p>
-                            <p class="text-[11px] text-xmasCream/70 mt-0.5">Schedule your removal date via your account dashboard or email. Our team sweeps up needles and transports 100% of the tree to our recycling plant.</p>
+                            <p class="font-bold text-white">♻️ January Eco-Recycling (Jan 2 – Jan 15)</p>
+                            <p class="text-[11px] text-xmasCream/70 mt-0.5">Place your tree curbside on your assigned date. Our fleet collects and upcycles 100% of timber into organic mulch, bio-pellets, and pure pine oil.</p>
                         </div>
                     </div>
                 </div>
@@ -188,50 +202,96 @@
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
             <div class="space-y-4 lg:col-span-1">
                 <div class="flex items-center space-x-3">
-                    <img src="Christmas-tree-joe3.png" alt="Joe Mascot" class="h-14 w-14 rounded-full border-2 border-xmasGold object-cover shadow-lg">
+                    <img src="christmas-tree-joe-logo.png" onerror="this.src='Christmas-tree-joe3.png'" alt="Joe Mascot" class="h-14 w-14 rounded-full border-2 border-xmasGold object-cover shadow-lg">
                     <div>
                         <h4 class="font-cinzel text-base font-bold text-white">Christmas Tree Joe</h4>
                         <p class="text-[9px] text-xmasGold uppercase tracking-widest font-bold">Xmas Made Inc.</p>
                     </div>
                 </div>
-                <p class="text-xs text-xmasCream/70 leading-relaxed">Connecting households with fresh North Carolina timber farms through white-glove tree subscriptions and 100% zero-waste eco-recycling.</p>
+                <p class="text-xs text-xmasCream/70 leading-relaxed">Direct-to-consumer North Carolina mountain tree subscriptions with white-glove doorstep placement and 100% circular zero-waste recycling.</p>
             </div>
 
             <div class="space-y-3">
                 <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Subscription Tiers</h4>
                 <ul class="text-xs space-y-2 text-xmasCream/80">
-                    <li><a href="index.html#subscriptions" class="hover:text-xmasGold transition">Evergreen Sprout (4–5 ft)</a></li>
-                    <li><a href="index.html#subscriptions" class="hover:text-xmasGold transition">Holiday Hearth (6–7 ft)</a></li>
-                    <li><a href="index.html#subscriptions" class="hover:text-xmasGold transition">Yuletide Monarch (8–9 ft)</a></li>
+                    <li><a href="trees.html" class="hover:text-xmasGold transition">Evergreen Sprout (4–5 ft)</a></li>
+                    <li><a href="trees.html" class="hover:text-xmasGold transition">Holiday Hearth (6–7 ft)</a></li>
+                    <li><a href="trees.html" class="hover:text-xmasGold transition">Yuletide Monarch (8–9 ft)</a></li>
                 </ul>
             </div>
 
             <div class="space-y-3">
-                <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Our Brand Network</h4>
+                <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Logistics & Operations</h4>
                 <ul class="text-xs space-y-2 text-xmasCream/80">
-                    <li><a href="https://christmastreejoe.com" class="hover:text-xmasGold transition font-semibold">christmastreejoe.com</a></li>
-                    <li><a href="https://christmastreejoe.store" class="hover:text-xmasGold transition">christmastreejoe.store</a></li>
-                    <li><a href="https://christmastreejoe.net" class="hover:text-xmasGold transition">christmastreejoe.net</a></li>
+                    <li><a href="driver-hub.html" class="hover:text-xmasGold transition font-semibold text-xmasGold">Driver Staging Hub</a></li>
+                    <li><a href="vendor-hub.html" class="hover:text-xmasGold transition">Grower & Vendor Intake</a></li>
+                    <li><a href="track.html" class="hover:text-xmasGold transition">Real-Time Delivery Tracker</a></li>
+                    <li><a href="account.html" class="hover:text-xmasGold transition">Subscriber Portal</a></li>
                 </ul>
             </div>
 
             <div class="space-y-3">
-                <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Customer Care</h4>
+                <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Direct Support</h4>
                 <ul class="text-xs space-y-2 text-xmasCream/80">
-                    <li><a href="mailto:support@christmastreejoe.com" class="hover:text-xmasGold transition underline">support@christmastreejoe.com</a></li>
+                    <li><a href="mailto:dispatch@christmastreejoe.com" class="hover:text-xmasGold transition underline">dispatch@christmastreejoe.com</a></li>
                     <li><a href="mailto:sales@christmastreejoe.com" class="hover:text-xmasGold transition underline">sales@christmastreejoe.com</a></li>
+                    <li><a href="impact.html" class="hover:text-xmasGold transition">Stripe Climate Impact</a></li>
                 </ul>
             </div>
 
             <div class="space-y-3">
                 <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Corporate Family</h4>
-                <p class="text-xs text-xmasCream/70">Operated under <strong>Xmas Made Inc.</strong>, sister company to <a href="https://globalcitizenjoecoffee.com" target="_blank" class="text-xmasGold underline">Global Citizen Joe Coffee Company</a>, under parent enterprise <strong>Global Citizen Joe, Inc.</strong></p>
+                <p class="text-xs text-xmasCream/70">Operated by <strong>Global Citizen Joe, LLC.</strong> in partnership with <strong>Xmas Made Inc.</strong></p>
+                <p class="text-[11px] text-xmasCream/50 mt-1">1880 John F Kennedy Boulevard, Ste 104, Philadelphia, PA 19103 US</p>
             </div>
         </div>
 
-        <div class="max-w-7xl mx-auto pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-xmasCream/50">
-            <p>&copy; 2026 Christmas Tree Joe. All Rights Reserved.</p>
+        <div class="max-w-7xl mx-auto pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-xmasCream/50 gap-4">
+            <p>&copy; 2026 Global Citizen Joe, LLC. All Rights Reserved.</p>
+            <div class="flex space-x-6">
+                <a href="privacy.html" class="hover:text-xmasGold transition">Privacy Policy</a>
+                <a href="terms.html" class="hover:text-xmasGold transition">Terms of Service</a>
+                <a href="impact.html" class="hover:text-xmasGold transition">Zero-Waste Commitment</a>
+            </div>
         </div>
     </footer>
+
+    <!-- Formspree Asynchronous Dispatch Script -->
+    <script>
+        const contactForm = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const formStatus = document.getElementById('formStatus');
+
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            submitBtn.disabled = true;
+            submitBtn.innerText = 'Transmitting to Dispatch...';
+
+            const formData = new FormData(contactForm);
+
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    formStatus.className = 'text-center text-xs font-bold py-2 text-green-400 block';
+                    formStatus.innerText = '✓ Inquiry transmitted to dispatch. A confirmation email has been dispatched to your inbox.';
+                    contactForm.reset();
+                } else {
+                    formStatus.className = 'text-center text-xs font-bold py-2 text-red-400 block';
+                    formStatus.innerText = 'Submission error. Please email dispatch@christmastreejoe.com directly.';
+                }
+            } catch (err) {
+                formStatus.className = 'text-center text-xs font-bold py-2 text-red-400 block';
+                formStatus.innerText = 'Network connection issue. Please retry.';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerText = 'Submit to Dispatch';
+            }
+        });
+    </script>
 </body>
 </html>

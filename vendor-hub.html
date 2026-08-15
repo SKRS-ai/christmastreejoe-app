@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Vendor & Timber Farmer Portal | Christmas Tree Joe</title>
+    <title>Grower & Timber Farmer Ingest Portal | Christmas Tree Joe</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
@@ -51,10 +51,12 @@
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1 text-center sm:text-left">
             <div class="flex items-center gap-2">
                 <span class="bg-white/20 text-white text-[9px] uppercase px-2 py-0.5 rounded-full font-bold">B2B Network Portal</span>
-                <span>🌲 christmastreejoe.net — Empowering NC Timber Farmers & Regional Fulfillment Partners</span>
+                <span>🌲 christmastreejoe.net — Empowering NC Appalachian Timber Farmers & Regional Logistics Hubs</span>
             </div>
             <div class="flex items-center space-x-4 text-[11px]">
                 <a href="mailto:sales@christmastreejoe.com" class="hover:text-xmasGold transition">✉️ Partner Desk: sales@christmastreejoe.com</a>
+                <span class="hidden md:inline">|</span>
+                <a href="tel:18005559627" class="hover:text-xmasGold transition hidden md:inline">📞 1-800-XMAS-JOE</a>
             </div>
         </div>
     </div>
@@ -63,7 +65,7 @@
     <header class="w-full bg-xmasDark/95 border-b border-xmasGold/30 sticky top-0 z-50 backdrop-blur-lg shadow-2xl">
         <div class="max-w-7xl mx-auto px-4 py-2.5 flex items-center justify-between">
             <a href="index.html" class="flex items-center space-x-3 group flex-shrink-0">
-                <img src="public/Christmas-tree-joe1.png" onerror="this.src='Christmas-tree-joe1.png'" alt="Christmas Tree Joe Logo" class="h-14 w-14 sm:h-16 sm:w-16 rounded-full border-2 border-xmasGold object-cover shadow-lg group-hover:scale-105 transition">
+                <img src="christmas-tree-joe-logo.png" onerror="this.src='public/Christmas-tree-joe1.png'" alt="Christmas Tree Joe Logo" class="h-14 w-14 sm:h-16 sm:w-16 rounded-full border-2 border-xmasGold object-cover shadow-lg group-hover:scale-105 transition">
                 <div>
                     <span class="font-cinzel text-lg sm:text-2xl font-black tracking-wider text-white group-hover:text-xmasGold transition block">CHRISTMAS TREE JOE</span>
                     <p class="text-[9px] sm:text-[10px] text-xmasGold uppercase tracking-widest font-extrabold -mt-1">Vendor & Farmer Hub (.net)</p>
@@ -72,11 +74,12 @@
 
             <nav class="hidden xl:flex items-center space-x-6 text-[11px] font-bold uppercase tracking-wider">
                 <a href="index.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Home</a>
-                <a href="vendor-hub.html" class="text-xmasGold border-b-2 border-xmasGold py-1">Farmer Hub</a>
-                <a href="trees.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Tree Selection</a>
-                <a href="tree-types.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Tree Varieties</a>
+                <a href="vendor-hub.html" class="text-xmasGold border-b-2 border-xmasGold py-1">Grower Hub</a>
+                <a href="driver-hub.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Driver Hub</a>
+                <a href="trees.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Tree Tiers</a>
                 <a href="marketplace.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Recycled Goods</a>
-                <a href="about.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Our Mission</a>
+                <a href="impact.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Impact</a>
+                <a href="contact.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Support & Dispatch</a>
             </nav>
 
             <div class="flex items-center space-x-3">
@@ -100,43 +103,41 @@
                 <a href="vendor-hub.html" class="text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
                     <span>🚜 Farmer Registration</span> <span>→</span>
                 </a>
+                <a href="driver-hub.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>🚛 Logistics Driver Hub</span> <span>→</span>
+                </a>
                 <a href="trees.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
                     <span>🎁 Tree Selection</span> <span>→</span>
-                </a>
-                <a href="tree-types.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
-                    <span>📐 Tree Varieties</span> <span>→</span>
                 </a>
                 <a href="marketplace.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
                     <span>♻️ Recycled Goods Store</span> <span>→</span>
                 </a>
-                <a href="about.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
-                    <span>📜 Timber Support</span> <span>→</span>
+                <a href="impact.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>🌱 Eco Impact & Stripe Climate</span> <span>→</span>
                 </a>
-                <a href="account.html" class="text-xmasGold py-2 flex items-center justify-between">
-                    <span>👤 Customer Sign In</span> <span>→</span>
+                <a href="contact.html" class="text-xmasCream hover:text-xmasGold py-2 flex items-center justify-between">
+                    <span>✉️ Central Dispatch Support</span> <span>→</span>
                 </a>
             </nav>
         </div>
     </header>
 
-    <!-- ==========================================
-         MEDIUM HERO SECTION (16:9 Landscape Frame)
-    =========================================== -->
+    <!-- MEDIUM HERO SECTION -->
     <section class="relative pt-8 pb-12 px-4 hero-glow overflow-hidden">
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
             <div class="lg:col-span-6 space-y-5 text-center lg:text-left">
                 <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-xmasPanel border border-xmasGold/40 text-xmasGold text-xs font-bold uppercase tracking-widest shadow-md">
                     <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span>Direct Farm-To-Door Supply Chain</span>
+                    <span>Direct Mountain-To-Doorstep Supply Chain</span>
                 </div>
                 
                 <h1 class="font-cinzel text-3xl sm:text-5xl font-black leading-tight tracking-tight text-white">
-                    Partner Farmer & <span class="gold-gradient-text">Vendor Hub</span>
+                    Appalachian Grower & <span class="gold-gradient-text">Vendor Hub</span>
                 </h1>
                 
                 <p class="text-xmasCream/80 text-sm sm:text-base max-w-xl leading-relaxed mx-auto lg:mx-0">
-                    Join the Xmas Made Inc. regional fulfillment network. We connect independent growers with guaranteed multi-year pre-orders and automated local dispatching.
+                    Connect your plantation to our pre-sold subscriber manifest. We eliminate retail auction risk with locked multi-year pricing, batch freight staging, and 100% zero-waste circular recycling.
                 </p>
 
                 <div class="grid grid-cols-3 gap-3 pt-3 border-t border-white/10 text-center lg:text-left">
@@ -207,19 +208,19 @@
             <div class="bg-xmasDark border border-xmasGold/30 hover:border-xmasGold transition rounded-3xl p-6 text-center space-y-2 shadow-xl">
                 <p class="font-cinzel text-3xl font-black text-xmasGold">$0</p>
                 <p class="text-xs font-bold text-white uppercase tracking-wider">Retail Speculation Risk</p>
-                <p class="text-[11px] text-xmasCream/60">Pre-sold subscription orders are locked in upfront before harvesting begins.</p>
+                <p class="text-[11px] text-xmasCream/60">Subscriber commitments are locked in upfront prior to seasonal harvest cut dates.</p>
             </div>
 
             <div class="bg-xmasDark border border-xmasGold/30 hover:border-xmasGold transition rounded-3xl p-6 text-center space-y-2 shadow-xl">
                 <p class="font-cinzel text-3xl font-black text-xmasGold">100%</p>
                 <p class="text-xs font-bold text-white uppercase tracking-wider">Zero-Waste Recycling</p>
-                <p class="text-[11px] text-xmasCream/60">Collected trees are reprocessed into garden mulch, compost, and essential oils.</p>
+                <p class="text-[11px] text-xmasCream/60">Collected trees are reprocessed into certified mulch, bio-pellets, and steam-distilled oils.</p>
             </div>
 
             <div class="bg-xmasDark border border-xmasGold/30 hover:border-xmasGold transition rounded-3xl p-6 text-center space-y-2 shadow-xl">
-                <p class="font-cinzel text-3xl font-black text-xmasGold">Auto-Map</p>
-                <p class="text-xs font-bold text-white uppercase tracking-wider">Territory Expansion</p>
-                <p class="text-[11px] text-xmasCream/60">Registering outside primary zones automatically unlocks new regional customer markets.</p>
+                <p class="font-cinzel text-3xl font-black text-xmasGold">Auto-Route</p>
+                <p class="text-xs font-bold text-white uppercase tracking-wider">Direct Carrier Ingest</p>
+                <p class="text-[11px] text-xmasCream/60">Harvest lots map directly into our CDL driver staging network for immediate cross-docking.</p>
             </div>
         </div>
 
@@ -230,72 +231,78 @@
             <div id="partner-form" class="lg:col-span-7 bg-xmasPanel border-2 border-xmasGold/40 rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl">
                 <div class="space-y-1">
                     <span class="text-[10px] font-bold text-xmasGold uppercase tracking-widest bg-xmasDark px-3 py-1 rounded-full border border-xmasGold/30 inline-block">Partner Onboarding</span>
-                    <h3 class="font-cinzel text-2xl font-bold text-white">Register Plantation or Lot</h3>
-                    <p class="text-xs text-xmasCream/70">Submit your farm details, species capacity, and geographic coverage radius.</p>
+                    <h3 class="font-cinzel text-2xl font-bold text-white">Register Plantation or Timber Lot</h3>
+                    <p class="text-xs text-xmasCream/70">Submit your farm specifications, species yield, and regional loading dock capabilities.</p>
                 </div>
 
-                <form onsubmit="event.preventDefault(); alert('Farm registration submitted successfully! Our supply team will contact you within 24 hours to verify inventory.');" class="space-y-4">
+                <form id="vendorForm" action="https://formspree.io/f/xrpzlnok" method="POST" class="space-y-4">
+                    <!-- Formspree Routing Headers -->
+                    <input type="hidden" name="_to" value="dispatch@christmastreejoe.com">
+                    <input type="hidden" name="_subject" value="🌲 New Grower / Plantation Registration — Christmas Tree Joe">
+                    <input type="text" name="_gotcha" style="display:none">
+
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Farm / Business Name</label>
-                            <input type="text" required placeholder="e.g. Ashe County Timber Farm" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
+                            <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Farm / Enterprise Name</label>
+                            <input type="text" name="farm_name" required placeholder="e.g. Blue Ridge Timber Co." class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Primary Contact Email</label>
-                            <input type="email" required placeholder="grower@example.com" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
+                            <input type="email" name="contact_email" required placeholder="grower@example.com" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                         <div>
                             <label class="block text-xs font-bold text-xmasGold uppercase mb-1">City / County</label>
-                            <input type="text" required placeholder="Jefferson" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
+                            <input type="text" name="county_location" required placeholder="Ashe / Watauga" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-xmasGold uppercase mb-1">State</label>
-                            <input type="text" required placeholder="NC" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
+                            <input type="text" name="state" required placeholder="NC" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Primary ZIP Code</label>
-                            <input type="text" required placeholder="28640" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
+                            <input type="text" name="zip_code" required placeholder="28640" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Primary Species Produced</label>
-                            <select class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-xmasGold">
-                                <option value="Fraser">Fraser Fir (Grade #1)</option>
-                                <option value="Douglas">Douglas Fir</option>
-                                <option value="Noble">Noble Fir</option>
-                                <option value="Mixed">Mixed Evergreen Varieties</option>
+                            <select name="primary_species" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-xmasGold">
+                                <option value="Appalachian Fraser Fir (Grade #1)">Appalachian Fraser Fir (Grade #1)</option>
+                                <option value="Douglas Fir">Douglas Fir</option>
+                                <option value="Noble Fir">Noble Fir</option>
+                                <option value="Mixed Conifer Varieties">Mixed Conifer Varieties</option>
                             </select>
                         </div>
                         <div>
-                            <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Annual Capacity (Trees)</label>
-                            <select class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-xmasGold">
-                                <option value="500">100 – 500 Trees</option>
-                                <option value="1000">500 – 2,500 Trees</option>
-                                <option value="5000">2,500 – 10,000+ Trees</option>
+                            <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Annual Available Harvest Yield</label>
+                            <select name="harvest_capacity" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-xmasGold">
+                                <option value="100 - 500 Trees">100 – 500 Trees</option>
+                                <option value="500 - 2,500 Trees">500 – 2,500 Trees</option>
+                                <option value="2,500 - 10,000+ Trees">2,500 – 10,000+ Trees (Full Semi Loads)</option>
                             </select>
                         </div>
                     </div>
 
                     <div>
-                        <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Delivery / Freight Capabilities</label>
+                        <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Freight Staging & Pickup Capabilities</label>
                         <div class="grid grid-cols-2 gap-3 text-xs text-xmasCream/80 pt-1">
                             <label class="flex items-center gap-2 bg-xmasDark p-3 rounded-xl border border-white/10 cursor-pointer">
-                                <input type="checkbox" checked class="accent-xmasGold"> On-Site Pick Up Only
+                                <input type="checkbox" name="pickup_on_site" checked class="accent-xmasGold"> On-Site Staging & Farm Gate Pickup
                             </label>
                             <label class="flex items-center gap-2 bg-xmasDark p-3 rounded-xl border border-white/10 cursor-pointer">
-                                <input type="checkbox" class="accent-xmasGold"> Regional Freight Truck Delivery
+                                <input type="checkbox" name="freight_delivery_enabled" class="accent-xmasGold"> Regional Cross-Dock Freight Hauling
                             </label>
                         </div>
                     </div>
 
-                    <button type="submit" class="w-full py-4 bg-xmasRed hover:bg-red-700 text-white font-extrabold text-xs uppercase tracking-wider rounded-xl border border-xmasGold/50 shadow-xl transition transform hover:scale-105">
+                    <button id="vendorSubmitBtn" type="submit" class="w-full py-4 bg-xmasRed hover:bg-red-700 text-white font-extrabold text-xs uppercase tracking-wider rounded-xl border border-xmasGold/50 shadow-xl transition transform hover:scale-[1.02]">
                         Submit Plantation Registration →
                     </button>
+                    <div id="vendorStatus" class="hidden text-xs font-bold py-2 text-center"></div>
                 </form>
             </div>
 
@@ -304,11 +311,11 @@
                 
                 <div class="bg-xmasDark border border-xmasGold/30 rounded-3xl p-6 space-y-4 shadow-xl">
                     <div class="flex items-center justify-between border-b border-white/10 pb-3">
-                        <h3 class="font-cinzel text-lg font-bold text-xmasGold">Live Order Manifest Feed</h3>
+                        <h3 class="font-cinzel text-lg font-bold text-xmasGold">Live Order Manifest Ingest</h3>
                         <span class="text-[9px] bg-xmasGreen text-xmasGold px-2.5 py-1 rounded-full font-bold uppercase">Pre-Sold Orders</span>
                     </div>
                     <p class="text-xs text-xmasCream/70 leading-relaxed">
-                        Sample preview of pre-sold customer subscription batches routed from our executive dispatch command center.
+                        Sample preview of pre-sold customer subscription batches routed through our automated regional logistics hubs.
                     </p>
 
                     <div class="space-y-3 text-xs">
@@ -317,7 +324,7 @@
                                 <span class="text-white">Batch #PHL-2026-A1</span>
                                 <span class="text-emerald-400">120 Fraser Firs (6–7 ft)</span>
                             </div>
-                            <p class="text-[10px] text-xmasCream/60">Destination: Philadelphia Metro Hub • Delivery: Nov 22</p>
+                            <p class="text-[10px] text-xmasCream/60">Destination: Philadelphia Metro Hub • Scheduled Delivery: Nov 22</p>
                         </div>
 
                         <div class="p-3 bg-xmasPanel rounded-xl border border-white/10 space-y-1">
@@ -325,15 +332,15 @@
                                 <span class="text-white">Batch #TRI-2026-B4</span>
                                 <span class="text-emerald-400">85 Noble Firs (8–9 ft)</span>
                             </div>
-                            <p class="text-[10px] text-xmasCream/60">Destination: South Jersey Hub • Delivery: Nov 25</p>
+                            <p class="text-[10px] text-xmasCream/60">Destination: South Jersey Hub • Scheduled Delivery: Nov 25</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="bg-xmasPanel border border-white/10 rounded-3xl p-6 space-y-3 text-xs text-xmasCream/80 shadow-xl">
-                    <h4 class="font-cinzel text-sm font-bold text-xmasGold">USMCA & Agricultural Exemption Notice</h4>
+                    <h4 class="font-cinzel text-sm font-bold text-xmasGold">USMCA & Agricultural Certification Notice</h4>
                     <p class="text-[11px] leading-relaxed text-xmasCream/70">
-                        All interstate tree movements across US and Canadian borders operate under full USMCA tariff-exempt status, certified for phytosanitary compliance.
+                        All interstate tree movements across North Carolina, Pennsylvania, and regional transit lines operate under full agricultural phytosanitary inspection compliance with zero retail middleman markup.
                     </p>
                 </div>
 
@@ -348,13 +355,13 @@
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
             <div class="space-y-4 lg:col-span-1">
                 <div class="flex items-center space-x-3">
-                    <img src="public/Christmas-tree-joe3.png" onerror="this.src='Christmas-tree-joe3.png'" alt="Joe Mascot" class="h-14 w-14 rounded-full border-2 border-xmasGold object-cover shadow-lg">
+                    <img src="christmas-tree-joe-logo.png" onerror="this.src='public/Christmas-tree-joe3.png'" alt="Joe Mascot" class="h-14 w-14 rounded-full border-2 border-xmasGold object-cover shadow-lg">
                     <div>
                         <h4 class="font-cinzel text-base font-bold text-white">Christmas Tree Joe</h4>
                         <p class="text-[9px] text-xmasGold uppercase tracking-widest font-bold">Xmas Made Inc.</p>
                     </div>
                 </div>
-                <p class="text-xs text-xmasCream/70 leading-relaxed">Connecting households with fresh North Carolina timber farms through white-glove tree subscriptions and 100% zero-waste eco-recycling.</p>
+                <p class="text-xs text-xmasCream/70 leading-relaxed">Direct-to-consumer North Carolina mountain tree subscriptions with white-glove doorstep placement and 100% circular zero-waste recycling.</p>
             </div>
 
             <div class="space-y-3">
@@ -367,39 +374,42 @@
             </div>
 
             <div class="space-y-3">
-                <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Our Brand Network</h4>
+                <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Logistics & Operations</h4>
                 <ul class="text-xs space-y-2 text-xmasCream/80">
-                    <li><a href="https://christmastreejoe.com" class="hover:text-xmasGold transition font-semibold">christmastreejoe.com</a></li>
-                    <li><a href="https://christmastreejoe.store" class="hover:text-xmasGold transition">christmastreejoe.store</a></li>
-                    <li><a href="https://christmastreejoe.net" class="hover:text-xmasGold transition font-bold text-xmasGold">christmastreejoe.net</a></li>
+                    <li><a href="driver-hub.html" class="hover:text-xmasGold transition font-semibold text-xmasGold">Driver Staging Hub</a></li>
+                    <li><a href="vendor-hub.html" class="hover:text-xmasGold transition">Grower & Vendor Intake</a></li>
+                    <li><a href="track.html" class="hover:text-xmasGold transition">Real-Time Delivery Tracker</a></li>
+                    <li><a href="account.html" class="hover:text-xmasGold transition">Subscriber Portal</a></li>
                 </ul>
             </div>
 
             <div class="space-y-3">
-                <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Customer Care</h4>
+                <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Direct Support</h4>
                 <ul class="text-xs space-y-2 text-xmasCream/80">
-                    <li><a href="mailto:support@christmastreejoe.com" class="hover:text-xmasGold transition underline">support@christmastreejoe.com</a></li>
+                    <li><a href="mailto:dispatch@christmastreejoe.com" class="hover:text-xmasGold transition underline">dispatch@christmastreejoe.com</a></li>
                     <li><a href="mailto:sales@christmastreejoe.com" class="hover:text-xmasGold transition underline">sales@christmastreejoe.com</a></li>
+                    <li><a href="impact.html" class="hover:text-xmasGold transition">Stripe Climate Impact</a></li>
                 </ul>
             </div>
 
             <div class="space-y-3">
                 <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Corporate Family</h4>
-                <p class="text-xs text-xmasCream/70">Operated under <strong>Xmas Made Inc.</strong>, sister company to <a href="https://globalcitizenjoecoffee.com" target="_blank" class="text-xmasGold underline">Global Citizen Joe Coffee Company</a>, under parent enterprise <strong>Global Citizen Joe, Inc.</strong></p>
+                <p class="text-xs text-xmasCream/70">Operated by <strong>Global Citizen Joe, LLC.</strong> in partnership with <strong>Xmas Made Inc.</strong></p>
+                <p class="text-[11px] text-xmasCream/50 mt-1">1880 John F Kennedy Boulevard, Ste 104, Philadelphia, PA 19103 US</p>
             </div>
         </div>
 
-        <div class="max-w-7xl mx-auto pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-xmasCream/50">
-            <p>&copy; 2026 Christmas Tree Joe (Xmas Made Inc. / Global Citizen Joe, Inc.). All Rights Reserved.</p>
+        <div class="max-w-7xl mx-auto pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-xmasCream/50 gap-4">
+            <p>&copy; 2026 Global Citizen Joe, LLC. All Rights Reserved.</p>
             <div class="flex items-center space-x-6 text-[11px] mt-2 md:mt-0">
                 <a href="privacy.html" class="hover:text-xmasGold transition">Privacy Policy</a>
                 <a href="terms.html" class="hover:text-xmasGold transition">Terms of Service</a>
-                <a href="sitemap.html" class="hover:text-xmasGold transition">Sitemap</a>
+                <a href="impact.html" class="hover:text-xmasGold transition">Zero-Waste Commitment</a>
             </div>
         </div>
     </footer>
 
-    <!-- HERO SLIDER LOGIC -->
+    <!-- HERO SLIDER & FORMSPREE ASYNCHRONOUS INGEST SCRIPT -->
     <script>
         let currentSlide = 0;
         const slides = document.querySelectorAll('.hero-slide');
@@ -424,6 +434,42 @@
             const menu = document.getElementById('mobileMenu');
             menu.classList.toggle('hidden');
         }
+
+        // Asynchronous Formspree Ingest
+        const vendorForm = document.getElementById('vendorForm');
+        const vendorSubmitBtn = document.getElementById('vendorSubmitBtn');
+        const vendorStatus = document.getElementById('vendorStatus');
+
+        vendorForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            vendorSubmitBtn.disabled = true;
+            vendorSubmitBtn.innerText = 'Transmitting Intake Data...';
+
+            const formData = new FormData(vendorForm);
+
+            try {
+                const response = await fetch(vendorForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    vendorStatus.className = 'text-xs font-bold py-2 text-green-400 block';
+                    vendorStatus.innerText = '✓ Farm registration submitted successfully! Our supply team will review your specs and contact you within 24 hours.';
+                    vendorForm.reset();
+                } else {
+                    vendorStatus.className = 'text-xs font-bold py-2 text-red-400 block';
+                    vendorStatus.innerText = 'Submission error. Please email dispatch@christmastreejoe.com directly.';
+                }
+            } catch (err) {
+                vendorStatus.className = 'text-xs font-bold py-2 text-red-400 block';
+                vendorStatus.innerText = 'Network error. Please try again.';
+            } finally {
+                vendorSubmitBtn.disabled = false;
+                vendorSubmitBtn.innerText = 'Submit Plantation Registration →';
+            }
+        });
     </script>
 </body>
 </html>
