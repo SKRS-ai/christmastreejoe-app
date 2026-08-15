@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Generate Stripe Product PNG</title>
+</head>
+<body style="background:#111; color:#fff; font-family:sans-serif; text-align:center; padding:40px;">
+  <h2>Christmas Tree Joe — Product PNG Generator</h2>
+  <canvas id="productCanvas" width="1000" height="1000" style="max-width:500px; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.8);"></canvas>
+  <br><br>
+  <button id="downloadBtn" style="padding:12px 24px; background:#D4AF37; color:#031A12; font-weight:bold; font-size:16px; border:none; border-radius:8px; cursor:pointer;">
+    ⬇️ Download hearth-6-7ft-stripe.png
+  </button>
+
+  <script>
+    const canvas = document.getElementById('productCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // 1. Background Gradient
+    const bgGrad = ctx.createRadialGradient(500, 400, 50, 500, 400, 700);
+    bgGrad.addColorStop(0, '#0E2F24');
+    bgGrad.addColorStop(0.6, '#082018');
+    bgGrad.addColorStop(1, '#03120D');
+    ctx.fillStyle = bgGrad;
+    ctx.fillRect(0, 0, 1000, 1000);
+
+    // Outer Gold Borders
+    ctx.strokeStyle = '#D4AF37';
+    ctx.lineWidth = 3;
+    ctx.strokeRect(20, 20, 960, 960);
+    ctx.lineWidth = 1;
+    ctx.setLineDash([6, 6]);
+    ctx.strokeRect(30, 30, 940, 940);
+    ctx.setLineDash([]);
+
+    // 2. Ground Shadow
+    const shadowGrad = ctx.createRadialGradient(500, 850, 10, 500, 850, 300);
+    shadowGrad.addColorStop(0, 'rgba(0,0,0,0.6)');
+    shadowGrad.addColorStop(0.6, 'rgba(0,0,0,0.2)');
+    shadowGrad.addColorStop(1, 'transparent');
+    ctx.fillStyle = shadowGrad;
+    ctx.beginPath();
+    ctx.ellipse(500, 850, 300, 30, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    // 3. Tree Stand Base
+    ctx.fillStyle = '#8B1420';
+    ctx.beginPath();
+    ctx.ellipse(500, 815, 70, 20, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = '#D4AF37';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    // 4. Trunk
+    ctx.fillStyle = '#4A2E1B';
+    ctx.fillRect(486, 730, 28, 85);
+
+    // 5. Fraser Fir Tree Silhouette & Foliage Layers
+    function drawTier(color, yTop, yBottom, spread) {
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.moveTo(500, yTop);
+      ctx.lineTo(500 + spread, yBottom);
+      ctx.lineTo(500 - spread, yBottom);
+      ctx.closePath();
+      ctx.fill();
+    }
+    drawTier('#0A241C', 560, 750, 240); // Tier 5 (Base)
+    drawTier('#143D30', 440, 640, 200); // Tier 4
+    drawTier('#1A4A3B', 320, 520, 160); // Tier 3
+    drawTier('#235A49', 200, 400, 120); // Tier 2
+    drawTier('#347C65', 80, 280, 80);   // Tier 1 (Crown)
+
+    // Leader Tip
+    ctx.strokeStyle = '#68A892';
+    ctx.lineWidth = 4;
+    ctx.beginPath();
+    ctx.moveTo(500, 60);
+    ctx.lineTo(500, 120);
+    ctx.stroke();
+
+    // 6. Top-Right Spec Badge
+    ctx.fillStyle = '#08241B';
+    ctx.fillRect(680, 50, 260, 130);
+    ctx.strokeStyle = '#D4AF37';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(680, 50, 260, 130);
+
+    ctx.fillStyle = '#D4AF37';
+    ctx.font = 'bold 14px Georgia, serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('AUTHENTIC TIER', 810, 85);
+
+    ctx.fillStyle = '#FFFFFF';
+    ctx.font = 'bold 22px Georgia, serif';
+    ctx.fillText('6–7 FT HEARTH', 810, 120);
+
+    ctx.fillStyle = '#A3E635';
+    ctx.font = 'bold 12px sans-serif';
+    ctx.fillText('GRADE #1 FRASER FIR', 810, 150);
+
+    // 7. Bottom Brand Banner
+    ctx.fillStyle = '#08241B';
+    ctx.fillRect(60, 890, 880, 60);
+    ctx.strokeStyle = '#D4AF37';
+    ctx.strokeRect(60, 890, 880, 60);
+
+    ctx.fillStyle = '#F7FAFC';
+    ctx.font = '600 14px sans-serif';
+    ctx.fillText('APPALACHIAN HARVEST  •  DOORSTEP DELIVERY  •  100% ECO-RECYCLED', 500, 926);
+
+    // 8. Top-Left Official Logo Embed
+    const logoImg = new Image();
+    logoImg.crossOrigin = 'anonymous';
+    logoImg.src = 'christmas-tree-joe-logo.png'; // Reads local PNG
+
+    logoImg.onload = () => {
+      ctx.save();
+      // Drop Shadow
+      ctx.fillStyle = 'rgba(0,0,0,0.5)';
+      ctx.beginPath();
+      ctx.arc(135, 125, 84, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Clip Mask & Draw
+      ctx.beginPath();
+      ctx.arc(135, 125, 80, 0, Math.PI * 2);
+      ctx.clip();
+      ctx.drawImage(logoImg, 55, 45, 160, 160);
+      ctx.restore();
+
+      // Gold Frame Ring
+      ctx.strokeStyle = '#D4AF37';
+      ctx.lineWidth = 4;
+      ctx.beginPath();
+      ctx.arc(135, 125, 80, 0, Math.PI * 2);
+      ctx.stroke();
+    };
+
+    // Download Button Trigger
+    document.getElementById('downloadBtn').addEventListener('click', () => {
+      const link = document.createElement('a');
+      link.download = 'hearth-6-7ft-stripe.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    });
+  </script>
+</body>
+</html>
