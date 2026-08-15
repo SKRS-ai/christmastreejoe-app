@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Christmas Tree Joe — Master Product PNG Generator</title>
+  <style>
+    body {
+      background: #0B1914;
+      color: #E2E8F0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      text-align: center;
+      padding: 30px;
+    }
+    .controls {
+      background: #132E24;
+      display: inline-block;
+      padding: 20px 30px;
+      border-radius: 12px;
+      border: 1px solid #D4AF37;
+      margin-bottom: 25px;
+    }
+    select, button {
+      padding: 10px 16px;
+      font-size: 15px;
+      border-radius: 8px;
+      margin: 0 8px;
+    }
+    select {
+      background: #061811;
+      color: #FFF;
+      border: 1px solid #D4AF37;
+    }
+    button {
+      background: #D4AF37;
+      color: #031A12;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    button:hover { background: #FFE082; }
+    canvas {
+      max-width: 500px;
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+      border: 2px solid #D4AF37;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🌲 Master Product Image Generator</h1>
+  <p>Select a product to render and download a crisp 1000×1000 PNG for Stripe.</p>
+
+  <div class="controls">
+    <label for="productSelect"><strong>Select Product Listing:</strong></label>
+    <select id="productSelect">
+      <option value="hearth">Holiday Hearth (6–7 ft Fir)</option>
+      <option value="sprout">Evergreen Sprout (4–5 ft Fir)</option>
+      <option value="monarch">Yuletide Monarch (8–9 ft Fir)</option>
+      <option value="mulch">Organic Mulch (2 Cu Ft)</option>
+      <option value="oil">Pine Needle Essential Oil (30ml)</option>
+      <option value="pellets">Bio-Pellets Fuel (40 lb Bag)</option>
+      <option value="wreath">Handcrafted Wreath (24 in)</option>
+    </select>
+    <button id="downloadBtn">⬇️ Download PNG</button>
+  </div>
+
+  <div>
+    <canvas id="productCanvas" width="1000" height="1000"></canvas>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('productCanvas');
+    const ctx = canvas.getContext('2d');
+    const select = document.getElementById('productSelect');
+    const downloadBtn = document.getElementById('downloadBtn');
+
+    const logoImg = new Image();
+    logoImg.crossOrigin = 'anonymous';
+    logoImg.src = 'christmas-tree-joe-logo.png';
+
+    const products = {
+      hearth: {
+        type: 'tree',
+        topTag: 'AUTHENTIC TIER',
+        title: '6–7 FT HEARTH',
+        subTag: 'GRADE #1 FRASER FIR',
+        treeScale: 1.0,
+        filename: 'stripe-hearth-6-7ft.png'
+      },
+      sprout: {
+        type: 'tree',
+        topTag: 'COMPACT TIER',
+        title: '4–5 FT SPROUT',
+        subTag: 'GRADE #1 FRASER FIR',
+        treeScale: 0.82,
+        filename: 'stripe-sprout-4-5ft.png'
+      },
+      monarch: {
+        type: 'tree',
+        topTag: 'ESTATE TIER',
+        title: '8–9 FT MONARCH',
+        subTag: 'GRADE #1 FRASER FIR',
+        treeScale: 1.15,
+        filename: 'stripe-monarch-8-9ft.png'
+      },
+      mulch: {
+        type: 'item',
+        icon: '🌱',
+        topTag: 'ZERO-WASTE CIRCULAR',
+        title: 'ORGANIC MULCH',
+        subTag: '2 CU. FT. APPALACHIAN PINE',
+        filename: 'stripe-organic-mulch.png'
+      },
+      oil: {
+        type: 'item',
+        icon: '💧',
+        topTag: 'STEAM-DISTILLED',
+        title: 'ESSENTIAL OIL',
+        subTag: '30ML FRASER NEEDLE EXTRACT',
+        filename: 'stripe-essential-oil.png'
+      },
+      pellets: {
+        type: 'item',
+        icon: '🔥',
+        topTag: 'CLEAN BIOMASS',
+        title: 'BIO-PELLETS',
+        subTag: '40 LB HIGH-BTU FUEL BAG',
+        filename: 'stripe-biopellets-40lb.png'
+      },
+      wreath: {
+        type: 'item',
+        icon: '🎀',
+        topTag: 'HANDCRAFTED',
+        title: 'HOLIDAY WREATH',
+        subTag: '24-INCH FRESH CUT FRASER',
+        filename: 'stripe-holiday-wreath.png'
+      }
+    };
+
+    function renderCanvas() {
+      const item = products[select.value];
+
+      // 1. Background Luxury Gradient
+      const bgGrad = ctx.createRadialGradient(500, 400, 50, 500, 400, 700);
+      bgGrad.addColorStop(0, '#0E2F24');
+      bgGrad.addColorStop(0.6, '#082018');
+      bgGrad.addColorStop(1, '#03120D');
+      ctx.fillStyle = bgGrad;
+      ctx.fillRect(0, 0, 1000, 1000);
+
+      // Gold Borders
+      ctx.strokeStyle = '#D4AF37';
+      ctx.lineWidth = 3;
+      ctx.strokeRect(20, 20, 960, 960);
+      ctx.lineWidth = 1;
+      ctx.setLineDash([6, 6]);
+      ctx.strokeRect(30, 30, 940, 940);
+      ctx.setLineDash([]);
+
+      if (item.type === 'tree') {
+        // Ground Shadow
+        const shadowGrad = ctx.createRadialGradient(500, 850, 10, 500, 850, 300);
+        shadowGrad.addColorStop(0, 'rgba(0,0,0,0.6)');
+        shadowGrad.addColorStop(0.6, 'rgba(0,0,0,0.2)');
+        shadowGrad.addColorStop(1, 'transparent');
+        ctx.fillStyle = shadowGrad;
+        ctx.beginPath();
+        ctx.ellipse(500, 850, 300, 30, 0, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Stand Basin
+        ctx.fillStyle = '#8B1420';
+        ctx.beginPath();
+        ctx.ellipse(500, 815, 70, 20, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.strokeStyle = '#D4AF37';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        // Trunk
+        ctx.fillStyle = '#4A2E1B';
+        ctx.fillRect(486, 730, 28, 85);
+
+        // Scaled Tree Tiers
+        function drawTier(color, yTop, yBottom, spread) {
+          ctx.fillStyle = color;
+          ctx.beginPath();
+          ctx.moveTo(500, yTop);
+          ctx.lineTo(500 + spread * item.treeScale, yBottom);
+          ctx.lineTo(500 - spread * item.treeScale, yBottom);
+          ctx.closePath();
+          ctx.fill();
+        }
+        drawTier('#0A241C', 560, 750, 240);
+        drawTier('#143D30', 440, 640, 200);
+        drawTier('#1A4A3B', 320, 520, 160);
+        drawTier('#235A49', 200, 400, 120);
+        drawTier('#347C65', 80, 280, 80);
+
+        // Leader Tip
+        ctx.strokeStyle = '#68A892';
+        ctx.lineWidth = 4;
+        ctx.beginPath();
+        ctx.moveTo(500, 60);
+        ctx.lineTo(500, 120);
+        ctx.stroke();
+
+      } else {
+        // Eco-Marketplace Badge Display
+        ctx.fillStyle = 'rgba(14, 47, 36, 0.7)';
+        ctx.beginPath();
+        ctx.arc(500, 480, 220, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.strokeStyle = '#D4AF37';
+        ctx.lineWidth = 4;
+        ctx.stroke();
+
+        // Large Center Visual Icon
+        ctx.font = '140px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(item.icon, 500, 480);
+      }
+
+      // Top-Right Spec Badge
+      ctx.fillStyle = '#08241B';
+      ctx.fillRect(660, 50, 280, 130);
+      ctx.strokeStyle = '#D4AF37';
+      ctx.lineWidth = 2;
+      ctx.strokeRect(660, 50, 280, 130);
+
+      ctx.fillStyle = '#D4AF37';
+      ctx.font = 'bold 14px Georgia, serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'alphabetic';
+      ctx.fillText(item.topTag, 800, 85);
+
+      ctx.fillStyle = '#FFFFFF';
+      ctx.font = 'bold 22px Georgia, serif';
+      ctx.fillText(item.title, 800, 120);
+
+      ctx.fillStyle = '#A3E635';
+      ctx.font = 'bold 12px sans-serif';
+      ctx.fillText(item.subTag, 800, 150);
+
+      // Bottom Brand Footer
+      ctx.fillStyle = '#08241B';
+      ctx.fillRect(60, 890, 880, 60);
+      ctx.strokeStyle = '#D4AF37';
+      ctx.strokeRect(60, 890, 880, 60);
+
+      ctx.fillStyle = '#F7FAFC';
+      ctx.font = '600 14px sans-serif';
+      ctx.fillText('APPALACHIAN HARVEST  •  DOORSTEP DELIVERY  •  100% ECO-RECYCLED', 500, 926);
+
+      // Render Top-Left Joe Mascot Logo
+      if (logoImg.complete && logoImg.naturalWidth !== 0) {
+        ctx.save();
+        ctx.fillStyle = 'rgba(0,0,0,0.5)';
+        ctx.beginPath();
+        ctx.arc(135, 125, 84, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(135, 125, 80, 0, Math.PI * 2);
+        ctx.clip();
+        ctx.drawImage(logoImg, 55, 45, 160, 160);
+        ctx.restore();
+
+        ctx.strokeStyle = '#D4AF37';
+        ctx.lineWidth = 4;
+        ctx.beginPath();
+        ctx.arc(135, 125, 80, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+    }
+
+    logoImg.onload = renderCanvas;
+    select.addEventListener('change', renderCanvas);
+
+    downloadBtn.addEventListener('click', () => {
+      const item = products[select.value];
+      const link = document.createElement('a');
+      link.download = item.filename;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    });
+  </script>
+</body>
+</html>
