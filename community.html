@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Civic Impact & Community Staging | Thin Black and Brown Lines USA × Christmas Tree Joe</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        xmasRed: '#C41E3A',
+                        xmasGreen: '#0B3B24',
+                        xmasGold: '#D4AF37',
+                        xmasCream: '#FDFBF7',
+                        xmasDark: '#051810',
+                        xmasPanel: '#0A261B',
+                        tbblGold: '#E5A93C',
+                        stripeViolet: '#635BFF'
+                    },
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #051810; color: #FDFBF7; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF0B9 0%, #D4AF37 50%, #997A15 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col justify-between selection:bg-xmasGold selection:text-xmasDark">
+
+    <!-- TOP ANNOUNCEMENT BAR -->
+    <div class="bg-xmasGreen text-white text-[11px] sm:text-xs py-1.5 px-4 font-semibold tracking-wide border-b border-xmasGold/30">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1 text-center sm:text-left">
+            <div class="flex items-center gap-2">
+                <span class="bg-white/20 text-white text-[9px] uppercase px-2 py-0.5 rounded-full font-bold">501(c)(3) Civic Alliance</span>
+                <span>Thin Black and Brown Lines USA (tbblusa.org) × Christmas Tree Joe</span>
+            </div>
+            <div class="flex items-center space-x-4 text-[11px]">
+                <a href="mailto:community@tbblusa.org" class="hover:text-xmasGold transition">✉️ community@tbblusa.org</a>
+                <span>|</span>
+                <a href="events.html" class="hover:text-xmasGold transition">🌲 View Rittenhouse Square Events →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN HEADER -->
+    <header class="w-full bg-xmasDark/95 border-b border-xmasGold/30 sticky top-0 z-50 backdrop-blur-lg shadow-2xl">
+        <div class="max-w-7xl mx-auto px-4 py-2.5 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-3 group flex-shrink-0">
+                <img src="christmas-tree-joe-logo.png" onerror="this.src='public/Christmas-tree-joe1.png'" alt="Logo" class="h-14 w-14 rounded-full border-2 border-xmasGold object-cover shadow-lg group-hover:scale-105 transition">
+                <div>
+                    <span class="font-cinzel text-lg sm:text-2xl font-black tracking-wider text-white group-hover:text-xmasGold transition block">CHRISTMAS TREE JOE</span>
+                    <p class="text-[9px] text-xmasGold uppercase tracking-widest font-extrabold -mt-1">Civic & Community Mission</p>
+                </div>
+            </a>
+
+            <nav class="hidden xl:flex items-center space-x-6 text-[11px] font-bold uppercase tracking-wider">
+                <a href="index.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Home</a>
+                <a href="events.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Seasonal Events</a>
+                <a href="community.html" class="text-xmasGold border-b-2 border-xmasGold py-1">Community (TBBLUSA)</a>
+                <a href="trees.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Tree Selection</a>
+                <a href="marketplace.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Zero-Waste Goods</a>
+                <a href="climate.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">1% Stripe Climate</a>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <a href="checkout.html" class="px-4 py-2 rounded-full bg-xmasRed hover:bg-red-700 text-white font-extrabold text-xs uppercase tracking-wider border border-xmasGold/40 shadow-lg transition">
+                    Reserve Tree →
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative pt-12 pb-16 px-4 hero-glow border-b border-white/10">
+        <div class="max-w-5xl mx-auto text-center space-y-6">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-xmasPanel border border-tbblGold/40 text-tbblGold text-xs font-bold uppercase tracking-widest shadow-md">
+                <span>🤝 Civic Partnership & Community Development</span>
+            </div>
+            <h1 class="font-cinzel text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-tight">
+                Rooted in Community, <br><span class="gold-gradient-text">Grown with Purpose</span>
+            </h1>
+            <p class="text-xmasCream/80 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+                Partnering with <strong>Thin Black and Brown Lines USA (tbblusa.org)</strong> to bring seasonal warmth, neighborhood workforce training, youth creative arts, and circular urban greening to Philadelphia.
+            </p>
+        </div>
+    </section>
+
+    <!-- 4 COMMUNITY PILLARS -->
+    <main class="max-w-7xl mx-auto px-4 py-16 space-y-16">
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            <!-- Pillar 1 -->
+            <div class="bg-xmasPanel border border-xmasGold/30 p-6 rounded-3xl space-y-3 shadow-xl">
+                <div class="text-3xl">🎨</div>
+                <h3 class="font-cinzel text-lg font-bold text-white">Youth Holiday Arts</h3>
+                <p class="text-xs text-xmasCream/70 leading-relaxed">
+                    TBBLUSA coordinates holiday ornament workshops where Philadelphia youth design handcrafted timber decorations for Center City public park displays.
+                </p>
+            </div>
+
+            <!-- Pillar 2 -->
+            <div class="bg-xmasPanel border border-xmasGold/30 p-6 rounded-3xl space-y-3 shadow-xl">
+                <div class="text-3xl">☕</div>
+                <h3 class="font-cinzel text-lg font-bold text-white">Winter Warmth Hubs</h3>
+                <p class="text-xs text-xmasCream/70 leading-relaxed">
+                    Hosting seasonal community stations offering complimentary hot cider, winter resource packs, and neighborhood outreach in Center City parks.
+                </p>
+            </div>
+
+            <!-- Pillar 3 -->
+            <div class="bg-xmasPanel border border-xmasGold/30 p-6 rounded-3xl space-y-3 shadow-xl">
+                <div class="text-3xl">🚛</div>
+                <h3 class="font-cinzel text-lg font-bold text-white">Workforce Training</h3>
+                <p class="text-xs text-xmasCream/70 leading-relaxed">
+                    Creating paid seasonal employment pathways in green logistics, inventory staging, and white-glove living room installation for local workers.
+                </p>
+            </div>
+
+            <!-- Pillar 4 -->
+            <div class="bg-xmasPanel border border-xmasGold/30 p-6 rounded-3xl space-y-3 shadow-xl">
+                <div class="text-3xl">🌱</div>
+                <h3 class="font-cinzel text-lg font-bold text-white">Urban Garden Mulch</h3>
+                <p class="text-xs text-xmasCream/70 leading-relaxed">
+                    100% of trees picked up in January are converted into organic mulch donated to Philadelphia community gardens and urban agriculture hubs.
+                </p>
+            </div>
+
+        </div>
+
+        <!-- PUBLIC-PRIVATE OPERATIONAL ALLIANCE MATRIX -->
+        <div class="bg-xmasDark border-2 border-xmasGold/40 rounded-3xl p-8 space-y-8 shadow-2xl">
+            <div class="text-center max-w-3xl mx-auto space-y-2">
+                <span class="text-xs font-bold text-xmasGold uppercase tracking-widest">Transparent Operational Alliance</span>
+                <h2 class="font-cinzel text-2xl sm:text-3xl font-black text-white">How Our Public-Private Partnership Works</h2>
+                <p class="text-xs text-xmasCream/70">A seamless operational balance between corporate infrastructure and non-profit community engagement.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-xmasPanel p-6 rounded-2xl border border-white/10 space-y-4">
+                    <div class="flex items-center space-x-3 border-b border-white/10 pb-3">
+                        <span class="p-2 rounded-xl bg-xmasGreen text-white text-lg font-bold">🏛️</span>
+                        <div>
+                            <h3 class="font-bold text-white text-sm">Thin Black and Brown Lines USA</h3>
+                            <span class="text-[10px] text-tbblGold font-bold uppercase">501(c)(3) Civic & Community Partner</span>
+                        </div>
+                    </div>
+                    <ul class="text-xs space-y-2.5 text-xmasCream/80 list-disc list-inside">
+                        <li>Public park festive staging, tree decorations, and lighting aesthetics.</li>
+                        <li>Youth, family, and community greeting ambassadors at public displays.</li>
+                        <li>Distribution of civic educational materials and winter support kits.</li>
+                        <li>Direct beneficiary of community donations and park beautification funds.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-xmasPanel p-6 rounded-2xl border border-white/10 space-y-4">
+                    <div class="flex items-center space-x-3 border-b border-white/10 pb-3">
+                        <span class="p-2 rounded-xl bg-stripeViolet text-white text-lg font-bold">🏢</span>
+                        <div>
+                            <h3 class="font-bold text-white text-sm">Global Citizen Joe, LLC. / Xmas Made Inc.</h3>
+                            <span class="text-[10px] text-emerald-400 font-bold uppercase">Enterprise Operations & Fiscal Sponsor</span>
+                        </div>
+                    </div>
+                    <ul class="text-xs space-y-2.5 text-xmasCream/80 list-disc list-inside">
+                        <li>Holds commercial business licensing, permits, and $1M+ liability insurance.</li>
+                        <li>Direct mountain grower procurement and multi-depot timber logistics.</li>
+                        <li>White-glove residential doorstep dispatch and hydration setup.</li>
+                        <li>100% zero-waste January timber pickup, chipping, and circular processing.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- GRANT & CIVIC DONATION INTAKE -->
+        <div class="bg-xmasPanel border border-tbblGold/40 rounded-3xl p-8 text-center space-y-6 shadow-2xl">
+            <div class="max-w-2xl mx-auto space-y-3">
+                <span class="text-xs font-bold text-tbblGold uppercase tracking-widest">Institutional & Grant Inquiries</span>
+                <h2 class="font-cinzel text-2xl sm:text-3xl font-black text-white">Support Philadelphia Community Greening</h2>
+                <p class="text-xs text-xmasCream/70 leading-relaxed">
+                    We welcome collaboration with municipal agencies, charitable foundations, and community development corporations. Contact our civic liaison for grant verification, 501(c)(3) determination documentation, or neighborhood sponsorships.
+                </p>
+                <div class="pt-4 flex flex-col sm:flex-row justify-center gap-4 text-xs font-bold">
+                    <a href="mailto:community@tbblusa.org" class="px-6 py-3.5 bg-tbblGold text-xmasDark rounded-xl hover:bg-yellow-400 transition shadow">
+                        Contact TBBLUSA Civic Office
+                    </a>
+                    <a href="events.html" class="px-6 py-3.5 bg-xmasDark text-white border border-white/20 rounded-xl hover:bg-black transition shadow">
+                        Explore Rittenhouse Square Events
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-xmasDark border-t border-xmasGold/30 py-8 px-4 text-xmasCream">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between text-xs text-xmasCream/60 gap-4 text-center md:text-left">
+            <div>
+                <p class="font-cinzel font-bold text-white">Thin Black and Brown Lines USA (tbblusa.org) × Christmas Tree Joe</p>
+                <p class="text-[11px] text-xmasCream/40">Civic programming operated in co-sponsorship with Global Citizen Joe, LLC. (1880 JFK Blvd, Philadelphia, PA 19103).</p>
+            </div>
+            <div class="flex space-x-6 text-[11px]">
+                <a href="privacy.html" class="hover:text-xmasGold transition">Privacy</a>
+                <a href="terms.html" class="hover:text-xmasGold transition">Terms</a>
+                <a href="events.html" class="hover:text-xmasGold transition">Events</a>
+                <a href="checkout.html" class="hover:text-xmasGold transition">Store</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
