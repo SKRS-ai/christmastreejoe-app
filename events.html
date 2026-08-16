@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Seasonal Events & The Living Forest at Rittenhouse | Christmas Tree Joe</title>
+    <title>Seasonal Events & Pop-Up Staging | Christmas Tree Joe</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Stripe SDK -->
-    <script src="https://js.stripe.com/v3/"></script>
+    <!-- Hero & Component Stylesheet -->
+    <link rel="stylesheet" href="styles/hero.css">
     
     <script>
         tailwind.config = {
@@ -34,229 +34,373 @@
     </script>
     <style>
         body { background-color: #051810; color: #FDFBF7; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .gold-border { border: 1px solid #D4AF37; }
         .gold-gradient-text {
             background: linear-gradient(135deg, #FFF0B9 0%, #D4AF37 50%, #997A15 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+        .hero-glow {
+            background: radial-gradient(circle, rgba(212,175,55,0.12) 0%, rgba(5,24,16,0) 70%);
         }
     </style>
 </head>
 <body class="antialiased min-h-screen flex flex-col justify-between selection:bg-xmasGold selection:text-xmasDark">
 
-    <!-- TOP ANNOUNCEMENT -->
+    <!-- TOP ANNOUNCEMENT BAR -->
     <div class="bg-xmasRed text-white text-[11px] sm:text-xs py-1.5 px-4 font-semibold tracking-wide border-b border-xmasGold/30">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1 text-center sm:text-left">
             <div class="flex items-center gap-2">
-                <span class="bg-white/20 text-white text-[9px] uppercase px-2 py-0.5 rounded-full font-bold">Center City Philadelphia</span>
-                <span>🎄 "The Living Evergreen Forest" Interactive Staging at Rittenhouse Square</span>
+                <span class="bg-white/20 text-white text-[9px] uppercase px-2 py-0.5 rounded-full font-bold">2026 Holiday Schedule</span>
+                <span>🎄 Rittenhouse Square Popups, Center City Tree Lot Staging & Corporate Installations</span>
             </div>
             <div class="flex items-center space-x-4 text-[11px]">
-                <a href="checkout.html" class="hover:text-xmasGold transition">⚡ 1-Click Mobile Checkout</a>
-                <span>|</span>
-                <a href="community.html" class="hover:text-xmasGold transition">🤝 501(c)(3) Civic Mission</a>
+                <a href="tel:18005559627" class="hover:text-xmasGold transition hidden md:inline">📞 1-800-XMAS-JOE</a>
+                <span class="hidden md:inline">|</span>
+                <a href="mailto:events@christmastreejoe.com" class="hover:text-xmasGold transition">✉️ events@christmastreejoe.com</a>
             </div>
         </div>
     </div>
 
-    <!-- MAIN HEADER -->
+    <!-- MAIN RESPONSIVE HEADER & NAVIGATION -->
     <header class="w-full bg-xmasDark/95 border-b border-xmasGold/30 sticky top-0 z-50 backdrop-blur-lg shadow-2xl">
         <div class="max-w-7xl mx-auto px-4 py-2.5 flex items-center justify-between">
             <a href="index.html" class="flex items-center space-x-3 group flex-shrink-0">
-                <img src="christmas-tree-joe-logo.png" onerror="this.src='public/Christmas-tree-joe1.png'" alt="Logo" class="h-14 w-14 rounded-full border-2 border-xmasGold object-cover shadow-lg group-hover:scale-105 transition">
+                <img src="christmas-tree-joe-logo.png" onerror="this.src='public/Christmas-tree-joe1.png'" alt="Christmas Tree Joe Logo" class="h-14 w-14 sm:h-16 sm:w-16 rounded-full border-2 border-xmasGold object-cover shadow-lg group-hover:scale-105 transition">
                 <div>
                     <span class="font-cinzel text-lg sm:text-2xl font-black tracking-wider text-white group-hover:text-xmasGold transition block">CHRISTMAS TREE JOE</span>
-                    <p class="text-[9px] text-xmasGold uppercase tracking-widest font-extrabold -mt-1">Seasonal Events & Public Staging</p>
+                    <p class="text-[9px] sm:text-[10px] text-xmasGold uppercase tracking-widest font-extrabold -mt-1">Seasonal Events & Popups</p>
                 </div>
             </a>
 
             <nav class="hidden xl:flex items-center space-x-6 text-[11px] font-bold uppercase tracking-wider">
                 <a href="index.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Home</a>
+                <a href="trees.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Tree Selection</a>
+                <a href="tree-types.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Tree Varieties</a>
                 <a href="events.html" class="text-xmasGold border-b-2 border-xmasGold py-1">Seasonal Events</a>
                 <a href="community.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Community (TBBLUSA)</a>
-                <a href="trees.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Tree Selection</a>
-                <a href="marketplace.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Zero-Waste Goods</a>
-                <a href="climate.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">1% Stripe Climate</a>
+                <a href="marketplace.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Recycled Goods</a>
+                <a href="account.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Member Portal</a>
             </nav>
 
             <div class="flex items-center space-x-3">
-                <a href="checkout.html" class="px-4 py-2 rounded-full bg-xmasRed hover:bg-red-700 text-white font-extrabold text-xs uppercase tracking-wider border border-xmasGold/40 shadow-lg transition">
-                    Reserve Tree →
+                <a href="#book-staging" class="bg-xmasRed hover:bg-red-700 text-white font-bold px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm border border-xmasGold/50 transition shadow-xl transform hover:scale-105 flex-shrink-0">
+                    Book Event Staging
                 </a>
+
+                <button onclick="toggleMobileNav()" aria-label="Toggle Menu" class="xl:hidden p-2 rounded-xl bg-xmasPanel border border-xmasGold/40 text-xmasGold hover:text-white transition focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
             </div>
+        </div>
+
+        <div id="mobileMenu" class="hidden xl:hidden bg-xmasDark/98 border-b-2 border-xmasGold/40 px-6 py-6 space-y-4 shadow-2xl">
+            <nav class="flex flex-col space-y-3 text-xs font-bold uppercase tracking-wider">
+                <a href="index.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>🏡 Home</span> <span>→</span>
+                </a>
+                <a href="trees.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>🎁 Tree Selection</span> <span>→</span>
+                </a>
+                <a href="tree-types.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>📐 Tree Varieties</span> <span>→</span>
+                </a>
+                <a href="events.html" class="text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>🌲 Seasonal Events & Staging</span> <span>→</span>
+                </a>
+                <a href="community.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>🤝 Civic Alliance (TBBLUSA)</span> <span>→</span>
+                </a>
+                <a href="marketplace.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>♻️ Recycled Goods Store</span> <span>→</span>
+                </a>
+                <a href="account.html" class="text-xmasCream hover:text-xmasGold py-2 flex items-center justify-between">
+                    <span>👤 Member Portal</span> <span>→</span>
+                </a>
+            </nav>
         </div>
     </header>
 
     <!-- HERO SECTION -->
-    <section class="relative pt-12 pb-16 px-4 hero-glow border-b border-white/10">
-        <div class="max-w-5xl mx-auto text-center space-y-6">
+    <section class="relative pt-12 pb-16 px-4 hero-glow border-b border-white/10 text-center overflow-hidden">
+        <div class="max-w-4xl mx-auto space-y-5">
             <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-xmasPanel border border-xmasGold/40 text-xmasGold text-xs font-bold uppercase tracking-widest shadow-md">
                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span>November 25 – December 24, 2026 • Rittenhouse Square, Philadelphia</span>
+                <span>Philadelphia & Appalachian Regional Activations</span>
             </div>
+            
             <h1 class="font-cinzel text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-tight">
-                The Living <span class="gold-gradient-text">Evergreen Forest</span>
+                Seasonal Events & <br><span class="gold-gradient-text">Holiday Staging Hub</span>
             </h1>
-            <p class="text-xmasCream/80 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-                Step into an immersive Appalachian evergreen canopy in the heart of Center City. Experience specimen Fraser, Noble, and Douglas Firs, scan live QR tags, and lock in white-glove doorstep delivery directly to your home.
+            
+            <p class="text-xs sm:text-base text-xmasCream/80 max-w-2xl mx-auto leading-relaxed">
+                Join Christmas Tree Joe at our live neighborhood popups across Philadelphia, or reserve our commercial white-glove staging team for bespoke corporate lobby installations, hotel foyers, and civic galas.
             </p>
-            <div class="flex flex-wrap justify-center gap-4 pt-2 text-xs font-bold">
-                <a href="#schedule" class="px-6 py-3 bg-xmasGold text-xmasDark rounded-xl hover:bg-yellow-400 transition shadow-lg">
-                    📅 View Event Schedule
+
+            <div class="pt-2 flex flex-wrap justify-center gap-4 text-xs font-bold">
+                <a href="#schedule" class="px-6 py-3.5 bg-xmasRed hover:bg-red-700 text-white uppercase tracking-wider rounded-xl border border-xmasGold/40 shadow-xl transition transform hover:scale-105">
+                    View Event Calendar ↓
                 </a>
-                <a href="#showcase" class="px-6 py-3 bg-xmasPanel border border-xmasGold/40 text-white rounded-xl hover:bg-xmasGreen transition shadow-lg">
-                    🌲 Explore Display Trees
+                <a href="#book-staging" class="px-6 py-3.5 bg-xmasPanel border border-xmasGold/50 hover:border-xmasGold text-xmasGold uppercase tracking-wider rounded-xl shadow-xl transition">
+                    Custom Staging Consultation →
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- MAIN EVENT HIGHLIGHTS -->
-    <main class="max-w-7xl mx-auto px-4 py-16 space-y-16">
+    <!-- EVENT SCHEDULE & POPUPS -->
+    <main class="max-w-7xl mx-auto px-4 py-12 space-y-16">
         
-        <!-- 3 CORE EVENT EXPERIENCES -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            
-            <div class="bg-xmasPanel border border-xmasGold/30 rounded-3xl p-6 space-y-4 shadow-xl">
-                <div class="w-12 h-12 rounded-2xl bg-xmasDark flex items-center justify-center text-2xl border border-xmasGold/30">
-                    📱
-                </div>
-                <h3 class="font-cinzel text-lg font-bold text-white">QR Instant Reservation</h3>
-                <p class="text-xs text-xmasCream/70 leading-relaxed">
-                    Touch and smell fully staged mountain evergreens. Scan the weather-resistant QR code on any tree stand to order in under 60 seconds with 1-click Apple Pay, Google Pay, or card checkout.
-                </p>
-            </div>
-
-            <div class="bg-xmasPanel border border-xmasGold/30 rounded-3xl p-6 space-y-4 shadow-xl">
-                <div class="w-12 h-12 rounded-2xl bg-xmasDark flex items-center justify-center text-2xl border border-xmasGold/30">
-                    🚚
-                </div>
-                <h3 class="font-cinzel text-lg font-bold text-white">Skip the Roof Straps</h3>
-                <p class="text-xs text-xmasCream/70 leading-relaxed">
-                    Designed specifically for Center City brownstones, condos, and high-rises. Our regional delivery team brings your tree straight to your living room, sets it in a hydration stand, and returns in January for clean removal.
-                </p>
-            </div>
-
-            <div class="bg-xmasPanel border border-xmasGold/30 rounded-3xl p-6 space-y-4 shadow-xl">
-                <div class="w-12 h-12 rounded-2xl bg-xmasDark flex items-center justify-center text-2xl border border-xmasGold/30">
-                    🏢
-                </div>
-                <h3 class="font-cinzel text-lg font-bold text-white">Corporate & Lobby Staging</h3>
-                <p class="text-xs text-xmasCream/70 leading-relaxed">
-                    Specialized 10–12 ft Grand Estate firs tailored for Center City boutique hotels, restaurant foyers, and commercial office lobbies with scheduled multi-year enterprise maintenance.
-                </p>
-            </div>
-
-        </div>
-
-        <!-- DISPLAY TREE MATRIX (ON-SITE SELECTIONS) -->
-        <div id="showcase" class="space-y-8">
+        <section id="schedule" class="space-y-8">
             <div class="text-center space-y-2">
-                <span class="text-xs font-bold text-xmasGold uppercase tracking-widest">On-Site Interactive Display</span>
-                <h2 class="font-cinzel text-2xl sm:text-4xl font-black text-white">Specimen Tiers on Display at Rittenhouse</h2>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-xs">
-                
-                <!-- Tier 2 -->
-                <div class="bg-xmasDark border border-white/10 rounded-2xl p-5 space-y-3 flex flex-col justify-between hover:border-xmasGold transition">
-                    <div class="space-y-2">
-                        <span class="text-[10px] text-xmasGold uppercase font-bold tracking-wider">Tier 2 • Apartment Fit</span>
-                        <h4 class="font-cinzel text-base font-bold text-white">Evergreen Sprout</h4>
-                        <p class="text-xmasCream/70">4–5 ft • Perfect for compact apartments, lofts, and secondary rooms.</p>
-                        <strong class="block text-emerald-400 font-bold text-sm">$127.49/yr (3-Yr Lock)</strong>
-                    </div>
-                    <a href="checkout.html" class="block text-center py-2.5 bg-xmasPanel hover:bg-xmasGreen text-xmasGold hover:text-white font-bold rounded-xl border border-xmasGold/30 transition">
-                        Order Sprout →
-                    </a>
-                </div>
-
-                <!-- Tier 1 -->
-                <div class="bg-xmasPanel border-2 border-xmasGold/60 rounded-2xl p-5 space-y-3 flex flex-col justify-between shadow-xl">
-                    <div class="space-y-2">
-                        <span class="text-[10px] text-xmasGold uppercase font-bold tracking-wider">Tier 1 • Flagship Centerpiece</span>
-                        <h4 class="font-cinzel text-base font-bold text-white">Holiday Hearth</h4>
-                        <p class="text-xmasCream/70">6–7 ft • Signature Appalachian Fraser Fir for standard 8–9 ft ceilings.</p>
-                        <strong class="block text-xmasGold font-bold text-sm">$178.49/yr (3-Yr Lock)</strong>
-                    </div>
-                    <a href="checkout.html" class="block text-center py-2.5 bg-xmasRed hover:bg-red-700 text-white font-bold rounded-xl border border-xmasGold/50 transition">
-                        Order Flagship →
-                    </a>
-                </div>
-
-                <!-- Tier 3 -->
-                <div class="bg-xmasDark border border-white/10 rounded-2xl p-5 space-y-3 flex flex-col justify-between hover:border-xmasGold transition">
-                    <div class="space-y-2">
-                        <span class="text-[10px] text-xmasGold uppercase font-bold tracking-wider">Tier 3 • High Ceilings</span>
-                        <h4 class="font-cinzel text-base font-bold text-white">Yuletide Monarch</h4>
-                        <p class="text-xmasCream/70">8–9 ft • Built for high-ceiling historic Center City brownstones.</p>
-                        <strong class="block text-emerald-400 font-bold text-sm">$254.99/yr (3-Yr Lock)</strong>
-                    </div>
-                    <a href="checkout.html" class="block text-center py-2.5 bg-xmasPanel hover:bg-xmasGreen text-xmasGold hover:text-white font-bold rounded-xl border border-xmasGold/30 transition">
-                        Order Monarch →
-                    </a>
-                </div>
-
-                <!-- Tier 4 -->
-                <div class="bg-xmasDark border border-white/10 rounded-2xl p-5 space-y-3 flex flex-col justify-between hover:border-xmasGold transition">
-                    <div class="space-y-2">
-                        <span class="text-[10px] text-xmasGold uppercase font-bold tracking-wider">Tier 4 • Grand Foyer</span>
-                        <h4 class="font-cinzel text-base font-bold text-white">Grand Estate</h4>
-                        <p class="text-xmasCream/70">10–12 ft • Cathedral-scale fir for grand foyers and corporate lobbies.</p>
-                        <strong class="block text-emerald-400 font-bold text-sm">$382.49/yr (3-Yr Lock)</strong>
-                    </div>
-                    <a href="checkout.html" class="block text-center py-2.5 bg-xmasPanel hover:bg-xmasGreen text-xmasGold hover:text-white font-bold rounded-xl border border-xmasGold/30 transition">
-                        Order Estate →
-                    </a>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- EVENT CALENDAR SCHEDULE -->
-        <div id="schedule" class="bg-xmasPanel border border-white/10 rounded-3xl p-8 space-y-6 shadow-2xl">
-            <div class="border-b border-white/10 pb-4">
-                <span class="text-xs font-bold text-xmasGold uppercase tracking-widest">2026 Holiday Schedule</span>
-                <h3 class="font-cinzel text-2xl font-bold text-white">Key Activation Dates & Community Hours</h3>
+                <span class="text-xs font-bold text-xmasGold uppercase tracking-widest">2026 Community Pop-Ups</span>
+                <h2 class="font-cinzel text-2xl sm:text-4xl font-black text-white">Live Holiday Locations & Staging Lots</h2>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
-                <div class="p-4 bg-xmasDark rounded-xl border border-white/5 space-y-2">
-                    <span class="text-xmasGold font-bold block">Nov 25 – Nov 29, 2026</span>
-                    <strong class="text-white text-sm block">Thanksgiving Staging & Launch</strong>
-                    <p class="text-xmasCream/70">Grand illumination of the Living Evergreen Forest at Rittenhouse Square. Early bird reservation wave.</p>
+                
+                <!-- Event Card 1 -->
+                <div class="bg-xmasPanel border-2 border-xmasGold/50 rounded-3xl p-6 space-y-4 shadow-xl flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="bg-xmasGreen text-xmasGold text-[10px] uppercase font-bold px-3 py-1 rounded-full border border-xmasGold/30">Nov 20 – Dec 24</span>
+                            <span class="text-emerald-400 font-bold">Daily: 9am – 8pm</span>
+                        </div>
+                        <h3 class="font-cinzel text-xl font-bold text-white">Rittenhouse Square Tree Staging Lot</h3>
+                        <p class="text-xmasCream/75 leading-relaxed">
+                            Experience freshly cut Fraser Firs direct from Ashe County, NC. Free botanical fragrance samples, fresh wreath workshops, and on-site subscription bookings.
+                        </p>
+                        <div class="p-3 bg-xmasDark rounded-xl border border-white/10 text-[11px] space-y-1">
+                            <p><strong>Location:</strong> 18th & Walnut St, Philadelphia, PA</p>
+                            <p><strong>Features:</strong> 3D Tree Customizer Demos, Hot Spiced Cider</p>
+                        </div>
+                    </div>
+                    <a href="trees.html" class="w-full py-3 bg-xmasDark border border-xmasGold/50 hover:bg-xmasGold hover:text-xmasDark text-xmasGold text-center font-bold uppercase rounded-xl transition block">
+                        Pre-Order For Pickup →
+                    </a>
                 </div>
 
-                <div class="p-4 bg-xmasDark rounded-xl border border-white/5 space-y-2">
-                    <span class="text-xmasGold font-bold block">Dec 5 – Dec 13, 2026</span>
-                    <strong class="text-white text-sm block">TBBLUSA Community Arts Weekend</strong>
-                    <p class="text-xmasCream/70">Handcrafted ornament workshops and complimentary warm cider welcoming stations hosted by TBBLUSA.</p>
+                <!-- Event Card 2 -->
+                <div class="bg-xmasPanel border border-white/10 hover:border-xmasGold rounded-3xl p-6 space-y-4 shadow-xl flex flex-col justify-between transition">
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="bg-xmasGreen text-xmasGold text-[10px] uppercase font-bold px-3 py-1 rounded-full border border-xmasGold/30">Dec 4 – Dec 6</span>
+                            <span class="text-emerald-400 font-bold">Fri–Sun: 10am – 7pm</span>
+                        </div>
+                        <h3 class="font-cinzel text-xl font-bold text-white">Center City Holiday Night Market</h3>
+                        <p class="text-xmasCream/75 leading-relaxed">
+                            A festive 3-day activation showcasing hand-crafted balsam pine essential oils, organic evergreen mulches, and timber artisan woodwork from our zero-waste upcycling line.
+                        </p>
+                        <div class="p-3 bg-xmasDark rounded-xl border border-white/10 text-[11px] space-y-1">
+                            <p><strong>Location:</strong> JFK Blvd & 19th St Plaza, Philadelphia, PA</p>
+                            <p><strong>Features:</strong> Eco-Recycling Signups, Live Music</p>
+                        </div>
+                    </div>
+                    <a href="marketplace.html" class="w-full py-3 bg-xmasDark border border-white/20 hover:border-xmasGold text-white text-center font-bold uppercase rounded-xl transition block">
+                        Explore Recycled Goods →
+                    </a>
                 </div>
 
-                <div class="p-4 bg-xmasDark rounded-xl border border-white/5 space-y-2">
-                    <span class="text-xmasGold font-bold block">Jan 3 – Jan 15, 2027</span>
-                    <strong class="text-white text-sm block">"Timber to Trail" Mulching Days</strong>
-                    <p class="text-xmasCream/70">Post-holiday curbside tree collection across 19103, 19106, 19107, and 19146 for 100% circular garden upcycling.</p>
+                <!-- Event Card 3 -->
+                <div class="bg-xmasPanel border border-white/10 hover:border-xmasGold rounded-3xl p-6 space-y-4 shadow-xl flex flex-col justify-between transition">
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="bg-xmasGreen text-xmasGold text-[10px] uppercase font-bold px-3 py-1 rounded-full border border-xmasGold/30">Jan 2 – Jan 15</span>
+                            <span class="text-emerald-400 font-bold">Curbside & Depot</span>
+                        </div>
+                        <h3 class="font-cinzel text-xl font-bold text-white">January Zero-Waste Eco-Chipping Drive</h3>
+                        <p class="text-xmasCream/75 leading-relaxed">
+                            Watch our fleet process returned holiday trees into 100% organic mulch and soil enrichers donated directly to Philadelphia urban farms and school gardens in alliance with TBBLUSA.
+                        </p>
+                        <div class="p-3 bg-xmasDark rounded-xl border border-white/10 text-[11px] space-y-1">
+                            <p><strong>Location:</strong> Center City Depot Staging Facility</p>
+                            <p><strong>Features:</strong> Free Mulch Bags for Neighbors</p>
+                        </div>
+                    </div>
+                    <a href="community.html" class="w-full py-3 bg-xmasDark border border-white/20 hover:border-xmasGold text-white text-center font-bold uppercase rounded-xl transition block">
+                        View Civic Alliance →
+                    </a>
                 </div>
+
             </div>
-        </div>
+        </section>
+
+        <!-- BESPOKE COMMERCIAL & RESIDENTIAL EVENT STAGING INTAKE -->
+        <section id="book-staging" class="bg-xmasPanel border-2 border-xmasGold/40 rounded-3xl p-6 sm:p-10 space-y-8 shadow-2xl">
+            <div class="max-w-3xl space-y-2">
+                <span class="text-xs font-bold text-xmasGold uppercase tracking-widest">White-Glove Design & Installation</span>
+                <h3 class="font-cinzel text-3xl font-black text-white">Book Bespoke Corporate or Estate Staging</h3>
+                <p class="text-xs sm:text-sm text-xmasCream/80">
+                    Need specimen trees ranging from 10ft to 16ft for corporate headquarters, hotel atriums, historic estates, or holiday galas? Our specialized crew handles delivery, rigging, fire-retardant hydration, lighting, and post-event zero-waste extraction.
+                </p>
+            </div>
+
+            <form id="stagingForm" action="https://formspree.io/f/xrpzlnok" method="POST" class="space-y-6 text-xs">
+                <!-- Formspree Routing Headers -->
+                <input type="hidden" name="_to" value="events@christmastreejoe.com">
+                <input type="hidden" name="_subject" value="🌲 New Event & Corporate Staging Inquiry — Christmas Tree Joe">
+                <input type="text" name="_gotcha" style="display:none">
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div>
+                        <label class="block font-bold text-xmasGold uppercase mb-1">Company / Client Name</label>
+                        <input type="text" name="client_name" required placeholder="e.g. Bellevue Hotel / Rittenhouse Estate" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
+                    </div>
+                    <div>
+                        <label class="block font-bold text-xmasGold uppercase mb-1">Contact Email</label>
+                        <input type="email" name="contact_email" required placeholder="events@client.com" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
+                    </div>
+                    <div>
+                        <label class="block font-bold text-xmasGold uppercase mb-1">Phone Number</label>
+                        <input type="tel" name="contact_phone" required placeholder="(215) 555-0198" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div>
+                        <label class="block font-bold text-xmasGold uppercase mb-1">Staging Venue Type</label>
+                        <select name="venue_type" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-white focus:outline-none focus:border-xmasGold">
+                            <option value="Corporate Lobby / HQ">Corporate Lobby / Headquarters</option>
+                            <option value="Luxury Hotel / Hospitality">Luxury Hotel / Hospitality Atrium</option>
+                            <option value="Historic Estate / Private Residence">Historic Estate / Private Residence</option>
+                            <option value="Civic Plaza / Public Gala">Civic Plaza / Public Gala</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block font-bold text-xmasGold uppercase mb-1">Target Tree Height Requirement</label>
+                        <select name="tree_height" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-white focus:outline-none focus:border-xmasGold">
+                            <option value="8-9 ft Yuletide Monarch">8–9 ft Yuletide Monarch</option>
+                            <option value="10-12 ft Grand Specimen">10–12 ft Grand Specimen</option>
+                            <option value="14-16 ft Imperial Cathedral">14–16 ft Imperial Cathedral</option>
+                            <option value="Multi-Tree Installation (3+ Trees)">Multi-Tree Installation (3+ Trees)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block font-bold text-xmasGold uppercase mb-1">Target Installation Date</label>
+                        <input type="date" name="installation_date" required class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-white focus:outline-none focus:border-xmasGold">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block font-bold text-xmasGold uppercase mb-1">Design Vision & Rigging Details</label>
+                    <textarea name="event_details" rows="3" placeholder="Describe ceiling heights, electrical outlet proximity, ornament decorating themes, and removal preferences..." class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-white placeholder-white/40 focus:outline-none focus:border-xmasGold"></textarea>
+                </div>
+
+                <button id="stagingSubmitBtn" type="submit" class="w-full sm:w-auto px-8 py-3.5 bg-xmasRed hover:bg-red-700 text-white font-extrabold text-xs uppercase tracking-wider rounded-xl border border-xmasGold/50 shadow-xl transition transform hover:scale-105">
+                    Submit Staging Consultation Request
+                </button>
+                <div id="stagingStatus" class="hidden text-xs font-bold py-2"></div>
+            </form>
+        </section>
 
     </main>
 
-    <!-- FOOTER -->
-    <footer class="bg-xmasDark border-t border-xmasGold/30 py-8 px-4 text-xmasCream">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between text-xs text-xmasCream/60 gap-4 text-center md:text-left">
-            <div>
-                <p class="font-cinzel font-bold text-white">Christmas Tree Joe (A Global Citizen Joe, LLC. Enterprise)</p>
-                <p class="text-[11px] text-xmasCream/40">Commercial staging and logistics operated in civic partnership with Thin Black and Brown Lines USA.</p>
+    <!-- FULL EXTENDED ENTERPRISE FOOTER -->
+    <footer class="bg-xmasDark border-t border-xmasGold/30 pt-16 pb-8 px-4 text-xmasCream">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
+            <div class="space-y-4 lg:col-span-1">
+                <div class="flex items-center space-x-3">
+                    <img src="christmas-tree-joe-logo.png" onerror="this.src='public/Christmas-tree-joe3.png'" alt="Joe Mascot" class="h-14 w-14 rounded-full border-2 border-xmasGold object-cover shadow-lg">
+                    <div>
+                        <h4 class="font-cinzel text-base font-bold text-white">Christmas Tree Joe</h4>
+                        <p class="text-[9px] text-xmasGold uppercase tracking-widest font-bold">Xmas Made Inc.</p>
+                    </div>
+                </div>
+                <p class="text-xs text-xmasCream/70 leading-relaxed">Connecting households with fresh North Carolina timber farms through white-glove tree subscriptions and 100% zero-waste eco-recycling.</p>
             </div>
-            <div class="flex space-x-6 text-[11px]">
-                <a href="privacy.html" class="hover:text-xmasGold transition">Privacy</a>
-                <a href="terms.html" class="hover:text-xmasGold transition">Terms</a>
-                <a href="community.html" class="hover:text-xmasGold transition">Community Mission</a>
-                <a href="checkout.html" class="hover:text-xmasGold transition">Express Checkout</a>
+
+            <div class="space-y-3">
+                <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Subscription Tiers</h4>
+                <ul class="text-xs space-y-2 text-xmasCream/80">
+                    <li><a href="trees.html" class="hover:text-xmasGold transition">Evergreen Sprout (4–5 ft)</a></li>
+                    <li><a href="trees.html" class="hover:text-xmasGold transition">Holiday Hearth (6–7 ft)</a></li>
+                    <li><a href="trees.html" class="hover:text-xmasGold transition">Yuletide Monarch (8–9 ft)</a></li>
+                </ul>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Logistics & Operations</h4>
+                <ul class="text-xs space-y-2 text-xmasCream/80">
+                    <li><a href="driver-hub.html" class="hover:text-xmasGold transition">Driver Staging Hub</a></li>
+                    <li><a href="vendor-hub.html" class="hover:text-xmasGold transition">Grower & Vendor Intake</a></li>
+                    <li><a href="events.html" class="hover:text-xmasGold transition font-bold text-xmasGold">Seasonal Events (Rittenhouse)</a></li>
+                    <li><a href="account.html" class="hover:text-xmasGold transition">Subscriber Portal</a></li>
+                </ul>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Direct Support</h4>
+                <ul class="text-xs space-y-2 text-xmasCream/80">
+                    <li><a href="community.html" class="hover:text-xmasGold transition">Civic Mission (TBBLUSA)</a></li>
+                    <li><a href="mailto:events@christmastreejoe.com" class="hover:text-xmasGold transition underline">events@christmastreejoe.com</a></li>
+                    <li><a href="climate.html" class="hover:text-xmasGold transition text-stripeViolet font-bold">1% Stripe Climate Portal</a></li>
+                </ul>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Corporate Family</h4>
+                <p class="text-xs text-xmasCream/70">Operated by <strong>Global Citizen Joe, LLC.</strong> in partnership with <strong>Xmas Made Inc.</strong></p>
+                <p class="text-[11px] text-xmasCream/50 mt-1">1880 John F Kennedy Boulevard, Ste 104, Philadelphia, PA 19103 US</p>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-xmasCream/50 gap-4">
+            <p>&copy; 2026 Global Citizen Joe, LLC. All Rights Reserved.</p>
+            <div class="flex items-center space-x-6 text-[11px]">
+                <a href="privacy.html" class="hover:text-xmasGold transition">Privacy Policy</a>
+                <a href="terms.html" class="hover:text-xmasGold transition">Terms of Service</a>
+                <a href="events.html" class="hover:text-xmasGold transition">Events</a>
+                <a href="community.html" class="hover:text-xmasGold transition">Community</a>
             </div>
         </div>
     </footer>
 
+    <!-- MOBILE MENU & ASYNC FORMSPREE SUBMISSION -->
+    <script>
+        function toggleMobileNav() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        const stagingForm = document.getElementById('stagingForm');
+        const stagingSubmitBtn = document.getElementById('stagingSubmitBtn');
+        const stagingStatus = document.getElementById('stagingStatus');
+
+        if (stagingForm) {
+            stagingForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                stagingSubmitBtn.disabled = true;
+                stagingSubmitBtn.innerText = 'Transmitting Staging Request...';
+
+                const formData = new FormData(stagingForm);
+
+                try {
+                    const response = await fetch(stagingForm.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: { 'Accept': 'application/json' }
+                    });
+
+                    if (response.ok) {
+                        stagingStatus.className = 'text-xs font-bold py-2 text-emerald-400 block';
+                        stagingStatus.innerText = '✓ Staging request received! A senior design coordinator will reach out within 24 hours to finalize dimensions and schedule.';
+                        stagingForm.reset();
+                    } else {
+                        stagingStatus.className = 'text-xs font-bold py-2 text-red-400 block';
+                        stagingStatus.innerText = 'Submission error. Please email events@christmastreejoe.com directly.';
+                    }
+                } catch (err) {
+                    stagingStatus.className = 'text-xs font-bold py-2 text-red-400 block';
+                    stagingStatus.innerText = 'Network error. Please check your connection and try again.';
+                } finally {
+                    stagingSubmitBtn.disabled = false;
+                    stagingSubmitBtn.innerText = 'Submit Staging Consultation Request';
+                }
+            });
+        }
+    </script>
 </body>
 </html>
