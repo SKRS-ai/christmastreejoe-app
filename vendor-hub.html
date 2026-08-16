@@ -21,7 +21,8 @@
                         xmasGold: '#D4AF37',
                         xmasCream: '#FDFBF7',
                         xmasDark: '#051810',
-                        xmasPanel: '#0A261B'
+                        xmasPanel: '#0A261B',
+                        stripeViolet: '#635BFF'
                     },
                     fontFamily: {
                         cinzel: ['Cinzel', 'serif'],
@@ -76,10 +77,11 @@
                 <a href="index.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Home</a>
                 <a href="vendor-hub.html" class="text-xmasGold border-b-2 border-xmasGold py-1">Grower Hub</a>
                 <a href="driver-hub.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Driver Hub</a>
+                <a href="events.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Seasonal Events</a>
+                <a href="community.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Community (TBBLUSA)</a>
                 <a href="trees.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Tree Tiers</a>
                 <a href="marketplace.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Recycled Goods</a>
-                <a href="impact.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Impact</a>
-                <a href="contact.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Support & Dispatch</a>
+                <a href="account.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Member Portal</a>
             </nav>
 
             <div class="flex items-center space-x-3">
@@ -106,17 +108,20 @@
                 <a href="driver-hub.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
                     <span>🚛 Logistics Driver Hub</span> <span>→</span>
                 </a>
+                <a href="events.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>🌲 Seasonal Events & Staging</span> <span>→</span>
+                </a>
+                <a href="community.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>🤝 Civic Alliance (TBBLUSA)</span> <span>→</span>
+                </a>
                 <a href="trees.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
                     <span>🎁 Tree Selection</span> <span>→</span>
                 </a>
                 <a href="marketplace.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
                     <span>♻️ Recycled Goods Store</span> <span>→</span>
                 </a>
-                <a href="impact.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
-                    <span>🌱 Eco Impact & Stripe Climate</span> <span>→</span>
-                </a>
-                <a href="contact.html" class="text-xmasCream hover:text-xmasGold py-2 flex items-center justify-between">
-                    <span>✉️ Central Dispatch Support</span> <span>→</span>
+                <a href="account.html" class="text-xmasCream hover:text-xmasGold py-2 flex items-center justify-between">
+                    <span>👤 Member Portal</span> <span>→</span>
                 </a>
             </nav>
         </div>
@@ -129,7 +134,7 @@
             <div class="lg:col-span-6 space-y-5 text-center lg:text-left">
                 <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-xmasPanel border border-xmasGold/40 text-xmasGold text-xs font-bold uppercase tracking-widest shadow-md">
                     <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span>Direct Mountain-To-Doorstep Supply Chain</span>
+                    <span id="growerBadge">Direct Mountain-To-Doorstep Supply Chain</span>
                 </div>
                 
                 <h1 class="font-cinzel text-3xl sm:text-5xl font-black leading-tight tracking-tight text-white">
@@ -386,9 +391,9 @@
             <div class="space-y-3">
                 <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Direct Support</h4>
                 <ul class="text-xs space-y-2 text-xmasCream/80">
+                    <li><a href="events.html" class="hover:text-xmasGold transition">Seasonal Events (Rittenhouse)</a></li>
+                    <li><a href="community.html" class="hover:text-xmasGold transition">Civic Mission (TBBLUSA)</a></li>
                     <li><a href="mailto:dispatch@christmastreejoe.com" class="hover:text-xmasGold transition underline">dispatch@christmastreejoe.com</a></li>
-                    <li><a href="mailto:sales@christmastreejoe.com" class="hover:text-xmasGold transition underline">sales@christmastreejoe.com</a></li>
-                    <li><a href="impact.html" class="hover:text-xmasGold transition">Stripe Climate Impact</a></li>
                 </ul>
             </div>
 
@@ -401,13 +406,46 @@
 
         <div class="max-w-7xl mx-auto pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-xmasCream/50 gap-4">
             <p>&copy; 2026 Global Citizen Joe, LLC. All Rights Reserved.</p>
-            <div class="flex items-center space-x-6 text-[11px] mt-2 md:mt-0">
+            <div class="flex items-center space-x-6 text-[11px]">
                 <a href="privacy.html" class="hover:text-xmasGold transition">Privacy Policy</a>
                 <a href="terms.html" class="hover:text-xmasGold transition">Terms of Service</a>
-                <a href="impact.html" class="hover:text-xmasGold transition">Zero-Waste Commitment</a>
+                <a href="events.html" class="hover:text-xmasGold transition">Events</a>
+                <a href="community.html" class="hover:text-xmasGold transition">Community</a>
             </div>
         </div>
     </footer>
+
+    <!-- SUPABASE REAL-TIME GROWER SESSION SCRIPT -->
+    <script type="module">
+        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+        // Connected Supabase Project Credentials
+        const SUPABASE_URL = 'https://pnosjdmolfqhuvvcncdh.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable_VLFX6Kp_2DWYt5kLC00HkA_kxCJWON6';
+        const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        async function checkGrowerSession() {
+            const { data: { session } } = await supabase.auth.getSession();
+            
+            if (session && session.user) {
+                const { data: profile } = await supabase
+                    .from('profiles')
+                    .select('*')
+                    .eq('id', session.user.id)
+                    .single();
+
+                const role = profile?.role || session.user.user_metadata?.role;
+                const name = profile?.full_name || session.user.user_metadata?.full_name || session.user.email.split('@')[0];
+
+                if (role === 'vendor' || role === 'admin') {
+                    const badge = document.getElementById('growerBadge');
+                    if (badge) badge.innerText = `Verified Partner: ${name}`;
+                }
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', checkGrowerSession);
+    </script>
 
     <!-- HERO SLIDER & FORMSPREE ASYNCHRONOUS INGEST SCRIPT -->
     <script>
@@ -455,7 +493,7 @@
                 });
 
                 if (response.ok) {
-                    vendorStatus.className = 'text-xs font-bold py-2 text-green-400 block';
+                    vendorStatus.className = 'text-xs font-bold py-2 text-emerald-400 block';
                     vendorStatus.innerText = '✓ Farm registration submitted successfully! Our supply team will review your specs and contact you within 24 hours.';
                     vendorForm.reset();
                 } else {
