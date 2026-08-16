@@ -21,7 +21,8 @@
                         xmasGold: '#D4AF37',
                         xmasCream: '#FDFBF7',
                         xmasDark: '#051810',
-                        xmasPanel: '#0A261B'
+                        xmasPanel: '#0A261B',
+                        stripeViolet: '#635BFF'
                     },
                     fontFamily: {
                         cinzel: ['Cinzel', 'serif'],
@@ -75,7 +76,8 @@
             <nav class="hidden xl:flex items-center space-x-6 text-[11px] font-bold uppercase tracking-wider">
                 <a href="index.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Home</a>
                 <a href="trees.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Tree Selection</a>
-                <a href="tree-types.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Tree Varieties</a>
+                <a href="events.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Seasonal Events</a>
+                <a href="community.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Community (TBBLUSA)</a>
                 <a href="marketplace.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Recycled Goods</a>
                 <a href="account.html" class="text-xmasGold border-b-2 border-xmasGold py-1">Dashboard</a>
                 <a href="about.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Our Mission</a>
@@ -102,8 +104,11 @@
                 <a href="trees.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
                     <span>🎁 Tree Selection</span> <span>→</span>
                 </a>
-                <a href="tree-types.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
-                    <span>📐 Tree Varieties</span> <span>→</span>
+                <a href="events.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>🌲 Seasonal Events & Staging</span> <span>→</span>
+                </a>
+                <a href="community.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>🤝 Civic Alliance (TBBLUSA)</span> <span>→</span>
                 </a>
                 <a href="marketplace.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
                     <span>♻️ Recycled Goods Store</span> <span>→</span>
@@ -121,9 +126,7 @@
         </div>
     </header>
 
-    <!-- ==========================================
-         MEDIUM HERO SECTION (16:9 Landscape Frame)
-    =========================================== -->
+    <!-- MEDIUM HERO SECTION -->
     <section class="relative pt-8 pb-12 px-4 hero-glow overflow-hidden">
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
@@ -143,8 +146,8 @@
 
                 <div class="grid grid-cols-3 gap-3 pt-3 border-t border-white/10 text-center lg:text-left">
                     <div>
-                        <strong class="block text-xmasGold font-cinzel text-base sm:text-lg">1-Click</strong>
-                        <span class="text-[11px] text-xmasCream/70">Social Auth</span>
+                        <strong class="block text-xmasGold font-cinzel text-base sm:text-lg">Real-Time</strong>
+                        <span class="text-[11px] text-xmasCream/70">Supabase Cloud Sync</span>
                     </div>
                     <div>
                         <strong class="block text-xmasGold font-cinzel text-base sm:text-lg">Flexible</strong>
@@ -204,7 +207,7 @@
     <!-- MAIN DYNAMIC AUTH & DASHBOARD CONTAINER -->
     <main class="max-w-7xl mx-auto px-4 py-8 space-y-8">
         
-        <!-- DYNAMIC WELCOME BANNER (Updates to Guest or User Name) -->
+        <!-- DYNAMIC WELCOME BANNER -->
         <div class="flex flex-col md:flex-row md:items-center justify-between bg-xmasPanel border border-xmasGold/40 rounded-3xl p-6 sm:p-8 shadow-2xl gap-4">
             <div class="space-y-1">
                 <div class="flex items-center gap-2">
@@ -215,7 +218,7 @@
                     Welcome, <span id="userNameDisplay" class="gold-gradient-text">Guest</span>
                 </h1>
                 <p id="userDescDisplay" class="text-xs text-xmasCream/70">
-                    Sign in with Google, X, or email to access your subscription, invoices, and scheduled deliveries.
+                    Sign in with Google or your account email to access your subscription, invoices, and scheduled deliveries.
                 </p>
             </div>
             
@@ -234,7 +237,7 @@
         =========================================== -->
         <div id="guestAuthSection" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
-            <!-- LEFT: 1-CLICK SOCIAL & FORM LOGIN -->
+            <!-- LEFT: REAL-TIME SUPABASE AUTH FORM -->
             <div class="lg:col-span-7 bg-xmasPanel border-2 border-xmasGold/40 rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl">
                 
                 <!-- TAB SELECTOR -->
@@ -243,39 +246,23 @@
                         <button onclick="switchAuthTab('login')" id="tabLoginBtn" class="font-cinzel text-lg font-bold text-xmasGold border-b-2 border-xmasGold pb-1 transition">Sign In</button>
                         <button onclick="switchAuthTab('register')" id="tabRegisterBtn" class="font-cinzel text-lg font-bold text-xmasCream/50 hover:text-white pb-1 transition">Create Account</button>
                     </div>
-                    <span class="text-[10px] text-emerald-400 bg-emerald-950/60 border border-emerald-500/30 px-2.5 py-1 rounded-full font-bold uppercase">SSL Encrypted</span>
+                    <span class="text-[10px] text-emerald-400 bg-emerald-950/60 border border-emerald-500/30 px-2.5 py-1 rounded-full font-bold uppercase">Supabase SSL</span>
                 </div>
 
-                <!-- 1-CLICK SOCIAL AUTH BUTTONS -->
+                <!-- 1-CLICK SOCIAL AUTH BUTTON -->
                 <div class="space-y-3">
                     <p class="text-xs text-xmasGold font-bold uppercase tracking-wider">Fast 1-Click Authentication</p>
                     
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-bold">
-                        <!-- Google -->
-                        <button onclick="loginWithOAuth('Google')" class="flex items-center justify-center gap-2 py-3 px-4 bg-white text-gray-800 rounded-xl hover:bg-gray-100 transition shadow-md">
+                    <div>
+                        <!-- Google OAuth -->
+                        <button type="button" onclick="loginWithGoogle()" class="w-full flex items-center justify-center gap-3 py-3 px-4 bg-white text-gray-800 font-bold rounded-xl hover:bg-gray-100 transition shadow-md text-xs">
                             <svg class="w-4 h-4" viewBox="0 0 24 24">
                                 <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
                                 <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
                                 <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
                                 <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
                             </svg>
-                            <span>Google</span>
-                        </button>
-
-                        <!-- X (Twitter) -->
-                        <button onclick="loginWithOAuth('X')" class="flex items-center justify-center gap-2 py-3 px-4 bg-black text-white rounded-xl hover:bg-neutral-900 border border-white/20 transition shadow-md">
-                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                            </svg>
-                            <span>X Account</span>
-                        </button>
-
-                        <!-- Apple -->
-                        <button onclick="loginWithOAuth('Apple')" class="flex items-center justify-center gap-2 py-3 px-4 bg-neutral-900 text-white rounded-xl hover:bg-black border border-white/20 transition shadow-md">
-                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.85c.66-.8 1.11-1.92.99-3.04-.96.04-2.12.64-2.8 1.44-.6.69-1.13 1.83-1 2.93 1.07.08 2.15-.53 2.81-1.33z"/>
-                            </svg>
-                            <span>Apple ID</span>
+                            <span>Continue with Google Account</span>
                         </button>
                     </div>
                 </div>
@@ -286,11 +273,22 @@
                     <div class="flex-grow border-t border-white/10"></div>
                 </div>
 
-                <!-- EMAIL / PASSWORD FORM -->
-                <form onsubmit="handleManualAuth(event)" class="space-y-4">
+                <!-- EMAIL / PASSWORD SUPABASE FORM -->
+                <form id="supabaseAuthForm" onsubmit="handleManualAuth(event)" class="space-y-4">
+                    
                     <div id="nameFieldContainer" class="hidden">
                         <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Full Name</label>
                         <input type="text" id="authFullName" placeholder="e.g. Eleanor Vance" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
+                    </div>
+
+                    <!-- Role Selector for Registration -->
+                    <div id="roleFieldContainer" class="hidden">
+                        <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Account Role</label>
+                        <select id="authRole" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-xmasGold">
+                            <option value="customer">Customer / Subscriber</option>
+                            <option value="driver">Logistics Driver</option>
+                            <option value="vendor">Appalachian Timber Grower / Vendor</option>
+                        </select>
                     </div>
 
                     <div>
@@ -301,10 +299,12 @@
                     <div>
                         <div class="flex justify-between items-center mb-1">
                             <label class="block text-xs font-bold text-xmasGold uppercase">Password</label>
-                            <a href="#" onclick="alert('Password reset link sent to your email.')" class="text-[10px] text-xmasCream/60 hover:text-xmasGold">Forgot?</a>
+                            <a href="#" onclick="handlePasswordReset()" class="text-[10px] text-xmasCream/60 hover:text-xmasGold">Forgot?</a>
                         </div>
                         <input type="password" required id="authPassword" placeholder="••••••••" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
                     </div>
+
+                    <div id="authAlert" class="hidden p-3 rounded-xl text-xs font-bold"></div>
 
                     <button type="submit" id="authSubmitBtn" class="w-full py-4 bg-xmasRed hover:bg-red-700 text-white font-extrabold text-xs uppercase tracking-wider rounded-xl border border-xmasGold/50 shadow-xl transition transform hover:scale-105">
                         Sign In To Account →
@@ -313,18 +313,18 @@
 
             </div>
 
-            <!-- RIGHT: GUEST BENEFITS & SUBSCRIPTION SHORTCUT -->
+            <!-- RIGHT: GUEST BENEFITS & PRIVILEGES -->
             <div class="lg:col-span-5 space-y-6">
                 <div class="bg-xmasDark border border-xmasGold/30 rounded-3xl p-6 sm:p-8 space-y-4 shadow-xl">
                     <h3 class="font-cinzel text-xl font-bold text-xmasGold">Member Privileges</h3>
                     <p class="text-xs text-xmasCream/70 leading-relaxed">
-                        Access self-service controls for your holiday deliveries and seasonal home setup.
+                        Access self-service controls for your holiday deliveries, stand hydration reservations, and circular post-holiday upcycling.
                     </p>
 
                     <ul class="text-xs text-xmasCream/80 space-y-3 pt-2 font-medium">
                         <li class="flex items-start gap-2.5">
                             <span class="text-emerald-400 font-bold">✔</span>
-                            <span><strong>Live GPS Driver Telemetry:</strong> Track delivery crew arrival in real-time.</span>
+                            <span><strong>Live GPS Driver Telemetry:</strong> Track your tree staging crew in real-time.</span>
                         </li>
                         <li class="flex items-start gap-2.5">
                             <span class="text-emerald-400 font-bold">✔</span>
@@ -339,12 +339,6 @@
                             <span><strong>Digital Statements:</strong> Download annual invoices and phytosanitary certificates.</span>
                         </li>
                     </ul>
-
-                    <div class="pt-4 border-t border-white/10">
-                        <button onclick="demoLogin()" class="w-full py-2.5 px-4 rounded-xl bg-xmasGreen/80 border border-xmasGold text-xmasGold text-xs font-bold hover:bg-xmasGold hover:text-xmasDark transition">
-                            ⚡ Quick Demo Member Login
-                        </button>
-                    </div>
                 </div>
             </div>
 
@@ -366,15 +360,15 @@
                         </div>
 
                         <div class="space-y-2">
-                            <span class="text-[10px] font-bold text-xmasGold uppercase tracking-widest bg-xmasDark px-3 py-1 rounded-full border border-xmasGold/30 inline-block">Subscription ID: #CTJ-2026-8841</span>
-                            <h2 class="font-cinzel text-2xl sm:text-3xl font-black text-white">Holiday Hearth Tier (6–7 ft)</h2>
-                            <p class="text-xs text-xmasCream/70">Variety: <strong>Fraser Fir (Grade #1)</strong> • Sourced from Ashe County / Jefferson, NC</p>
+                            <span class="text-[10px] font-bold text-xmasGold uppercase tracking-widest bg-xmasDark px-3 py-1 rounded-full border border-xmasGold/30 inline-block">Active Subscription</span>
+                            <h2 class="font-cinzel text-2xl sm:text-3xl font-black text-white" id="dashTierTitle">Holiday Hearth Tier (6–7 ft)</h2>
+                            <p class="text-xs text-xmasCream/70">Variety: <strong>Appalachian Fraser Fir (Grade #1)</strong> • White-Glove In-Home Setup</p>
                         </div>
 
                         <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 py-4 border-y border-white/10 text-xs">
                             <div>
-                                <p class="text-xmasCream/50 text-[10px] uppercase font-bold">Annual Rate</p>
-                                <p class="text-lg font-extrabold text-xmasGold">$178.49 <span class="text-[10px] text-white/50">(15% Off)</span></p>
+                                <p class="text-xmasCream/50 text-[10px] uppercase font-bold">Annual Locked Rate</p>
+                                <p class="text-lg font-extrabold text-xmasGold" id="dashAnnualPrice">$178.49 <span class="text-[10px] text-white/50">(15% Off)</span></p>
                             </div>
                             <div>
                                 <p class="text-xmasCream/50 text-[10px] uppercase font-bold">Term Duration</p>
@@ -555,9 +549,213 @@
         </div>
     </footer>
 
-    <!-- DYNAMIC AUTH & INTERACTION LOGIC -->
+    <!-- ==========================================
+         REAL-TIME SUPABASE AUTH & DASHBOARD LOGIC
+    =========================================== -->
+    <script type="module">
+        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+        // Connected Supabase Project Credentials
+        const SUPABASE_URL = 'https://pnosjdmolfqhuvvcncdh.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable_VLFX6Kp_2DWYt5kLC00HkA_kxCJWON6';
+        const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        let authTabMode = 'login'; // 'login' or 'register'
+
+        // Check active Supabase session on page load
+        async function checkUserSession() {
+            const { data: { session }, error } = await supabase.auth.getSession();
+
+            if (session && session.user) {
+                // Fetch user profile from database
+                const { data: profile } = await supabase
+                    .from('profiles')
+                    .select('*')
+                    .eq('id', session.user.id)
+                    .single();
+
+                renderMemberDashboard(session.user, profile);
+            } else {
+                renderGuestView();
+            }
+        }
+
+        function renderGuestView() {
+            document.getElementById('userNameDisplay').innerText = 'Guest';
+            document.getElementById('userStatusBadge').innerText = 'Guest Visitor';
+            document.getElementById('userStatusDot').className = 'w-2.5 h-2.5 rounded-full bg-gray-400';
+            document.getElementById('userDescDisplay').innerText = 'Sign in with Google or your account email to access your subscription, invoices, and scheduled deliveries.';
+            
+            document.getElementById('authHeaderBtn').innerText = 'Sign In';
+            document.getElementById('authHeaderBtn').className = 'py-2.5 px-4 rounded-xl bg-xmasDark border border-white/20 text-white text-xs font-bold hover:bg-xmasRed transition';
+            
+            document.getElementById('guestAuthSection').classList.remove('hidden');
+            document.getElementById('memberDashboardSection').classList.add('hidden');
+        }
+
+        function renderMemberDashboard(user, profile) {
+            const displayName = profile?.full_name || user.user_metadata?.full_name || user.email.split('@')[0];
+            const role = profile?.role || user.user_metadata?.role || 'customer';
+
+            document.getElementById('userNameDisplay').innerText = displayName;
+            document.getElementById('userStatusBadge').innerText = `Active ${role.toUpperCase()}`;
+            document.getElementById('userStatusDot').className = 'w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse';
+            document.getElementById('userDescDisplay').innerText = 'Manage your subscription term, schedule delivery/pickup windows, and access invoices.';
+            
+            document.getElementById('authHeaderBtn').innerText = 'Sign Out';
+            document.getElementById('authHeaderBtn').className = 'py-2.5 px-4 rounded-xl bg-xmasDark border border-xmasRed text-xmasRed text-xs font-bold hover:bg-xmasRed hover:text-white transition';
+            
+            document.getElementById('guestAuthSection').classList.add('hidden');
+            document.getElementById('memberDashboardSection').classList.remove('hidden');
+        }
+
+        // Global Handlers Exposed to Window
+        window.switchAuthTab = function(mode) {
+            authTabMode = mode;
+            const tabLoginBtn = document.getElementById('tabLoginBtn');
+            const tabRegisterBtn = document.getElementById('tabRegisterBtn');
+            const nameContainer = document.getElementById('nameFieldContainer');
+            const roleContainer = document.getElementById('roleFieldContainer');
+            const submitBtn = document.getElementById('authSubmitBtn');
+            const alertBox = document.getElementById('authAlert');
+            if (alertBox) alertBox.classList.add('hidden');
+
+            if (mode === 'login') {
+                tabLoginBtn.className = 'font-cinzel text-lg font-bold text-xmasGold border-b-2 border-xmasGold pb-1 transition';
+                tabRegisterBtn.className = 'font-cinzel text-lg font-bold text-xmasCream/50 hover:text-white pb-1 transition';
+                nameContainer.classList.add('hidden');
+                roleContainer.classList.add('hidden');
+                submitBtn.innerText = 'Sign In To Account →';
+            } else {
+                tabRegisterBtn.className = 'font-cinzel text-lg font-bold text-xmasGold border-b-2 border-xmasGold pb-1 transition';
+                tabLoginBtn.className = 'font-cinzel text-lg font-bold text-xmasCream/50 hover:text-white pb-1 transition';
+                nameContainer.classList.remove('hidden');
+                roleContainer.classList.remove('hidden');
+                submitBtn.innerText = 'Create Account & Continue →';
+            }
+        };
+
+        window.loginWithGoogle = async function() {
+            try {
+                const { error } = await supabase.auth.signInWithOAuth({
+                    provider: 'google',
+                    options: {
+                        redirectTo: `${window.location.origin}/account.html`
+                    }
+                });
+                if (error) throw error;
+            } catch (err) {
+                showAuthAlert(err.message, 'error');
+            }
+        };
+
+        window.handleManualAuth = async function(e) {
+            e.preventDefault();
+            const email = document.getElementById('authEmail').value;
+            const password = document.getElementById('authPassword').value;
+            const fullName = document.getElementById('authFullName')?.value || '';
+            const role = document.getElementById('authRole')?.value || 'customer';
+            const submitBtn = document.getElementById('authSubmitBtn');
+
+            submitBtn.disabled = true;
+            submitBtn.innerText = 'Verifying Credentials...';
+
+            try {
+                if (authTabMode === 'register') {
+                    // Supabase Sign Up
+                    const { data, error } = await supabase.auth.signUp({
+                        email,
+                        password,
+                        options: {
+                            data: {
+                                full_name: fullName.trim() || 'Valued Member',
+                                role: role
+                            }
+                        }
+                    });
+
+                    if (error) throw error;
+
+                    if (data?.session) {
+                        await checkUserSession();
+                    } else {
+                        showAuthAlert('Account created! Please check your email to verify your address.', 'success');
+                    }
+                } else {
+                    // Supabase Sign In
+                    const { data, error } = await supabase.auth.signInWithPassword({
+                        email,
+                        password
+                    });
+
+                    if (error) throw error;
+
+                    // Role Route Check
+                    const userRole = data.user.user_metadata?.role || 'customer';
+                    if (userRole === 'driver') {
+                        window.location.href = 'driver-hub.html';
+                        return;
+                    } else if (userRole === 'vendor') {
+                        window.location.href = 'vendor-hub.html';
+                        return;
+                    }
+
+                    await checkUserSession();
+                }
+            } catch (err) {
+                showAuthAlert(err.message, 'error');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerText = authTabMode === 'login' ? 'Sign In To Account →' : 'Create Account & Continue →';
+            }
+        };
+
+        window.handlePasswordReset = async function() {
+            const email = document.getElementById('authEmail').value;
+            if (!email) {
+                alert('Please enter your email address in the field below first.');
+                return;
+            }
+            try {
+                const { error } = await supabase.auth.resetPasswordForEmail(email, {
+                    redirectTo: `${window.location.origin}/account.html?reset=true`
+                });
+                if (error) throw error;
+                showAuthAlert('Password reset email sent! Check your inbox.', 'success');
+            } catch (err) {
+                showAuthAlert(err.message, 'error');
+            }
+        };
+
+        window.handleAuthAction = async function() {
+            const { data: { session } } = await supabase.auth.getSession();
+            if (session) {
+                // Sign Out
+                await supabase.auth.signOut();
+                renderGuestView();
+            } else {
+                document.getElementById('guestAuthSection').scrollIntoView({ behavior: 'smooth' });
+            }
+        };
+
+        function showAuthAlert(message, type = 'error') {
+            const alertBox = document.getElementById('authAlert');
+            if (!alertBox) return;
+            alertBox.classList.remove('hidden');
+            if (type === 'error') {
+                alertBox.className = 'p-3 rounded-xl text-xs font-bold bg-red-950/80 border border-red-500/50 text-red-300';
+            } else {
+                alertBox.className = 'p-3 rounded-xl text-xs font-bold bg-emerald-950/80 border border-emerald-500/50 text-emerald-300';
+            }
+            alertBox.innerText = message;
+        }
+
+        // Initialize state on load
+        window.addEventListener('DOMContentLoaded', checkUserSession);
+    </script>
+
+    <!-- SLIDER LOGIC -->
     <script>
-        // Hero Slider Logic
         let currentSlide = 0;
         const slides = document.querySelectorAll('.hero-slide');
         const dots = document.querySelectorAll('.slider-dot');
@@ -581,125 +779,6 @@
             const menu = document.getElementById('mobileMenu');
             menu.classList.toggle('hidden');
         }
-
-        // ==========================================
-        // DYNAMIC AUTH STATE ENGINE
-        // ==========================================
-        let authTabMode = 'login'; // 'login' or 'register'
-
-        function checkUserSession() {
-            const storedUser = localStorage.getItem('ctj_user_session');
-            if (storedUser) {
-                try {
-                    const user = JSON.parse(storedUser);
-                    renderMemberDashboard(user);
-                    return;
-                } catch (e) {
-                    localStorage.removeItem('ctj_user_session');
-                }
-            }
-            renderGuestView();
-        }
-
-        function renderGuestView() {
-            document.getElementById('userNameDisplay').innerText = 'Guest';
-            document.getElementById('userStatusBadge').innerText = 'Guest Visitor';
-            document.getElementById('userStatusDot').className = 'w-2.5 h-2.5 rounded-full bg-gray-400';
-            document.getElementById('userDescDisplay').innerText = 'Sign in with Google, X, or email to access your subscription, invoices, and scheduled deliveries.';
-            
-            document.getElementById('authHeaderBtn').innerText = 'Sign In';
-            document.getElementById('authHeaderBtn').className = 'py-2.5 px-4 rounded-xl bg-xmasDark border border-white/20 text-white text-xs font-bold hover:bg-xmasRed transition';
-            
-            document.getElementById('guestAuthSection').classList.remove('hidden');
-            document.getElementById('memberDashboardSection').classList.add('hidden');
-        }
-
-        function renderMemberDashboard(user) {
-            const displayName = user.name || user.email.split('@')[0];
-            document.getElementById('userNameDisplay').innerText = displayName;
-            document.getElementById('userStatusBadge').innerText = 'Active Subscriber';
-            document.getElementById('userStatusDot').className = 'w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse';
-            document.getElementById('userDescDisplay').innerText = 'Manage your subscription term, schedule delivery/pickup windows, and access invoices.';
-            
-            document.getElementById('authHeaderBtn').innerText = 'Sign Out';
-            document.getElementById('authHeaderBtn').className = 'py-2.5 px-4 rounded-xl bg-xmasDark border border-xmasRed text-xmasRed text-xs font-bold hover:bg-xmasRed hover:text-white transition';
-            
-            document.getElementById('guestAuthSection').classList.add('hidden');
-            document.getElementById('memberDashboardSection').classList.remove('hidden');
-        }
-
-        function switchAuthTab(mode) {
-            authTabMode = mode;
-            const tabLoginBtn = document.getElementById('tabLoginBtn');
-            const tabRegisterBtn = document.getElementById('tabRegisterBtn');
-            const nameContainer = document.getElementById('nameFieldContainer');
-            const submitBtn = document.getElementById('authSubmitBtn');
-
-            if (mode === 'login') {
-                tabLoginBtn.className = 'font-cinzel text-lg font-bold text-xmasGold border-b-2 border-xmasGold pb-1 transition';
-                tabRegisterBtn.className = 'font-cinzel text-lg font-bold text-xmasCream/50 hover:text-white pb-1 transition';
-                nameContainer.classList.add('hidden');
-                submitBtn.innerText = 'Sign In To Account →';
-            } else {
-                tabRegisterBtn.className = 'font-cinzel text-lg font-bold text-xmasGold border-b-2 border-xmasGold pb-1 transition';
-                tabLoginBtn.className = 'font-cinzel text-lg font-bold text-xmasCream/50 hover:text-white pb-1 transition';
-                nameContainer.classList.remove('hidden');
-                submitBtn.innerText = 'Create Account & Continue →';
-            }
-        }
-
-        function loginWithOAuth(provider) {
-            const simulatedUser = {
-                name: provider + ' Subscriber',
-                email: 'member@' + provider.toLowerCase() + '.com',
-                provider: provider,
-                loggedInAt: new Date().toISOString()
-            };
-            localStorage.setItem('ctj_user_session', JSON.stringify(simulatedUser));
-            checkUserSession();
-        }
-
-        function handleManualAuth(e) {
-            e.preventDefault();
-            const email = document.getElementById('authEmail').value;
-            const fullName = document.getElementById('authFullName').value;
-            
-            const user = {
-                name: fullName.trim() || email.split('@')[0],
-                email: email,
-                provider: 'email',
-                loggedInAt: new Date().toISOString()
-            };
-            
-            localStorage.setItem('ctj_user_session', JSON.stringify(user));
-            checkUserSession();
-        }
-
-        function demoLogin() {
-            const demoUser = {
-                name: 'Verified Member',
-                email: 'subscriber@christmastreejoe.com',
-                provider: 'demo',
-                loggedInAt: new Date().toISOString()
-            };
-            localStorage.setItem('ctj_user_session', JSON.stringify(demoUser));
-            checkUserSession();
-        }
-
-        function handleAuthAction() {
-            const storedUser = localStorage.getItem('ctj_user_session');
-            if (storedUser) {
-                // Sign Out
-                localStorage.removeItem('ctj_user_session');
-                checkUserSession();
-            } else {
-                // Scroll to auth box
-                document.getElementById('guestAuthSection').scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-
-        // Initialize state on load
-        window.addEventListener('DOMContentLoaded', checkUserSession);
     </script>
 </body>
 </html>
