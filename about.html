@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Our Mission & NC Timber Lineage | Christmas Tree Joe</title>
+    <title>Our Mission & Appalachian Timber Heritage | Christmas Tree Joe</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
@@ -21,7 +21,8 @@
                         xmasGold: '#D4AF37',
                         xmasCream: '#FDFBF7',
                         xmasDark: '#051810',
-                        xmasPanel: '#0A261B'
+                        xmasPanel: '#0A261B',
+                        stripeViolet: '#635BFF'
                     },
                     fontFamily: {
                         cinzel: ['Cinzel', 'serif'],
@@ -37,6 +38,7 @@
         .gold-gradient-text {
             background: linear-gradient(135deg, #FFF0B9 0%, #D4AF37 50%, #997A15 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         .hero-glow {
@@ -54,7 +56,7 @@
                 <span>🌲 Supporting Jefferson & Ashe County Family Timber Plantations</span>
             </div>
             <div class="flex items-center space-x-4 text-[11px]">
-                <a href="tel:1800555XMAS" class="hover:text-xmasGold transition hidden md:inline">📞 1-800-XMAS-JOE</a>
+                <a href="tel:18005559627" class="hover:text-xmasGold transition hidden md:inline">📞 1-800-XMAS-JOE</a>
                 <span class="hidden md:inline">|</span>
                 <a href="mailto:support@christmastreejoe.com" class="hover:text-xmasGold transition">✉️ support@christmastreejoe.com</a>
             </div>
@@ -65,7 +67,7 @@
     <header class="w-full bg-xmasDark/95 border-b border-xmasGold/30 sticky top-0 z-50 backdrop-blur-lg shadow-2xl">
         <div class="max-w-7xl mx-auto px-4 py-2.5 flex items-center justify-between">
             <a href="index.html" class="flex items-center space-x-3 group flex-shrink-0">
-                <img src="public/Christmas-tree-joe1.png" onerror="this.src='Christmas-tree-joe1.png'" alt="Christmas Tree Joe Logo" class="h-14 w-14 sm:h-16 sm:w-16 rounded-full border-2 border-xmasGold object-cover shadow-lg group-hover:scale-105 transition">
+                <img src="christmas-tree-joe-logo.png" onerror="this.src='public/Christmas-tree-joe1.png'" alt="Christmas Tree Joe Logo" class="h-14 w-14 sm:h-16 sm:w-16 rounded-full border-2 border-xmasGold object-cover shadow-lg group-hover:scale-105 transition">
                 <div>
                     <span class="font-cinzel text-lg sm:text-2xl font-black tracking-wider text-white group-hover:text-xmasGold transition block">CHRISTMAS TREE JOE</span>
                     <p class="text-[9px] sm:text-[10px] text-xmasGold uppercase tracking-widest font-extrabold -mt-1">A Global Citizen Joe Enterprise</p>
@@ -76,16 +78,18 @@
                 <a href="index.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Home</a>
                 <a href="trees.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Tree Selection</a>
                 <a href="tree-types.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Tree Varieties</a>
+                <a href="events.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Seasonal Events</a>
+                <a href="community.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Community (TBBLUSA)</a>
                 <a href="marketplace.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Recycled Goods</a>
                 <a href="about.html" class="text-xmasGold border-b-2 border-xmasGold py-1">Our Mission</a>
-                <a href="track.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Live Tracker</a>
+                <a href="account.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Member Portal</a>
             </nav>
 
             <div class="flex items-center space-x-3">
                 <a href="account.html" class="hidden sm:inline-flex text-xs font-semibold text-xmasGold hover:text-white border border-xmasGold/40 px-3.5 py-2 rounded-full hover:bg-xmasGold/10 transition">
                     Sign In
                 </a>
-                <a href="trees.html" class="bg-xmasRed hover:bg-red-700 text-white font-bold px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm border border-xmasGold/50 transition shadow-xl transform hover:scale-105 flex-shrink-0">
+                <a href="checkout.html" class="bg-xmasRed hover:bg-red-700 text-white font-bold px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm border border-xmasGold/50 transition shadow-xl transform hover:scale-105 flex-shrink-0">
                     Reserve Tree
                 </a>
 
@@ -108,6 +112,12 @@
                 <a href="tree-types.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
                     <span>📐 Tree Varieties</span> <span>→</span>
                 </a>
+                <a href="events.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>🌲 Seasonal Events & Staging</span> <span>→</span>
+                </a>
+                <a href="community.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>🤝 Civic Alliance (TBBLUSA)</span> <span>→</span>
+                </a>
                 <a href="marketplace.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
                     <span>♻️ Recycled Goods Store</span> <span>→</span>
                 </a>
@@ -117,16 +127,14 @@
                 <a href="track.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
                     <span>🚚 Live Delivery Tracker</span> <span>→</span>
                 </a>
-                <a href="account.html" class="text-xmasGold py-2 flex items-center justify-between">
-                    <span>👤 Customer Sign In</span> <span>→</span>
+                <a href="account.html" class="text-xmasCream hover:text-xmasGold py-2 flex items-center justify-between">
+                    <span>👤 Member Portal</span> <span>→</span>
                 </a>
             </nav>
         </div>
     </header>
 
-    <!-- ==========================================
-         MEDIUM HERO SECTION (16:9 Landscape Frame)
-    =========================================== -->
+    <!-- MEDIUM HERO SECTION (16:9 Landscape Frame) -->
     <section class="relative pt-8 pb-12 px-4 hero-glow overflow-hidden">
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
@@ -141,21 +149,21 @@
                 </h1>
                 
                 <p class="text-xmasCream/80 text-sm sm:text-base max-w-xl leading-relaxed mx-auto lg:mx-0">
-                    Founded under <strong>Xmas Made Inc.</strong> and the broader <strong>Global Citizen Joe, Inc.</strong> parent enterprise, Christmas Tree Joe unites generational North Carolina timber stewardship with full-service urban white-glove installation and zero-waste post-holiday recycling.
+                    Founded under <strong>Xmas Made Inc.</strong> and parent enterprise <strong>Global Citizen Joe, LLC.</strong>, Christmas Tree Joe unites generational North Carolina timber stewardship with full-service urban white-glove installation and zero-waste post-holiday recycling.[cite: 10]
                 </p>
 
                 <div class="grid grid-cols-3 gap-3 pt-3 border-t border-white/10 text-center lg:text-left">
                     <div>
                         <strong class="block text-xmasGold font-cinzel text-base sm:text-lg">Ashe County</strong>
-                        <span class="text-[11px] text-xmasCream/70">NC Mountain Growers</span>
+                        <span class="text-[11px] text-xmasCream/70">NC Mountain Growers</span>[cite: 10]
                     </div>
                     <div>
                         <strong class="block text-xmasGold font-cinzel text-base sm:text-lg">Direct Equity</strong>
-                        <span class="text-[11px] text-xmasCream/70">Fair Farmer Wholesale</span>
+                        <span class="text-[11px] text-xmasCream/70">Fair Farmer Wholesale</span>[cite: 10]
                     </div>
                     <div>
                         <strong class="block text-xmasGold font-cinzel text-base sm:text-lg">100% Circular</strong>
-                        <span class="text-[11px] text-xmasCream/70">Zero-Waste Reprocess</span>
+                        <span class="text-[11px] text-xmasCream/70">Zero-Waste Reprocess</span>[cite: 10]
                     </div>
                 </div>
             </div>
@@ -174,7 +182,7 @@
                                 loading="eager"
                             />
                             <div class="slide-caption">
-                                <span>Generational Appalachian Tree Farmers in Ashe County, NC</span>
+                                <span>Generational Appalachian Tree Farmers in Ashe County, NC</span>[cite: 10]
                             </div>
                         </div>
 
@@ -188,7 +196,7 @@
                                 loading="lazy"
                             />
                             <div class="slide-caption">
-                                <span>100% Reprocessing into Clean Bio-Pellets, Mulch & Oils</span>
+                                <span>100% Reprocessing into Clean Bio-Pellets, Mulch & Oils</span>[cite: 10]
                             </div>
                         </div>
 
@@ -218,11 +226,11 @@
                     </div>
                     <h3 class="font-cinzel text-xl font-bold text-white">Appalachian Timber Stewardship</h3>
                     <p class="text-xs text-xmasCream/70 leading-relaxed">
-                        We partner directly with family plantations in <strong>Jefferson and Ashe County, North Carolina</strong>—the Fraser Fir capital of the world. By locking in multi-year pre-orders, we eliminate retail speculation risk for local timber growers and guarantee fair wholesale equity.
+                        We partner directly with family plantations in <strong>Jefferson and Ashe County, North Carolina</strong>—the Fraser Fir capital of the world.[cite: 10] By locking in multi-year pre-orders, we eliminate retail speculation risk for local timber growers and guarantee fair wholesale equity.[cite: 10]
                     </p>
                 </div>
                 <div class="pt-4 border-t border-white/10 text-[10px] text-xmasGold uppercase font-bold tracking-wider">
-                    Grade #1 USDA Certified Evergreens
+                    Grade #1 USDA Certified Evergreens[cite: 10]
                 </div>
             </div>
 
@@ -234,11 +242,11 @@
                     </div>
                     <h3 class="font-cinzel text-xl font-bold text-white">White-Glove Urban Logistics</h3>
                     <p class="text-xs text-xmasCream/70 leading-relaxed">
-                        Say goodbye to rooftop tying, dropping needles, and heavy lifting. Our Philadelphia metro dedicated fleet delivers fresh-cut trees to Center City, Main Line estates, and Tri-State residences, executing in-home stand placement, unbaling, hydration, and needle sweep.
+                        Say goodbye to rooftop tying, dropping needles, and heavy lifting. Our Philadelphia metro dedicated fleet delivers fresh-cut trees to Center City, Main Line estates, and Tri-State residences, executing in-home stand placement, unbaling, hydration, and needle sweep.[cite: 10]
                     </p>
                 </div>
                 <div class="pt-4 border-t border-white/10 text-[10px] text-xmasGold uppercase font-bold tracking-wider">
-                    Full In-Home Setup Included
+                    Full In-Home Setup Included[cite: 10]
                 </div>
             </div>
 
@@ -250,11 +258,11 @@
                     </div>
                     <h3 class="font-cinzel text-xl font-bold text-white">100% Zero-Waste Circular Economy</h3>
                     <p class="text-xs text-xmasCream/70 leading-relaxed">
-                        When the holidays end, our service continues. Every collected tree in January is returned to regional facilities: needles are steam-distilled into therapeutic essential oils, hardwood trunks are split for cured firewood, and remaining wood fibers become garden mulch and compost.
+                        When the holidays end, our service continues.[cite: 10] Every collected tree in January is returned to regional facilities: needles are steam-distilled into therapeutic essential oils, hardwood trunks are split for cured firewood, and remaining wood fibers become garden mulch and compost.[cite: 10]
                     </p>
                 </div>
                 <div class="pt-4 border-t border-white/10 text-[10px] text-xmasGold uppercase font-bold tracking-wider">
-                    0% Landfill Impact Guaranteed
+                    0% Landfill Impact Guaranteed[cite: 10]
                 </div>
             </div>
 
@@ -265,21 +273,21 @@
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 
                 <div class="lg:col-span-4 text-center space-y-4">
-                    <img src="public/Christmas-tree-joe3.png" onerror="this.src='Christmas-tree-joe3.png'" alt="Joe Mascot" class="h-36 w-36 mx-auto rounded-3xl border-2 border-xmasGold object-cover shadow-2xl">
+                    <img src="christmas-tree-joe-logo.png" onerror="this.src='public/Christmas-tree-joe3.png'" alt="Joe Mascot" class="h-36 w-36 mx-auto rounded-3xl border-2 border-xmasGold object-cover shadow-2xl">
                     <div>
-                        <h4 class="font-cinzel text-2xl font-black text-white">Xmas Made Inc.</h4>
-                        <p class="text-xs text-xmasGold uppercase tracking-widest font-extrabold">A Global Citizen Joe Company</p>
+                        <h4 class="font-cinzel text-2xl font-black text-white">Xmas Made Inc.</h4>[cite: 10]
+                        <p class="text-xs text-xmasGold uppercase tracking-widest font-extrabold">A Global Citizen Joe Company</p>[cite: 10]
                     </div>
                 </div>
 
                 <div class="lg:col-span-8 space-y-4 text-xs sm:text-sm text-xmasCream/80 leading-relaxed">
-                    <span class="text-[10px] font-bold text-xmasGold uppercase tracking-widest bg-xmasPanel px-3 py-1 rounded-full border border-xmasGold/30 inline-block">Enterprise Lineage</span>
-                    <h2 class="font-cinzel text-2xl sm:text-3xl font-bold text-white">Bridging Ethical Commodities with Modern Consumers</h2>
+                    <span class="text-[10px] font-bold text-xmasGold uppercase tracking-widest bg-xmasPanel px-3 py-1 rounded-full border border-xmasGold/30 inline-block">Enterprise Lineage</span>[cite: 10]
+                    <h2 class="font-cinzel text-2xl sm:text-3xl font-bold text-white">Bridging Ethical Commodities with Modern Consumers</h2>[cite: 10]
                     <p>
-                        Operated as an enterprise subsidiary of <strong>Global Citizen Joe, Inc.</strong>, Christmas Tree Joe shares the foundational values of sister brand <a href="https://globalcitizenjoecoffee.com" target="_blank" class="text-xmasGold underline font-semibold">Global Citizen Joe Coffee Company</a>.
+                        Operated by <strong>Global Citizen Joe, LLC.</strong> in partnership with <strong>Xmas Made Inc.</strong>, Christmas Tree Joe shares foundational stewardship values with sister brand <a href="https://globalcitizenjoecoffee.com" target="_blank" class="text-xmasGold underline font-semibold">Global Citizen Joe Coffee Company</a>.[cite: 10]
                     </p>
                     <p>
-                        Whether securing ethically sourced high-altitude coffee beans or premium Appalachian mountain evergreens, our global operational model guarantees supply chain transparency, direct landowner equity, and white-glove consumer convenience.
+                        Whether securing ethically sourced high-altitude coffee beans or premium Appalachian mountain evergreens, our operational model guarantees supply chain transparency, direct landowner equity, and white-glove consumer convenience.[cite: 10]
                     </p>
                     
                     <div class="pt-4 flex flex-wrap gap-4 text-xs">
@@ -302,53 +310,57 @@
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
             <div class="space-y-4 lg:col-span-1">
                 <div class="flex items-center space-x-3">
-                    <img src="public/Christmas-tree-joe3.png" onerror="this.src='Christmas-tree-joe3.png'" alt="Joe Mascot" class="h-14 w-14 rounded-full border-2 border-xmasGold object-cover shadow-lg">
+                    <img src="christmas-tree-joe-logo.png" onerror="this.src='public/Christmas-tree-joe3.png'" alt="Joe Mascot" class="h-14 w-14 rounded-full border-2 border-xmasGold object-cover shadow-lg">
                     <div>
-                        <h4 class="font-cinzel text-base font-bold text-white">Christmas Tree Joe</h4>
-                        <p class="text-[9px] text-xmasGold uppercase tracking-widest font-bold">Xmas Made Inc.</p>
+                        <h4 class="font-cinzel text-base font-bold text-white">Christmas Tree Joe</h4>[cite: 10]
+                        <p class="text-[9px] text-xmasGold uppercase tracking-widest font-bold">Xmas Made Inc.</p>[cite: 10]
                     </div>
                 </div>
-                <p class="text-xs text-xmasCream/70 leading-relaxed">Connecting households with fresh North Carolina timber farms through white-glove tree subscriptions and 100% zero-waste eco-recycling.</p>
+                <p class="text-xs text-xmasCream/70 leading-relaxed">Connecting households with fresh North Carolina timber farms through white-glove tree subscriptions and 100% zero-waste eco-recycling.</p>[cite: 10]
             </div>
 
             <div class="space-y-3">
-                <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Subscription Tiers</h4>
+                <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Subscription Tiers</h4>[cite: 10]
                 <ul class="text-xs space-y-2 text-xmasCream/80">
-                    <li><a href="trees.html" class="hover:text-xmasGold transition">Evergreen Sprout (4–5 ft)</a></li>
-                    <li><a href="trees.html" class="hover:text-xmasGold transition">Holiday Hearth (6–7 ft)</a></li>
-                    <li><a href="trees.html" class="hover:text-xmasGold transition">Yuletide Monarch (8–9 ft)</a></li>
+                    <li><a href="trees.html" class="hover:text-xmasGold transition">Evergreen Sprout (4–5 ft)</a></li>[cite: 10]
+                    <li><a href="trees.html" class="hover:text-xmasGold transition">Holiday Hearth (6–7 ft)</a></li>[cite: 10]
+                    <li><a href="trees.html" class="hover:text-xmasGold transition">Yuletide Monarch (8–9 ft)</a></li>[cite: 10]
                 </ul>
             </div>
 
             <div class="space-y-3">
-                <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Our Brand Network</h4>
+                <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Logistics & Operations</h4>
                 <ul class="text-xs space-y-2 text-xmasCream/80">
-                    <li><a href="https://christmastreejoe.com" class="hover:text-xmasGold transition font-semibold">christmastreejoe.com</a></li>
-                    <li><a href="https://christmastreejoe.store" class="hover:text-xmasGold transition">christmastreejoe.store</a></li>
-                    <li><a href="https://christmastreejoe.net" class="hover:text-xmasGold transition">christmastreejoe.net</a></li>
+                    <li><a href="driver-hub.html" class="hover:text-xmasGold transition">Driver Staging Hub</a></li>
+                    <li><a href="vendor-hub.html" class="hover:text-xmasGold transition">Grower & Vendor Intake</a></li>
+                    <li><a href="events.html" class="hover:text-xmasGold transition">Seasonal Events (Rittenhouse)</a></li>
+                    <li><a href="account.html" class="hover:text-xmasGold transition">Subscriber Portal</a></li>
                 </ul>
             </div>
 
             <div class="space-y-3">
-                <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Customer Care</h4>
+                <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Direct Support</h4>
                 <ul class="text-xs space-y-2 text-xmasCream/80">
-                    <li><a href="mailto:support@christmastreejoe.com" class="hover:text-xmasGold transition underline">support@christmastreejoe.com</a></li>
-                    <li><a href="mailto:sales@christmastreejoe.com" class="hover:text-xmasGold transition underline">sales@christmastreejoe.com</a></li>
+                    <li><a href="community.html" class="hover:text-xmasGold transition">Civic Mission (TBBLUSA)</a></li>
+                    <li><a href="mailto:support@christmastreejoe.com" class="hover:text-xmasGold transition underline">support@christmastreejoe.com</a></li>[cite: 10]
+                    <li><a href="climate.html" class="hover:text-xmasGold transition text-stripeViolet font-bold">1% Stripe Climate Portal</a></li>
                 </ul>
             </div>
 
             <div class="space-y-3">
-                <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Corporate Family</h4>
-                <p class="text-xs text-xmasCream/70">Operated under <strong>Xmas Made Inc.</strong>, sister company to <a href="https://globalcitizenjoecoffee.com" target="_blank" class="text-xmasGold underline">Global Citizen Joe Coffee Company</a>, under parent enterprise <strong>Global Citizen Joe, Inc.</strong></p>
+                <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Corporate Family</h4>[cite: 10]
+                <p class="text-xs text-xmasCream/70">Operated by <strong>Global Citizen Joe, LLC.</strong> in partnership with <strong>Xmas Made Inc.</strong></p>
+                <p class="text-[11px] text-xmasCream/50 mt-1">1880 John F Kennedy Boulevard, Ste 104, Philadelphia, PA 19103 US</p>
             </div>
         </div>
 
-        <div class="max-w-7xl mx-auto pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-xmasCream/50">
-            <p>&copy; 2026 Christmas Tree Joe (Xmas Made Inc. / Global Citizen Joe, Inc.). All Rights Reserved.</p>
-            <div class="flex items-center space-x-6 text-[11px] mt-2 md:mt-0">
-                <a href="privacy.html" class="hover:text-xmasGold transition">Privacy Policy</a>
-                <a href="terms.html" class="hover:text-xmasGold transition">Terms of Service</a>
-                <a href="sitemap.html" class="hover:text-xmasGold transition">Sitemap</a>
+        <div class="max-w-7xl mx-auto pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-xmasCream/50 gap-4">
+            <p>&copy; 2026 Global Citizen Joe, LLC. All Rights Reserved.</p>
+            <div class="flex items-center space-x-6 text-[11px]">
+                <a href="privacy.html" class="hover:text-xmasGold transition">Privacy Policy</a>[cite: 10]
+                <a href="terms.html" class="hover:text-xmasGold transition">Terms of Service</a>[cite: 10]
+                <a href="events.html" class="hover:text-xmasGold transition">Events</a>
+                <a href="community.html" class="hover:text-xmasGold transition">Community</a>
             </div>
         </div>
     </footer>
