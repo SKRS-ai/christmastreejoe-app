@@ -4,8 +4,8 @@
  */
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 
-// Live Supabase Project Credentials
-export const SUPABASE_URL = 'https://pnosjdmolfqhuvvcncdh.supabase.co';
+// Live Supabase Project Credentials (Corrected Project Reference)
+export const SUPABASE_URL = 'https://pnosjdolfqhuvvcncdh.supabase.co';
 export const SUPABASE_ANON_KEY = 'sb_publishable_VLFX6Kp_2DWYt5kLC00HkA_kxCJWON6';
 
 export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
