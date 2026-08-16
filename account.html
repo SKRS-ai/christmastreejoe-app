@@ -38,6 +38,7 @@
         .gold-gradient-text {
             background: linear-gradient(135deg, #FFF0B9 0%, #D4AF37 50%, #997A15 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         .hero-glow {
@@ -521,8 +522,8 @@
                 <ul class="text-xs space-y-2 text-xmasCream/80">
                     <li><a href="https://christmastreejoe.com" class="hover:text-xmasGold transition font-semibold">christmastreejoe.com</a></li>
                     <li><a href="https://christmastreejoe.store" class="hover:text-xmasGold transition">christmastreejoe.store</a></li>
-                    <li><a href="https://driver.christmastreejoe.com" class="hover:text-xmasGold transition">driver.christmastreejoe.com</a></li>
-                    <li><a href="https://christmastreejoe.net" class="hover:text-xmasGold transition">christmastreejoe.net</a></li>
+                    <li><a href="driver-hub.html" class="hover:text-xmasGold transition">driver.christmastreejoe.com</a></li>
+                    <li><a href="vendor-hub.html" class="hover:text-xmasGold transition">christmastreejoe.net</a></li>
                 </ul>
             </div>
 
@@ -538,13 +539,13 @@
 
             <div class="space-y-3">
                 <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Corporate Family</h4>
-                <p class="text-xs text-xmasCream/70">Operated under <strong>Xmas Made Inc.</strong>, sister company to <a href="https://globalcitizenjoecoffee.com" target="_blank" class="text-xmasGold underline">Global Citizen Joe Coffee Company</a>, under parent enterprise <strong>Global Citizen Joe, Inc.</strong></p>
+                <p class="text-xs text-xmasCream/70">Operated by <strong>Global Citizen Joe, LLC.</strong> in partnership with <strong>Xmas Made Inc.</strong></p>
                 <p class="text-[11px] text-xmasCream/50 mt-1">1880 John F Kennedy Boulevard, Ste 104, Philadelphia, PA 19103 US</p>
             </div>
         </div>
 
         <div class="max-w-7xl mx-auto pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-xmasCream/50 gap-4">
-            <p>&copy; 2026 Christmas Tree Joe (Xmas Made Inc. / Global Citizen Joe, Inc.). All Rights Reserved.</p>
+            <p>&copy; 2026 Global Citizen Joe, LLC. All Rights Reserved.</p>
             <div class="flex items-center space-x-6 text-[11px]">
                 <a href="privacy.html" class="hover:text-xmasGold transition">Privacy Policy</a>
                 <a href="terms.html" class="hover:text-xmasGold transition">Terms of Service</a>
@@ -560,7 +561,7 @@
     <script type="module">
         import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 
-        // Connected Supabase Project Credentials (Corrected Project Reference)
+        // Connected Supabase Project Credentials
         const SUPABASE_URL = 'https://pnosjdolfqhuvvcncdh.supabase.co';
         const SUPABASE_ANON_KEY = 'sb_publishable_VLFX6Kp_2DWYt5kLC00HkA_kxCJWON6';
         const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
@@ -669,8 +670,8 @@
                 if (authTabMode === 'register') {
                     // Supabase Sign Up
                     const { data, error } = await supabase.auth.signUp({
-                        email,
-                        password,
+                        email: email,
+                        password: password,
                         options: {
                             data: {
                                 full_name: fullName.trim() || 'Valued Member',
@@ -689,8 +690,8 @@
                 } else {
                     // Supabase Sign In
                     const { data, error } = await supabase.auth.signInWithPassword({
-                        email,
-                        password
+                        email: email,
+                        password: password
                     });
 
                     if (error) throw error;
