@@ -19,7 +19,8 @@
                         xmasGold: '#D4AF37',
                         xmasCream: '#FDFBF7',
                         xmasDark: '#051810',
-                        xmasPanel: '#0A261B'
+                        xmasPanel: '#0A261B',
+                        stripeViolet: '#635BFF'
                     },
                     fontFamily: {
                         cinzel: ['Cinzel', 'serif'],
@@ -31,20 +32,24 @@
     </script>
     <style>
         body { background-color: #051810; color: #FDFBF7; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .gold-border { border: 1px solid #D4AF37; }
         .gold-gradient-text {
             background: linear-gradient(135deg, #FFF0B9 0%, #D4AF37 50%, #997A15 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+        .hero-glow {
+            background: radial-gradient(circle, rgba(212,175,55,0.12) 0%, rgba(5,24,16,0) 70%);
         }
     </style>
 </head>
 <body class="antialiased min-h-screen flex flex-col justify-between selection:bg-xmasGold selection:text-xmasDark">
 
     <!-- TOP ANNOUNCEMENT BAR -->
-    <div class="bg-xmasRed text-white text-[11px] sm:text-xs py-1.5 px-4 font-semibold tracking-wide border-b border-xmasGold/30">
+    <div class="bg-xmasGreen text-white text-[11px] sm:text-xs py-1.5 px-4 font-semibold tracking-wide border-b border-xmasGold/30">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1 text-center sm:text-left">
             <div class="flex items-center gap-2">
-                <span class="bg-white/20 text-white text-[9px] uppercase px-2 py-0.5 rounded-full font-bold">Fleet Operations</span>
+                <span class="bg-emerald-500/20 text-emerald-300 text-[9px] uppercase px-2 py-0.5 rounded-full font-bold">Fleet Operations</span>
                 <span>🚛 Dedicated Carrier Staging Hub • Philadelphia Metro & Appalachian Regional Runs</span>
             </div>
             <div class="flex items-center space-x-4 text-[11px]">
@@ -57,30 +62,63 @@
 
     <!-- MAIN HEADER & NAVIGATION -->
     <header class="w-full bg-xmasDark/95 border-b border-xmasGold/30 sticky top-0 z-50 backdrop-blur-lg shadow-2xl">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-            <a href="index.html" class="flex items-center space-x-3 group">
-                <img src="christmas-tree-joe-logo.png" onerror="this.src='Christmas-tree-joe1.png'" alt="Christmas Tree Joe Logo" class="h-12 w-12 rounded-full border border-xmasGold object-cover shadow-lg group-hover:scale-105 transition">
+        <div class="max-w-7xl mx-auto px-4 py-2.5 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-3 group flex-shrink-0">
+                <img src="christmas-tree-joe-logo.png" onerror="this.src='public/Christmas-tree-joe1.png'" alt="Christmas Tree Joe Logo" class="h-14 w-14 sm:h-16 sm:w-16 rounded-full border-2 border-xmasGold object-cover shadow-lg group-hover:scale-105 transition">
                 <div>
-                    <span class="font-cinzel text-xl sm:text-2xl font-black tracking-wider text-white group-hover:text-xmasGold transition">CHRISTMAS TREE JOE</span>
-                    <p class="text-[9px] text-xmasGold uppercase tracking-widest font-extrabold -mt-1">Logistics & Fleet Dispatch Hub</p>
+                    <span class="font-cinzel text-lg sm:text-2xl font-black tracking-wider text-white group-hover:text-xmasGold transition block">CHRISTMAS TREE JOE</span>
+                    <p class="text-[9px] sm:text-[10px] text-xmasGold uppercase tracking-widest font-extrabold -mt-1">Logistics & Fleet Dispatch Hub</p>
                 </div>
             </a>
 
-            <nav class="hidden lg:flex items-center space-x-7 text-xs font-bold uppercase tracking-wider">
+            <nav class="hidden xl:flex items-center space-x-6 text-[11px] font-bold uppercase tracking-wider">
                 <a href="index.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Home</a>
-                <a href="trees.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Tree Varieties</a>
+                <a href="trees.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Tree Selection</a>
+                <a href="events.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Seasonal Events</a>
+                <a href="community.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Community (TBBLUSA)</a>
                 <a href="marketplace.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Recycled Goods</a>
-                <a href="impact.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Impact</a>
                 <a href="driver-hub.html" class="text-xmasGold border-b-2 border-xmasGold py-1">Driver Hub</a>
-                <a href="vendor-hub.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Grower Hub</a>
-                <a href="contact.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Support & Dispatch</a>
+                <a href="account.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Member Portal</a>
             </nav>
 
             <div class="flex items-center space-x-3">
                 <a href="#driver-onboarding" class="bg-xmasGold hover:bg-[#FFE082] text-xmasDark font-bold px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm border border-xmasGold/50 transition shadow-xl transform hover:scale-105">
                     Carrier Onboarding
                 </a>
+
+                <button onclick="toggleMobileNav()" aria-label="Toggle Menu" class="xl:hidden p-2 rounded-xl bg-xmasPanel border border-xmasGold/40 text-xmasGold hover:text-white transition focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
             </div>
+        </div>
+
+        <!-- MOBILE MENU DRAWER -->
+        <div id="mobileMenu" class="hidden xl:hidden bg-xmasDark/98 border-b-2 border-xmasGold/40 px-6 py-6 space-y-4 shadow-2xl">
+            <nav class="flex flex-col space-y-3 text-xs font-bold uppercase tracking-wider">
+                <a href="index.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>🏡 Home</span> <span>→</span>
+                </a>
+                <a href="trees.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>🎁 Tree Selection</span> <span>→</span>
+                </a>
+                <a href="events.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>🌲 Seasonal Events & Staging</span> <span>→</span>
+                </a>
+                <a href="community.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>🤝 Civic Alliance (TBBLUSA)</span> <span>→</span>
+                </a>
+                <a href="marketplace.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>♻️ Recycled Goods Store</span> <span>→</span>
+                </a>
+                <a href="driver-hub.html" class="text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>🚛 Logistics Driver Hub</span> <span>→</span>
+                </a>
+                <a href="account.html" class="text-xmasCream hover:text-xmasGold py-2 flex items-center justify-between">
+                    <span>👤 Member Portal</span> <span>→</span>
+                </a>
+            </nav>
         </div>
     </header>
 
@@ -99,15 +137,15 @@
             <div>
                 <div class="flex items-center gap-2 mb-1">
                     <span class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span class="text-xs font-bold text-xmasGold uppercase tracking-widest">Active Dispatch Driver Status</span>
+                    <span class="text-xs font-bold text-xmasGold uppercase tracking-widest" id="driverStatusLabel">Active Dispatch Driver Status</span>
                 </div>
-                <h2 class="font-cinzel text-2xl font-black text-white">Available Delivery Runs</h2>
+                <h2 class="font-cinzel text-2xl font-black text-white" id="activeDriverHeading">Available Delivery Runs</h2>
                 <p class="text-xs text-xmasCream/70">Claim available delivery routes in your local territory. Payouts release automatically upon photo delivery confirmation.</p>
             </div>
             
             <div class="flex gap-4 text-center">
                 <div class="bg-xmasDark px-5 py-3 rounded-2xl border border-white/10 shadow-inner">
-                    <span class="text-[10px] text-xmasCream/60 uppercase block">Completed Runs</span>
+                    <span class="text-[10px] text-xmasCream/60 uppercase block font-bold">Completed Runs</span>
                     <p id="completedRuns" class="text-2xl font-black text-white">12</p>
                 </div>
                 <div class="bg-xmasDark px-5 py-3 rounded-2xl border border-xmasGold/40 shadow-inner">
@@ -272,7 +310,7 @@
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
             <div class="space-y-4 lg:col-span-1">
                 <div class="flex items-center space-x-3">
-                    <img src="christmas-tree-joe-logo.png" onerror="this.src='Christmas-tree-joe3.png'" alt="Joe Mascot" class="h-14 w-14 rounded-full border-2 border-xmasGold object-cover shadow-lg">
+                    <img src="christmas-tree-joe-logo.png" onerror="this.src='public/Christmas-tree-joe3.png'" alt="Joe Mascot" class="h-14 w-14 rounded-full border-2 border-xmasGold object-cover shadow-lg">
                     <div>
                         <h4 class="font-cinzel text-base font-bold text-white">Christmas Tree Joe</h4>
                         <p class="text-[9px] text-xmasGold uppercase tracking-widest font-bold">Xmas Made Inc.</p>
@@ -294,7 +332,7 @@
                 <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Logistics & Operations</h4>
                 <ul class="text-xs space-y-2 text-xmasCream/80">
                     <li><a href="driver-hub.html" class="hover:text-xmasGold transition font-semibold text-xmasGold">Driver Staging Hub</a></li>
-                    <li><a href="vendor-hub.html" class="hover:text-xmasGold transition">Grower & Vendor Intake</a></li>
+                    <li><a href="events.html" class="hover:text-xmasGold transition">Rittenhouse Staging</a></li>
                     <li><a href="track.html" class="hover:text-xmasGold transition">Real-Time Delivery Tracker</a></li>
                     <li><a href="account.html" class="hover:text-xmasGold transition">Subscriber Portal</a></li>
                 </ul>
@@ -303,9 +341,9 @@
             <div class="space-y-3">
                 <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Direct Support</h4>
                 <ul class="text-xs space-y-2 text-xmasCream/80">
+                    <li><a href="community.html" class="hover:text-xmasGold transition">Civic Alliance (TBBLUSA)</a></li>
                     <li><a href="mailto:dispatch@christmastreejoe.com" class="hover:text-xmasGold transition underline">dispatch@christmastreejoe.com</a></li>
-                    <li><a href="mailto:sales@christmastreejoe.com" class="hover:text-xmasGold transition underline">sales@christmastreejoe.com</a></li>
-                    <li><a href="impact.html" class="hover:text-xmasGold transition">Stripe Climate Impact</a></li>
+                    <li><a href="climate.html" class="hover:text-xmasGold transition">1% Stripe Climate Portal</a></li>
                 </ul>
             </div>
 
@@ -318,13 +356,49 @@
 
         <div class="max-w-7xl mx-auto pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-xmasCream/50 gap-4">
             <p>&copy; 2026 Global Citizen Joe, LLC. All Rights Reserved.</p>
-            <div class="flex space-x-6">
+            <div class="flex items-center space-x-6 text-[11px]">
                 <a href="privacy.html" class="hover:text-xmasGold transition">Privacy Policy</a>
                 <a href="terms.html" class="hover:text-xmasGold transition">Terms of Service</a>
-                <a href="impact.html" class="hover:text-xmasGold transition">Zero-Waste Commitment</a>
+                <a href="events.html" class="hover:text-xmasGold transition">Events</a>
+                <a href="community.html" class="hover:text-xmasGold transition">Community</a>
             </div>
         </div>
     </footer>
+
+    <!-- REAL-TIME SUPABASE DRIVER DETECTION SCRIPT -->
+    <script type="module">
+        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+        // Connected Supabase Project Credentials
+        const SUPABASE_URL = 'https://pnosjdmolfqhuvvcncdh.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable_VLFX6Kp_2DWYt5kLC00HkA_kxCJWON6';
+        const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        // Check if a registered driver is logged in
+        async function checkDriverSession() {
+            const { data: { session } } = await supabase.auth.getSession();
+            
+            if (session && session.user) {
+                const { data: profile } = await supabase
+                    .from('profiles')
+                    .select('*')
+                    .eq('id', session.user.id)
+                    .single();
+
+                const role = profile?.role || session.user.user_metadata?.role;
+                const driverName = profile?.full_name || session.user.user_metadata?.full_name || session.user.email.split('@')[0];
+
+                if (role === 'driver' || role === 'admin') {
+                    const heading = document.getElementById('activeDriverHeading');
+                    const statusLabel = document.getElementById('driverStatusLabel');
+                    if (heading) heading.innerText = `${driverName} (Verified Driver)`;
+                    if (statusLabel) statusLabel.innerText = 'Authenticated Fleet Terminal';
+                }
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', checkDriverSession);
+    </script>
 
     <!-- INTERACTIVE DISPATCH CLAIMING & FORMSPREE SCRIPT -->
     <script>
@@ -350,6 +424,11 @@
             document.getElementById('earnedPayouts').innerText = `$${totalEarnings.toFixed(2)}`;
 
             alert(`Batch #${batchId} has been locked to your carrier credentials. Dispatch manifest transmitted.`);
+        }
+
+        function toggleMobileNav() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
         }
 
         // Formspree Asynchronous Driver Intake
