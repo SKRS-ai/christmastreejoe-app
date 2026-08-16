@@ -8,6 +8,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Hero & Component Stylesheet -->
+    <link rel="stylesheet" href="styles/hero.css">
     
     <script>
         tailwind.config = {
@@ -19,7 +21,8 @@
                         xmasGold: '#D4AF37',
                         xmasCream: '#FDFBF7',
                         xmasDark: '#051810',
-                        xmasPanel: '#0A261B'
+                        xmasPanel: '#0A261B',
+                        stripeViolet: '#635BFF'
                     },
                     fontFamily: {
                         cinzel: ['Cinzel', 'serif'],
@@ -31,64 +34,192 @@
     </script>
     <style>
         body { background-color: #051810; color: #FDFBF7; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .gold-border { border: 1px solid #D4AF37; }
         .gold-gradient-text {
             background: linear-gradient(135deg, #FFF0B9 0%, #D4AF37 50%, #997A15 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+        .hero-glow {
+            background: radial-gradient(circle, rgba(212,175,55,0.12) 0%, rgba(5,24,16,0) 70%);
         }
     </style>
 </head>
 <body class="antialiased min-h-screen flex flex-col justify-between selection:bg-xmasGold selection:text-xmasDark">
 
-    <!-- MAIN HEADER -->
+    <!-- TOP ANNOUNCEMENT BAR -->
+    <div class="bg-xmasRed text-white text-[11px] sm:text-xs py-1.5 px-4 font-semibold tracking-wide border-b border-xmasGold/30">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1 text-center sm:text-left">
+            <div class="flex items-center gap-2">
+                <span class="bg-white/20 text-white text-[9px] uppercase px-2 py-0.5 rounded-full font-bold">Route Lost</span>
+                <span>🎄 Let's get you back to the tree nursery staging floor.</span>
+            </div>
+            <div class="flex items-center space-x-4 text-[11px]">
+                <a href="tel:18005559627" class="hover:text-xmasGold transition hidden md:inline">📞 1-800-XMAS-JOE</a>
+                <span class="hidden md:inline">|</span>
+                <a href="mailto:support@christmastreejoe.com" class="hover:text-xmasGold transition">✉️ support@christmastreejoe.com</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN RESPONSIVE HEADER & NAVIGATION -->
     <header class="w-full bg-xmasDark/95 border-b border-xmasGold/30 sticky top-0 z-50 backdrop-blur-lg shadow-2xl">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-            <a href="index.html" class="flex items-center space-x-3 group">
-                <img src="Christmas-tree-joe1.png" onerror="this.src='public/Christmas-tree-joe1.png'" alt="Logo" class="h-12 w-12 rounded-full border border-xmasGold object-cover shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-2.5 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-3 group flex-shrink-0">
+                <img src="christmas-tree-joe-logo.png" onerror="this.src='public/Christmas-tree-joe1.png'" alt="Christmas Tree Joe Logo" class="h-14 w-14 sm:h-16 sm:w-16 rounded-full border-2 border-xmasGold object-cover shadow-lg group-hover:scale-105 transition">
                 <div>
-                    <span class="font-cinzel text-xl sm:text-2xl font-black tracking-wider text-white">CHRISTMAS TREE JOE</span>
-                    <p class="text-[9px] text-xmasGold uppercase tracking-widest font-extrabold -mt-1">A Global Citizen Joe Enterprise</p>
+                    <span class="font-cinzel text-lg sm:text-2xl font-black tracking-wider text-white group-hover:text-xmasGold transition block">CHRISTMAS TREE JOE</span>
+                    <p class="text-[9px] sm:text-[10px] text-xmasGold uppercase tracking-widest font-extrabold -mt-1">A Global Citizen Joe Enterprise</p>
                 </div>
             </a>
-            <a href="trees.html" class="bg-xmasRed hover:bg-red-700 text-white font-bold px-4 py-2 rounded-full text-xs transition border border-xmasGold/50 shadow-lg">
-                Reserve Tree
-            </a>
+
+            <nav class="hidden xl:flex items-center space-x-6 text-[11px] font-bold uppercase tracking-wider">
+                <a href="index.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Home</a>
+                <a href="trees.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Tree Selection</a>
+                <a href="tree-types.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Tree Varieties</a>
+                <a href="events.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Seasonal Events</a>
+                <a href="community.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Community (TBBLUSA)</a>
+                <a href="marketplace.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Recycled Goods</a>
+                <a href="account.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Member Portal</a>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <a href="trees.html" class="bg-xmasRed hover:bg-red-700 text-white font-bold px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm border border-xmasGold/50 transition shadow-xl transform hover:scale-105 flex-shrink-0">
+                    Reserve Tree
+                </a>
+
+                <button onclick="toggleMobileNav()" aria-label="Toggle Menu" class="xl:hidden p-2 rounded-xl bg-xmasPanel border border-xmasGold/40 text-xmasGold hover:text-white transition focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobileMenu" class="hidden xl:hidden bg-xmasDark/98 border-b-2 border-xmasGold/40 px-6 py-6 space-y-4 shadow-2xl">
+            <nav class="flex flex-col space-y-3 text-xs font-bold uppercase tracking-wider">
+                <a href="index.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>🏡 Home</span> <span>→</span>
+                </a>
+                <a href="trees.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>🎁 Tree Selection</span> <span>→</span>
+                </a>
+                <a href="tree-types.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>📐 Tree Varieties</span> <span>→</span>
+                </a>
+                <a href="events.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>🌲 Seasonal Events & Staging</span> <span>→</span>
+                </a>
+                <a href="community.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>🤝 Civic Alliance (TBBLUSA)</span> <span>→</span>
+                </a>
+                <a href="marketplace.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                    <span>♻️ Recycled Goods Store</span> <span>→</span>
+                </a>
+                <a href="account.html" class="text-xmasCream hover:text-xmasGold py-2 flex items-center justify-between">
+                    <span>👤 Member Portal</span> <span>→</span>
+                </a>
+            </nav>
         </div>
     </header>
 
     <!-- 404 MAIN CONTENT -->
-    <main class="max-w-xl mx-auto px-4 py-20 space-y-6 text-center">
+    <main class="max-w-xl mx-auto px-4 py-16 sm:py-20 space-y-6 text-center hero-glow">
         <div class="space-y-3">
-            <span class="font-cinzel text-7xl sm:text-8xl font-black text-xmasGold block">404</span>
-            <span class="text-xs font-bold text-xmasGold uppercase tracking-widest bg-xmasPanel px-4 py-1.5 rounded-full border border-xmasGold/30 inline-block">Lost In The Timber Grove</span>
-            <h1 class="font-cinzel text-3xl sm:text-4xl font-black text-white">Page Not Found</h1>
-            <p class="text-xmasCream/70 text-xs sm:text-sm leading-relaxed">
-                The holiday trail you followed doesn't exist or has moved. Let's get you back to reserving your fresh-cut North Carolina timber tree.
+            <span class="font-cinzel text-7xl sm:text-8xl font-black text-xmasGold block">4<span class="gold-gradient-text">0</span>4</span>
+            <span class="text-xs font-bold text-xmasGold uppercase tracking-widest bg-xmasPanel px-4 py-1.5 rounded-full border border-xmasGold/30 inline-block">Lost In The Timber Grove</span>[cite: 7]
+            <h1 class="font-cinzel text-3xl sm:text-4xl font-black text-white">The Timber Trail Ends Here</h1>
+            <p class="text-xmasCream/75 text-xs sm:text-sm leading-relaxed max-w-md mx-auto">
+                The holiday trail you followed doesn't exist or has moved[cite: 7]. Let's get you back to reserving your fresh-cut North Carolina timber tree[cite: 7].
             </p>
         </div>
 
         <div class="bg-xmasPanel border border-xmasGold/40 rounded-3xl p-6 space-y-3 text-xs shadow-2xl">
-            <p class="text-xmasGold font-bold uppercase tracking-wider text-[11px]">Quick Navigation Hub</p>
+            <p class="text-xmasGold font-bold uppercase tracking-wider text-[11px]">Quick Navigation Hub</p>[cite: 7]
             <div class="grid grid-cols-2 gap-3 pt-2">
-                <a href="index.html" class="py-2.5 px-3 bg-xmasDark hover:border-xmasGold border border-white/10 rounded-xl text-white font-semibold transition text-center">
-                    🏡 Homepage
+                <a href="index.html" class="py-3 px-3 bg-xmasDark hover:border-xmasGold border border-white/10 rounded-xl text-white font-semibold transition text-center">
+                    🏡 Homepage[cite: 7]
                 </a>
-                <a href="trees.html" class="py-2.5 px-3 bg-xmasRed hover:bg-red-700 border border-xmasGold/40 rounded-xl text-white font-bold transition text-center">
-                    🎄 Tree Configurator
+                <a href="trees.html" class="py-3 px-3 bg-xmasRed hover:bg-red-700 border border-xmasGold/40 rounded-xl text-white font-bold transition text-center">
+                    🎄 Tree Selection[cite: 7]
                 </a>
-                <a href="track.html" class="py-2.5 px-3 bg-xmasDark hover:border-xmasGold border border-white/10 rounded-xl text-white font-semibold transition text-center">
-                    🚚 Fleet Tracker
+                <a href="track.html" class="py-3 px-3 bg-xmasDark hover:border-xmasGold border border-white/10 rounded-xl text-white font-semibold transition text-center">
+                    🚚 Fleet Tracker[cite: 7]
                 </a>
-                <a href="contact.html" class="py-2.5 px-3 bg-xmasDark hover:border-xmasGold border border-white/10 rounded-xl text-white font-semibold transition text-center">
-                    📞 Customer Support
+                <a href="contact.html" class="py-3 px-3 bg-xmasDark hover:border-xmasGold border border-white/10 rounded-xl text-white font-semibold transition text-center">
+                    📞 Customer Care[cite: 7]
                 </a>
             </div>
         </div>
     </main>
 
-    <!-- FOOTER -->
-    <footer class="bg-xmasDark border-t border-xmasGold/30 py-8 px-4 text-xmasCream text-xs text-center">
-        <p>&copy; 2026 Christmas Tree Joe (Xmas Made Inc. / Global Citizen Joe, Inc.). All Rights Reserved.</p>
+    <!-- FULL EXTENDED ENTERPRISE FOOTER -->
+    <footer class="bg-xmasDark border-t border-xmasGold/30 pt-16 pb-8 px-4 text-xmasCream">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
+            <div class="space-y-4 lg:col-span-1">
+                <div class="flex items-center space-x-3">
+                    <img src="christmas-tree-joe-logo.png" onerror="this.src='public/Christmas-tree-joe3.png'" alt="Joe Mascot" class="h-14 w-14 rounded-full border-2 border-xmasGold object-cover shadow-lg">
+                    <div>
+                        <h4 class="font-cinzel text-base font-bold text-white">Christmas Tree Joe</h4>
+                        <p class="text-[9px] text-xmasGold uppercase tracking-widest font-bold">Xmas Made Inc.</p>
+                    </div>
+                </div>
+                <p class="text-xs text-xmasCream/70 leading-relaxed">Connecting households with fresh North Carolina timber farms through white-glove tree subscriptions and 100% zero-waste eco-recycling.</p>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Subscription Tiers</h4>
+                <ul class="text-xs space-y-2 text-xmasCream/80">
+                    <li><a href="trees.html" class="hover:text-xmasGold transition">Evergreen Sprout (4–5 ft)</a></li>
+                    <li><a href="trees.html" class="hover:text-xmasGold transition">Holiday Hearth (6–7 ft)</a></li>
+                    <li><a href="trees.html" class="hover:text-xmasGold transition">Yuletide Monarch (8–9 ft)</a></li>
+                </ul>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Logistics & Operations</h4>
+                <ul class="text-xs space-y-2 text-xmasCream/80">
+                    <li><a href="driver-hub.html" class="hover:text-xmasGold transition">Driver Staging Hub</a></li>
+                    <li><a href="vendor-hub.html" class="hover:text-xmasGold transition">Grower & Vendor Intake</a></li>
+                    <li><a href="events.html" class="hover:text-xmasGold transition">Seasonal Events (Rittenhouse)</a></li>
+                    <li><a href="account.html" class="hover:text-xmasGold transition">Subscriber Portal</a></li>
+                </ul>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Direct Support</h4>
+                <ul class="text-xs space-y-2 text-xmasCream/80">
+                    <li><a href="community.html" class="hover:text-xmasGold transition">Civic Mission (TBBLUSA)</a></li>
+                    <li><a href="mailto:support@christmastreejoe.com" class="hover:text-xmasGold transition underline">support@christmastreejoe.com</a></li>
+                    <li><a href="climate.html" class="hover:text-xmasGold transition text-stripeViolet font-bold">1% Stripe Climate Portal</a></li>
+                </ul>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Corporate Family</h4>
+                <p class="text-xs text-xmasCream/70">Operated by <strong>Global Citizen Joe, LLC.</strong> in partnership with <strong>Xmas Made Inc.</strong></p>
+                <p class="text-[11px] text-xmasCream/50 mt-1">1880 John F Kennedy Boulevard, Ste 104, Philadelphia, PA 19103 US</p>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-xmasCream/50 gap-4">
+            <p>&copy; 2026 Global Citizen Joe, LLC. All Rights Reserved.</p>
+            <div class="flex items-center space-x-6 text-[11px]">
+                <a href="privacy.html" class="hover:text-xmasGold transition">Privacy Policy</a>
+                <a href="terms.html" class="hover:text-xmasGold transition">Terms of Service</a>
+                <a href="events.html" class="hover:text-xmasGold transition">Events</a>
+                <a href="community.html" class="hover:text-xmasGold transition">Community</a>
+            </div>
+        </div>
     </footer>
+
+    <!-- MOBILE MENU TOGGLE -->
+    <script>
+        function toggleMobileNav() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+    </script>
 </body>
 </html>
