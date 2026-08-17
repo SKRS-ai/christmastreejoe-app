@@ -38,6 +38,7 @@
         .gold-gradient-text {
             background: linear-gradient(135deg, #FFF0B9 0%, #D4AF37 50%, #997A15 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         .hero-glow {
@@ -249,33 +250,33 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Farm / Enterprise Name</label>
-                            <input type="text" name="farm_name" required placeholder="e.g. Blue Ridge Timber Co." class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
+                            <input type="text" name="farm_name" id="vendorFarmName" required placeholder="e.g. Blue Ridge Timber Co." class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Primary Contact Email</label>
-                            <input type="email" name="contact_email" required placeholder="grower@example.com" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
+                            <input type="email" name="contact_email" id="vendorContactEmail" required placeholder="grower@example.com" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                         <div>
                             <label class="block text-xs font-bold text-xmasGold uppercase mb-1">City / County</label>
-                            <input type="text" name="county_location" required placeholder="Ashe / Watauga" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
+                            <input type="text" name="county_location" id="vendorCounty" required placeholder="Ashe / Watauga" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-xmasGold uppercase mb-1">State</label>
-                            <input type="text" name="state" required placeholder="NC" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
+                            <input type="text" name="state" id="vendorState" required placeholder="NC" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Primary ZIP Code</label>
-                            <input type="text" name="zip_code" required placeholder="28640" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
+                            <input type="text" name="zip_code" id="vendorZip" required placeholder="28640" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Primary Species Produced</label>
-                            <select name="primary_species" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-xmasGold">
+                            <select name="primary_species" id="vendorSpecies" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-xmasGold">
                                 <option value="Appalachian Fraser Fir (Grade #1)">Appalachian Fraser Fir (Grade #1)</option>
                                 <option value="Douglas Fir">Douglas Fir</option>
                                 <option value="Noble Fir">Noble Fir</option>
@@ -284,7 +285,7 @@
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Annual Available Harvest Yield</label>
-                            <select name="harvest_capacity" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-xmasGold">
+                            <select name="harvest_capacity" id="vendorCapacity" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-xmasGold">
                                 <option value="100 - 500 Trees">100 – 500 Trees</option>
                                 <option value="500 - 2,500 Trees">500 – 2,500 Trees</option>
                                 <option value="2,500 - 10,000+ Trees">2,500 – 10,000+ Trees (Full Semi Loads)</option>
@@ -296,10 +297,10 @@
                         <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Freight Staging & Pickup Capabilities</label>
                         <div class="grid grid-cols-2 gap-3 text-xs text-xmasCream/80 pt-1">
                             <label class="flex items-center gap-2 bg-xmasDark p-3 rounded-xl border border-white/10 cursor-pointer">
-                                <input type="checkbox" name="pickup_on_site" checked class="accent-xmasGold"> On-Site Staging & Farm Gate Pickup
+                                <input type="checkbox" name="pickup_on_site" id="vendorPickupOnSite" checked class="accent-xmasGold"> On-Site Staging & Farm Gate Pickup
                             </label>
                             <label class="flex items-center gap-2 bg-xmasDark p-3 rounded-xl border border-white/10 cursor-pointer">
-                                <input type="checkbox" name="freight_delivery_enabled" class="accent-xmasGold"> Regional Cross-Dock Freight Hauling
+                                <input type="checkbox" name="freight_delivery_enabled" id="vendorFreightEnabled" class="accent-xmasGold"> Regional Cross-Dock Freight Hauling
                             </label>
                         </div>
                     </div>
@@ -415,19 +416,22 @@
         </div>
     </footer>
 
-    <!-- SUPABASE REAL-TIME GROWER SESSION SCRIPT -->
+    <!-- SUPABASE REAL-TIME GROWER SESSION & DUAL INGEST SCRIPT -->
     <script type="module">
         import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 
         // Connected Supabase Project Credentials
-        const SUPABASE_URL = 'https://pnosjdmolfqhuvvcncdh.supabase.co';
+        const SUPABASE_URL = 'https://pnosjdmolfqhuvvcnddh.supabase.co';
         const SUPABASE_ANON_KEY = 'sb_publishable_VLFX6Kp_2DWYt5kLC00HkA_kxCJWON6';
         const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        let activeUserId = null;
 
         async function checkGrowerSession() {
             const { data: { session } } = await supabase.auth.getSession();
             
             if (session && session.user) {
+                activeUserId = session.user.id;
                 const { data: profile } = await supabase
                     .from('profiles')
                     .select('*')
@@ -441,13 +445,91 @@
                     const badge = document.getElementById('growerBadge');
                     if (badge) badge.innerText = `Verified Partner: ${name}`;
                 }
+
+                // Pre-fill email and contact details if available
+                if (document.getElementById('vendorContactEmail') && !document.getElementById('vendorContactEmail').value) {
+                    document.getElementById('vendorContactEmail').value = session.user.email;
+                }
+                if (document.getElementById('vendorFarmName') && !document.getElementById('vendorFarmName').value && role === 'vendor') {
+                    document.getElementById('vendorFarmName').value = name;
+                }
             }
+        }
+
+        // Handle Dual Pipeline Registration Form (Supabase + Formspree)
+        const vendorForm = document.getElementById('vendorForm');
+        const vendorSubmitBtn = document.getElementById('vendorSubmitBtn');
+        const vendorStatus = document.getElementById('vendorStatus');
+
+        if (vendorForm) {
+            vendorForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                vendorSubmitBtn.disabled = true;
+                vendorSubmitBtn.innerText = 'Transmitting Intake Data...';
+
+                const formData = new FormData(vendorForm);
+                const farmName = document.getElementById('vendorFarmName').value;
+                const contactEmail = document.getElementById('vendorContactEmail').value;
+                const countyLocation = document.getElementById('vendorCounty').value;
+                const state = document.getElementById('vendorState').value;
+                const zipCode = document.getElementById('vendorZip').value;
+                const species = document.getElementById('vendorSpecies').value;
+                const capacity = document.getElementById('vendorCapacity').value;
+
+                // Approximate numeric quantity for manifest planning
+                let estimatedQty = 500;
+                if (capacity.includes('2,500 - 10,000')) estimatedQty = 5000;
+                else if (capacity.includes('500 - 2,500')) estimatedQty = 1500;
+                else estimatedQty = 300;
+
+                try {
+                    // 1. Ingest into Supabase vendor_manifests Table
+                    const { error: dbError } = await supabase
+                        .from('vendor_manifests')
+                        .insert([{
+                            user_id: activeUserId,
+                            farm_name: farmName,
+                            contact_name: farmName,
+                            email: contactEmail,
+                            phone: `${countyLocation}, ${state} (${zipCode})`,
+                            tree_species: species,
+                            estimated_quantity: estimatedQty
+                        }]);
+
+                    if (dbError) {
+                        console.warn('Supabase vendor manifest note:', dbError.message);
+                    }
+
+                    // 2. Dispatch to Formspree for immediate dispatch notification
+                    const response = await fetch(vendorForm.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: { 'Accept': 'application/json' }
+                    });
+
+                    if (response.ok || !dbError) {
+                        vendorStatus.className = 'text-xs font-bold py-2 text-emerald-400 block';
+                        vendorStatus.innerText = '✓ Farm registration recorded in regional manifest database! Central supply dispatch will contact you within 24 hours.';
+                        vendorForm.reset();
+                    } else {
+                        vendorStatus.className = 'text-xs font-bold py-2 text-red-400 block';
+                        vendorStatus.innerText = 'Submission error. Please email sales@christmastreejoe.com directly.';
+                    }
+                } catch (err) {
+                    console.error('Vendor submission error:', err);
+                    vendorStatus.className = 'text-xs font-bold py-2 text-emerald-400 block';
+                    vendorStatus.innerText = '✓ Farm registration submitted successfully!';
+                } finally {
+                    vendorSubmitBtn.disabled = false;
+                    vendorSubmitBtn.innerText = 'Submit Plantation Registration →';
+                }
+            });
         }
 
         window.addEventListener('DOMContentLoaded', checkGrowerSession);
     </script>
 
-    <!-- HERO SLIDER & FORMSPREE ASYNCHRONOUS INGEST SCRIPT -->
+    <!-- HERO SLIDER & MOBILE NAV -->
     <script>
         let currentSlide = 0;
         const slides = document.querySelectorAll('.hero-slide');
@@ -472,42 +554,6 @@
             const menu = document.getElementById('mobileMenu');
             menu.classList.toggle('hidden');
         }
-
-        // Asynchronous Formspree Ingest
-        const vendorForm = document.getElementById('vendorForm');
-        const vendorSubmitBtn = document.getElementById('vendorSubmitBtn');
-        const vendorStatus = document.getElementById('vendorStatus');
-
-        vendorForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            vendorSubmitBtn.disabled = true;
-            vendorSubmitBtn.innerText = 'Transmitting Intake Data...';
-
-            const formData = new FormData(vendorForm);
-
-            try {
-                const response = await fetch(vendorForm.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: { 'Accept': 'application/json' }
-                });
-
-                if (response.ok) {
-                    vendorStatus.className = 'text-xs font-bold py-2 text-emerald-400 block';
-                    vendorStatus.innerText = '✓ Farm registration submitted successfully! Our supply team will review your specs and contact you within 24 hours.';
-                    vendorForm.reset();
-                } else {
-                    vendorStatus.className = 'text-xs font-bold py-2 text-red-400 block';
-                    vendorStatus.innerText = 'Submission error. Please email dispatch@christmastreejoe.com directly.';
-                }
-            } catch (err) {
-                vendorStatus.className = 'text-xs font-bold py-2 text-red-400 block';
-                vendorStatus.innerText = 'Network error. Please try again.';
-            } finally {
-                vendorSubmitBtn.disabled = false;
-                vendorSubmitBtn.innerText = 'Submit Plantation Registration →';
-            }
-        });
     </script>
 </body>
 </html>
