@@ -317,19 +317,19 @@
                     <div>
                         <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Tree Size Tier</label>
                         <select id="checkoutTier" onchange="updateSummary()" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-xmasGold">
-                            <option value="149.99" data-tier-key="sprout" data-oneoff="169.99" data-name="Evergreen Sprout (4–5 ft)">Tier 2: Evergreen Sprout (4–5 ft) — $149.99/yr</option>
-                            <option value="209.99" data-tier-key="hearth" data-oneoff="239.99" data-name="Holiday Hearth (6–7 ft)" selected>Tier 1: Holiday Hearth (6–7 ft) — $209.99/yr</option>
-                            <option value="299.99" data-tier-key="monarch" data-oneoff="339.99" data-name="Yuletide Monarch (8–9 ft)">Tier 3: Yuletide Monarch (8–9 ft) — $299.99/yr</option>
-                            <option value="449.99" data-tier-key="estate" data-oneoff="499.99" data-name="Grand Estate (10–12 ft)">Tier 4: Grand Estate (10–12 ft) — $449.99/yr</option>
+                            <option value="149.99" data-tier-key="sprout" data-oneoff="169.99" data-name="Evergreen Sprout (4–6 ft)">Evergreen Sprout (4–6 ft) — $149.99/yr</option>
+                            <option value="209.99" data-tier-key="hearth" data-oneoff="239.99" data-name="Holiday Hearth (6–8 ft)" selected>Holiday Hearth (6–8 ft) — $209.99/yr</option>
+                            <option value="299.99" data-tier-key="monarch" data-oneoff="339.99" data-name="Yuletide Monarch (8–10 ft)">Yuletide Monarch (8–10 ft) — $299.99/yr</option>
+                            <option value="382.49" data-tier-key="estate" data-oneoff="449.99" data-name="Grand Estate (10–14 ft)">Grand Estate (10–14 ft) — $382.49/yr</option>
                         </select>
                     </div>
 
                     <div>
                         <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Evergreen Variety</label>
                         <select class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-xmasGold">
-                            <option>Fraser Fir (Grade #1 — Ashe County, NC)</option>
+                            <option>Appalachian Fraser Fir (Grade #1)</option>
                             <option>Douglas Fir (Sweet Citrus Aroma)</option>
-                            <option>Noble Fir (Architected Heavy Tiers)</option>
+                            <option>Noble Fir (Horizontal Layered Tiers)</option>
                         </select>
                     </div>
 
@@ -416,10 +416,10 @@
             <div class="space-y-3">
                 <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Subscription Tiers</h4>
                 <ul class="text-xs space-y-2 text-xmasCream/80">
-                    <li><a href="trees.html" class="hover:text-xmasGold transition">Evergreen Sprout (4–5 ft)</a></li>
-                    <li><a href="trees.html" class="hover:text-xmasGold transition">Holiday Hearth (6–7 ft)</a></li>
-                    <li><a href="trees.html" class="hover:text-xmasGold transition">Yuletide Monarch (8–9 ft)</a></li>
-                    <li><a href="trees.html" class="hover:text-xmasGold transition">Grand Estate (10–12 ft)</a></li>
+                    <li><a href="trees.html" class="hover:text-xmasGold transition">Evergreen Sprout (4–6 ft)</a></li>
+                    <li><a href="trees.html" class="hover:text-xmasGold transition">Holiday Hearth (6–8 ft)</a></li>
+                    <li><a href="trees.html" class="hover:text-xmasGold transition">Yuletide Monarch (8–10 ft)</a></li>
+                    <li><a href="trees.html" class="hover:text-xmasGold transition">Grand Estate (10–14 ft)</a></li>
                 </ul>
             </div>
 
@@ -461,24 +461,24 @@
     <script>
         const STRIPE_PAYMENT_LINKS = {
             sprout: {
-                standard: 'https://buy.stripe.com/eVqcN69947El7Q5h0vebu05', // $169.99 One-Time
-                lock_3yr: 'https://buy.stripe.com/14AaEY1GC1fX6M18tZebu00', // $149.99 / yr
+                standard: 'https://buy.stripe.com/eVqcN69947El7Q5h0vebu05',
+                lock_3yr: 'https://buy.stripe.com/14AaEY1GC1fX6M18tZebu00',
                 one_off:  'https://buy.stripe.com/eVqcN69947El7Q5h0vebu05'
             },
             hearth: {
-                standard: 'https://buy.stripe.com/6oUfZi1GCcYFfix8tZebu02', // $209.99 / yr
-                lock_3yr: 'https://buy.stripe.com/14A28s0Cy9MtfixfWrebu04', // $178.49 / yr
-                one_off:  'https://buy.stripe.com/eVq5kE2KG2k1gmB25Bebu07'  // $239.99 One-Time
+                standard: 'https://buy.stripe.com/6oUfZi1GCcYFfix8tZebu02',
+                lock_3yr: 'https://buy.stripe.com/14A28s0Cy9MtfixfWrebu04',
+                one_off:  'https://buy.stripe.com/eVq5kE2KG2k1gmB25Bebu07'
             },
             monarch: {
-                standard: 'https://buy.stripe.com/5kQfZifxs4s93zP8tZebu01', // $299.99 / yr
-                lock_3yr: 'https://buy.stripe.com/5kQfZifxs4s93zP8tZebu01', // $254.99 / yr
-                one_off:  'https://buy.stripe.com/dRmaEYgBwbUBb2h39Febu03'  // $339.99 One-Time
+                standard: 'https://buy.stripe.com/5kQfZifxs4s93zP8tZebu01',
+                lock_3yr: 'https://buy.stripe.com/5kQfZifxs4s93zP8tZebu01',
+                one_off:  'https://buy.stripe.com/dRmaEYgBwbUBb2h39Febu03'
             },
             estate: {
-                standard: 'https://buy.stripe.com/00w28s1GC0bT5HX5hNebu08', // $382.49 / yr
-                lock_3yr: 'https://buy.stripe.com/8x24gAclg2k1gmB5hNebu09', // $382.49 / yr
-                one_off:  'https://buy.stripe.com/5kQ4gAfxscYFfix9y3ebu06'  // $449.99 One-Time
+                standard: 'https://buy.stripe.com/00w28s1GC0bT5HX5hNebu08',
+                lock_3yr: 'https://buy.stripe.com/8x24gAclg2k1gmB5hNebu09',
+                one_off:  'https://buy.stripe.com/5kQ4gAfxscYFfix9y3ebu06'
             }
         };
 
@@ -486,18 +486,6 @@
         let currentBasePrice = 209.99;
         let currentTermYears = 3;
         let gameBonusDiscount = 0;
-
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.hero-slide');
-        const dots = document.querySelectorAll('.slider-dot');
-
-        function setSlide(index) {
-            slides.forEach((s, i) => {
-                s.classList.toggle('active', i === index);
-                if (dots[i]) dots[i].classList.toggle('active', i === index);
-            });
-            currentSlide = index;
-        }
 
         function toggleMobileNav() {
             const menu = document.getElementById('mobileMenu');
