@@ -86,8 +86,8 @@
             </nav>
 
             <div class="flex items-center space-x-3">
-                <a href="#partner-form" class="bg-xmasRed hover:bg-red-700 text-white font-bold px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm border border-xmasGold/50 transition shadow-xl transform hover:scale-105 flex-shrink-0">
-                    Register Plantation
+                <a href="account.html" id="vendorNavAuthBtn" class="bg-xmasRed hover:bg-red-700 text-white font-bold px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm border border-xmasGold/50 transition shadow-xl transform hover:scale-105 flex-shrink-0">
+                    Grower Sign In
                 </a>
 
                 <button onclick="toggleMobileNav()" aria-label="Toggle Menu" class="xl:hidden p-2 rounded-xl bg-xmasPanel border border-xmasGold/40 text-xmasGold hover:text-white transition focus:outline-none">
@@ -207,7 +207,7 @@
     </section>
 
     <!-- MAIN CONTENT -->
-    <main class="max-w-7xl mx-auto px-4 py-8 space-y-12">
+    <main class="max-w-7xl mx-auto px-4 py-8 space-y-12 flex-1 w-full">
 
         <!-- STATS & NETWORK HIGHLIGHTS -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -230,7 +230,62 @@
             </div>
         </div>
 
-        <!-- FORM & BATCH MANIFEST SECTION -->
+        <!-- ================================================================= -->
+        <!-- PROTECTED DASHBOARD SECTION (ONLY VISIBLE TO AUTHENTICATED VENDORS) -->
+        <!-- ================================================================= -->
+        <div id="vendorPrivateDashboard" class="hidden space-y-8">
+            <div class="bg-xmasPanel border-2 border-xmasGold/40 rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/10 pb-4 gap-4">
+                    <div>
+                        <span class="text-[10px] font-bold text-emerald-400 uppercase tracking-widest bg-emerald-950 px-3 py-1 rounded-full border border-emerald-500/30 inline-block">● Authenticated Partner Terminal</span>
+                        <h2 class="font-cinzel text-2xl font-bold text-white mt-1">Live Timber Allocation & Cross-Dock Manifests</h2>
+                        <p class="text-xs text-xmasCream/70">Track subscriber volume allocations, scheduled Class A freight semi pick-ups, and settlement receipts.</p>
+                    </div>
+                    <button onclick="document.getElementById('partner-form').classList.toggle('hidden')" class="py-2.5 px-4 bg-xmasGold hover:bg-[#FFE082] text-xmasDark font-extrabold text-xs uppercase rounded-xl border border-xmasGold shadow transition">
+                        + Submit Additional Manifest Lot
+                    </button>
+                </div>
+
+                <!-- Live Manifest Ingest Status Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="p-5 bg-xmasDark rounded-2xl border border-xmasGold/30 space-y-3">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <span class="text-[10px] bg-xmasGreen text-xmasGold px-2.5 py-0.5 rounded-full font-bold uppercase">Staging Scheduled</span>
+                                <h4 class="font-cinzel text-lg font-bold text-white mt-1">Batch #PHL-2026-A1</h4>
+                            </div>
+                            <span class="text-base font-black text-emerald-400">120 Firs</span>
+                        </div>
+                        <p class="text-xs text-xmasCream/70">Species: <strong>Grade #1 Appalachian Fraser Fir (6–7 ft)</strong></p>
+                        <div class="text-[11px] text-xmasCream/60 space-y-1 bg-xmasPanel p-3 rounded-xl border border-white/5">
+                            <div class="flex justify-between"><span>Cross-Dock Depot:</span> <strong class="text-white">Jefferson Staging Depot, NC</strong></div>
+                            <div class="flex justify-between"><span>Freight Pickup Wave:</span> <strong class="text-xmasGold">Nov 22 (Semi #NC-04)</strong></div>
+                            <div class="flex justify-between"><span>Destination:</span> <strong class="text-white">Philly Central Logistics Hub</strong></div>
+                        </div>
+                    </div>
+
+                    <div class="p-5 bg-xmasDark rounded-2xl border border-white/10 space-y-3">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <span class="text-[10px] bg-purple-950 text-purple-300 px-2.5 py-0.5 rounded-full font-bold uppercase">Pre-Sold Allocation</span>
+                                <h4 class="font-cinzel text-lg font-bold text-white mt-1">Batch #TRI-2026-B4</h4>
+                            </div>
+                            <span class="text-base font-black text-purple-300">85 Firs</span>
+                        </div>
+                        <p class="text-xs text-xmasCream/70">Species: <strong>Grade #1 Yuletide Monarch (8–9 ft)</strong></p>
+                        <div class="text-[11px] text-xmasCream/60 space-y-1 bg-xmasPanel p-3 rounded-xl border border-white/5">
+                            <div class="flex justify-between"><span>Cross-Dock Depot:</span> <strong class="text-white">Ashe County Regional Yard</strong></div>
+                            <div class="flex justify-between"><span>Freight Pickup Wave:</span> <strong class="text-xmasGold">Nov 25 (Semi #NC-08)</strong></div>
+                            <div class="flex justify-between"><span>Destination:</span> <strong class="text-white">South Jersey Staging Hub</strong></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================================================================= -->
+        <!-- PUBLIC INTAKE SECTION (TIMBER LOT REGISTRATION FORM) -->
+        <!-- ================================================================= -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
             <!-- REGISTRATION FORM (LEFT) -->
@@ -312,41 +367,28 @@
                 </form>
             </div>
 
-            <!-- BATCH MANIFEST INGEST & SAMPLE BOARD (RIGHT) -->
+            <!-- REGULATORY & LOGISTICS CERTIFICATION BOARD (RIGHT) -->
             <div class="lg:col-span-5 space-y-6">
                 
                 <div class="bg-xmasDark border border-xmasGold/30 rounded-3xl p-6 space-y-4 shadow-xl">
                     <div class="flex items-center justify-between border-b border-white/10 pb-3">
-                        <h3 class="font-cinzel text-lg font-bold text-xmasGold">Live Order Manifest Ingest</h3>
-                        <span class="text-[9px] bg-xmasGreen text-xmasGold px-2.5 py-1 rounded-full font-bold uppercase">Pre-Sold Orders</span>
+                        <h3 class="font-cinzel text-lg font-bold text-xmasGold">Grower Guaranteed Pre-Orders</h3>
+                        <span class="text-[9px] bg-xmasGreen text-xmasGold px-2.5 py-1 rounded-full font-bold uppercase">100% Pre-Sold</span>
                     </div>
                     <p class="text-xs text-xmasCream/70 leading-relaxed">
-                        Sample preview of pre-sold customer subscription batches routed through our automated regional logistics hubs.
+                        Christmas Tree Joe pre-sells multi-year subscriber contracts before the cutting season begins. We provide guaranteed harvest absorption with zero retail auction price degradation.
                     </p>
-
-                    <div class="space-y-3 text-xs">
-                        <div class="p-3 bg-xmasPanel rounded-xl border border-white/10 space-y-1">
-                            <div class="flex justify-between font-bold">
-                                <span class="text-white">Batch #PHL-2026-A1</span>
-                                <span class="text-emerald-400">120 Fraser Firs (6–7 ft)</span>
-                            </div>
-                            <p class="text-[10px] text-xmasCream/60">Destination: Philadelphia Metro Hub • Scheduled Delivery: Nov 22</p>
-                        </div>
-
-                        <div class="p-3 bg-xmasPanel rounded-xl border border-white/10 space-y-1">
-                            <div class="flex justify-between font-bold">
-                                <span class="text-white">Batch #TRI-2026-B4</span>
-                                <span class="text-emerald-400">85 Noble Firs (8–9 ft)</span>
-                            </div>
-                            <p class="text-[10px] text-xmasCream/60">Destination: South Jersey Hub • Scheduled Delivery: Nov 25</p>
-                        </div>
-                    </div>
+                    <ul class="text-xs space-y-2 text-xmasCream/80 list-disc list-inside">
+                        <li>Locked multi-year bulk wholesale rates</li>
+                        <li>Scheduled loading at farm gate or regional yard</li>
+                        <li>Phytosanitary inspection handling included</li>
+                    </ul>
                 </div>
 
                 <div class="bg-xmasPanel border border-white/10 rounded-3xl p-6 space-y-3 text-xs text-xmasCream/80 shadow-xl">
-                    <h4 class="font-cinzel text-sm font-bold text-xmasGold">USMCA & Agricultural Certification Notice</h4>
+                    <h4 class="font-cinzel text-sm font-bold text-xmasGold">USMCA & Agricultural Certification</h4>
                     <p class="text-[11px] leading-relaxed text-xmasCream/70">
-                        All interstate tree movements across North Carolina, Pennsylvania, and regional transit lines operate under full agricultural phytosanitary inspection compliance with zero retail middleman markup.
+                        All interstate tree movements across North Carolina, Pennsylvania, and regional transit corridors operate under full agricultural phytosanitary compliance with certified chain-of-custody tracking.
                     </p>
                 </div>
 
@@ -382,8 +424,8 @@
             <div class="space-y-3">
                 <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Logistics & Operations</h4>
                 <ul class="text-xs space-y-2 text-xmasCream/80">
-                    <li><a href="driver-hub.html" class="hover:text-xmasGold transition font-semibold text-xmasGold">Driver Staging Hub</a></li>
-                    <li><a href="vendor-hub.html" class="hover:text-xmasGold transition">Grower & Vendor Intake</a></li>
+                    <li><a href="driver-hub.html" class="hover:text-xmasGold transition">Driver Staging Hub</a></li>
+                    <li><a href="vendor-hub.html" class="hover:text-xmasGold transition font-semibold text-xmasGold">Grower & Vendor Intake</a></li>
                     <li><a href="track.html" class="hover:text-xmasGold transition">Real-Time Delivery Tracker</a></li>
                     <li><a href="account.html" class="hover:text-xmasGold transition">Subscriber Portal</a></li>
                 </ul>
@@ -429,6 +471,9 @@
 
         async function checkGrowerSession() {
             const { data: { session } } = await supabase.auth.getSession();
+            const intakeSection = document.getElementById('partner-form');
+            const privateDashboard = document.getElementById('vendorPrivateDashboard');
+            const navAuthBtn = document.getElementById('vendorNavAuthBtn');
             
             if (session && session.user) {
                 activeUserId = session.user.id;
@@ -441,18 +486,36 @@
                 const role = profile?.role || session.user.user_metadata?.role;
                 const name = profile?.full_name || session.user.user_metadata?.full_name || session.user.email.split('@')[0];
 
-                if (role === 'vendor' || role === 'admin') {
+                if (role === 'vendor' || role === 'super_admin' || role === 'regional_admin') {
+                    // Unlock Protected Vendor Dashboard & Hide Public Intake Form
+                    if (privateDashboard) privateDashboard.classList.remove('hidden');
+                    if (intakeSection) intakeSection.classList.add('hidden');
+
                     const badge = document.getElementById('growerBadge');
                     if (badge) badge.innerText = `Verified Partner: ${name}`;
-                }
 
-                // Pre-fill email and contact details if available
-                if (document.getElementById('vendorContactEmail') && !document.getElementById('vendorContactEmail').value) {
-                    document.getElementById('vendorContactEmail').value = session.user.email;
+                    if (navAuthBtn) {
+                        navAuthBtn.innerText = 'Grower Dashboard (Active)';
+                        navAuthBtn.href = '#vendorPrivateDashboard';
+                    }
+
+                    // Pre-fill email and contact details
+                    if (document.getElementById('vendorContactEmail') && !document.getElementById('vendorContactEmail').value) {
+                        document.getElementById('vendorContactEmail').value = session.user.email;
+                    }
+                    if (document.getElementById('vendorFarmName') && !document.getElementById('vendorFarmName').value && role === 'vendor') {
+                        document.getElementById('vendorFarmName').value = name;
+                    }
+                    return;
                 }
-                if (document.getElementById('vendorFarmName') && !document.getElementById('vendorFarmName').value && role === 'vendor') {
-                    document.getElementById('vendorFarmName').value = name;
-                }
+            }
+
+            // Public / Guest Default View:
+            if (privateDashboard) privateDashboard.classList.add('hidden');
+            if (intakeSection) intakeSection.classList.remove('hidden');
+            if (navAuthBtn) {
+                navAuthBtn.innerText = 'Grower Sign In';
+                navAuthBtn.href = 'account.html';
             }
         }
 
@@ -476,7 +539,6 @@
                 const species = document.getElementById('vendorSpecies').value;
                 const capacity = document.getElementById('vendorCapacity').value;
 
-                // Approximate numeric quantity for manifest planning
                 let estimatedQty = 500;
                 if (capacity.includes('2,500 - 10,000')) estimatedQty = 5000;
                 else if (capacity.includes('500 - 2,500')) estimatedQty = 1500;

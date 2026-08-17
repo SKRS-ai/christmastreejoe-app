@@ -380,12 +380,10 @@
                     <label class="block text-xs font-bold text-xmasGold uppercase mb-1">User Email Address</label>
                     <input type="email" id="adminUserEmail" required placeholder="manager@christmastreejoe.com" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
                 </div>
-
                 <div>
                     <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Full Legal Name</label>
                     <input type="text" id="adminFullName" required placeholder="Territory Director Name" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
                 </div>
-
                 <div>
                     <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Role Level</label>
                     <select id="adminRoleLevel" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-xmasGold">
@@ -393,7 +391,6 @@
                         <option value="super_admin">Super Admin (Global Authority)</option>
                     </select>
                 </div>
-
                 <div>
                     <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Assigned Territory Codes</label>
                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs text-white pt-1">
@@ -403,14 +400,9 @@
                         <label class="flex items-center gap-1.5 bg-xmasDark p-2 rounded-lg border border-white/10"><input type="checkbox" name="territoryCode" value="NY" class="accent-xmasGold"> NY (Tri-State)</label>
                     </div>
                 </div>
-
                 <div class="flex justify-end gap-3 pt-4 border-t border-white/10">
-                    <button type="button" onclick="closeAddAdminModal()" class="py-2.5 px-4 rounded-xl bg-xmasDark border border-white/20 text-xs font-bold text-white hover:bg-white/10 transition">
-                        Cancel
-                    </button>
-                    <button type="submit" id="saveAdminBtn" class="py-2.5 px-6 rounded-xl bg-xmasGold hover:bg-[#FFE082] text-xmasDark font-extrabold text-xs uppercase shadow transition">
-                        Grant Admin Access
-                    </button>
+                    <button type="button" onclick="closeAddAdminModal()" class="py-2.5 px-4 rounded-xl bg-xmasDark border border-white/20 text-xs font-bold text-white hover:bg-white/10 transition">Cancel</button>
+                    <button type="submit" id="saveAdminBtn" class="py-2.5 px-6 rounded-xl bg-xmasGold hover:bg-[#FFE082] text-xmasDark font-extrabold text-xs uppercase shadow transition">Grant Admin Access</button>
                 </div>
             </form>
         </div>
@@ -420,7 +412,6 @@
     <script type="module">
         import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 
-        // Verified Supabase Project Credentials
         const SUPABASE_URL = 'https://pnosjdmolfqhuvvcnddh.supabase.co';
         const SUPABASE_ANON_KEY = 'sb_publishable_VLFX6Kp_2DWYt5kLC00HkA_kxCJWON6';
         const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
@@ -431,7 +422,6 @@
         let allVendors = [];
         let allAdmins = [];
 
-        // Verify Super Admin Access on Boot
         async function initAdminPortal() {
             const { data: { session } } = await supabase.auth.getSession();
 
@@ -459,7 +449,6 @@
             document.getElementById('adminIdentityPill').innerText = `${profile?.full_name || session.user.email} (${role.toUpperCase()})`;
             document.getElementById('roleBadge').innerText = role === 'super_admin' ? 'Super Admin Command' : 'Regional Dispatch Board';
 
-            // Hide Provisioning Tab if not Super Admin
             if (role !== 'super_admin') {
                 const adminBtn = document.getElementById('btn-tab-admins');
                 if (adminBtn) adminBtn.style.display = 'none';
@@ -468,56 +457,30 @@
             await refreshAllData();
         }
 
-        // Fetch All Database Records
         window.refreshAllData = async function() {
             try {
-                // 1. Fetch Orders
-                const { data: orders } = await supabase
-                    .from('orders')
-                    .select('*')
-                    .order('created_at', { ascending: false });
+                const { data: orders } = await supabase.from('orders').select('*').order('created_at', { ascending: false });
                 allOrders = orders || [];
                 renderOrders(allOrders);
 
-                // 2. Fetch Driver Applications
-                const { data: drivers } = await supabase
-                    .from('driver_applications')
-                    .select('*')
-                    .order('created_at', { ascending: false });
+                const { data: drivers } = await supabase.from('driver_applications').select('*').order('created_at', { ascending: false });
                 allDrivers = drivers || [];
                 renderDrivers(allDrivers);
 
-                // 3. Fetch Vendor Manifests
-                const { data: vendors } = await supabase
-                    .from('vendor_manifests')
-                    .select('*')
-                    .order('created_at', { ascending: false });
+                const { data: vendors } = await supabase.from('vendor_manifests').select('*').order('created_at', { ascending: false });
                 allVendors = vendors || [];
                 renderVendors(allVendors);
 
-                // 4. Fetch Admins Roster
-                const { data: admins } = await supabase
-                    .from('profiles')
-                    .select('*')
-                    .in('role', ['super_admin', 'regional_admin'])
-                    .order('created_at', { ascending: false });
+                const { data: admins } = await supabase.from('profiles').select('*').in('role', ['super_admin', 'regional_admin']).order('created_at', { ascending: false });
                 allAdmins = admins || [];
                 renderAdmins(allAdmins);
 
-                // 5. Fetch Audit Trail
-                const { data: audit } = await supabase
-                    .from('admin_audit_logs')
-                    .select('*')
-                    .order('created_at', { ascending: false })
-                    .limit(25);
+                const { data: audit } = await supabase.from('admin_audit_logs').select('*').order('created_at', { ascending: false }).limit(25);
                 renderAudit(audit || []);
 
-                // Update Metrics Counters
                 document.getElementById('metricTotalOrders').innerText = allOrders.length;
-                
                 const totalTrees = allVendors.reduce((acc, curr) => acc + (curr.estimated_quantity || 0), 0);
                 document.getElementById('metricTimberYield').innerText = totalTrees.toLocaleString() + ' Trees';
-
             } catch (err) {
                 console.error('Error synchronizing admin dashboard:', err);
             }
@@ -757,23 +720,12 @@
             }
         }
 
-        function openAddAdminModal() {
-            document.getElementById('addAdminModal').classList.remove('hidden');
-        }
-
-        function closeAddAdminModal() {
-            document.getElementById('addAdminModal').classList.add('hidden');
-        }
-
-        function filterDashboardTerritory() {
-            const territory = document.getElementById('territoryFilter').value;
-            alert(`Scope filtered to ${territory}.`);
-        }
-
+        function openAddAdminModal() { document.getElementById('addAdminModal').classList.remove('hidden'); }
+        function closeAddAdminModal() { document.getElementById('addAdminModal').classList.add('hidden'); }
+        function filterDashboardTerritory() { alert(`Scope filtered.`); }
         function filterOrdersTable() {
             const query = document.getElementById('orderSearchInput').value.toLowerCase();
-            const rows = document.querySelectorAll('#ordersTableBody tr');
-            rows.forEach(row => {
+            document.querySelectorAll('#ordersTableBody tr').forEach(row => {
                 row.style.display = row.innerText.toLowerCase().includes(query) ? '' : 'none';
             });
         }
