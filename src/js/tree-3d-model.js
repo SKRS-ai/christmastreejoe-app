@@ -5,7 +5,7 @@
 
 class InteractiveTreeLab {
     constructor(containerId = 'tree-canvas-container') {
-        // Automatic Multi-Container Detection (Supports index.html, trees.html, and setup.html)
+        // Multi-Container Detection Fallback
         this.container = document.getElementById(containerId) || 
                          document.getElementById('webgl-canvas-container') || 
                          document.getElementById('webgl-container') || 
@@ -21,6 +21,7 @@ class InteractiveTreeLab {
         this.renderer = null;
         this.controls = null;
         this.clock = new THREE.Clock();
+        this.resizeObserver = null;
 
         // 3D Assembly Groups
         this.treeGroup = new THREE.Group();
@@ -30,6 +31,7 @@ class InteractiveTreeLab {
         this.sleighGroup = new THREE.Group();
         this.smokeEmitters = [];
         this.snowSystem = null;
+        this.fireLight = null;
 
         // Interactive States
         this.currentSpecies = 'fraser'; // 'fraser', 'douglas', 'noble'
@@ -41,16 +43,16 @@ class InteractiveTreeLab {
             starCrown: false
         };
         this.snowEnabled = true;
+        this.rewardClaimed = false;
 
         this.init();
     }
 
     init() {
-        // 1. Viewport Sizing Fallback
         const width = this.container.clientWidth || 850;
         const height = this.container.clientHeight || 520;
 
-        // 2. Scene & Camera
+        // 1. Scene & Camera Setup
         this.scene = new THREE.Scene();
         this.scene.background = new THREE.Color(0x051810);
         this.scene.fog = new THREE.FogExp2(0x051810, 0.015);
@@ -58,8 +60,12 @@ class InteractiveTreeLab {
         this.camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
         this.camera.position.set(0, 4, 13.5);
 
-        // 3. WebGL Renderer
-        this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
+        // 2. WebGL Renderer
+        this.renderer = new THREE.WebGLRenderer({ 
+            antialias: true, 
+            alpha: true, 
+            powerPreference: 'high-performance' 
+        });
         this.renderer.setSize(width, height);
         this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         this.renderer.shadowMap.enabled = true;
@@ -68,7 +74,7 @@ class InteractiveTreeLab {
         this.container.innerHTML = '';
         this.container.appendChild(this.renderer.domElement);
 
-        // 4. OrbitControls
+        // 3. OrbitControls
         if (typeof THREE.OrbitControls !== 'undefined') {
             this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
             this.controls.enableDamping = true;
@@ -79,48 +85,69 @@ class InteractiveTreeLab {
             this.controls.target.set(0, 3, 0);
         }
 
-        // 5. Lighting Assemblies
+        // 4. Lighting & Environments
         this.setupLighting();
-
-        // 6. Environment Builders
         this.buildNightSkyAndVillage();
         this.buildLivingRoomEnvironment();
         this.buildFlyingSantaSleigh();
         this.buildFallingSnow();
 
-        // 7. Tree Assembly
+        // 5. Tree Hierarchy
         this.treeGroup.add(this.decorationsGroup);
         this.scene.add(this.treeGroup);
         this.scene.add(this.nightEnvGroup);
         this.scene.add(this.livingRoomGroup);
-        this.livingRoomGroup.visible = false; // Midnight environment by default
+        this.livingRoomGroup.visible = false;
 
         this.buildTree(this.currentSpecies);
 
-        // 8. Event Listeners & Animation Start
-        window.addEventListener('resize', () => this.onResize());
+        // 6. Responsive Handling & Animation
+        this.setupResizeListeners();
         this.animate();
     }
 
+    setupResizeListeners() {
+        window.addEventListener('resize', () => this.onResize());
+        
+        if (window.ResizeObserver) {
+            this.resizeObserver = new ResizeObserver(() => this.onResize());
+            this.resizeObserver.observe(this.container);
+        }
+    }
+
     setupLighting() {
-        this.ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+        this.ambientLight = new THREE.AmbientLight(0xffffff, 0.65);
         this.scene.add(this.ambientLight);
 
         this.moonSunLight = new THREE.DirectionalLight(0xd4af37, 1.2);
         this.moonSunLight.position.set(10, 20, 10);
         this.moonSunLight.castShadow = true;
+        this.moonSunLight.shadow.mapSize.width = 1024;
+        this.moonSunLight.shadow.mapSize.height = 1024;
         this.scene.add(this.moonSunLight);
 
-        this.warmGlowLight = new THREE.PointLight(0xffaa00, 1.4, 10);
+        this.warmGlowLight = new THREE.PointLight(0xffaa00, 1.4, 12);
         this.warmGlowLight.position.set(0, 3.2, 2.5);
         this.scene.add(this.warmGlowLight);
     }
 
-    buildTree(speciesKey = 'fraser') {
-        // Clear prior tree cones while retaining the decoration group reference
-        while (this.treeGroup.children.length > 0) {
-            this.treeGroup.remove(this.treeGroup.children[0]);
+    disposeGroup(group) {
+        while (group.children.length > 0) {
+            const obj = group.children[0];
+            group.remove(obj);
+            if (obj.geometry) obj.geometry.dispose();
+            if (obj.material) {
+                if (Array.isArray(obj.material)) {
+                    obj.material.forEach(mat => mat.dispose());
+                } else {
+                    obj.material.dispose();
+                }
+            }
         }
+    }
+
+    buildTree(speciesKey = 'fraser') {
+        this.disposeGroup(this.treeGroup);
         this.treeGroup.add(this.decorationsGroup);
 
         let foliageColor = 0x0B3B24; // Fraser Fir
@@ -168,11 +195,11 @@ class InteractiveTreeLab {
     }
 
     renderDecorations() {
-        this.decorationsGroup.clear();
+        this.disposeGroup(this.decorationsGroup);
 
         // 1. Red Baubles
         if (this.decorations.redBaubles) {
-            const redMat = new THREE.MeshStandardMaterial({ color: 0xC41E3A, metalness: 0.8, roughness: 0.2 });
+            const redMat = new THREE.MeshStandardMaterial({ color: 0xC41E3A, metalness: 0.85, roughness: 0.15 });
             const baubleGeo = new THREE.SphereGeometry(0.12, 16, 16);
             const coords = [
                 [0.9, 2.3, 0.9], [-0.9, 2.5, 0.8], [0, 2.2, 1.3],
@@ -230,10 +257,10 @@ class InteractiveTreeLab {
     }
 
     buildNightSkyAndVillage() {
-        this.nightEnvGroup.clear();
+        this.disposeGroup(this.nightEnvGroup);
         this.smokeEmitters = [];
 
-        // 1. Starfield Particles (1,500 Stars)
+        // Starfield Particles
         const starGeo = new THREE.BufferGeometry();
         const starCount = 1500;
         const starPos = new Float32Array(starCount * 3);
@@ -246,14 +273,14 @@ class InteractiveTreeLab {
         const starMat = new THREE.PointsMaterial({ color: 0xffffff, size: 0.6, transparent: true, opacity: 0.85 });
         this.nightEnvGroup.add(new THREE.Points(starGeo, starMat));
 
-        // 2. Crescent Glowing Moon
+        // Moon
         const moonGeo = new THREE.SphereGeometry(3, 32, 32);
         const moonMat = new THREE.MeshBasicMaterial({ color: 0xfffae0 });
         const moon = new THREE.Mesh(moonGeo, moonMat);
         moon.position.set(-35, 45, -60);
         this.nightEnvGroup.add(moon);
 
-        // 3. Ground Snow Plane
+        // Ground Plane
         const groundGeo = new THREE.PlaneGeometry(120, 120);
         const groundMat = new THREE.MeshStandardMaterial({ color: 0xe2e8f0, roughness: 0.9 });
         const ground = new THREE.Mesh(groundGeo, groundMat);
@@ -261,7 +288,7 @@ class InteractiveTreeLab {
         ground.receiveShadow = true;
         this.nightEnvGroup.add(ground);
 
-        // 4. Distant Snow Houses with Chimney Smoke Generators
+        // Village Houses
         const houseConfigs = [
             { x: -18, z: -25, r: 0.2 },
             { x: 22, z: -30, r: -0.4 },
@@ -271,23 +298,19 @@ class InteractiveTreeLab {
         houseConfigs.forEach(cfg => {
             const house = new THREE.Group();
             
-            // Base
             const base = new THREE.Mesh(new THREE.BoxGeometry(4, 3, 4), new THREE.MeshStandardMaterial({ color: 0x332211 }));
             base.position.y = 1.5;
             house.add(base);
 
-            // Roof
             const roof = new THREE.Mesh(new THREE.ConeGeometry(3.5, 2, 4), new THREE.MeshStandardMaterial({ color: 0xffffff }));
             roof.position.y = 4;
             roof.rotation.y = Math.PI / 4;
             house.add(roof);
 
-            // Chimney
             const chim = new THREE.Mesh(new THREE.BoxGeometry(0.6, 2, 0.6), new THREE.MeshStandardMaterial({ color: 0x552211 }));
             chim.position.set(1.2, 4.2, 0.8);
             house.add(chim);
 
-            // Window Glow
             const win = new THREE.Mesh(new THREE.PlaneGeometry(0.8, 0.8), new THREE.MeshBasicMaterial({ color: 0xffb703 }));
             win.position.set(0, 1.5, 2.01);
             house.add(win);
@@ -296,7 +319,7 @@ class InteractiveTreeLab {
             house.rotation.y = cfg.r;
             this.nightEnvGroup.add(house);
 
-            // Register Smoke Particle Emitter for this chimney
+            // Chimney Smoke
             const smokeGeo = new THREE.SphereGeometry(0.2, 6, 6);
             const smokeMat = new THREE.MeshBasicMaterial({ color: 0xd1d5db, transparent: true, opacity: 0.4 });
             const emitterPuffs = [];
@@ -313,21 +336,18 @@ class InteractiveTreeLab {
     }
 
     buildFlyingSantaSleigh() {
-        this.sleighGroup.clear();
+        this.disposeGroup(this.sleighGroup);
 
-        // Sleigh Body
         const body = new THREE.Mesh(new THREE.BoxGeometry(1.8, 0.8, 1), new THREE.MeshStandardMaterial({ color: 0xC41E3A }));
         body.position.y = 0.5;
         this.sleighGroup.add(body);
 
-        // Reindeer Pair
         for (let i = 1; i <= 2; i++) {
             const deer = new THREE.Mesh(new THREE.BoxGeometry(0.8, 0.6, 0.4), new THREE.MeshStandardMaterial({ color: 0x8b5a2b }));
             deer.position.set(i * 1.6, 0.4, 0);
             this.sleighGroup.add(deer);
         }
 
-        // Red Nose Light on Lead Reindeer
         const noseLight = new THREE.PointLight(0xff0000, 2, 5);
         noseLight.position.set(3.4, 0.5, 0);
         this.sleighGroup.add(noseLight);
@@ -337,27 +357,30 @@ class InteractiveTreeLab {
     }
 
     buildLivingRoomEnvironment() {
-        this.livingRoomGroup.clear();
+        this.disposeGroup(this.livingRoomGroup);
 
-        // Hardwood Floor
         const floor = new THREE.Mesh(new THREE.PlaneGeometry(16, 16), new THREE.MeshStandardMaterial({ color: 0x5c3a21, roughness: 0.4 }));
         floor.rotation.x = -Math.PI / 2;
         floor.receiveShadow = true;
         this.livingRoomGroup.add(floor);
 
-        // Festive Red Rug
         const rug = new THREE.Mesh(new THREE.CircleGeometry(4, 32), new THREE.MeshStandardMaterial({ color: 0xC41E3A, roughness: 0.8 }));
         rug.rotation.x = -Math.PI / 2;
         rug.position.y = 0.02;
         this.livingRoomGroup.add(rug);
 
-        // Warm Fireplace Glow
-        const fireLight = new THREE.PointLight(0xff6600, 2.5, 12);
-        fireLight.position.set(-4, 2, -4);
-        this.livingRoomGroup.add(fireLight);
+        this.fireLight = new THREE.PointLight(0xff6600, 2.5, 12);
+        this.fireLight.position.set(-4, 2, -4);
+        this.livingRoomGroup.add(this.fireLight);
     }
 
     buildFallingSnow() {
+        if (this.snowSystem) {
+            this.scene.remove(this.snowSystem);
+            this.snowSystem.geometry.dispose();
+            this.snowSystem.material.dispose();
+        }
+
         const snowCount = 600;
         const snowGeo = new THREE.BufferGeometry();
         const snowPos = new Float32Array(snowCount * 3);
@@ -374,14 +397,13 @@ class InteractiveTreeLab {
         this.scene.add(this.snowSystem);
     }
 
-    // Interactive Control API
     setSpecies(speciesKey) {
         this.currentSpecies = speciesKey;
         this.buildTree(speciesKey);
     }
 
     toggleDecoration(type) {
-        if (this.decorations.hasOwnProperty(type)) {
+        if (Object.prototype.hasOwnProperty.call(this.decorations, type)) {
             this.decorations[type] = !this.decorations[type];
             this.renderDecorations();
             this.checkGameReward();
@@ -414,7 +436,7 @@ class InteractiveTreeLab {
             this.livingRoomGroup.visible = true;
             if (this.snowSystem) this.snowSystem.visible = false;
         } else if (backdropKey === 'studio' || backdropKey === 'ar') {
-            this.scene.background = null; // Transparent AR Pass-through
+            this.scene.background = null;
             this.scene.fog = null;
             this.nightEnvGroup.visible = false;
             this.livingRoomGroup.visible = false;
@@ -424,8 +446,16 @@ class InteractiveTreeLab {
 
     checkGameReward() {
         const allUnlocked = Object.values(this.decorations).every(v => v === true);
-        if (allUnlocked) {
-            alert('🎉 Congratulations! You decorated the specimen tree and unlocked the $10 Early-Bird Holiday Bonus code: XMASJOE10');
+        if (allUnlocked && !this.rewardClaimed) {
+            this.rewardClaimed = true;
+            
+            // Dispatch UI event for custom app modals
+            const rewardEvent = new CustomEvent('treeDecorated', {
+                detail: { promoCode: 'XMASJOE10', discountAmount: 10 }
+            });
+            window.dispatchEvent(rewardEvent);
+
+            console.log('[Tree Lab] Reward Unlocked: XMASJOE10');
         }
     }
 
@@ -433,6 +463,8 @@ class InteractiveTreeLab {
         if (!this.container || !this.renderer || !this.camera) return;
         const w = this.container.clientWidth;
         const h = this.container.clientHeight;
+        if (w === 0 || h === 0) return;
+        
         this.camera.aspect = w / h;
         this.camera.updateProjectionMatrix();
         this.renderer.setSize(w, h);
@@ -453,7 +485,12 @@ class InteractiveTreeLab {
             if (this.sleighGroup.position.x > 60) this.sleighGroup.position.x = -60;
         }
 
-        // 3. Chimney Smoke Particles
+        // 3. Fireplace Light Flicker
+        if (this.fireLight && this.livingRoomGroup.visible) {
+            this.fireLight.intensity = 2.3 + Math.sin(time * 8) * 0.3 + (Math.random() - 0.5) * 0.1;
+        }
+
+        // 4. Chimney Smoke Particles
         if (this.smokeEmitters && this.nightEnvGroup.visible) {
             this.smokeEmitters.forEach(puffs => {
                 puffs.forEach(puff => {
@@ -468,7 +505,7 @@ class InteractiveTreeLab {
             });
         }
 
-        // 4. Falling Snow Flurry
+        // 5. Falling Snow System
         if (this.snowSystem && this.snowEnabled && this.snowSystem.visible) {
             const pos = this.snowSystem.geometry.attributes.position.array;
             for (let i = 1; i < pos.length; i += 3) {
