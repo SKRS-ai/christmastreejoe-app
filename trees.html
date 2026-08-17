@@ -189,9 +189,7 @@
         </div>
     </section>
 
-    <!-- ================================================================= -->
-    <!-- CLEAN 3D BOTANICAL SPECIMEN INSPECTOR (NO GAME ELEMENTS) -->
-    <!-- ================================================================= -->
+    <!-- CLEAN 3D BOTANICAL SPECIMEN INSPECTOR -->
     <section class="max-w-7xl mx-auto px-4 py-4 space-y-4">
         <div class="relative bg-xmasPanel border-2 border-xmasGold/50 rounded-3xl p-4 sm:p-6 shadow-2xl overflow-hidden">
             <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-white/10 pb-4">
@@ -210,41 +208,46 @@
         </div>
     </section>
 
-    <!-- ================================================================= -->
     <!-- MAIN TREE SELECTION BUILDER & PRICING ENGINE -->
-    <!-- ================================================================= -->
     <main id="selection-builder" class="max-w-7xl mx-auto px-4 py-8 space-y-12">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
             <div class="lg:col-span-7 space-y-8">
-                <!-- STEP 1: SIZE TIER -->
+                <!-- STEP 1: SIZE TIER (4 TIERS INCLUDED) -->
                 <div class="space-y-4">
                     <div class="flex items-center justify-between border-b border-white/10 pb-2">
                         <h3 class="font-cinzel text-xl font-bold text-xmasGold">Step 1: Choose Your Size Tier</h3>
                         <span class="text-xs text-xmasCream/60">Click card to select</span>
                     </div>
                     
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                        <div onclick="selectTier('sprout', 149.99)" id="card-sprout" class="bg-xmasPanel border-2 border-white/20 hover:border-xmasGold rounded-2xl p-5 cursor-pointer transition space-y-3">
-                            <span class="text-[10px] bg-xmasDark text-xmasGold px-2.5 py-0.5 rounded-full border border-xmasGold/30 font-bold uppercase">Apartment / Cozy</span>
-                            <h4 class="font-cinzel text-lg font-bold text-white">Evergreen Sprout</h4>
-                            <p class="text-xs text-xmasCream/70">4 – 5 Feet</p>
-                            <p class="text-xl font-extrabold text-xmasGold">$149.99 <span class="text-[10px] text-white/50">/ yr</span></p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                        <div onclick="selectTier('sprout', 149.99)" id="card-sprout" class="bg-xmasPanel border-2 border-white/20 hover:border-xmasGold rounded-2xl p-4 cursor-pointer transition space-y-2">
+                            <span class="text-[9px] bg-xmasDark text-xmasGold px-2 py-0.5 rounded-full border border-xmasGold/30 font-bold uppercase">Cozy / Apt</span>
+                            <h4 class="font-cinzel text-base font-bold text-white">Evergreen Sprout</h4>
+                            <p class="text-[11px] text-xmasCream/70">4 – 6 Feet</p>
+                            <p class="text-lg font-extrabold text-xmasGold">$149.99 <span class="text-[9px] text-white/50">/ yr</span></p>
                         </div>
 
-                        <div onclick="selectTier('hearth', 209.99)" id="card-hearth" class="bg-xmasPanel border-2 border-xmasGold rounded-2xl p-5 cursor-pointer transition space-y-3 relative shadow-xl">
-                            <div class="absolute -top-2.5 right-4 bg-xmasRed text-white text-[9px] font-extrabold uppercase px-2.5 py-0.5 rounded-full border border-xmasGold/50">Most Popular</div>
-                            <span class="text-[10px] bg-xmasDark text-xmasGold px-2.5 py-0.5 rounded-full border border-xmasGold/30 font-bold uppercase">Traditional Family</span>
-                            <h4 class="font-cinzel text-lg font-bold text-white">Holiday Hearth</h4>
-                            <p class="text-xs text-xmasCream/70">6 – 7 Feet</p>
-                            <p class="text-xl font-extrabold text-xmasGold">$209.99 <span class="text-[10px] text-white/50">/ yr</span></p>
+                        <div onclick="selectTier('hearth', 209.99)" id="card-hearth" class="bg-xmasPanel border-2 border-xmasGold rounded-2xl p-4 cursor-pointer transition space-y-2 relative shadow-xl">
+                            <div class="absolute -top-2 right-3 bg-xmasRed text-white text-[8px] font-extrabold uppercase px-2 py-0.5 rounded-full border border-xmasGold/50">Popular</div>
+                            <span class="text-[9px] bg-xmasDark text-xmasGold px-2 py-0.5 rounded-full border border-xmasGold/30 font-bold uppercase">Family</span>
+                            <h4 class="font-cinzel text-base font-bold text-white">Holiday Hearth</h4>
+                            <p class="text-[11px] text-xmasCream/70">6 – 8 Feet</p>
+                            <p class="text-lg font-extrabold text-xmasGold">$209.99 <span class="text-[9px] text-white/50">/ yr</span></p>
                         </div>
 
-                        <div onclick="selectTier('monarch', 299.99)" id="card-monarch" class="bg-xmasPanel border-2 border-white/20 hover:border-xmasGold rounded-2xl p-5 cursor-pointer transition space-y-3">
-                            <span class="text-[10px] bg-xmasDark text-xmasGold px-2.5 py-0.5 rounded-full border border-xmasGold/30 font-bold uppercase">Grand Foyer</span>
-                            <h4 class="font-cinzel text-lg font-bold text-white">Yuletide Monarch</h4>
-                            <p class="text-xs text-xmasCream/70">8 – 9 Feet</p>
-                            <p class="text-xl font-extrabold text-xmasGold">$299.99 <span class="text-[10px] text-white/50">/ yr</span></p>
+                        <div onclick="selectTier('monarch', 299.99)" id="card-monarch" class="bg-xmasPanel border-2 border-white/20 hover:border-xmasGold rounded-2xl p-4 cursor-pointer transition space-y-2">
+                            <span class="text-[9px] bg-xmasDark text-xmasGold px-2 py-0.5 rounded-full border border-xmasGold/30 font-bold uppercase">Foyer</span>
+                            <h4 class="font-cinzel text-base font-bold text-white">Yuletide Monarch</h4>
+                            <p class="text-[11px] text-xmasCream/70">8 – 10 Feet</p>
+                            <p class="text-lg font-extrabold text-xmasGold">$299.99 <span class="text-[9px] text-white/50">/ yr</span></p>
+                        </div>
+
+                        <div onclick="selectTier('estate', 382.49)" id="card-estate" class="bg-xmasPanel border-2 border-white/20 hover:border-xmasGold rounded-2xl p-4 cursor-pointer transition space-y-2">
+                            <span class="text-[9px] bg-xmasDark text-xmasGold px-2 py-0.5 rounded-full border border-xmasGold/30 font-bold uppercase">Estate / Hall</span>
+                            <h4 class="font-cinzel text-base font-bold text-white">Grand Estate</h4>
+                            <p class="text-[11px] text-xmasCream/70">10 – 14 Feet</p>
+                            <p class="text-lg font-extrabold text-xmasGold">$382.49 <span class="text-[9px] text-white/50">/ yr</span></p>
                         </div>
                     </div>
                 </div>
@@ -305,7 +308,7 @@
                 <div class="bg-xmasDark p-4 rounded-2xl border border-xmasGold/30 space-y-2 text-xs">
                     <div class="flex justify-between">
                         <span class="text-xmasCream/60">Selected Tier:</span>
-                        <span id="summary-tier-name" class="font-bold text-white">Holiday Hearth (6–7 ft)</span>
+                        <span id="summary-tier-name" class="font-bold text-white">Holiday Hearth (6–8 ft)</span>
                     </div>
                     <div class="flex justify-between">
                         <span class="text-xmasCream/60">Annual Base Price:</span>
@@ -345,9 +348,10 @@
             <div class="space-y-3">
                 <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Subscription Tiers</h4>
                 <ul class="text-xs space-y-2 text-xmasCream/80">
-                    <li><a href="trees.html" class="hover:text-xmasGold transition">Evergreen Sprout (4–5 ft)</a></li>
-                    <li><a href="trees.html" class="hover:text-xmasGold transition">Holiday Hearth (6–7 ft)</a></li>
-                    <li><a href="trees.html" class="hover:text-xmasGold transition">Yuletide Monarch (8–9 ft)</a></li>
+                    <li><a href="trees.html" class="hover:text-xmasGold transition">Evergreen Sprout (4–6 ft)</a></li>
+                    <li><a href="trees.html" class="hover:text-xmasGold transition">Holiday Hearth (6–8 ft)</a></li>
+                    <li><a href="trees.html" class="hover:text-xmasGold transition">Yuletide Monarch (8–10 ft)</a></li>
+                    <li><a href="trees.html" class="hover:text-xmasGold transition">Grand Estate (10–14 ft)</a></li>
                 </ul>
             </div>
 
@@ -388,9 +392,8 @@
         </div>
     </footer>
 
-    <!-- LIVE STRIPE PAYMENT LINKS MAPPED TO PRICING ENGINE -->
+    <!-- LIVE STRIPE PAYMENT LINK MAPPING & PRICING ENGINE -->
     <script>
-        // Mapped Live Stripe Payment URLs
         const liveStripeLinks = {
             sprout: {
                 term1: 'https://buy.stripe.com/eVqcN69947El7Q5h0vebu05', // $169.99 One-Time
@@ -546,9 +549,10 @@
             }
 
             const tierNames = {
-                sprout: 'Evergreen Sprout (4–5 ft)',
-                hearth: 'Holiday Hearth (6–7 ft)',
-                monarch: 'Yuletide Monarch (8–9 ft)'
+                sprout: 'Evergreen Sprout (4–6 ft)',
+                hearth: 'Holiday Hearth (6–8 ft)',
+                monarch: 'Yuletide Monarch (8–10 ft)',
+                estate: 'Grand Estate (10–14 ft)'
             };
             document.getElementById('summary-tier-name').innerText = tierNames[tierKey] || 'Custom Tier';
             calculatePrice();
