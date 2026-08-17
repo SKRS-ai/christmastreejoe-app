@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Executive Command Center & Escrow Float Tracker | Christmas Tree Joe</title>
+    <title>Master Command Center & Super Admin | Christmas Tree Joe</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
@@ -32,16 +32,23 @@
     </script>
     <style>
         body { background-color: #051810; color: #FDFBF7; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .gold-border { border: 1px solid #D4AF37; }
         .gold-gradient-text {
             background: linear-gradient(135deg, #FFF0B9 0%, #D4AF37 50%, #997A15 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+        .tab-btn.active {
+            background-color: #D4AF37;
+            color: #051810;
+            font-weight: 800;
         }
     </style>
 </head>
 <body class="antialiased min-h-screen flex flex-col justify-between selection:bg-xmasGold selection:text-xmasDark">
 
-    <!-- TOP CONTROL BAR -->
+    <!-- TOP CONTROL & OPERATIONAL BAR -->
     <div class="bg-xmasDark text-white text-[11px] sm:text-xs py-1.5 px-4 font-semibold tracking-wide border-b border-xmasGold/30">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1">
             <div class="flex items-center gap-2">
@@ -49,279 +56,726 @@
                 <span class="text-xmasGold font-bold uppercase tracking-widest">Executive Terminal • Global Citizen Joe, LLC. & Xmas Made Inc.</span>
             </div>
             <div class="flex items-center space-x-4 text-[11px]">
-                <span class="text-xmasCream/70">Terminal ID: <strong class="text-white">CTJ-EXEC-01</strong></span>
+                <span class="text-xmasCream/70">Auth Session: <strong id="adminIdentityPill" class="text-white">Connecting...</strong></span>
                 <span>|</span>
-                <span class="text-emerald-400 font-bold">● Stripe Live Connected</span>
+                <span class="text-emerald-400 font-bold">● Database Connected</span>
                 <span>|</span>
-                <a href="setup.html" class="text-xmasGold hover:underline font-bold">⚙️ Gateway Config</a>
+                <a href="https://dashboard.stripe.com/payment-links" target="_blank" class="text-xmasGold hover:underline font-bold">⚙️ Stripe Price Hub</a>
             </div>
         </div>
     </div>
 
     <!-- MAIN HEADER & NAVIGATION -->
-    <header class="w-full bg-xmasPanel border-b border-xmasGold/30 sticky top-0 z-50 backdrop-blur-lg shadow-2xl">
+    <header class="w-full bg-xmasPanel border-b-2 border-xmasGold/50 sticky top-0 z-50 backdrop-blur-xl shadow-2xl">
         <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-            <a href="index.html" class="flex items-center space-x-3 group">
-                <img src="christmas-tree-joe-logo.png" onerror="this.src='public/Christmas-tree-joe1.png'" alt="Christmas Tree Joe Logo" class="h-12 w-12 rounded-full border border-xmasGold object-cover shadow-lg group-hover:scale-105 transition">
-                <div>
-                    <span class="font-cinzel text-xl sm:text-2xl font-black tracking-wider text-white">CHRISTMAS TREE JOE</span>
-                    <p class="text-[9px] text-xmasGold uppercase tracking-widest font-extrabold -mt-1">Executive Dispatch, Escrow & Climate Float</p>
-                </div>
-            </a>
-
-            <nav class="hidden lg:flex items-center space-x-6 text-xs font-bold uppercase tracking-wider">
-                <a href="admin.html" class="text-xmasGold border-b-2 border-xmasGold py-1">Command Board</a>
-                <a href="driver-hub.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Driver Hub</a>
-                <a href="vendor-hub.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Grower Network</a>
-                <a href="climate.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1 text-stripeViolet font-extrabold">1% Stripe Climate</a>
-                <a href="track.html" class="text-xmasCream/90 hover:text-xmasGold transition py-1">Live Fleet Map</a>
-            </nav>
-
             <div class="flex items-center space-x-3">
-                <button onclick="exportCSVManifest()" class="bg-xmasGreen hover:bg-xmasGold hover:text-xmasDark text-xmasGold font-bold px-4 py-2 rounded-full text-xs border border-xmasGold transition shadow-lg flex items-center gap-1.5">
-                    <span>📥</span> <span>Export 2026 Manifest CSV</span>
+                <img src="christmas-tree-joe-logo.png" onerror="this.src='public/Christmas-tree-joe1.png'" alt="Christmas Tree Joe Logo" class="h-12 w-12 rounded-full border border-xmasGold object-cover shadow-lg">
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="font-cinzel text-xl sm:text-2xl font-black tracking-wider text-white">CHRISTMAS TREE JOE</span>
+                        <span id="roleBadge" class="bg-xmasRed text-white text-[9px] font-black uppercase px-2 py-0.5 rounded-full tracking-widest border border-xmasGold/40">Super Admin Command</span>
+                    </div>
+                    <p class="text-[9px] text-xmasGold uppercase tracking-widest font-extrabold -mt-0.5">Enterprise Dispatch, Escrow & Territory Management</p>
+                </div>
+            </div>
+
+            <!-- Territory Selector & Actions -->
+            <div class="flex items-center space-x-3">
+                <div class="hidden sm:flex items-center gap-2 bg-xmasDark px-3 py-1.5 rounded-xl border border-white/10 text-xs">
+                    <span class="text-xmasCream/60 text-[10px] uppercase font-bold">Scope:</span>
+                    <select id="territoryFilter" onchange="filterDashboardTerritory()" class="bg-transparent text-xmasGold font-bold focus:outline-none cursor-pointer text-xs">
+                        <option value="ALL" class="bg-xmasDark text-white">🌐 All Territories (Master)</option>
+                        <option value="PA" class="bg-xmasDark text-white">📍 PA (Philly Metro & Main Line)</option>
+                        <option value="NJ" class="bg-xmasDark text-white">📍 NJ (South Jersey Corridor)</option>
+                        <option value="NC" class="bg-xmasDark text-white">🌲 NC (Appalachian Timber Hub)</option>
+                        <option value="NY" class="bg-xmasDark text-white">📍 NY (Tri-State Staging)</option>
+                    </select>
+                </div>
+
+                <button onclick="exportCSVManifest()" class="bg-xmasGreen hover:bg-xmasGold hover:text-xmasDark text-xmasGold font-bold px-3.5 py-1.5 rounded-xl text-xs border border-xmasGold transition shadow flex items-center gap-1.5">
+                    <span>📥</span> <span class="hidden md:inline">Export Manifest CSV</span>
+                </button>
+
+                <button onclick="logoutAdmin()" class="py-1.5 px-3 rounded-xl bg-xmasDark hover:bg-red-950 border border-white/20 hover:border-xmasRed text-xmasCream text-xs font-bold transition">
+                    Sign Out
                 </button>
             </div>
         </div>
+
+        <!-- MODULE SWITCHER SUB-NAV -->
+        <div class="max-w-7xl mx-auto px-4 py-2 flex items-center gap-2 overflow-x-auto text-xs font-bold border-t border-white/5">
+            <button onclick="switchTab('tab-overview')" id="btn-tab-overview" class="tab-btn active px-4 py-2 rounded-xl transition whitespace-nowrap">
+                📊 Operational Pulse & Escrow
+            </button>
+            <button onclick="switchTab('tab-admins')" id="btn-tab-admins" class="tab-btn px-4 py-2 rounded-xl bg-xmasDark text-xmasCream hover:text-xmasGold transition whitespace-nowrap border border-white/10">
+                👑 Regional Admin Provisioning
+            </button>
+            <button onclick="switchTab('tab-orders')" id="btn-tab-orders" class="tab-btn px-4 py-2 rounded-xl bg-xmasDark text-xmasCream hover:text-xmasGold transition whitespace-nowrap border border-white/10">
+                📦 Live Orders & Routing
+            </button>
+            <button onclick="switchTab('tab-drivers')" id="btn-tab-drivers" class="tab-btn px-4 py-2 rounded-xl bg-xmasDark text-xmasCream hover:text-xmasGold transition whitespace-nowrap border border-white/10">
+                🚚 Driver Fleet Applications
+            </button>
+            <button onclick="switchTab('tab-vendors')" id="btn-tab-vendors" class="tab-btn px-4 py-2 rounded-xl bg-xmasDark text-xmasCream hover:text-xmasGold transition whitespace-nowrap border border-white/10">
+                🌲 Timber Grower Manifests
+            </button>
+            <button onclick="switchTab('tab-audit')" id="btn-tab-audit" class="tab-btn px-4 py-2 rounded-xl bg-xmasDark text-xmasCream hover:text-xmasGold transition whitespace-nowrap border border-white/10">
+                📜 Executive Audit Trail
+            </button>
+        </div>
     </header>
 
-    <!-- ADMIN MAIN CONTENT -->
-    <main class="max-w-7xl mx-auto px-4 py-8 space-y-8">
-        
-        <!-- DASHBOARD HEADER METRICS (5-PILLAR EXECUTIVE FLOAT) -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
+    <!-- MAIN ADMIN CANVAS -->
+    <main class="max-w-7xl mx-auto px-4 py-8 space-y-8 flex-1 w-full">
+
+        <!-- =================================================================== -->
+        <!-- TAB 1: OPERATIONAL PULSE & ESCROW FLOAT -->
+        <!-- =================================================================== -->
+        <section id="tab-overview" class="tab-content space-y-8">
             
-            <!-- TOTAL SUBSCRIBERS -->
-            <div class="bg-xmasPanel border border-xmasGold/40 rounded-3xl p-5 space-y-1 shadow-xl">
-                <p class="text-[10px] text-xmasGold uppercase font-bold tracking-widest">Active Subscribers</p>
-                <p class="font-cinzel text-3xl font-black text-white">450 <span class="text-xs text-emerald-400 font-sans font-bold">(100%)</span></p>
-                <p class="text-[10px] text-xmasCream/60">Philly & Tri-State Pool</p>
-            </div>
-
-            <!-- ESCROW FLOAT HELD -->
-            <div class="bg-xmasPanel border border-xmasGold/40 rounded-3xl p-5 space-y-1 shadow-xl">
-                <p class="text-[10px] text-xmasGold uppercase font-bold tracking-widest">Money Market Escrow</p>
-                <p class="font-cinzel text-3xl font-black text-xmasGold">$84,370.50</p>
-                <p class="text-[10px] text-xmasCream/60">Deferred Multi-Year Yield</p>
-            </div>
-
-            <!-- SEASONAL NET REVENUE -->
-            <div class="bg-xmasPanel border border-xmasGold/40 rounded-3xl p-5 space-y-1 shadow-xl">
-                <p class="text-[10px] text-xmasGold uppercase font-bold tracking-widest">2026 Harvest Cash</p>
-                <p class="font-cinzel text-3xl font-black text-white">$94,495.50</p>
-                <p class="text-[10px] text-emerald-400 font-bold">Unrestricted Fulfillment</p>
-            </div>
-
-            <!-- STRIPE 1% CLIMATE FUND -->
-            <div class="bg-xmasPanel border border-stripeViolet/50 rounded-3xl p-5 space-y-1 shadow-xl">
-                <p class="text-[10px] text-[#A5A0FF] uppercase font-bold tracking-widest">1% Climate Allocated</p>
-                <p class="font-cinzel text-3xl font-black text-white">$1,788.66</p>
-                <p class="text-[10px] text-stripeViolet font-bold">Verified Carbon Removal</p>
-            </div>
-
-            <!-- SUPPLIER FULFILLMENT -->
-            <div class="bg-xmasPanel border border-xmasGold/40 rounded-3xl p-5 space-y-1 shadow-xl">
-                <p class="text-[10px] text-xmasGold uppercase font-bold tracking-widest">Grower Ingest Feed</p>
-                <p class="font-cinzel text-3xl font-black text-white">3 Batches <span class="text-xs text-emerald-400 font-sans font-bold">Ready</span></p>
-                <p class="text-[10px] text-xmasCream/60">Ashe County & Jefferson, NC</p>
-            </div>
-
-        </div>
-
-        <!-- DISPATCH & SUPPLIER FORWARDING ENGINE -->
-        <div class="bg-xmasPanel border-2 border-xmasGold/40 rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/10 pb-4 gap-4">
-                <div>
-                    <span class="text-[10px] font-bold text-xmasGold uppercase tracking-widest bg-xmasDark px-3 py-1 rounded-full border border-xmasGold/30 inline-block">Order Dispatch & Routing Engine</span>
-                    <h2 class="font-cinzel text-2xl font-bold text-white mt-1">Live Subscriber Manifest Routing</h2>
+            <!-- 5-Pillar Metric Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
+                <div class="bg-xmasPanel border border-xmasGold/40 rounded-3xl p-5 space-y-1 shadow-xl">
+                    <p class="text-[10px] text-xmasGold uppercase font-bold tracking-widest">Active Orders</p>
+                    <p id="metricTotalOrders" class="font-cinzel text-3xl font-black text-white">0</p>
+                    <p class="text-[10px] text-emerald-400">● Live in Database</p>
                 </div>
-                <div class="flex flex-wrap gap-2">
-                    <button onclick="dispatchNCBatch()" class="py-2.5 px-4 bg-xmasRed hover:bg-red-700 text-white font-bold text-xs uppercase tracking-wider rounded-xl border border-xmasGold/40 transition shadow-lg">
-                        🚀 Dispatch Manifest to NC Farm
-                    </button>
-                    <button onclick="assignPhillyFleet()" class="py-2.5 px-4 bg-xmasGreen hover:bg-xmasGold hover:text-xmasDark text-xmasGold font-bold text-xs uppercase tracking-wider rounded-xl border border-xmasGold transition shadow-lg">
-                        🚚 Assign to Philly Fleet
-                    </button>
+
+                <div class="bg-xmasPanel border border-xmasGold/40 rounded-3xl p-5 space-y-1 shadow-xl">
+                    <p class="text-[10px] text-xmasGold uppercase font-bold tracking-widest">Locked Escrow Float</p>
+                    <p id="metricEscrowFloat" class="font-cinzel text-3xl font-black text-xmasGold">$84,370.50</p>
+                    <p class="text-[10px] text-xmasCream/60">4.85% APY Treasury Hedge</p>
+                </div>
+
+                <div class="bg-xmasPanel border border-xmasGold/40 rounded-3xl p-5 space-y-1 shadow-xl">
+                    <p class="text-[10px] text-xmasGold uppercase font-bold tracking-widest">2026 Harvest Cash</p>
+                    <p id="metricHarvestCash" class="font-cinzel text-3xl font-black text-white">$94,495.50</p>
+                    <p class="text-[10px] text-emerald-400 font-bold">Unrestricted Operations</p>
+                </div>
+
+                <div class="bg-xmasPanel border border-stripeViolet/50 rounded-3xl p-5 space-y-1 shadow-xl">
+                    <p class="text-[10px] text-[#A5A0FF] uppercase font-bold tracking-widest">1% Climate Fund</p>
+                    <p id="metricClimateFund" class="font-cinzel text-3xl font-black text-white">$1,788.66</p>
+                    <p class="text-[10px] text-stripeViolet font-bold">Stripe Carbon Removal</p>
+                </div>
+
+                <div class="bg-xmasPanel border border-xmasGold/40 rounded-3xl p-5 space-y-1 shadow-xl">
+                    <p class="text-[10px] text-xmasGold uppercase font-bold tracking-widest">Timber Committed</p>
+                    <p id="metricTimberYield" class="font-cinzel text-3xl font-black text-white">0</p>
+                    <p class="text-[10px] text-emerald-400 font-bold">NC Mountain Supply</p>
                 </div>
             </div>
 
-            <!-- LIVE ORDERS TABLE -->
-            <div class="overflow-x-auto">
-                <table id="manifestTable" class="w-full text-left text-xs text-xmasCream/80">
-                    <thead class="bg-xmasDark text-xmasGold uppercase text-[10px] font-bold tracking-wider border-b border-white/10">
-                        <tr>
-                            <th class="p-3">Order ID</th>
-                            <th class="p-3">Customer Name</th>
-                            <th class="p-3">Tier / Size</th>
-                            <th class="p-3">Term Duration</th>
-                            <th class="p-3">Delivery Address</th>
-                            <th class="p-3">Escrow Status</th>
-                            <th class="p-3">Stripe Status</th>
-                            <th class="p-3 text-right">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-white/10 font-medium">
-                        <tr class="hover:bg-xmasDark/50 transition">
-                            <td class="p-3 font-mono font-bold text-white">#CTJ-2026-8841</td>
-                            <td class="p-3 text-white">Nehemiah Brown</td>
-                            <td class="p-3 text-xmasGold font-bold">Holiday Hearth (6–7 ft)</td>
-                            <td class="p-3">3 Years (15% Lock)</td>
-                            <td class="p-3">1880 JFK Blvd, Philadelphia, PA 19103</td>
-                            <td class="p-3"><span class="px-2 py-0.5 bg-emerald-950 text-emerald-400 border border-emerald-500/30 rounded-full text-[10px]">Held ($178.49)</span></td>
-                            <td class="p-3"><span class="text-xs text-emerald-400 font-bold">✓ Paid (Stripe)</span></td>
-                            <td class="p-3 text-right">
-                                <button onclick="inspectOrder('#CTJ-2026-8841', 'Nehemiah Brown', 'Holiday Hearth (6–7 ft)', '$178.49/yr (3-Yr Lock)')" class="text-xmasGold hover:underline font-bold">Inspect</button>
-                            </td>
-                        </tr>
-
-                        <tr class="hover:bg-xmasDark/50 transition">
-                            <td class="p-3 font-mono font-bold text-white">#CTJ-2026-8842</td>
-                            <td class="p-3 text-white">Sarah Jenkins</td>
-                            <td class="p-3 text-xmasGold font-bold">Yuletide Monarch (8–9 ft)</td>
-                            <td class="p-3">5 Years (15% Lock)</td>
-                            <td class="p-3">Main Line, Bryn Mawr, PA 19010</td>
-                            <td class="p-3"><span class="px-2 py-0.5 bg-emerald-950 text-emerald-400 border border-emerald-500/30 rounded-full text-[10px]">Held ($254.99)</span></td>
-                            <td class="p-3"><span class="text-xs text-emerald-400 font-bold">✓ Paid (Stripe)</span></td>
-                            <td class="p-3 text-right">
-                                <button onclick="inspectOrder('#CTJ-2026-8842', 'Sarah Jenkins', 'Yuletide Monarch (8–9 ft)', '$254.99/yr (5-Yr Lock)')" class="text-xmasGold hover:underline font-bold">Inspect</button>
-                            </td>
-                        </tr>
-
-                        <tr class="hover:bg-xmasDark/50 transition">
-                            <td class="p-3 font-mono font-bold text-white">#CTJ-2026-8843</td>
-                            <td class="p-3 text-white">Marcus Sterling</td>
-                            <td class="p-3 text-xmasGold font-bold">Evergreen Sprout (4–5 ft)</td>
-                            <td class="p-3">1 Year Standard</td>
-                            <td class="p-3">Northern Liberties, Philly 19123</td>
-                            <td class="p-3"><span class="px-2 py-0.5 bg-xmasDark text-xmasCream/60 border border-white/20 rounded-full text-[10px]">Settled ($149.99)</span></td>
-                            <td class="p-3"><span class="text-xs text-emerald-400 font-bold">✓ Paid (Stripe)</span></td>
-                            <td class="p-3 text-right">
-                                <button onclick="inspectOrder('#CTJ-2026-8843', 'Marcus Sterling', 'Evergreen Sprout (4–5 ft)', '$149.99 (1-Yr)')" class="text-xmasGold hover:underline font-bold">Inspect</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- ESCROW & TERRITORY MAPPING GRID -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            
-            <!-- ESCROW FLOAT REVENUE BREAKDOWN -->
+            <!-- Quick Operational Actions -->
             <div class="bg-xmasDark border border-xmasGold/30 rounded-3xl p-6 space-y-4 shadow-xl">
-                <div class="flex items-center justify-between border-b border-white/10 pb-3">
-                    <h3 class="font-cinzel text-xl font-bold text-xmasGold">Escrow Money Market Allocation</h3>
-                    <span class="text-[10px] bg-emerald-950 text-emerald-400 px-2.5 py-1 rounded-full font-bold uppercase">4.85% APY Float</span>
-                </div>
-                <p class="text-xs text-xmasCream/70 leading-relaxed">
-                    Prepaid multi-year subscription revenue is split between current-year harvest cash and high-yield money-market treasury reserves to hedge future timber inflation.
-                </p>
-
-                <div class="space-y-3 text-xs">
-                    <div class="flex justify-between items-center p-3 bg-xmasPanel rounded-xl border border-white/5">
-                        <span>2026 Active Harvest Allocation:</span>
-                        <span class="font-bold text-emerald-400">$94,495.50</span>
-                    </div>
-                    <div class="flex justify-between items-center p-3 bg-xmasPanel rounded-xl border border-white/5">
-                        <span>2027 Deferred Escrow Reserve (Year 2):</span>
-                        <span class="font-bold text-xmasGold">$42,185.25</span>
-                    </div>
-                    <div class="flex justify-between items-center p-3 bg-xmasPanel rounded-xl border border-white/5">
-                        <span>2028+ Long-Term Multi-Year Reserve:</span>
-                        <span class="font-bold text-xmasGold">$42,185.25</span>
-                    </div>
-                    <div class="flex justify-between items-center p-3 bg-xmasPanel rounded-xl border border-stripeViolet/30">
-                        <span class="text-[#A5A0FF]">1% Stripe Climate Carbon Escrow:</span>
-                        <span class="font-bold text-white">$1,788.66</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- REGIONAL TERRITORY AUTO-MAPPING & DRIVER DISPATCH -->
-            <div class="bg-xmasDark border border-xmasGold/30 rounded-3xl p-6 space-y-4 shadow-xl">
-                <div class="flex items-center justify-between border-b border-white/10 pb-3">
-                    <h3 class="font-cinzel text-xl font-bold text-xmasGold">Automated Territory Expansion</h3>
-                    <a href="driver-hub.html" class="text-[10px] bg-xmasRed text-white px-2.5 py-1 rounded-full font-bold uppercase hover:bg-red-700 transition">
-                        Open Driver Hub →
+                <h3 class="font-cinzel text-lg font-bold text-white flex items-center gap-2">
+                    <span>⚡ Executive Dispatch Actions</span>
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs font-bold">
+                    <a href="track.html" target="_blank" class="p-4 rounded-2xl bg-xmasPanel border border-xmasGold/40 hover:border-xmasGold text-center text-xmasGold transition block shadow">
+                        📡 Launch Live Fleet Mapbox Tracker →
                     </a>
-                </div>
-                <p class="text-xs text-xmasCream/70 leading-relaxed">
-                    When out-of-territory growers register on <code>christmastreejoe.net</code>, the system pins their GPS coordinates and maps them directly into our CDL logistics routes.
-                </p>
-
-                <div class="space-y-3 text-xs">
-                    <div class="p-3 bg-xmasPanel rounded-xl flex items-center justify-between border border-white/5">
-                        <div>
-                            <p class="font-bold text-white">Active Primary Zone: Philadelphia & Tri-State</p>
-                            <p class="text-[10px] text-xmasCream/50">Covered ZIPs: 19102, 19103, 19106, 19010 + 42 Others</p>
-                        </div>
-                        <span class="px-2.5 py-1 bg-emerald-950 text-emerald-400 border border-emerald-500/30 rounded-full font-bold text-[10px]">Active</span>
-                    </div>
-
-                    <div class="p-3 bg-xmasPanel rounded-xl flex items-center justify-between border border-white/5">
-                        <div>
-                            <p class="font-bold text-white">North Carolina Regional Corridor (Ashe / RDU)</p>
-                            <p class="text-[10px] text-xmasCream/50">Cross-Docking Depot: Jefferson Staging Hub</p>
-                        </div>
-                        <span class="px-2.5 py-1 bg-emerald-950 text-emerald-400 border border-emerald-500/30 rounded-full font-bold text-[10px]">Active</span>
-                    </div>
-
-                    <div class="p-3 bg-xmasPanel rounded-xl flex items-center justify-between border border-xmasGold/20">
-                        <div>
-                            <p class="font-bold text-white">Pending Expansion: Miami / South Florida Hub</p>
-                            <p class="text-[10px] text-xmasCream/50">Triggered by vendor intake #VEND-FL-08</p>
-                        </div>
-                        <button onclick="unlockZone('Miami / South Florida')" class="py-1.5 px-3 bg-xmasRed hover:bg-red-700 text-white font-bold text-[10px] uppercase rounded-lg transition shadow">
-                            Unlock Zone
-                        </button>
-                    </div>
+                    <a href="driver-hub.html" target="_blank" class="p-4 rounded-2xl bg-xmasPanel border border-white/20 hover:border-white text-center text-white transition block shadow">
+                        🚛 Open Carrier Dispatch Hub →
+                    </a>
+                    <button onclick="refreshAllData()" class="p-4 rounded-2xl bg-xmasPanel border border-white/10 hover:border-xmasGold text-center text-xmasCream transition shadow">
+                        🔄 Force Sync Live Database
+                    </button>
                 </div>
             </div>
 
-        </div>
+        </section>
+
+        <!-- =================================================================== -->
+        <!-- TAB 2: REGIONAL ADMIN PROVISIONING -->
+        <!-- =================================================================== -->
+        <section id="tab-admins" class="tab-content hidden space-y-8">
+            
+            <div class="bg-xmasPanel border-2 border-xmasGold/50 rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-6">
+                    <div class="space-y-1">
+                        <span class="text-[10px] bg-xmasRed text-white px-3 py-1 rounded-full font-extrabold uppercase tracking-widest border border-xmasGold/30">Founder Exclusive Tool</span>
+                        <h2 class="font-cinzel text-2xl font-black text-white">Regional Admin & Territory Provisioning</h2>
+                        <p class="text-xs text-xmasCream/70">Assign state-level dispatchers and regional managers with isolated administrative authority.</p>
+                    </div>
+                    <button onclick="openAddAdminModal()" class="py-3 px-6 bg-xmasGold hover:bg-[#FFE082] text-xmasDark font-extrabold text-xs uppercase rounded-xl border border-xmasGold/50 shadow-xl transition transform hover:scale-105">
+                        + Assign New Regional Admin
+                    </button>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs border-collapse">
+                        <thead>
+                            <tr class="border-b border-white/10 text-xmasGold font-cinzel text-[11px] uppercase tracking-wider">
+                                <th class="py-3 px-4">Admin Name & Email</th>
+                                <th class="py-3 px-4">Role Level</th>
+                                <th class="py-3 px-4">Managed Territories</th>
+                                <th class="py-3 px-4">Status</th>
+                                <th class="py-3 px-4 text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminsTableBody" class="divide-y divide-white/5 text-xmasCream/80">
+                            <tr>
+                                <td colspan="5" class="py-6 text-center text-xmasCream/40">Loading verified administrators...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- =================================================================== -->
+        <!-- TAB 3: ORDERS & DISPATCH PIPELINE -->
+        <!-- =================================================================== -->
+        <section id="tab-orders" class="tab-content hidden space-y-6">
+            
+            <div class="bg-xmasPanel border border-xmasGold/40 rounded-3xl p-6 space-y-6 shadow-2xl">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-4">
+                    <div class="space-y-1">
+                        <h3 class="font-cinzel text-xl font-bold text-white">Live Customer Orders & Manifest Routing</h3>
+                        <p class="text-xs text-xmasCream/70">Update fulfillment states, assign driver waves, and manage doorstep installations.</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <input type="text" id="orderSearchInput" onkeyup="filterOrdersTable()" placeholder="Search order #, customer, or tier..." class="bg-xmasDark border border-white/20 rounded-xl px-4 py-2 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs border-collapse">
+                        <thead>
+                            <tr class="border-b border-white/10 text-xmasGold font-cinzel text-[11px] uppercase tracking-wider">
+                                <th class="py-3 px-4">Order #</th>
+                                <th class="py-3 px-4">Tree Tier & Term</th>
+                                <th class="py-3 px-4">Annual Rate</th>
+                                <th class="py-3 px-4">Delivery Date</th>
+                                <th class="py-3 px-4">Fulfillment Status</th>
+                                <th class="py-3 px-4 text-right">Status Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ordersTableBody" class="divide-y divide-white/5 text-xmasCream/80">
+                            <tr>
+                                <td colspan="6" class="py-6 text-center text-xmasCream/40">Loading subscriber orders from Supabase...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- =================================================================== -->
+        <!-- TAB 4: DRIVER APPLICATIONS QUEUE -->
+        <!-- =================================================================== -->
+        <section id="tab-drivers" class="tab-content hidden space-y-6">
+            
+            <div class="bg-xmasPanel border border-xmasGold/40 rounded-3xl p-6 space-y-6 shadow-2xl">
+                <div class="border-b border-white/10 pb-4 space-y-1">
+                    <h3 class="font-cinzel text-xl font-bold text-white">Carrier & Driver Onboarding Queue</h3>
+                    <p class="text-xs text-xmasCream/70">Review applications submitted through the driver hub and approve fleet credentials.</p>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs border-collapse">
+                        <thead>
+                            <tr class="border-b border-white/10 text-xmasGold font-cinzel text-[11px] uppercase tracking-wider">
+                                <th class="py-3 px-4">Applicant / Carrier</th>
+                                <th class="py-3 px-4">Phone / Contact</th>
+                                <th class="py-3 px-4">Vehicle Equipment</th>
+                                <th class="py-3 px-4">Operating Territory</th>
+                                <th class="py-3 px-4">Status</th>
+                                <th class="py-3 px-4 text-right">Review Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="driversTableBody" class="divide-y divide-white/5 text-xmasCream/80">
+                            <tr>
+                                <td colspan="6" class="py-6 text-center text-xmasCream/40">Loading carrier applications...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- =================================================================== -->
+        <!-- TAB 5: VENDOR MANIFEST INGEST -->
+        <!-- =================================================================== -->
+        <section id="tab-vendors" class="tab-content hidden space-y-6">
+            
+            <div class="bg-xmasPanel border border-xmasGold/40 rounded-3xl p-6 space-y-6 shadow-2xl">
+                <div class="border-b border-white/10 pb-4 space-y-1">
+                    <h3 class="font-cinzel text-xl font-bold text-white">Appalachian Timber Lot Manifests</h3>
+                    <p class="text-xs text-xmasCream/70">Manage grower harvest commitments and cross-dock freight staging.</p>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs border-collapse">
+                        <thead>
+                            <tr class="border-b border-white/10 text-xmasGold font-cinzel text-[11px] uppercase tracking-wider">
+                                <th class="py-3 px-4">Plantation / Farm</th>
+                                <th class="py-3 px-4">Contact Info</th>
+                                <th class="py-3 px-4">Primary Species</th>
+                                <th class="py-3 px-4">Yield Quantity</th>
+                                <th class="py-3 px-4">Manifest Status</th>
+                                <th class="py-3 px-4 text-right">Verification</th>
+                            </tr>
+                        </thead>
+                        <tbody id="vendorsTableBody" class="divide-y divide-white/5 text-xmasCream/80">
+                            <tr>
+                                <td colspan="6" class="py-6 text-center text-xmasCream/40">Loading grower manifests...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- =================================================================== -->
+        <!-- TAB 6: AUDIT TRAIL -->
+        <!-- =================================================================== -->
+        <section id="tab-audit" class="tab-content hidden space-y-6">
+            
+            <div class="bg-xmasPanel border border-white/10 rounded-3xl p-6 space-y-6 shadow-2xl">
+                <div class="border-b border-white/10 pb-4 space-y-1">
+                    <h3 class="font-cinzel text-xl font-bold text-white">Administrative Action Log</h3>
+                    <p class="text-xs text-xmasCream/70">Immutable trail of role assignments, status updates, and dispatch adjustments.</p>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs border-collapse">
+                        <thead>
+                            <tr class="border-b border-white/10 text-xmasGold font-cinzel text-[11px] uppercase tracking-wider">
+                                <th class="py-3 px-4">Timestamp</th>
+                                <th class="py-3 px-4">Admin</th>
+                                <th class="py-3 px-4">Action</th>
+                                <th class="py-3 px-4">Target Entity</th>
+                                <th class="py-3 px-4">Details</th>
+                            </tr>
+                        </thead>
+                        <tbody id="auditTableBody" class="divide-y divide-white/5 text-xmasCream/80">
+                            <tr>
+                                <td colspan="5" class="py-6 text-center text-xmasCream/40">Loading audit history...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
 
     </main>
 
-    <!-- FOOTER -->
-    <footer class="bg-xmasDark border-t border-xmasGold/30 py-8 px-4 text-xmasCream text-xs text-center space-y-2">
-        <p>&copy; 2026 Global Citizen Joe, LLC. & Xmas Made Inc. All Rights Reserved.</p>
-        <p class="text-[11px] text-xmasCream/50">1880 John F Kennedy Boulevard, Ste 104, Philadelphia, PA 19103 US</p>
-    </footer>
+    <!-- MODAL: ADD / PROMOTE REGIONAL ADMIN -->
+    <div id="addAdminModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+        <div class="bg-xmasPanel border-2 border-xmasGold rounded-3xl max-w-lg w-full p-6 sm:p-8 space-y-6 shadow-2xl">
+            <div class="flex justify-between items-center border-b border-white/10 pb-4">
+                <h3 class="font-cinzel text-xl font-bold text-white">Provision Regional Admin</h3>
+                <button onclick="closeAddAdminModal()" class="text-xmasCream/60 hover:text-white font-bold text-lg">&times;</button>
+            </div>
 
-    <!-- INTERACTIVE DISPATCH & EXPORT LOGIC -->
-    <script>
-        function exportCSVManifest() {
-            const csvRows = [
-                ["Order ID", "Customer Name", "Tier", "Term Duration", "Delivery Address", "Escrow Status", "Stripe Status"],
-                ["#CTJ-2026-8841", "Nehemiah Brown", "Holiday Hearth (6-7 ft)", "3 Years (15% Lock)", "1880 JFK Blvd, Philadelphia PA 19103", "Held ($178.49)", "Paid"],
-                ["#CTJ-2026-8842", "Sarah Jenkins", "Yuletide Monarch (8-9 ft)", "5 Years (15% Lock)", "Bryn Mawr, PA 19010", "Held ($254.99)", "Paid"],
-                ["#CTJ-2026-8843", "Marcus Sterling", "Evergreen Sprout (4-5 ft)", "1 Year Standard", "Northern Liberties, Philly 19123", "Settled ($149.99)", "Paid"]
-            ];
+            <form id="addAdminForm" onsubmit="handleProvisionAdmin(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-xmasGold uppercase mb-1">User Email Address</label>
+                    <input type="email" id="adminUserEmail" required placeholder="manager@christmastreejoe.com" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
+                </div>
 
+                <div>
+                    <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Full Legal Name</label>
+                    <input type="text" id="adminFullName" required placeholder="Territory Director Name" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Role Level</label>
+                    <select id="adminRoleLevel" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-xmasGold">
+                        <option value="regional_admin">Regional Admin (Territory Locked)</option>
+                        <option value="super_admin">Super Admin (Global Authority)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Assigned Territory Codes</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs text-white pt-1">
+                        <label class="flex items-center gap-1.5 bg-xmasDark p-2 rounded-lg border border-white/10"><input type="checkbox" name="territoryCode" value="PA" checked class="accent-xmasGold"> PA (Philly)</label>
+                        <label class="flex items-center gap-1.5 bg-xmasDark p-2 rounded-lg border border-white/10"><input type="checkbox" name="territoryCode" value="NJ" class="accent-xmasGold"> NJ (Jersey)</label>
+                        <label class="flex items-center gap-1.5 bg-xmasDark p-2 rounded-lg border border-white/10"><input type="checkbox" name="territoryCode" value="NC" class="accent-xmasGold"> NC (Farms)</label>
+                        <label class="flex items-center gap-1.5 bg-xmasDark p-2 rounded-lg border border-white/10"><input type="checkbox" name="territoryCode" value="NY" class="accent-xmasGold"> NY (Tri-State)</label>
+                    </div>
+                </div>
+
+                <div class="flex justify-end gap-3 pt-4 border-t border-white/10">
+                    <button type="button" onclick="closeAddAdminModal()" class="py-2.5 px-4 rounded-xl bg-xmasDark border border-white/20 text-xs font-bold text-white hover:bg-white/10 transition">
+                        Cancel
+                    </button>
+                    <button type="submit" id="saveAdminBtn" class="py-2.5 px-6 rounded-xl bg-xmasGold hover:bg-[#FFE082] text-xmasDark font-extrabold text-xs uppercase shadow transition">
+                        Grant Admin Access
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- SUPABASE MASTER CONTROLLER MODULE -->
+    <script type="module">
+        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+        // Verified Supabase Project Credentials
+        const SUPABASE_URL = 'https://pnosjdmolfqhuvvcnddh.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable_VLFX6Kp_2DWYt5kLC00HkA_kxCJWON6';
+        const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        let currentAdminUser = null;
+        let allOrders = [];
+        let allDrivers = [];
+        let allVendors = [];
+        let allAdmins = [];
+
+        // Verify Super Admin Access on Boot
+        async function initAdminPortal() {
+            const { data: { session } } = await supabase.auth.getSession();
+
+            if (!session || !session.user) {
+                alert('Authentication required. Redirecting to Member Portal...');
+                window.location.href = 'account.html';
+                return;
+            }
+
+            const { data: profile } = await supabase
+                .from('profiles')
+                .select('*')
+                .eq('id', session.user.id)
+                .single();
+
+            const role = profile?.role || session.user.user_metadata?.role;
+
+            if (role !== 'super_admin' && role !== 'regional_admin') {
+                alert('Access restricted to verified administrators.');
+                window.location.href = 'account.html';
+                return;
+            }
+
+            currentAdminUser = { ...session.user, ...profile, role };
+            document.getElementById('adminIdentityPill').innerText = `${profile?.full_name || session.user.email} (${role.toUpperCase()})`;
+            document.getElementById('roleBadge').innerText = role === 'super_admin' ? 'Super Admin Command' : 'Regional Dispatch Board';
+
+            // Hide Provisioning Tab if not Super Admin
+            if (role !== 'super_admin') {
+                const adminBtn = document.getElementById('btn-tab-admins');
+                if (adminBtn) adminBtn.style.display = 'none';
+            }
+
+            await refreshAllData();
+        }
+
+        // Fetch All Database Records
+        window.refreshAllData = async function() {
+            try {
+                // 1. Fetch Orders
+                const { data: orders } = await supabase
+                    .from('orders')
+                    .select('*')
+                    .order('created_at', { ascending: false });
+                allOrders = orders || [];
+                renderOrders(allOrders);
+
+                // 2. Fetch Driver Applications
+                const { data: drivers } = await supabase
+                    .from('driver_applications')
+                    .select('*')
+                    .order('created_at', { ascending: false });
+                allDrivers = drivers || [];
+                renderDrivers(allDrivers);
+
+                // 3. Fetch Vendor Manifests
+                const { data: vendors } = await supabase
+                    .from('vendor_manifests')
+                    .select('*')
+                    .order('created_at', { ascending: false });
+                allVendors = vendors || [];
+                renderVendors(allVendors);
+
+                // 4. Fetch Admins Roster
+                const { data: admins } = await supabase
+                    .from('profiles')
+                    .select('*')
+                    .in('role', ['super_admin', 'regional_admin'])
+                    .order('created_at', { ascending: false });
+                allAdmins = admins || [];
+                renderAdmins(allAdmins);
+
+                // 5. Fetch Audit Trail
+                const { data: audit } = await supabase
+                    .from('admin_audit_logs')
+                    .select('*')
+                    .order('created_at', { ascending: false })
+                    .limit(25);
+                renderAudit(audit || []);
+
+                // Update Metrics Counters
+                document.getElementById('metricTotalOrders').innerText = allOrders.length;
+                
+                const totalTrees = allVendors.reduce((acc, curr) => acc + (curr.estimated_quantity || 0), 0);
+                document.getElementById('metricTimberYield').innerText = totalTrees.toLocaleString() + ' Trees';
+
+            } catch (err) {
+                console.error('Error synchronizing admin dashboard:', err);
+            }
+        };
+
+        function renderOrders(orders) {
+            const tbody = document.getElementById('ordersTableBody');
+            if (!orders.length) {
+                tbody.innerHTML = `<tr><td colspan="6" class="py-6 text-center text-xmasCream/40">No orders registered yet. Live purchases will appear here.</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = orders.map(o => `
+                <tr class="hover:bg-white/5 transition">
+                    <td class="py-3 px-4 font-mono font-bold text-white">${o.order_number}</td>
+                    <td class="py-3 px-4">${o.tier_name} (${o.duration_years || 1}-Yr)</td>
+                    <td class="py-3 px-4 text-emerald-400 font-bold">$${o.annual_price}</td>
+                    <td class="py-3 px-4">${o.delivery_date || 'Nov 28, 2026'}</td>
+                    <td class="py-3 px-4">
+                        <span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase ${o.status === 'delivered' ? 'bg-emerald-950 text-emerald-300' : 'bg-amber-950 text-amber-300'}">
+                            ${o.status}
+                        </span>
+                    </td>
+                    <td class="py-3 px-4 text-right">
+                        <select onchange="updateOrderStatus('${o.id}', this.value)" class="bg-xmasDark border border-white/20 rounded-lg p-1 text-[11px] text-xmasGold focus:outline-none">
+                            <option value="pending" ${o.status === 'pending' ? 'selected' : ''}>Pending</option>
+                            <option value="confirmed" ${o.status === 'confirmed' ? 'selected' : ''}>Confirmed</option>
+                            <option value="in_transit" ${o.status === 'in_transit' ? 'selected' : ''}>In Transit</option>
+                            <option value="delivered" ${o.status === 'delivered' ? 'selected' : ''}>Delivered</option>
+                            <option value="recycled" ${o.status === 'recycled' ? 'selected' : ''}>Recycled</option>
+                        </select>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function renderDrivers(drivers) {
+            const tbody = document.getElementById('driversTableBody');
+            if (!drivers.length) {
+                tbody.innerHTML = `<tr><td colspan="6" class="py-6 text-center text-xmasCream/40">No driver applications pending review.</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = drivers.map(d => `
+                <tr class="hover:bg-white/5 transition">
+                    <td class="py-3 px-4 font-bold text-white">${d.full_name}</td>
+                    <td class="py-3 px-4">${d.phone}<br><span class="text-xmasCream/50 text-[10px]">${d.email}</span></td>
+                    <td class="py-3 px-4">${d.vehicle_type}</td>
+                    <td class="py-3 px-4 text-xmasGold font-bold">${d.service_region || 'Philly Metro'}</td>
+                    <td class="py-3 px-4">
+                        <span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase ${d.status === 'approved' ? 'bg-emerald-950 text-emerald-300' : 'bg-purple-950 text-purple-300'}">
+                            ${d.status}
+                        </span>
+                    </td>
+                    <td class="py-3 px-4 text-right space-x-2">
+                        <button onclick="updateDriverStatus('${d.id}', 'approved')" class="py-1 px-2.5 rounded bg-emerald-700 hover:bg-emerald-600 text-white text-[10px] font-bold">Approve</button>
+                        <button onclick="updateDriverStatus('${d.id}', 'rejected')" class="py-1 px-2.5 rounded bg-red-800 hover:bg-red-700 text-white text-[10px] font-bold">Reject</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function renderVendors(vendors) {
+            const tbody = document.getElementById('vendorsTableBody');
+            if (!vendors.length) {
+                tbody.innerHTML = `<tr><td colspan="6" class="py-6 text-center text-xmasCream/40">No timber grower manifests registered.</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = vendors.map(v => `
+                <tr class="hover:bg-white/5 transition">
+                    <td class="py-3 px-4 font-bold text-white">${v.farm_name}</td>
+                    <td class="py-3 px-4">${v.email}<br><span class="text-xmasCream/50 text-[10px]">${v.phone}</span></td>
+                    <td class="py-3 px-4 text-xmasGold font-semibold">${v.tree_species}</td>
+                    <td class="py-3 px-4 text-emerald-400 font-bold">${v.estimated_quantity?.toLocaleString()} Trees</td>
+                    <td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase bg-xmasPanel border border-white/20">${v.status}</span></td>
+                    <td class="py-3 px-4 text-right">
+                        <button onclick="updateVendorStatus('${v.id}', 'verified')" class="py-1 px-3 rounded bg-xmasGreen hover:bg-xmasGold hover:text-xmasDark border border-xmasGold text-xmasGold text-[10px] font-bold transition">Verify Harvest</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function renderAdmins(admins) {
+            const tbody = document.getElementById('adminsTableBody');
+            if (!admins.length) {
+                tbody.innerHTML = `<tr><td colspan="5" class="py-6 text-center text-xmasCream/40">No regional administrators configured.</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = admins.map(a => `
+                <tr class="hover:bg-white/5 transition">
+                    <td class="py-3 px-4 font-bold text-white">${a.full_name || 'Admin User'}<br><span class="text-xmasCream/50 font-normal">${a.email}</span></td>
+                    <td class="py-3 px-4">
+                        <span class="px-2 py-0.5 rounded-full text-[10px] font-black uppercase ${a.role === 'super_admin' ? 'bg-xmasRed text-white' : 'bg-xmasGreen text-xmasGold border border-xmasGold/40'}">
+                            ${a.role}
+                        </span>
+                    </td>
+                    <td class="py-3 px-4 text-xmasGold font-bold">${(a.managed_territories || []).join(', ') || 'ALL'}</td>
+                    <td class="py-3 px-4"><span class="text-emerald-400 text-xs">● Active</span></td>
+                    <td class="py-3 px-4 text-right">
+                        ${a.role !== 'super_admin' ? `<button onclick="revokeAdmin('${a.id}')" class="py-1 px-2.5 rounded bg-red-900/60 hover:bg-red-800 text-red-300 text-[10px] font-bold border border-red-500/40">Revoke</button>` : '<span class="text-xmasCream/40 text-[10px]">Owner</span>'}
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function renderAudit(logs) {
+            const tbody = document.getElementById('auditTableBody');
+            if (!logs.length) {
+                tbody.innerHTML = `<tr><td colspan="5" class="py-6 text-center text-xmasCream/40">No audit events recorded yet.</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = logs.map(l => `
+                <tr class="hover:bg-white/5 transition">
+                    <td class="py-2.5 px-4 font-mono text-[10px] text-xmasCream/50">${new Date(l.created_at).toLocaleString()}</td>
+                    <td class="py-2.5 px-4 font-bold text-white">${l.admin_email}</td>
+                    <td class="py-2.5 px-4 text-xmasGold font-bold">${l.action_type}</td>
+                    <td class="py-2.5 px-4 font-mono text-[11px]">${l.target_entity}</td>
+                    <td class="py-2.5 px-4 text-xmasCream/70 text-[11px]">${JSON.stringify(l.details || {})}</td>
+                </tr>
+            `).join('');
+        }
+
+        // CSV Export Function
+        window.exportCSVManifest = function() {
+            let csvRows = [["Order ID", "Tier Name", "Duration Years", "Annual Price", "Delivery Date", "Status"]];
+            allOrders.forEach(o => {
+                csvRows.push([o.order_number, o.tier_name, o.duration_years, o.annual_price, o.delivery_date, o.status]);
+            });
             const csvContent = "data:text/csv;charset=utf-8," + csvRows.map(e => e.join(",")).join("\n");
             const encodedUri = encodeURI(csvContent);
             const link = document.createElement("a");
             link.setAttribute("href", encodedUri);
-            link.setAttribute("download", "CTJ_2026_Dispatch_Manifest.csv");
+            link.setAttribute("download", "CTJ_2026_Live_Dispatch_Manifest.csv");
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
+        };
+
+        // Status Mutation Handlers
+        window.updateOrderStatus = async function(orderId, newStatus) {
+            await supabase.from('orders').update({ status: newStatus }).eq('id', orderId);
+            await logAction('UPDATE_ORDER_STATUS', `Order ID: ${orderId}`, { newStatus });
+            refreshAllData();
+        };
+
+        window.updateDriverStatus = async function(driverId, newStatus) {
+            await supabase.from('driver_applications').update({ status: newStatus }).eq('id', driverId);
+            await logAction('UPDATE_DRIVER_STATUS', `Driver ID: ${driverId}`, { newStatus });
+            refreshAllData();
+        };
+
+        window.updateVendorStatus = async function(vendorId, newStatus) {
+            await supabase.from('vendor_manifests').update({ status: newStatus }).eq('id', vendorId);
+            await logAction('UPDATE_VENDOR_STATUS', `Vendor ID: ${vendorId}`, { newStatus });
+            refreshAllData();
+        };
+
+        window.revokeAdmin = async function(profileId) {
+            if (!confirm('Are you sure you want to revoke administrative authority for this user?')) return;
+            await supabase.from('profiles').update({ role: 'customer', managed_territories: [] }).eq('id', profileId);
+            await logAction('REVOKE_ADMIN', `Profile ID: ${profileId}`, {});
+            refreshAllData();
+        };
+
+        window.handleProvisionAdmin = async function(e) {
+            e.preventDefault();
+            const email = document.getElementById('adminUserEmail').value.trim();
+            const fullName = document.getElementById('adminFullName').value.trim();
+            const role = document.getElementById('adminRoleLevel').value;
+            const checkedTerritories = Array.from(document.querySelectorAll('input[name="territoryCode"]:checked')).map(cb => cb.value);
+
+            const saveBtn = document.getElementById('saveAdminBtn');
+            saveBtn.disabled = true;
+            saveBtn.innerText = 'Provisioning...';
+
+            try {
+                const { error } = await supabase
+                    .from('profiles')
+                    .upsert([{
+                        email: email,
+                        full_name: fullName,
+                        role: role,
+                        managed_territories: checkedTerritories
+                    }], { onConflict: 'email' });
+
+                if (error) throw error;
+
+                await logAction('PROVISION_ADMIN', `Email: ${email}`, { role, territories: checkedTerritories });
+                alert(`Administrator privileges granted to ${email} (${role.toUpperCase()})`);
+                closeAddAdminModal();
+                refreshAllData();
+            } catch (err) {
+                alert(`Provisioning failed: ${err.message}`);
+            } finally {
+                saveBtn.disabled = false;
+                saveBtn.innerText = 'Grant Admin Access';
+            }
+        };
+
+        async function logAction(actionType, targetEntity, details) {
+            if (!currentAdminUser) return;
+            await supabase.from('admin_audit_logs').insert([{
+                admin_id: currentAdminUser.id,
+                admin_email: currentAdminUser.email,
+                action_type: actionType,
+                target_entity: targetEntity,
+                details: details
+            }]);
         }
 
-        function dispatchNCBatch() {
-            alert("✓ 120-Tree Manifest transmitted to Ashe County, NC Farm Supplier. Freight bill of lading generated.");
+        window.logoutAdmin = async function() {
+            await supabase.auth.signOut();
+            window.location.href = 'account.html';
+        };
+
+        window.addEventListener('DOMContentLoaded', initAdminPortal);
+    </script>
+
+    <!-- TAB SWITCHING & MODAL UI SCRIPT -->
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+                btn.classList.add('bg-xmasDark', 'text-xmasCream');
+            });
+
+            const activeContent = document.getElementById(tabId);
+            const activeBtn = document.getElementById(`btn-${tabId}`);
+            if (activeContent) activeContent.classList.remove('hidden');
+            if (activeBtn) {
+                activeBtn.classList.add('active');
+                activeBtn.classList.remove('bg-xmasDark', 'text-xmasCream');
+            }
         }
 
-        function assignPhillyFleet() {
-            alert("✓ 45 Center City orders routed to Philly Logistics Box Truck #PA-04. Manifest uploaded to driver.christmastreejoe.com.");
+        function openAddAdminModal() {
+            document.getElementById('addAdminModal').classList.remove('hidden');
         }
 
-        function unlockZone(zoneName) {
-            alert(`✓ Market zone "${zoneName}" is now active for customer pre-orders and driver route bidding.`);
+        function closeAddAdminModal() {
+            document.getElementById('addAdminModal').classList.add('hidden');
         }
 
-        function inspectOrder(orderId, customer, tier, pricing) {
-            alert(`Order Manifest Inspection:\n--------------------------\nOrder: ${orderId}\nCustomer: ${customer}\nTier: ${tier}\nPricing: ${pricing}\nStripe Status: Verified Paid\nFulfillment Wave: Thanksgiving Weekend 2026`);
+        function filterDashboardTerritory() {
+            const territory = document.getElementById('territoryFilter').value;
+            alert(`Scope filtered to ${territory}.`);
+        }
+
+        function filterOrdersTable() {
+            const query = document.getElementById('orderSearchInput').value.toLowerCase();
+            const rows = document.querySelectorAll('#ordersTableBody tr');
+            rows.forEach(row => {
+                row.style.display = row.innerText.toLowerCase().includes(query) ? '' : 'none';
+            });
         }
     </script>
 </body>
