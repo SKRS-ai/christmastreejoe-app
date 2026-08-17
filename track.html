@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Real-Time Delivery Tracker | Christmas Tree Joe</title>
+    <title>Real-Time Delivery & Live Fleet Tracker | Christmas Tree Joe</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Mapbox GL CSS & JS -->
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.js"></script>
     <!-- Hero & Component Stylesheet -->
     <link rel="stylesheet" href="styles/hero.css">
     
@@ -38,10 +41,28 @@
         .gold-gradient-text {
             background: linear-gradient(135deg, #FFF0B9 0%, #D4AF37 50%, #997A15 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         .hero-glow {
             background: radial-gradient(circle, rgba(212,175,55,0.12) 0%, rgba(5,24,16,0) 70%);
+        }
+        /* Custom Mapbox Popup Styling */
+        .mapboxgl-popup-content {
+            background-color: #0A261B !important;
+            border: 1px solid #D4AF37 !important;
+            color: #FDFBF7 !important;
+            border-radius: 14px !important;
+            padding: 14px 16px !important;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8) !important;
+        }
+        .mapboxgl-popup-tip {
+            border-top-color: #0A261B !important;
+        }
+        .mapboxgl-popup-close-button {
+            color: #D4AF37 !important;
+            font-size: 16px !important;
+            padding: 4px 8px !important;
         }
     </style>
 </head>
@@ -84,7 +105,7 @@
             </nav>
 
             <div class="flex items-center space-x-3">
-                <a href="checkout.html" class="bg-xmasRed hover:bg-red-700 text-white font-bold px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm border border-xmasGold/50 transition shadow-xl transform hover:scale-105 flex-shrink-0">
+                <a href="trees.html" class="bg-xmasRed hover:bg-red-700 text-white font-bold px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm border border-xmasGold/50 transition shadow-xl transform hover:scale-105 flex-shrink-0">
                     Order Panel
                 </a>
 
@@ -144,15 +165,15 @@
                 <!-- TRACKING LOOKUP BAR -->
                 <form id="trackingLookupForm" onsubmit="handleTrackingSearch(event)" class="max-w-xl mx-auto lg:mx-0 flex gap-2 pt-1">
                     <input type="text" id="orderQueryInput" value="CTJ-2026-8841" placeholder="Enter Order # (e.g. CTJ-2026-8841)" class="w-full bg-xmasDark border border-xmasGold/50 rounded-xl px-4 py-3 text-xs text-white placeholder-white/40 focus:outline-none focus:border-xmasGold">
-                    <button type="submit" class="bg-xmasRed hover:bg-red-700 text-white font-bold px-6 py-3 rounded-xl text-xs uppercase tracking-wider transition border border-xmasGold/40 shadow-lg flex-shrink-0">
-                        Track
+                    <button type="submit" id="trackSearchBtn" class="bg-xmasRed hover:bg-red-700 text-white font-bold px-6 py-3 rounded-xl text-xs uppercase tracking-wider transition border border-xmasGold/40 shadow-lg flex-shrink-0">
+                        Track Order
                     </button>
                 </form>
 
                 <div class="grid grid-cols-3 gap-3 pt-3 border-t border-white/10 text-center lg:text-left">
                     <div>
                         <strong class="block text-xmasGold font-cinzel text-base sm:text-lg">Live GPS</strong>
-                        <span class="text-[11px] text-xmasCream/70">Truck Routing</span>
+                        <span class="text-[11px] text-xmasCream/70">Mapbox Telemetry</span>
                     </div>
                     <div>
                         <strong class="block text-xmasGold font-cinzel text-base sm:text-lg">15-Min</strong>
@@ -281,13 +302,45 @@
                 </div>
             </div>
 
+            <!-- LIVE MAPBOX GL GPS TELEMETRY MAP SECTION -->
+            <div class="space-y-4 pt-2">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/10 pb-3">
+                    <div>
+                        <h3 class="font-cinzel text-xl font-bold text-xmasGold">Live Fleet Telemetry & GPS Staging Map</h3>
+                        <p class="text-xs text-xmasCream/70">Interactive satellite feed tracking regional staging hubs and active dispatch vehicles.</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="recenterMap([-75.1652, 39.9526], 12)" class="py-1.5 px-3 bg-xmasDark hover:bg-xmasGold hover:text-xmasDark text-xmasGold border border-xmasGold/40 text-[10px] font-bold rounded-xl transition shadow">
+                            📍 Philly Metro Hub
+                        </button>
+                        <button onclick="recenterMap([-81.4984, 36.4201], 9)" class="py-1.5 px-3 bg-xmasDark hover:bg-xmasGold hover:text-xmasDark text-xmasGold border border-xmasGold/40 text-[10px] font-bold rounded-xl transition shadow">
+                            🌲 NC Farm Depot
+                        </button>
+                    </div>
+                </div>
+
+                <div class="relative rounded-3xl overflow-hidden border-2 border-xmasGold shadow-2xl bg-xmasDark">
+                    <!-- Map Canvas Container -->
+                    <div id="map" class="w-full h-[450px]"></div>
+
+                    <!-- Telemetry Float Overlay -->
+                    <div class="absolute top-4 left-4 bg-xmasDark/90 backdrop-blur-md border border-xmasGold/40 p-3 rounded-2xl text-xs space-y-1 shadow-2xl pointer-events-none">
+                        <p class="font-bold text-xmasGold uppercase tracking-wider text-[10px]">Active GPS Stream</p>
+                        <div class="flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                            <span class="text-white text-xs font-semibold" id="activeMarkerLabel">3 Active Dispatch Crews</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- DRIVER DETAILS & SMS SHORTCUT -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-xmasDark p-6 rounded-2xl border border-white/10">
                 <div class="flex items-center space-x-4">
                     <img src="christmas-tree-joe-logo.png" onerror="this.src='public/Christmas-tree-joe3.png'" alt="Driver Avatar" class="h-16 w-16 rounded-full border-2 border-xmasGold object-cover shadow-md">
                     <div class="space-y-1">
                         <span class="text-[10px] text-xmasGold uppercase font-bold tracking-widest">Assigned Delivery Crew</span>
-                        <h4 class="font-cinzel text-lg font-bold text-white">Driver: Marcus V. (Truck #PA-04)</h4>
+                        <h4 id="driverNameDisplay" class="font-cinzel text-lg font-bold text-white">Driver: Marcus V. (Truck #PA-04)</h4>
                         <p class="text-xs text-xmasCream/70">Completed 142 successful white-glove installations this season.</p>
                     </div>
                 </div>
@@ -366,7 +419,149 @@
         </div>
     </footer>
 
-    <!-- HERO SLIDER & MOBILE DRAWER SCRIPT -->
+    <!-- MAPBOX GL INITIALIZATION & SUPABASE ORDER LOOKUP MODULE -->
+    <script type="module">
+        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+        // Verified Supabase Project Credentials
+        const SUPABASE_URL = 'https://pnosjdmolfqhuvvcnddh.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable_VLFX6Kp_2DWYt5kLC00HkA_kxCJWON6';
+        const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        // Mapbox Production Access Token
+        mapboxgl.accessToken = 'pk.eyJ1IjoiY2hyaXN0MjAyNiIsImEiOiJjbXN3azh2b2oxaXZqMndxM21rYjl6enlxIn0.Eub_OKaHxmKSOsl9mWIX4g';
+
+        const map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/dark-v11',
+            center: [-75.1652, 39.9526], // Philadelphia Center Coordinates
+            zoom: 12,
+            pitch: 35
+        });
+
+        // Add standard navigation controls
+        map.addControl(new mapboxgl.NavigationControl(), 'top-right');
+
+        // Active Telemetry Fleet Points
+        const fleetMarkers = [
+            {
+                id: 'crew-1',
+                title: 'Crew #1 (Center City & Fairmount)',
+                coords: [-75.1740, 39.9495],
+                status: 'En Route to Delivery',
+                vehicle: 'Sprinter 2500 Cargo',
+                trees: 'Holiday Hearth (6–7 ft Fraser Fir)'
+            },
+            {
+                id: 'crew-2',
+                title: 'Crew #2 (Main Line Estate Run)',
+                coords: [-75.2900, 40.0100],
+                status: 'In Transit on Route 30',
+                vehicle: '24ft Freight Box Truck',
+                trees: 'Yuletide Monarch (8–9 ft)'
+            },
+            {
+                id: 'crew-3',
+                title: 'Cross-Dock Depot (NC Mountain Run)',
+                coords: [-81.4984, 36.4201],
+                status: 'Ashe County Staging & Ingest',
+                vehicle: 'Class A Freight Semi',
+                trees: '400 Grade #1 Fraser Firs'
+            }
+        ];
+
+        // Place Markers on Map Load
+        map.on('load', () => {
+            fleetMarkers.forEach(vehicle => {
+                const el = document.createElement('div');
+                el.className = 'driver-marker cursor-pointer hover:scale-125 transition transform';
+                el.innerHTML = `
+                    <div style="background-color:#0B3B24; border:2px solid #D4AF37; width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 0 15px rgba(212,175,55,0.7);">
+                        <span style="font-size:16px;">🚚</span>
+                    </div>
+                `;
+
+                const popupHtml = `
+                    <div style="font-family:'Plus Jakarta Sans',sans-serif;">
+                        <h4 style="color:#D4AF37; font-family:'Cinzel',serif; font-weight:bold; font-size:13px; margin:0 0 4px 0;">${vehicle.title}</h4>
+                        <p style="margin:0 0 2px 0; font-size:11px; color:#FDFBF7;"><strong>Status:</strong> ${vehicle.status}</p>
+                        <p style="margin:0 0 2px 0; font-size:10px; color:#94a3b8;"><strong>Vehicle:</strong> ${vehicle.vehicle}</p>
+                        <p style="margin:0; font-size:10px; color:#34d399;"><strong>Payload:</strong> ${vehicle.trees}</p>
+                    </div>
+                `;
+
+                new mapboxgl.Marker(el)
+                    .setLngLat(vehicle.coords)
+                    .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(popupHtml))
+                    .addTo(map);
+            });
+        });
+
+        // Global Map Pivots
+        window.recenterMap = function(coords, zoomLevel = 12) {
+            map.flyTo({ center: coords, zoom: zoomLevel, essential: true });
+        };
+
+        // Real-Time Supabase Order Search Handler
+        window.handleTrackingSearch = async function(e) {
+            e.preventDefault();
+            const orderInput = document.getElementById('orderQueryInput').value.trim();
+            const searchBtn = document.getElementById('trackSearchBtn');
+            if (!orderInput) return;
+
+            searchBtn.disabled = true;
+            searchBtn.innerText = 'Searching...';
+
+            try {
+                // Query Supabase for matching order number
+                const { data: order, error } = await supabase
+                    .from('orders')
+                    .select('*')
+                    .ilike('order_number', orderInput)
+                    .single();
+
+                if (order) {
+                    document.getElementById('orderNumberBadge').innerText = `Order #${order.order_number}`;
+                    document.getElementById('orderTitleDisplay').innerText = `${order.tier_name} (${order.duration_years}-Yr Rate)`;
+                    document.getElementById('deliveryWindowDisplay').innerText = `${order.delivery_date || 'Nov 28, 2026'} • ${order.delivery_window || '10:30 AM - 12:30 PM'}`;
+                    alert(`Order #${order.order_number} located! Dispatch telemetry updated.`);
+                } else {
+                    document.getElementById('orderNumberBadge').innerText = `Order #${orderInput.toUpperCase()}`;
+                    alert(`Simulated order #${orderInput.toUpperCase()} loaded. Truck #PA-04 is 18 minutes away.`);
+                }
+            } catch (err) {
+                console.warn('Order query lookup fallback:', err);
+                document.getElementById('orderNumberBadge').innerText = `Order #${orderInput.toUpperCase()}`;
+            } finally {
+                searchBtn.disabled = false;
+                searchBtn.innerText = 'Track Order';
+            }
+        };
+
+        // Check active session on load to auto-fill latest user order if present
+        async function loadUserLatestOrder() {
+            const { data: { session } } = await supabase.auth.getSession();
+            if (session && session.user) {
+                const { data: orders } = await supabase
+                    .from('orders')
+                    .select('*')
+                    .eq('user_id', session.user.id)
+                    .order('created_at', { ascending: false })
+                    .limit(1);
+
+                if (orders && orders.length > 0) {
+                    const latest = orders[0];
+                    document.getElementById('orderQueryInput').value = latest.order_number;
+                    document.getElementById('orderNumberBadge').innerText = `Order #${latest.order_number}`;
+                    document.getElementById('orderTitleDisplay').innerText = `${latest.tier_name} (${latest.duration_years}-Yr Lock)`;
+                }
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', loadUserLatestOrder);
+    </script>
+
+    <!-- HERO SLIDER SCRIPT -->
     <script>
         let currentSlide = 0;
         const slides = document.querySelectorAll('.hero-slide');
@@ -390,15 +585,6 @@
         function toggleMobileNav() {
             const menu = document.getElementById('mobileMenu');
             menu.classList.toggle('hidden');
-        }
-
-        function handleTrackingSearch(e) {
-            e.preventDefault();
-            const query = document.getElementById('orderQueryInput').value.trim();
-            if (!query) return;
-
-            document.getElementById('orderNumberBadge').innerText = `Order #${query.toUpperCase()}`;
-            alert(`Live telemetry updated for Order #${query.toUpperCase()}. Truck #PA-04 is 18 minutes away.`);
         }
     </script>
 </body>
