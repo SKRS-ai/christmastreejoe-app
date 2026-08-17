@@ -1,11 +1,11 @@
 /**
  * Christmas Tree Joe — Master WebGL 3D Specimen Lab & Interactive Holiday Game Engine
- * A Global Citizen Joe Enterprise (Global Citizen Joe, LLC.)
+ * Features: Procedural Fraser Fir, Twinkling Stars, Glowing Moon, Flying Santa Sleigh,
+ * Distant Alpine Village with Smoke Particles, and Dynamic Environment Switcher.
  */
 
 class InteractiveTreeLab {
     constructor(containerId = 'tree-canvas-container') {
-        // Multi-Container Detection Fallback
         this.container = document.getElementById(containerId) || 
                          document.getElementById('webgl-canvas-container') || 
                          document.getElementById('webgl-container') || 
@@ -44,6 +44,7 @@ class InteractiveTreeLab {
         };
         this.snowEnabled = true;
         this.rewardClaimed = false;
+        this.santaFlybyActive = false;
 
         this.init();
     }
@@ -108,7 +109,6 @@ class InteractiveTreeLab {
 
     setupResizeListeners() {
         window.addEventListener('resize', () => this.onResize());
-        
         if (window.ResizeObserver) {
             this.resizeObserver = new ResizeObserver(() => this.onResize());
             this.resizeObserver.observe(this.container);
@@ -353,6 +353,7 @@ class InteractiveTreeLab {
         this.sleighGroup.add(noseLight);
 
         this.sleighGroup.position.set(-60, 28, -35);
+        this.sleighGroup.visible = false; // Hidden until game completion
         this.nightEnvGroup.add(this.sleighGroup);
     }
 
@@ -448,14 +449,14 @@ class InteractiveTreeLab {
         const allUnlocked = Object.values(this.decorations).every(v => v === true);
         if (allUnlocked && !this.rewardClaimed) {
             this.rewardClaimed = true;
+            this.santaFlybyActive = true; // Trigger Santa Sleigh Flyby Celebration!
             
-            // Dispatch UI event for custom app modals
             const rewardEvent = new CustomEvent('treeDecorated', {
                 detail: { promoCode: 'XMASJOE10', discountAmount: 10 }
             });
             window.dispatchEvent(rewardEvent);
 
-            console.log('[Tree Lab] Reward Unlocked: XMASJOE10');
+            console.log('[Tree Lab] Game Complete! Santa Flyby Triggered & Reward Unlocked: XMASJOE10');
         }
     }
 
@@ -478,11 +479,14 @@ class InteractiveTreeLab {
         // 1. Specimen Slow Auto-Rotation
         if (this.treeGroup) this.treeGroup.rotation.y += 0.003;
 
-        // 2. Santa Sleigh Flight Path
-        if (this.sleighGroup && this.nightEnvGroup.visible) {
-            this.sleighGroup.position.x += 12 * delta;
-            this.sleighGroup.position.y += Math.sin(time * 3) * 0.04;
-            if (this.sleighGroup.position.x > 60) this.sleighGroup.position.x = -60;
+        // 2. Santa Sleigh Celebration Flyby (Triggers on 4/4 Game Completion)
+        if (this.santaFlybyActive && this.sleighGroup) {
+            this.sleighGroup.visible = true;
+            this.sleighGroup.position.x += 16 * delta;
+            this.sleighGroup.position.y += Math.sin(time * 4) * 0.05;
+            if (this.sleighGroup.position.x > 60) {
+                this.sleighGroup.position.x = -60; // Loop across sky
+            }
         }
 
         // 3. Fireplace Light Flicker
