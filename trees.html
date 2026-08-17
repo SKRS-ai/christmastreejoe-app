@@ -201,9 +201,8 @@
                 </div>
             </div>
 
-            <!-- Clean Specimen Viewport (No houses, no village, no mini-game) -->
             <div class="relative w-full h-[460px] sm:h-[540px] rounded-2xl overflow-hidden bg-xmasDark my-4 border border-white/10">
-                <canvas id="tree-canvas" class="w-full h-full cursor-grab active:cursor-grabbing block"></canvas>
+                <div id="tree-canvas-container" class="w-full h-full"></div>
                 <div class="absolute bottom-3 left-3 bg-xmasDark/80 backdrop-blur-md px-3 py-1 rounded-xl border border-white/10 text-[10px] text-xmasCream/70 pointer-events-none">
                     🔄 Drag to rotate 360° • Scroll to zoom
                 </div>
@@ -285,7 +284,7 @@
                 </div>
             </div>
 
-            <!-- RIGHT COLUMN: MULTI-YEAR CALCULATOR & DIRECT CHECKOUT -->
+            <!-- RIGHT COLUMN: MULTI-YEAR CALCULATOR & LIVE STRIPE CHECKOUT -->
             <div class="lg:col-span-5 bg-xmasPanel border-2 border-xmasGold/40 rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl sticky top-24">
                 <div class="space-y-1 border-b border-white/10 pb-4">
                     <span class="text-[10px] font-bold text-xmasGold uppercase tracking-widest bg-xmasDark px-3 py-1 rounded-full border border-xmasGold/30 inline-block">Step 3: Multi-Year Term Lock</span>
@@ -389,8 +388,40 @@
         </div>
     </footer>
 
-    <!-- DEDICATED BOTANICAL 3D INSPECTOR ENGINE (NO GAME) -->
+    <!-- LIVE STRIPE PAYMENT LINKS MAPPED TO PRICING ENGINE -->
     <script>
+        // Mapped Live Stripe Payment URLs
+        const liveStripeLinks = {
+            sprout: {
+                term1: 'https://buy.stripe.com/eVqcN69947El7Q5h0vebu05', // $169.99 One-Time
+                term2: 'https://buy.stripe.com/14AaEY1GC1fX6M18tZebu00', // $149.99 / yr
+                term3: 'https://buy.stripe.com/14AaEY1GC1fX6M18tZebu00', // $127.49 / yr (3-Yr Lock)
+                term5: 'https://buy.stripe.com/14AaEY1GC1fX6M18tZebu00',
+                term0: 'https://buy.stripe.com/eVqcN69947El7Q5h0vebu05'
+            },
+            hearth: {
+                term1: 'https://buy.stripe.com/eVq5kE2KG2k1gmB25Bebu07', // $239.99 One-Time
+                term2: 'https://buy.stripe.com/6oUfZi1GCcYFfix8tZebu02', // $209.99 / yr
+                term3: 'https://buy.stripe.com/14A28s0Cy9MtfixfWrebu04', // $178.49 / yr (3-Yr Lock)
+                term5: 'https://buy.stripe.com/14A28s0Cy9MtfixfWrebu04',
+                term0: 'https://buy.stripe.com/eVq5kE2KG2k1gmB25Bebu07'
+            },
+            monarch: {
+                term1: 'https://buy.stripe.com/dRmaEYgBwbUBb2h39Febu03', // $339.99 One-Time
+                term2: 'https://buy.stripe.com/5kQfZifxs4s93zP8tZebu01', // $299.99 / yr
+                term3: 'https://buy.stripe.com/5kQfZifxs4s93zP8tZebu01', // $254.99 / yr (3-Yr Lock)
+                term5: 'https://buy.stripe.com/5kQfZifxs4s93zP8tZebu01',
+                term0: 'https://buy.stripe.com/dRmaEYgBwbUBb2h39Febu03'
+            },
+            estate: {
+                term1: 'https://buy.stripe.com/5kQ4gAfxscYFfix9y3ebu06', // $449.99 One-Time
+                term2: 'https://buy.stripe.com/00w28s1GC0bT5HX5hNebu08', // $382.49 / yr
+                term3: 'https://buy.stripe.com/8x24gAclg2k1gmB5hNebu09', // $382.49 / yr (3-Yr Lock)
+                term5: 'https://buy.stripe.com/8x24gAclg2k1gmB5hNebu09',
+                term0: 'https://buy.stripe.com/5kQ4gAfxscYFfix9y3ebu06'
+            }
+        };
+
         let scene, camera, renderer, treeGroup, foliageCones = [];
         let currentSpecies = 'fraser';
         let isUserDragging = false, previousPos = { x: 0, y: 0 };
@@ -415,7 +446,6 @@
             container.innerHTML = '';
             container.appendChild(renderer.domElement);
 
-            // Studio Lighting
             const ambient = new THREE.AmbientLight(0xffffff, 0.85);
             scene.add(ambient);
             const keyLight = new THREE.DirectionalLight(0xfffaed, 1.2);
@@ -426,7 +456,6 @@
             buildTreeMesh(currentSpecies);
             scene.add(treeGroup);
 
-            // Orbit Drag Controls
             container.addEventListener('mousedown', (e) => { isUserDragging = true; previousPos = { x: e.clientX, y: e.clientY }; });
             window.addEventListener('mouseup', () => { isUserDragging = false; });
             container.addEventListener('mousemove', (e) => {
@@ -455,7 +484,6 @@
             if (speciesKey === 'douglas') color = 0x1E5631;
             if (speciesKey === 'noble') color = 0x072A19;
 
-            // Trunk
             const trunk = new THREE.Mesh(
                 new THREE.CylinderGeometry(0.18, 0.25, 1.4, 16),
                 new THREE.MeshStandardMaterial({ color: 0x4a2e18, roughness: 0.9 })
@@ -463,7 +491,6 @@
             trunk.position.y = 0.7;
             treeGroup.add(trunk);
 
-            // Foliage tiers
             const tiers = [
                 { r: 1.7, h: 1.6, y: 1.8 },
                 { r: 1.4, h: 1.4, y: 2.7 },
@@ -481,7 +508,6 @@
                 foliageCones.push(cone);
             });
 
-            // Golden Star
             const star = new THREE.Mesh(
                 new THREE.OctahedronGeometry(0.25, 0),
                 new THREE.MeshStandardMaterial({ color: 0xD4AF37, emissive: 0xD4AF37, emissiveIntensity: 0.6 })
@@ -551,7 +577,13 @@
 
         function handleDirectCheckout() {
             const term = parseInt(document.getElementById('term-select').value, 10);
-            window.location.href = 'checkout.html?tier=' + currentTierKey + '&term=' + term;
+            const tierMap = liveStripeLinks[currentTierKey];
+            if (tierMap) {
+                const targetUrl = tierMap['term' + term] || tierMap.term1;
+                window.location.href = targetUrl;
+            } else {
+                console.error('Tier not found:', currentTierKey);
+            }
         }
 
         window.addEventListener('DOMContentLoaded', initBotanicalInspector);

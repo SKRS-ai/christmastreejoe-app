@@ -40,6 +40,7 @@
         .gold-gradient-text {
             background: linear-gradient(135deg, #FFF0B9 0%, #D4AF37 50%, #997A15 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         .hero-glow {
@@ -123,7 +124,7 @@
                 <a href="driver-hub.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
                     <span>🚛 Logistics Driver Hub</span> <span>→</span>
                 </a>
-                <a href="account.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                <a href="account.html" class="text-xmasCream hover:text-xmasGold py-2 flex items-center justify-between">
                     <span>👤 Member Portal</span> <span>→</span>
                 </a>
                 <a href="track.html" class="text-xmasCream hover:text-xmasGold py-2 flex items-center justify-between">
@@ -170,8 +171,6 @@
             <div class="lg:col-span-6">
                 <div class="relative rounded-2xl overflow-hidden border-2 border-xmasGold/40 shadow-2xl aspect-video bg-xmasDark">
                     <div class="relative w-full h-full" id="heroSlider">
-                        
-                        <!-- Slide 1: In-Home White Glove Delivery Setup -->
                         <div class="hero-slide active">
                             <img 
                                 src="public/white-glove-delivery.png" 
@@ -184,26 +183,6 @@
                                 <span>White-Glove Delivery, Living Room Placement & Stand Hydration</span>
                             </div>
                         </div>
-
-                        <!-- Slide 2: Living Room Presentation -->
-                        <div class="hero-slide">
-                            <img 
-                                src="public/hero-family-livingroom.png" 
-                                onerror="this.src='hero-family-livingroom.png'"
-                                alt="Fraser Fir decorated tree in living room" 
-                                class="w-full h-full object-cover"
-                                loading="lazy"
-                            />
-                            <div class="slide-caption">
-                                <span>Signature Appalachian Fraser Fir Centerpiece</span>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="slider-nav">
-                        <button class="slider-dot active" aria-label="Slide 1" onclick="setSlide(0)"></button>
-                        <button class="slider-dot" aria-label="Slide 2" onclick="setSlide(1)"></button>
                     </div>
                 </div>
             </div>
@@ -241,7 +220,6 @@
 
                 <!-- DELIVERY DETAILS FORM & FORMSPREE BACKUP INGEST -->
                 <form id="checkoutForm" action="https://formspree.io/f/xrpzlnok" method="POST" onsubmit="handleCheckoutSubmit(event)" class="bg-xmasPanel border border-white/10 rounded-3xl p-6 sm:p-8 space-y-6 shadow-xl">
-                    <!-- Formspree Routing Data -->
                     <input type="hidden" name="_to" value="dispatch@christmastreejoe.com">
                     <input type="hidden" name="_subject" value="🎄 New Direct Reservation Checkout — Christmas Tree Joe">
                     <input type="hidden" id="formOrderSummary" name="order_summary" value="">
@@ -294,7 +272,6 @@
                         </div>
                     </div>
 
-                    <!-- PREFERRED DELIVERY WINDOW -->
                     <div class="space-y-2 pt-2 border-t border-white/10">
                         <label class="block text-xs font-bold text-xmasGold uppercase">Preferred Holiday Delivery Window</label>
                         <select name="delivery_window" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3.5 text-xs text-white focus:outline-none focus:border-xmasGold">
@@ -305,7 +282,6 @@
                         </select>
                     </div>
 
-                    <!-- STRIPE CARD ELEMENT STATUS -->
                     <div class="space-y-3 pt-2 border-t border-white/10">
                         <label class="block text-xs font-bold text-xmasGold uppercase">Payment Gateway & Data Security</label>
                         <div class="p-4 rounded-xl bg-xmasDark border border-stripeViolet/40 flex items-center justify-between">
@@ -321,7 +297,6 @@
                         Complete Order & Enter Card Details →
                     </button>
                     
-                    <!-- 1% Stripe Climate Callout Inside Form -->
                     <div class="flex items-center justify-center gap-2 pt-1 text-[11px] text-slate-400">
                         <span class="w-2 h-2 rounded-full bg-stripeViolet"></span>
                         <span>1% of this purchase funds permanent carbon removal. <a href="climate.html" class="text-xmasGold underline">View Climate Program</a></span>
@@ -338,7 +313,6 @@
                     <span class="text-[10px] font-bold text-xmasGold uppercase tracking-widest bg-xmasDark px-3 py-1 rounded-full border border-xmasGold/30">2026 Season</span>
                 </div>
 
-                <!-- SELECTED TIER CONFIG -->
                 <div class="space-y-4 text-xs">
                     <div>
                         <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Tree Size Tier</label>
@@ -370,7 +344,6 @@
                     </div>
                 </div>
 
-                <!-- INCLUDED WHITE GLOVE AMENITIES -->
                 <div class="bg-xmasDark p-4 rounded-2xl border border-white/10 space-y-2 text-xs">
                     <div class="flex justify-between text-xmasCream/80">
                         <span>🚚 In-Home White-Glove Setup</span>
@@ -390,10 +363,7 @@
                     </div>
                 </div>
 
-                <!-- FINAL PRICE TOTALS & GAME REWARD DISPLAY -->
                 <div class="bg-xmasDark p-5 rounded-2xl border border-xmasGold/30 space-y-2.5 text-xs">
-                    
-                    <!-- Mini Game Winner Alert (Revealed only if game was won) -->
                     <div id="gameBonusBadge" class="hidden p-2.5 rounded-xl bg-emerald-950/80 border border-emerald-500/50 flex items-center justify-between text-emerald-300 font-bold">
                         <span>🌟 Mini-Game Winner Bonus Active!</span>
                         <span class="text-[10px] uppercase bg-emerald-500/20 px-2 py-0.5 rounded-md">-$10.00 OFF</span>
@@ -409,7 +379,6 @@
                         <span id="priceDiscount" class="font-bold text-emerald-400">15% Off</span>
                     </div>
 
-                    <!-- Dynamic -$10 Row -->
                     <div id="gameRewardRow" class="hidden flex justify-between text-emerald-400 font-bold">
                         <span>Deck-the-Tree Game Reward:</span>
                         <span>-$10.00</span>
@@ -488,39 +457,36 @@
         </div>
     </footer>
 
-    <!-- INTERACTIVE PRICING, STRIPE PAYMENT ROUTER, GAME PROMO & ASYNC FORMSPREE BACKUP -->
+    <!-- MASTER LIVE STRIPE PAYMENT LINK MAPPING & CHECKOUT ROUTER -->
     <script>
-        // Master Mapping of All 12 Stripe Payment Links
         const STRIPE_PAYMENT_LINKS = {
             sprout: {
-                standard: 'https://buy.stripe.com/test_dRm3cx5M37Ke6UJgBs7IY00', // $149.99/yr
-                lock_3yr: 'https://buy.stripe.com/test_28E3cx0rJ4y2frfdpg7IY01', // $127.49/yr
-                one_off:  'https://buy.stripe.com/test_7sY3cxa2j3tY7YNetk7IY02'  // $169.99
+                standard: 'https://buy.stripe.com/eVqcN69947El7Q5h0vebu05', // $169.99 One-Time
+                lock_3yr: 'https://buy.stripe.com/14AaEY1GC1fX6M18tZebu00', // $149.99 / yr
+                one_off:  'https://buy.stripe.com/eVqcN69947El7Q5h0vebu05'
             },
             hearth: {
-                standard: 'https://buy.stripe.com/test_dRm6oJ2zR7Ke7YN2KC7IY03', // $209.99/yr
-                lock_3yr: 'https://buy.stripe.com/test_fZu14p4HZ3tY2Et4SK7IY04', // $178.49/yr
-                one_off:  'https://buy.stripe.com/test_4gM8wRb6nggK92Rbh87IY05'  // $239.99
+                standard: 'https://buy.stripe.com/6oUfZi1GCcYFfix8tZebu02', // $209.99 / yr
+                lock_3yr: 'https://buy.stripe.com/14A28s0Cy9MtfixfWrebu04', // $178.49 / yr
+                one_off:  'https://buy.stripe.com/eVq5kE2KG2k1gmB25Bebu07'  // $239.99 One-Time
             },
             monarch: {
-                standard: 'https://buy.stripe.com/test_fZu7sN4HZ4y26UJ70S7IY06', // $299.99/yr
-                lock_3yr: 'https://buy.stripe.com/test_8x2fZj0rJfcG6UJ3OG7IY07', // $254.99/yr
-                one_off:  'https://buy.stripe.com/test_dRm7sN7Ub5C692Rdpg7IY08'  // $339.99
+                standard: 'https://buy.stripe.com/5kQfZifxs4s93zP8tZebu01', // $299.99 / yr
+                lock_3yr: 'https://buy.stripe.com/5kQfZifxs4s93zP8tZebu01', // $254.99 / yr
+                one_off:  'https://buy.stripe.com/dRmaEYgBwbUBb2h39Febu03'  // $339.99 One-Time
             },
             estate: {
-                standard: 'https://buy.stripe.com/test_eVq14pdev1lQdj74SK7IY09', // $449.99/yr
-                lock_3yr: 'https://buy.stripe.com/test_00w4gBfmD9Smdj770S7IY0a', // $382.49/yr
-                one_off:  'https://buy.stripe.com/test_6oUeVf6Q7c0ugvjgBs7IY0b'  // $499.99
+                standard: 'https://buy.stripe.com/00w28s1GC0bT5HX5hNebu08', // $382.49 / yr
+                lock_3yr: 'https://buy.stripe.com/8x24gAclg2k1gmB5hNebu09', // $382.49 / yr
+                one_off:  'https://buy.stripe.com/5kQ4gAfxscYFfix9y3ebu06'  // $449.99 One-Time
             }
         };
 
         let currentTierKey = 'hearth';
         let currentBasePrice = 209.99;
         let currentTermYears = 3;
-        let currentCalculatedTotal = 178.49;
-        let gameBonusDiscount = 0; // Triggered only when mini game was won
+        let gameBonusDiscount = 0;
 
-        // Hero Slider Logic
         let currentSlide = 0;
         const slides = document.querySelectorAll('.hero-slide');
         const dots = document.querySelectorAll('.slider-dot');
@@ -533,19 +499,11 @@
             currentSlide = index;
         }
 
-        if (slides.length > 1) {
-            setInterval(() => {
-                let next = (currentSlide + 1) % slides.length;
-                setSlide(next);
-            }, 5000);
-        }
-
         function toggleMobileNav() {
             const menu = document.getElementById('mobileMenu');
             menu.classList.toggle('hidden');
         }
 
-        // Mini-Game Win Verification
         function checkMiniGameWinner() {
             const urlParams = new URLSearchParams(window.location.search);
             const hasUrlPromo = urlParams.get('promo') === 'HOLIDAYJOY10';
@@ -560,7 +518,6 @@
             }
         }
 
-        // Fast Checkout Price Engine
         function updateSummary() {
             const tierSelect = document.getElementById('checkoutTier');
             const selectedOption = tierSelect.options[tierSelect.selectedIndex];
@@ -573,13 +530,11 @@
             let subtotal = currentBasePrice;
 
             if (currentTermYears === 0) {
-                // One-off single buy
                 subtotal = oneOffPrice;
                 document.getElementById('priceLabelBase').innerText = 'Single-Season Rate:';
                 document.getElementById('priceBase').innerText = '$' + oneOffPrice.toFixed(2);
                 document.getElementById('priceDiscount').innerText = 'None (One-Off Buy)';
             } else {
-                // Subscription locks
                 let discount = 0;
                 if (currentTermYears === 2) discount = 0.10;
                 if (currentTermYears >= 3) discount = 0.15;
@@ -591,18 +546,16 @@
                 document.getElementById('priceDiscount').innerText = discount > 0 ? (discount * 100) + '% Off' : '0%';
             }
 
-            // Apply $10 Game Bonus deduction
-            currentCalculatedTotal = Math.max(0, subtotal - gameBonusDiscount);
+            let finalTotal = Math.max(0, subtotal - gameBonusDiscount);
 
             const periodSuffix = currentTermYears === 0 ? ' (One-Time)' : ' / yr';
             document.getElementById('priceLabelTotal').innerText = currentTermYears === 0 ? 'Total Due Today:' : 'Annual Locked Total:';
-            document.getElementById('priceTotal').innerText = '$' + currentCalculatedTotal.toFixed(2) + periodSuffix;
+            document.getElementById('priceTotal').innerText = '$' + finalTotal.toFixed(2) + periodSuffix;
 
-            // Sync hidden summary field for Formspree intake
             const tierName = selectedOption.getAttribute('data-name');
             const termLabel = currentTermYears === 0 ? 'One-Off Single Season' : `${currentTermYears}-Year Lock`;
             const bonusTag = gameBonusDiscount > 0 ? ' (+$10 Mini-Game Reward Applied)' : '';
-            document.getElementById('formOrderSummary').value = `${tierName} | ${termLabel} | Total: $${currentCalculatedTotal.toFixed(2)}${bonusTag}`;
+            document.getElementById('formOrderSummary').value = `${tierName} | ${termLabel} | Total: $${finalTotal.toFixed(2)}${bonusTag}`;
         }
 
         function getTargetStripeLink() {
@@ -616,7 +569,6 @@
             }
         }
 
-        // Express 1-Click Wallet Trigger
         function triggerExpressStripe(method) {
             const emailInput = document.getElementById('custEmail');
             const email = (emailInput && emailInput.value) ? emailInput.value : '';
@@ -626,11 +578,9 @@
             if (email) params.append('prefilled_email', email);
             if (gameBonusDiscount > 0) params.append('prefilled_promo_code', 'HOLIDAYJOY10');
 
-            const redirectUrl = params.toString() ? `${targetLink}?${params.toString()}` : targetLink;
-            window.location.href = redirectUrl;
+            window.location.href = params.toString() ? `${targetLink}?${params.toString()}` : targetLink;
         }
 
-        // Formspree Async Submission & Direct Stripe Gateway Transfer
         async function handleCheckoutSubmit(e) {
             e.preventDefault();
             const submitBtn = document.getElementById('checkoutSubmitBtn');
@@ -641,7 +591,6 @@
             const formData = new FormData(form);
             const email = document.getElementById('custEmail').value;
 
-            // 1. Asynchronously log customer details & delivery address to Formspree
             try {
                 await fetch(form.action, {
                     method: 'POST',
@@ -652,20 +601,33 @@
                 console.warn('Formspree dispatch recorded in background');
             }
 
-            // 2. Resolve matching Stripe Payment Link
             const targetStripeUrl = getTargetStripeLink();
-
-            // 3. Pre-fill customer email & promo code into Stripe and redirect directly to payment terminal
             const params = new URLSearchParams();
             if (email) params.append('prefilled_email', email);
             if (gameBonusDiscount > 0) params.append('prefilled_promo_code', 'HOLIDAYJOY10');
 
-            const checkoutUrl = params.toString() ? `${targetStripeUrl}?${params.toString()}` : targetStripeUrl;
-            window.location.href = checkoutUrl;
+            window.location.href = params.toString() ? `${targetStripeUrl}?${params.toString()}` : targetStripeUrl;
         }
 
         window.addEventListener('DOMContentLoaded', () => {
             checkMiniGameWinner();
+            updateSummary();
+            const urlParams = new URLSearchParams(window.location.search);
+            const tierParam = urlParams.get('tier');
+            const termParam = urlParams.get('term');
+            if (tierParam) {
+                const tierSelect = document.getElementById('checkoutTier');
+                for (let i = 0; i < tierSelect.options.length; i++) {
+                    if (tierSelect.options[i].getAttribute('data-tier-key') === tierParam) {
+                        tierSelect.selectedIndex = i;
+                        break;
+                    }
+                }
+            }
+            if (termParam !== null) {
+                const termSelect = document.getElementById('checkoutTerm');
+                termSelect.value = termParam;
+            }
             updateSummary();
         });
     </script>
