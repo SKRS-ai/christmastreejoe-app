@@ -77,14 +77,14 @@
             
             <!-- BRAND LOGO & TITLE -->
             <a href="index.html" class="flex items-center space-x-3 group flex-shrink-0">
-                <img src="christmas-tree-joe-logo.png" onerror="this.src='public/Christmas-tree-joe1.png'" alt="Christmas Tree Joe Badge Logo" class="h-14 w-14 sm:h-16 sm:w-16 rounded-full border-2 border-xmasGold object-cover shadow-lg group-hover:scale-105 transition">
+                <img src="christmas-tree-joe-logo.png" onerror="this.src='public/Christmas-tree-joe1.png'" alt="Christmas Tree Joe Badge Logo" class="h-12 w-12 sm:h-16 sm:w-16 rounded-full border-2 border-xmasGold object-cover shadow-lg group-hover:scale-105 transition">
                 <div>
-                    <span class="font-cinzel text-lg sm:text-2xl font-black tracking-wider text-white group-hover:text-xmasGold transition block">CHRISTMAS TREE JOE</span>
-                    <p class="text-[9px] sm:text-[10px] text-xmasGold uppercase tracking-widest font-extrabold -mt-1">A Global Citizen Joe Enterprise</p>
+                    <span class="font-cinzel text-base sm:text-2xl font-black tracking-wider text-white group-hover:text-xmasGold transition block">CHRISTMAS TREE JOE</span>
+                    <p class="text-[8px] sm:text-[10px] text-xmasGold uppercase tracking-widest font-extrabold -mt-0.5 sm:-mt-1">A Global Citizen Joe Enterprise</p>
                 </div>
             </a>
 
-            <!-- DESKTOP NAVIGATION LINKS -->
+            <!-- DESKTOP NAVIGATION LINKS (100% visible on Desktop/xl screens, hidden on tablet & mobile) -->
             <nav class="hidden xl:flex items-center space-x-5 text-[11px] font-bold uppercase tracking-wider">
                 <a href="index.html" class="text-xmasGold border-b-2 border-xmasGold py-1">Home</a>
                 <a href="#3d-studio" class="text-xmasCream/90 hover:text-xmasGold transition py-1">3D Lab & Game</a>
@@ -97,51 +97,54 @@
             </nav>
 
             <!-- AUTHENTICATION & CTA BUTTONS -->
-            <div class="flex items-center space-x-3">
-                <a href="account.html" class="hidden sm:inline-flex text-xs font-semibold text-xmasGold hover:text-white border border-xmasGold/40 px-3.5 py-2 rounded-full hover:bg-xmasGold/10 transition">
+            <div class="flex items-center space-x-2 sm:space-x-3">
+                <a href="account.html" class="hidden md:inline-flex text-xs font-semibold text-xmasGold hover:text-white border border-xmasGold/40 px-3.5 py-2 rounded-full hover:bg-xmasGold/10 transition">
                     Sign In
                 </a>
-                <a href="checkout.html" class="bg-xmasRed hover:bg-red-700 text-white font-bold px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm border border-xmasGold/50 transition shadow-xl transform hover:scale-105 flex-shrink-0">
+                <a href="checkout.html" class="bg-xmasRed hover:bg-red-700 text-white font-bold px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm border border-xmasGold/50 transition shadow-xl transform hover:scale-105 flex-shrink-0">
                     Reserve Tree
                 </a>
 
-                <!-- MOBILE HAMBURGER BUTTON -->
-                <button onclick="toggleMobileNav()" aria-label="Toggle Menu" class="xl:hidden p-2 rounded-xl bg-xmasPanel border border-xmasGold/40 text-xmasGold hover:text-white transition focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <!-- MOBILE & TABLET HAMBURGER BUTTON -->
+                <button id="hamburgerBtn" onclick="toggleMobileNav()" aria-label="Toggle Navigation Menu" aria-expanded="false" class="xl:hidden p-2 rounded-xl bg-xmasPanel border border-xmasGold/40 text-xmasGold hover:text-white transition focus:outline-none focus:ring-2 focus:ring-xmasGold">
+                    <svg id="hamburgerIcon" class="w-6 h-6 block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <svg id="closeIcon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
             </div>
         </div>
 
-        <!-- COLLAPSIBLE MOBILE MENU -->
-        <div id="mobileMenu" class="hidden xl:hidden bg-xmasDark/98 border-b-2 border-xmasGold/40 px-6 py-6 space-y-4 shadow-2xl">
+        <!-- COLLAPSIBLE MOBILE & TABLET MENU DRAWER -->
+        <div id="mobileMenu" class="hidden xl:hidden bg-xmasDark/98 border-b-2 border-xmasGold/40 px-6 py-6 space-y-4 shadow-2xl transition-all duration-300">
             <nav class="flex flex-col space-y-3 text-xs font-bold uppercase tracking-wider">
-                <a href="index.html" class="text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                <a href="index.html" onclick="closeMobileNav()" class="text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
                     <span>🏡 Home</span> <span>→</span>
                 </a>
-                <a href="#3d-studio" onclick="toggleMobileNav()" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                <a href="#3d-studio" onclick="closeMobileNav()" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
                     <span>🌲 3D Tree Lab & Mini-Game</span> <span>→</span>
                 </a>
-                <a href="trees.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                <a href="trees.html" onclick="closeMobileNav()" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
                     <span>🎁 Tree Subscriptions</span> <span>→</span>
                 </a>
-                <a href="events.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                <a href="events.html" onclick="closeMobileNav()" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
                     <span>🌲 Seasonal Events & Staging</span> <span>→</span>
                 </a>
-                <a href="community.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                <a href="community.html" onclick="closeMobileNav()" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
                     <span>🤝 Civic Alliance (TBBLUSA)</span> <span>→</span>
                 </a>
-                <a href="marketplace.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                <a href="marketplace.html" onclick="closeMobileNav()" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
                     <span>♻️ Recycled Goods Store</span> <span>→</span>
                 </a>
-                <a href="climate.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                <a href="climate.html" onclick="closeMobileNav()" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
                     <span>🌍 1% Stripe Climate Portal</span> <span>→</span>
                 </a>
-                <a href="driver-hub.html" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
+                <a href="driver-hub.html" onclick="closeMobileNav()" class="text-xmasCream hover:text-xmasGold py-2 border-b border-white/10 flex items-center justify-between">
                     <span>🚛 Logistics Driver Hub</span> <span>→</span>
                 </a>
-                <a href="account.html" class="text-xmasGold py-2 flex items-center justify-between">
+                <a href="account.html" onclick="closeMobileNav()" class="text-xmasGold py-2 flex items-center justify-between">
                     <span>👤 Customer Sign In</span> <span>→</span>
                 </a>
             </nav>
@@ -257,9 +260,7 @@
         </div>
     </section>
 
-    <!-- =========================================================================
-         ADVANCED 3D WEBGL LIVE INSPECTION, GAME STAGE & SPECIES LAB
-    ========================================================================== -->
+    <!-- ADVANCED 3D WEBGL LIVE INSPECTION, GAME STAGE & SPECIES LAB -->
     <section id="3d-studio" class="py-16 px-4 bg-xmasDark border-t border-xmasGold/20 space-y-12">
         
         <!-- SECTION TITLE & INTRO -->
@@ -429,7 +430,7 @@
         </div>
     </section>
 
-    <!-- MINI-GAME VICTORY REWARD MODAL (HOLIDAY DISCOUNT POPUP) -->
+    <!-- MINI-GAME VICTORY REWARD MODAL -->
     <div id="gameRewardModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
         <div class="bg-xmasPanel border-2 border-xmasGold rounded-3xl p-6 sm:p-8 max-w-md w-full text-center space-y-5 shadow-2xl transform transition-all animate-pulse-slow">
             <div class="w-16 h-16 bg-xmasDark rounded-full border-2 border-xmasGold/50 mx-auto flex items-center justify-center text-3xl shadow-inner">
@@ -610,7 +611,7 @@
     </footer>
 
     <!-- =========================================================================
-         THREE.JS 3D ENGINE, PROCEDURAL PARTICLES & MINI-GAME HANDLER
+         THREE.JS 3D ENGINE, PROCEDURAL PARTICLES, HAMBURGER & MINI-GAME HANDLER
     ========================================================================== -->
     <script>
         // Hero Slider Rotation Logic
@@ -633,11 +634,62 @@
             }, 5000);
         }
 
-        // Mobile Nav Drawer Toggle
+        // ==========================================
+        // ROBUST RESPONSIVE HAMBURGER NAVIGATION
+        // ==========================================
         function toggleMobileNav() {
             const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const hamburgerIcon = document.getElementById('hamburgerIcon');
+            const closeIcon = document.getElementById('closeIcon');
+
+            if (!menu) return;
+
+            const isExpanded = menu.classList.contains('hidden');
+            if (isExpanded) {
+                menu.classList.remove('hidden');
+                hamburgerBtn.setAttribute('aria-expanded', 'true');
+                if (hamburgerIcon) hamburgerIcon.classList.add('hidden');
+                if (closeIcon) closeIcon.classList.remove('hidden');
+            } else {
+                menu.classList.add('hidden');
+                hamburgerBtn.setAttribute('aria-expanded', 'false');
+                if (hamburgerIcon) hamburgerIcon.classList.remove('hidden');
+                if (closeIcon) closeIcon.classList.add('hidden');
+            }
         }
+
+        function closeMobileNav() {
+            const menu = document.getElementById('mobileMenu');
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const hamburgerIcon = document.getElementById('hamburgerIcon');
+            const closeIcon = document.getElementById('closeIcon');
+
+            if (menu && !menu.classList.contains('hidden')) {
+                menu.classList.add('hidden');
+                if (hamburgerBtn) hamburgerBtn.setAttribute('aria-expanded', 'false');
+                if (hamburgerIcon) hamburgerIcon.classList.remove('hidden');
+                if (closeIcon) closeIcon.classList.add('hidden');
+            }
+        }
+
+        // Auto-close mobile navigation if resized above mobile/tablet viewport
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1280) { // xl breakpoint
+                closeMobileNav();
+            }
+        });
+
+        // Close drawer when clicking outside
+        document.addEventListener('click', (e) => {
+            const menu = document.getElementById('mobileMenu');
+            const btn = document.getElementById('hamburgerBtn');
+            if (menu && !menu.classList.contains('hidden')) {
+                if (!menu.contains(e.target) && !btn.contains(e.target)) {
+                    closeMobileNav();
+                }
+            }
+        });
 
         // ==========================================
         // THREE.JS 3D STAGE & SHADER SYSTEM
@@ -763,7 +815,7 @@
 
             treeGroup.add(warmLightsGroup);
             treeGroup.add(rgbLightsGroup);
-            rgbLightsGroup.visible = false; // default warm
+            rgbLightsGroup.visible = false;
 
             scene.add(treeGroup);
 
@@ -819,8 +871,8 @@
             if (!snowParticles || !isSnowing) return;
             const positions = snowParticles.geometry.attributes.position.array;
             for (let i = 1; i < positions.length; i += 3) {
-                positions[i] -= 0.025; // fall speed
-                if (positions[i] < -2) positions[i] = 8; // recycle to top
+                positions[i] -= 0.025;
+                if (positions[i] < -2) positions[i] = 8;
             }
             snowParticles.geometry.attributes.position.needsUpdate = true;
         }
@@ -843,13 +895,13 @@
                 }
             });
 
-            // Touch Handlers for Smartphone 360
+            // Touch Handlers for Smartphone 360 (iOS / Android)
             canvas.addEventListener('touchstart', (e) => {
                 if (e.touches.length === 1) {
                     isUserDragging = true;
                     previousPos = { x: e.touches[0].clientX, y: e.touches[0].clientY };
                 }
-            });
+            }, { passive: true });
             window.addEventListener('touchend', () => { isUserDragging = false; });
             canvas.addEventListener('touchmove', (e) => {
                 if (isUserDragging && treeGroup && e.touches.length === 1) {
@@ -857,7 +909,7 @@
                     treeGroup.rotation.y += deltaX * 0.008;
                     previousPos = { x: e.touches[0].clientX, y: e.touches[0].clientY };
                 }
-            });
+            }, { passive: true });
         }
 
         // Species Switching Shader
@@ -993,10 +1045,8 @@
         }
 
         function claimDiscountAndCheckout() {
-            // Save verified game winner flag to localStorage
             localStorage.setItem('ctj_game_won', 'true');
             localStorage.setItem('ctj_promo_code', 'HOLIDAYJOY10');
-            // Route directly to checkout with promo parameter
             window.location.href = 'checkout.html?promo=HOLIDAYJOY10';
         }
 
