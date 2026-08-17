@@ -40,6 +40,7 @@
         .gold-gradient-text {
             background: linear-gradient(135deg, #FFF0B9 0%, #D4AF37 50%, #997A15 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         .hero-glow {
@@ -61,7 +62,7 @@
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1 text-center sm:text-left">
             <div class="flex items-center gap-2">
                 <span class="bg-white/20 text-white text-[9px] uppercase px-2 py-0.5 rounded-full font-bold">1% Stripe Climate</span>
-                <span>🎄 Reserve Your 2026 Philadelphia & Tri-State Tree Subscription Today!</span>
+                <span>🎄 Reserve Your 2026 Philadelphia & Tri-State Tree Subscription Today![cite: 9]</span>
             </div>
             <div class="flex items-center space-x-4 text-[11px]">
                 <a href="tel:18005559627" class="hover:text-xmasGold transition hidden md:inline">📞 1-800-XMAS-JOE</a>
@@ -84,7 +85,7 @@
                 </div>
             </a>
 
-            <!-- DESKTOP NAVIGATION LINKS (100% visible on Desktop/xl screens, hidden on tablet & mobile) -->
+            <!-- DESKTOP NAVIGATION LINKS -->
             <nav class="hidden xl:flex items-center space-x-5 text-[11px] font-bold uppercase tracking-wider">
                 <a href="index.html" class="text-xmasGold border-b-2 border-xmasGold py-1">Home</a>
                 <a href="#3d-studio" class="text-xmasCream/90 hover:text-xmasGold transition py-1">3D Lab & Game</a>
@@ -155,7 +156,6 @@
     <section class="relative pt-8 pb-12 px-4 hero-glow overflow-hidden">
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
-            <!-- Left Column: Copy & Value Prop -->
             <div class="lg:col-span-6 space-y-5 text-center lg:text-left">
                 <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-xmasPanel border border-xmasGold/40 text-xmasGold text-xs font-bold uppercase tracking-widest shadow-md">
                     <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
@@ -171,7 +171,6 @@
                     Fresh, farm-cut Appalachian Fraser Firs brought directly to your living room, placed in the stand, and recycled in January into clean mulch, bio-pellets, and needle oil.
                 </p>
 
-                <!-- CTA Actions -->
                 <div class="flex flex-wrap gap-3 justify-center lg:justify-start pt-2">
                     <a href="checkout.html" class="bg-xmasRed hover:bg-red-700 text-white font-bold px-6 py-3 rounded-full text-sm border border-xmasGold/50 transition shadow-xl transform hover:scale-105">
                         Select Your Tree & Lock Rate
@@ -182,7 +181,6 @@
                     </a>
                 </div>
 
-                <!-- Three Pillar Trust Strip -->
                 <div class="grid grid-cols-3 gap-3 pt-4 border-t border-white/10 text-center lg:text-left">
                     <div>
                         <strong class="block text-xmasGold font-cinzel text-base sm:text-lg">100%</strong>
@@ -199,12 +197,10 @@
                 </div>
             </div>
 
-            <!-- Right Column: 16:9 Visual Showcase Slider Stage -->
             <div class="lg:col-span-6">
                 <div class="relative rounded-2xl overflow-hidden border-2 border-xmasGold/40 shadow-2xl aspect-video bg-xmasDark">
                     <div class="relative w-full h-full" id="heroSlider">
                         
-                        <!-- Slide 1: In-Home Tree Presentation -->
                         <div class="hero-slide active">
                             <img 
                                 src="public/hero-family-livingroom.png" 
@@ -218,7 +214,6 @@
                             </div>
                         </div>
 
-                        <!-- Slide 2: White-Glove Installation -->
                         <div class="hero-slide">
                             <img 
                                 src="public/white-glove-delivery.png" 
@@ -232,7 +227,6 @@
                             </div>
                         </div>
 
-                        <!-- Slide 3: Circular Recycling Guarantee -->
                         <div class="hero-slide">
                             <img 
                                 src="public/about-circular-recycling.png" 
@@ -248,7 +242,6 @@
 
                     </div>
 
-                    <!-- Slide Navigation Controls -->
                     <div class="slider-nav">
                         <button class="slider-dot active" aria-label="Slide 1" onclick="setSlide(0)"></button>
                         <button class="slider-dot" aria-label="Slide 2" onclick="setSlide(1)"></button>
@@ -263,7 +256,6 @@
     <!-- ADVANCED 3D WEBGL LIVE INSPECTION, GAME STAGE & SPECIES LAB -->
     <section id="3d-studio" class="py-16 px-4 bg-xmasDark border-t border-xmasGold/20 space-y-12">
         
-        <!-- SECTION TITLE & INTRO -->
         <div class="max-w-7xl mx-auto text-center space-y-3">
             <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-xmasPanel border border-xmasGold/40 text-xmasGold text-xs font-bold uppercase tracking-widest shadow-md">
                 <span>🌲 WebGL 3D Live Render Stage & Specimen Lab</span>
@@ -276,7 +268,6 @@
             </p>
         </div>
 
-        <!-- 3D STAGE & ACTION HUD CONTAINER -->
         <div class="max-w-7xl mx-auto bg-xmasPanel p-4 sm:p-8 rounded-3xl border-2 border-xmasGold/40 shadow-2xl space-y-6">
             
             <div class="relative w-full aspect-[4/3] sm:aspect-[16/9] lg:aspect-[21/9] rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-b from-[#030d08] via-[#051810] to-[#020b06]" id="stageWrapper">
@@ -287,14 +278,12 @@
                 <!-- TOP HUD: SPECIES SELECTOR & SHADER CONTROLS -->
                 <div class="absolute top-3 left-3 right-3 flex flex-wrap justify-between items-center gap-2 pointer-events-none z-10">
                     
-                    <!-- Species Switcher Buttons -->
                     <div class="bg-xmasDark/90 backdrop-blur-md border border-xmasGold/30 rounded-2xl p-1.5 flex items-center gap-1.5 pointer-events-auto shadow-lg">
                         <button id="btn-fraser" onclick="switchSpecies('fraser')" class="px-3 py-1.5 text-xs font-bold rounded-xl bg-xmasGold text-xmasDark transition">Fraser Fir</button>
                         <button id="btn-douglas" onclick="switchSpecies('douglas')" class="px-3 py-1.5 text-xs font-bold rounded-xl bg-xmasPanel text-white hover:text-xmasGold transition">Douglas Fir</button>
                         <button id="btn-noble" onclick="switchSpecies('noble')" class="px-3 py-1.5 text-xs font-bold rounded-xl bg-xmasPanel text-white hover:text-xmasGold transition">Noble Fir</button>
                     </div>
 
-                    <!-- Environment & Effects Controls -->
                     <div class="bg-xmasDark/90 backdrop-blur-md border border-white/10 rounded-2xl p-1.5 flex items-center gap-2 pointer-events-auto shadow-lg text-xs">
                         <button id="snowToggleBtn" onclick="toggleSnow()" class="px-3 py-1.5 rounded-xl bg-xmasGreen text-white border border-emerald-500/40 hover:border-xmasGold transition font-bold" title="Toggle Falling Snow">
                             ❄️ Snow: ON
@@ -308,7 +297,7 @@
                     </div>
                 </div>
 
-                <!-- BOTTOM HUD: DRAG HINT & AUGMENTED REALITY (AR) LAUNCH -->
+                <!-- BOTTOM HUD: DRAG HINT & AR LAUNCH -->
                 <div class="absolute bottom-3 left-3 right-3 flex justify-between items-center pointer-events-none z-10">
                     <span class="bg-xmasDark/85 backdrop-blur-md border border-white/10 text-[10px] sm:text-xs text-xmasCream/80 px-3 py-1.5 rounded-full font-medium shadow">
                         🔄 Drag 360° • Scroll Zoom
@@ -328,7 +317,7 @@
                     </div>
                     <div>
                         <strong class="text-white text-xs sm:text-sm font-bold block">Mini Holiday Game: Deck The Specimen Tree</strong>
-                        <span class="text-[11px] text-xmasCream/70" id="gameProgressText">Click all 4 decorations below to dress your tree and unlock your $10 discount!</span>
+                        <span class="text-[11px] text-xmasCream/70" id="gameProgressText">Click all 4 decorations below to dress your tree and unlock your $10 discount![cite: 9]</span>
                     </div>
                 </div>
 
@@ -442,7 +431,7 @@
                 </span>
                 <h3 class="font-cinzel text-2xl font-black text-white">Your Tree Is Decked Out!</h3>
                 <p class="text-xs text-xmasCream/80 leading-relaxed">
-                    You've unlocked an exclusive <strong class="text-xmasGold">$10 Early-Bird Discount</strong> for your white-glove doorstep delivery.
+                    You've unlocked an exclusive <strong class="text-xmasGold">$10 Early-Bird Discount</strong> for your white-glove doorstep delivery.[cite: 9]
                 </p>
             </div>
             <div class="bg-xmasDark p-3.5 rounded-2xl border border-dashed border-xmasGold/60 flex justify-between items-center text-xs">
@@ -526,7 +515,6 @@
     <footer class="bg-xmasDark border-t border-xmasGold/30 pt-16 pb-8 px-4 text-xmasCream">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
             
-            <!-- COLUMN 1: BRAND & MASCOT -->
             <div class="space-y-4 lg:col-span-1">
                 <div class="flex items-center space-x-3">
                     <img src="christmas-tree-joe-logo.png" onerror="this.src='public/Christmas-tree-joe3.png'" alt="Joe the Evergreen Tree Farmer" class="h-14 w-14 rounded-full border-2 border-xmasGold object-cover shadow-lg">
@@ -543,7 +531,6 @@
                 </div>
             </div>
 
-            <!-- COLUMN 2: QUICK SHOP & PRODUCTS -->
             <div class="space-y-3">
                 <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Subscription Tiers</h4>
                 <ul class="text-xs space-y-2 text-xmasCream/80">
@@ -555,7 +542,6 @@
                 </ul>
             </div>
 
-            <!-- COLUMN 3: DOMAINS & SERVICE NETWORK -->
             <div class="space-y-3">
                 <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Our Brand Network</h4>
                 <ul class="text-xs space-y-2 text-xmasCream/80">
@@ -568,7 +554,6 @@
                 </ul>
             </div>
 
-            <!-- COLUMN 4: CUSTOMER CARE & CLIMATE -->
             <div class="space-y-3">
                 <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Customer Care</h4>
                 <ul class="text-xs space-y-2 text-xmasCream/80">
@@ -581,7 +566,6 @@
                 </ul>
             </div>
 
-            <!-- COLUMN 5: CORPORATE AFFILIATION & LEGAL -->
             <div class="space-y-3">
                 <h4 class="font-cinzel text-sm font-bold text-xmasGold uppercase tracking-wider">Corporate Family</h4>
                 <p class="text-xs text-xmasCream/70 leading-relaxed">
@@ -598,7 +582,6 @@
 
         </div>
 
-        <!-- LEGAL BOTTOM STRIP -->
         <div class="max-w-7xl mx-auto pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-xmasCream/50 space-y-4 md:space-y-0">
             <p>&copy; 2026 Global Citizen Joe, LLC. All Rights Reserved.</p>
             <div class="flex items-center space-x-6 text-[11px]">
@@ -673,14 +656,12 @@
             }
         }
 
-        // Auto-close mobile navigation if resized above mobile/tablet viewport
         window.addEventListener('resize', () => {
-            if (window.innerWidth >= 1280) { // xl breakpoint
+            if (window.innerWidth >= 1280) {
                 closeMobileNav();
             }
         });
 
-        // Close drawer when clicking outside
         document.addEventListener('click', (e) => {
             const menu = document.getElementById('mobileMenu');
             const btn = document.getElementById('hamburgerBtn');
@@ -697,7 +678,7 @@
         let scene, camera, renderer, treeGroup, foliageCones = [];
         let snowParticles, snowGeo, isSnowing = true;
         let warmLightsGroup, rgbLightsGroup, starMesh;
-        let lightingMode = 'warm'; // 'warm', 'rgb', 'off'
+        let lightingMode = 'warm';
         let currentEnvIndex = 0;
         const envBackdrops = [
             'radial-gradient(circle, rgba(11,59,36,0.4) 0%, rgba(5,24,16,1) 80%)',
@@ -705,7 +686,6 @@
             'radial-gradient(circle, rgba(212,175,55,0.25) 0%, rgba(2,11,6,1) 80%)'
         ];
 
-        // Mini-Game State
         let ornamentsPlaced = { red: false, gold: false, lights: false, star: false };
         let totalPlacedCount = 0;
 
@@ -722,7 +702,6 @@
             renderer.setSize(wrapper.clientWidth, wrapper.clientHeight);
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-            // Lighting Setup
             const ambient = new THREE.AmbientLight(0xffffff, 0.9);
             scene.add(ambient);
 
@@ -734,24 +713,20 @@
             fillLight.position.set(-4, -2, -3);
             scene.add(fillLight);
 
-            // Construct 3D Tree Hierarchy
             treeGroup = new THREE.Group();
 
-            // 1. Hydration Stand & Base
             const standGeo = new THREE.CylinderGeometry(0.45, 0.55, 0.15, 16);
             const standMat = new THREE.MeshStandardMaterial({ color: 0x111111, roughness: 0.4, metalness: 0.8 });
             const stand = new THREE.Mesh(standGeo, standMat);
             stand.position.y = -0.75;
             treeGroup.add(stand);
 
-            // 2. Timber Trunk
             const trunkGeo = new THREE.CylinderGeometry(0.12, 0.18, 0.9, 12);
             const trunkMat = new THREE.MeshStandardMaterial({ color: 0x3d2314, roughness: 0.9 });
             const trunk = new THREE.Mesh(trunkGeo, trunkMat);
             trunk.position.y = -0.35;
             treeGroup.add(trunk);
 
-            // 3. Foliage Whorls (4 Tier Cones)
             const fraserGreen = 0x0B3B24;
             const foliageSpecs = [
                 { r: 1.05, h: 0.9, y: 0.05 },
@@ -760,32 +735,22 @@
                 { r: 0.45, h: 0.65, y: 1.35 }
             ];
 
-            foliageSpecs.forEach((spec, idx) => {
+            foliageSpecs.forEach((spec) => {
                 const geo = new THREE.ConeGeometry(spec.r, spec.h, 16);
-                const mat = new THREE.MeshStandardMaterial({ 
-                    color: fraserGreen, 
-                    roughness: 0.65,
-                    flatShading: true
-                });
+                const mat = new THREE.MeshStandardMaterial({ color: fraserGreen, roughness: 0.65, flatShading: true });
                 const cone = new THREE.Mesh(geo, mat);
                 cone.position.y = spec.y;
                 treeGroup.add(cone);
                 foliageCones.push(cone);
             });
 
-            // 4. Star Crown Topper
-            const starGeo = new THREE.OctahedronGeometry(0.16, 0);
-            const starMat = new THREE.MeshStandardMaterial({ 
-                color: 0xD4AF37, 
-                emissive: 0x806200, 
-                metalness: 0.9, 
-                roughness: 0.2 
-            });
-            starMesh = new THREE.Mesh(starGeo, starMat);
+            // Single unique variable names to prevent redeclaration errors
+            const starGeometryTop = new THREE.OctahedronGeometry(0.16, 0);
+            const starMaterialTop = new THREE.MeshStandardMaterial({ color: 0xD4AF37, emissive: 0x806200, metalness: 0.9, roughness: 0.2 });
+            starMesh = new THREE.Mesh(starGeometryTop, starMaterialTop);
             starMesh.position.y = 1.75;
             treeGroup.add(starMesh);
 
-            // 5. Build String Lights Groups
             warmLightsGroup = new THREE.Group();
             rgbLightsGroup = new THREE.Group();
 
@@ -798,14 +763,12 @@
                 const x = Math.cos(angle) * radius;
                 const z = Math.sin(angle) * radius;
 
-                // Warm Bulb
                 const warmGeo = new THREE.SphereGeometry(0.025, 8, 8);
                 const warmMat = new THREE.MeshBasicMaterial({ color: 0xffe899 });
                 const warmBulb = new THREE.Mesh(warmGeo, warmMat);
                 warmBulb.position.set(x, y, z);
                 warmLightsGroup.add(warmBulb);
 
-                // RGB Bulb
                 const rgbColors = [0xff2222, 0x22ff44, 0xffd700, 0x3388ff];
                 const rgbMat = new THREE.MeshBasicMaterial({ color: rgbColors[i % rgbColors.length] });
                 const rgbBulb = new THREE.Mesh(warmGeo, rgbMat);
@@ -819,13 +782,9 @@
 
             scene.add(treeGroup);
 
-            // Initialize Falling Particle Snow System
             initSnowSystem();
-
-            // Drag & Orbit Control Setup
             setupOrbitControls(canvas);
 
-            // Animation Loop
             function animate() {
                 requestAnimationFrame(animate);
 
@@ -843,26 +802,19 @@
             animate();
         }
 
-        // Particle Snow System
         function initSnowSystem() {
             const particleCount = 1200;
             snowGeo = new THREE.BufferGeometry();
             const positions = new Float32Array(particleCount * 3);
 
             for (let i = 0; i < particleCount * 3; i += 3) {
-                positions[i] = (Math.random() - 0.5) * 14;     // X
-                positions[i + 1] = Math.random() * 10 - 2;     // Y
-                positions[i + 2] = (Math.random() - 0.5) * 14; // Z
+                positions[i] = (Math.random() - 0.5) * 14;
+                positions[i + 1] = Math.random() * 10 - 2;
+                positions[i + 2] = (Math.random() - 0.5) * 14;
             }
 
             snowGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-            const snowMat = new THREE.PointsMaterial({
-                color: 0xffffff,
-                size: 0.06,
-                transparent: true,
-                opacity: 0.85
-            });
-
+            const snowMat = new THREE.PointsMaterial({ color: 0xffffff, size: 0.06, transparent: true, opacity: 0.85 });
             snowParticles = new THREE.Points(snowGeo, snowMat);
             scene.add(snowParticles);
         }
@@ -877,7 +829,6 @@
             snowParticles.geometry.attributes.position.needsUpdate = true;
         }
 
-        // Mouse & Touch 360 Drag Orbit
         let isUserDragging = false;
         let previousPos = { x: 0, y: 0 };
 
@@ -895,7 +846,6 @@
                 }
             });
 
-            // Touch Handlers for Smartphone 360 (iOS / Android)
             canvas.addEventListener('touchstart', (e) => {
                 if (e.touches.length === 1) {
                     isUserDragging = true;
@@ -912,12 +862,11 @@
             }, { passive: true });
         }
 
-        // Species Switching Shader
         function switchSpecies(species) {
             const colors = {
-                fraser: 0x0B3B24,  // Deep Mountain Green
-                douglas: 0x1E5631, // Vibrant Citrus Emerald
-                noble: 0x072A19    // S-Curved Blue Spruce/Dark Pine
+                fraser: 0x0B3B24,
+                douglas: 0x1E5631,
+                noble: 0x072A19
             };
 
             const selectedColor = colors[species] || colors.fraser;
@@ -925,20 +874,16 @@
                 cone.material.color.setHex(selectedColor);
             });
 
-            // UI Button Active Styling
             ['fraser', 'douglas', 'noble'].forEach(s => {
                 const btn = document.getElementById('btn-' + s);
                 if (btn) {
-                    if (s === species) {
-                        btn.className = 'px-3 py-1.5 text-xs font-bold rounded-xl bg-xmasGold text-xmasDark transition';
-                    } else {
-                        btn.className = 'px-3 py-1.5 text-xs font-bold rounded-xl bg-xmasPanel text-white hover:text-xmasGold transition';
-                    }
+                    btn.className = (s === species) 
+                        ? 'px-3 py-1.5 text-xs font-bold rounded-xl bg-xmasGold text-xmasDark transition'
+                        : 'px-3 py-1.5 text-xs font-bold rounded-xl bg-xmasPanel text-white hover:text-xmasGold transition';
                 }
             });
         }
 
-        // Snow Toggle Action
         function toggleSnow() {
             isSnowing = !isSnowing;
             if (snowParticles) snowParticles.visible = isSnowing;
@@ -951,7 +896,6 @@
             }
         }
 
-        // Holiday Lighting Mode Cycle
         function toggleLights() {
             const btn = document.getElementById('lightsToggleBtn');
             if (lightingMode === 'warm') {
@@ -972,7 +916,6 @@
             }
         }
 
-        // Backdrop Switcher
         function cycleEnvironment() {
             currentEnvIndex = (currentEnvIndex + 1) % envBackdrops.length;
             const wrapper = document.getElementById('stageWrapper');
@@ -981,14 +924,10 @@
             }
         }
 
-        // Augmented Reality (AR) Fallback
         function launchARView() {
             alert("🎄 Augmented Reality Engine Activated!\n\nAim your mobile camera at an open living room floor to place your Christmas tree at 1:1 true scale.");
         }
 
-        // ==========================================
-        // MINI-GAME ENGINE: "DECK THE TREE"
-        // ==========================================
         function placeOrnament(type) {
             if (type === 'bauble-red' && !ornamentsPlaced.red) {
                 ornamentsPlaced.red = true;
@@ -1055,7 +994,6 @@
             if (modal) modal.classList.add('hidden');
         }
 
-        // Window Resize & DOM Init
         window.addEventListener('DOMContentLoaded', init3DStage);
         window.addEventListener('resize', () => {
             const wrapper = document.getElementById('stageWrapper');
