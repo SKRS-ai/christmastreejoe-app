@@ -40,6 +40,7 @@
         .gold-gradient-text {
             background: linear-gradient(135deg, #FFF0B9 0%, #D4AF37 50%, #997A15 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         .hero-glow {
@@ -101,7 +102,7 @@
                 <a href="account.html" class="hidden sm:inline-flex text-xs font-semibold text-xmasGold hover:text-white border border-xmasGold/40 px-3.5 py-2 rounded-full hover:bg-xmasGold/10 transition">
                     Sign In
                 </a>
-                <a href="checkout.html" class="bg-xmasRed hover:bg-red-700 text-white font-bold px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm border border-xmasGold/50 transition shadow-xl transform hover:scale-105 flex-shrink-0">
+                <a href="trees.html" class="bg-xmasRed hover:bg-red-700 text-white font-bold px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm border border-xmasGold/50 transition shadow-xl transform hover:scale-105 flex-shrink-0">
                     Reserve Tree
                 </a>
 
@@ -170,7 +171,7 @@
 
                 <!-- CTA Actions -->
                 <div class="flex flex-wrap gap-3 justify-center lg:justify-start pt-2">
-                    <a href="checkout.html" class="bg-xmasRed hover:bg-red-700 text-white font-bold px-6 py-3 rounded-full text-sm border border-xmasGold/50 transition shadow-xl transform hover:scale-105">
+                    <a href="trees.html" class="bg-xmasRed hover:bg-red-700 text-white font-bold px-6 py-3 rounded-full text-sm border border-xmasGold/50 transition shadow-xl transform hover:scale-105">
                         Select Your Tree & Lock Rate
                     </a>
                     <a href="climate.html" class="border border-stripeViolet/60 hover:border-stripeViolet text-white hover:text-[#A5A0FF] px-5 py-3 rounded-full text-sm font-semibold transition flex items-center gap-2">
@@ -278,10 +279,10 @@
         <!-- 3D STAGE & ACTION HUD CONTAINER -->
         <div class="max-w-7xl mx-auto bg-xmasPanel p-4 sm:p-8 rounded-3xl border-2 border-xmasGold/40 shadow-2xl space-y-6">
             
-            <div class="relative w-full aspect-[4/3] sm:aspect-[16/9] lg:aspect-[21/9] rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-b from-[#030d08] via-[#051810] to-[#020b06]" id="stageWrapper">
+            <div class="relative w-full h-[520px] rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-b from-[#030d08] via-[#051810] to-[#020b06]" id="stageWrapper">
                 
-                <!-- THREE.JS CANVAS -->
-                <canvas id="tree-canvas" class="w-full h-full cursor-grab active:cursor-grabbing block"></canvas>
+                <!-- THREE.JS CANVAS CONTAINER -->
+                <div id="tree-canvas-container" class="w-full h-full cursor-grab active:cursor-grabbing block"></div>
 
                 <!-- TOP HUD: SPECIES SELECTOR & SHADER CONTROLS -->
                 <div class="absolute top-3 left-3 right-3 flex flex-wrap justify-between items-center gap-2 pointer-events-none z-10">
@@ -298,11 +299,11 @@
                         <button id="snowToggleBtn" onclick="toggleSnow()" class="px-3 py-1.5 rounded-xl bg-xmasGreen text-white border border-emerald-500/40 hover:border-xmasGold transition font-bold" title="Toggle Falling Snow">
                             ❄️ Snow: ON
                         </button>
-                        <button id="lightsToggleBtn" onclick="toggleLights()" class="px-3 py-1.5 rounded-xl bg-xmasPanel text-xmasGold border border-xmasGold/30 hover:bg-xmasGreen transition font-bold" title="Cycle Holiday Lighting Modes">
+                        <button id="lightsToggleBtn" onclick="toggleGlow()" class="px-3 py-1.5 rounded-xl bg-xmasPanel text-xmasGold border border-xmasGold/30 hover:bg-xmasGreen transition font-bold" title="Cycle Holiday Lighting Modes">
                             ✨ Glow: Warm
                         </button>
-                        <button onclick="cycleEnvironment()" class="px-3 py-1.5 rounded-xl bg-xmasPanel text-white border border-white/10 hover:border-xmasGold transition font-bold hidden sm:inline-block" title="Switch Room Atmosphere">
-                            🏠 Backdrop
+                        <button onclick="cycleEnvironment()" class="px-3 py-1.5 rounded-xl bg-xmasPanel text-white border border-white/10 hover:border-xmasGold transition font-bold" title="Switch Room Atmosphere">
+                            🏠 Backdrop (Night / Hearth / AR)
                         </button>
                     </div>
                 </div>
@@ -332,16 +333,16 @@
                 </div>
 
                 <div class="flex items-center gap-2 sm:gap-3" id="ornamentRack">
-                    <button id="ornament-red" onclick="placeOrnament('bauble-red')" class="px-3 py-2 bg-xmasPanel hover:bg-xmasGreen border border-white/20 rounded-xl text-xs font-bold text-white transition flex items-center gap-1.5 shadow" title="Place Red Ornament">
+                    <button id="ornament-red" onclick="placeOrnament('redBaubles')" class="px-3 py-2 bg-xmasPanel hover:bg-xmasGreen border border-white/20 rounded-xl text-xs font-bold text-white transition flex items-center gap-1.5 shadow" title="Place Red Ornament">
                         <span>🔴</span> <span>Red Bauble</span>
                     </button>
-                    <button id="ornament-gold" onclick="placeOrnament('bauble-gold')" class="px-3 py-2 bg-xmasPanel hover:bg-xmasGreen border border-white/20 rounded-xl text-xs font-bold text-xmasGold transition flex items-center gap-1.5 shadow" title="Place Gold Ornament">
+                    <button id="ornament-gold" onclick="placeOrnament('goldBaubles')" class="px-3 py-2 bg-xmasPanel hover:bg-xmasGreen border border-white/20 rounded-xl text-xs font-bold text-xmasGold transition flex items-center gap-1.5 shadow" title="Place Gold Ornament">
                         <span>🟡</span> <span>Gold Bauble</span>
                     </button>
-                    <button id="ornament-lights" onclick="placeOrnament('lights')" class="px-3 py-2 bg-xmasPanel hover:bg-xmasGreen border border-white/20 rounded-xl text-xs font-bold text-yellow-300 transition flex items-center gap-1.5 shadow" title="Wrap Fairy Lights">
+                    <button id="ornament-lights" onclick="placeOrnament('fairyLights')" class="px-3 py-2 bg-xmasPanel hover:bg-xmasGreen border border-white/20 rounded-xl text-xs font-bold text-yellow-300 transition flex items-center gap-1.5 shadow" title="Wrap Fairy Lights">
                         <span>💡</span> <span>Fairy Lights</span>
                     </button>
-                    <button id="ornament-star" onclick="placeOrnament('star')" class="px-3.5 py-2 bg-xmasPanel hover:bg-xmasGold hover:text-xmasDark border border-xmasGold/50 rounded-xl text-xs font-extrabold text-white transition flex items-center gap-1.5 shadow" title="Crown with Star Topper">
+                    <button id="ornament-star" onclick="placeOrnament('starCrown')" class="px-3.5 py-2 bg-xmasPanel hover:bg-xmasGold hover:text-xmasDark border border-xmasGold/50 rounded-xl text-xs font-extrabold text-white transition flex items-center gap-1.5 shadow" title="Crown with Star Topper">
                         <span>⭐</span> <span>Star Crown</span>
                     </button>
                 </div>
@@ -480,7 +481,7 @@
                         <li class="flex items-center gap-2">✔ Post-Holiday January Pickup ($35 value included)</li>
                     </ul>
                 </div>
-                <button onclick="window.location.href='checkout.html'" class="mt-6 w-full py-3 rounded-xl bg-xmasGreen border border-xmasGold text-xmasGold font-bold hover:bg-xmasGold hover:text-xmasDark transition">Reserve Evergreen Sprout</button>
+                <button onclick="window.location.href='trees.html'" class="mt-6 w-full py-3 rounded-xl bg-xmasGreen border border-xmasGold text-xmasGold font-bold hover:bg-xmasGold hover:text-xmasDark transition">Reserve Evergreen Sprout</button>
             </div>
 
             <!-- TIER 2: HOLIDAY HEARTH (POPULAR) -->
@@ -498,7 +499,7 @@
                         <li class="flex items-center gap-2">✔ Guaranteed January Eco-Recycling Pickup</li>
                     </ul>
                 </div>
-                <button onclick="window.location.href='checkout.html'" class="mt-6 w-full py-3 rounded-xl bg-xmasRed text-white font-bold hover:bg-red-700 transition shadow-lg">Reserve Holiday Hearth</button>
+                <button onclick="window.location.href='trees.html'" class="mt-6 w-full py-3 rounded-xl bg-xmasRed text-white font-bold hover:bg-red-700 transition shadow-lg">Reserve Holiday Hearth</button>
             </div>
 
             <!-- TIER 3: YULETIDE MONARCH -->
@@ -515,7 +516,7 @@
                         <li class="flex items-center gap-2">✔ Full Tree Removal, Sweeping & Recycling</li>
                     </ul>
                 </div>
-                <button onclick="window.location.href='checkout.html'" class="mt-6 w-full py-3 rounded-xl bg-xmasGreen border border-xmasGold text-xmasGold font-bold hover:bg-xmasGold hover:text-xmasDark transition">Reserve Yuletide Monarch</button>
+                <button onclick="window.location.href='trees.html'" class="mt-6 w-full py-3 rounded-xl bg-xmasGreen border border-xmasGold text-xmasGold font-bold hover:bg-xmasGold hover:text-xmasDark transition">Reserve Yuletide Monarch</button>
             </div>
 
         </div>
@@ -573,7 +574,7 @@
                 <ul class="text-xs space-y-2 text-xmasCream/80">
                     <li><a href="events.html" class="hover:text-xmasGold transition">Seasonal Events (Rittenhouse)</a></li>
                     <li><a href="community.html" class="hover:text-xmasGold transition">Civic Mission (TBBLUSA)</a></li>
-                    <li><a href="contact.html" class="hover:text-xmasGold transition">January Pickup Protocol</a></li>
+                    <li><a href="trees.html" class="hover:text-xmasGold transition">January Pickup Protocol</a></li>
                     <li><a href="account.html" class="hover:text-xmasGold transition">Subscription Management</a></li>
                     <li><a href="climate.html" class="hover:text-xmasGold transition text-stripeViolet font-bold">1% Stripe Climate Commitment</a></li>
                     <li><a href="mailto:dispatch@christmastreejoe.com" class="hover:text-xmasGold transition underline">dispatch@christmastreejoe.com</a></li>
@@ -609,11 +610,14 @@
         </div>
     </footer>
 
-    <!-- =========================================================================
-         THREE.JS 3D ENGINE, PROCEDURAL PARTICLES & MINI-GAME HANDLER
-    ========================================================================== -->
+    <!-- THREE.JS & ORBITCONTROLS DEPENDENCIES -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.js"></script>
+    <script src="src/js/tree-3d-model.js"></script>
+
+    <!-- INTERACTIVE UI WRAPPER SCRIPT -->
     <script>
-        // Hero Slider Rotation Logic
+        // Hero Slider Logic
         let currentSlide = 0;
         const slides = document.querySelectorAll('.hero-slide');
         const dots = document.querySelectorAll('.slider-dot');
@@ -633,371 +637,93 @@
             }, 5000);
         }
 
-        // Mobile Nav Drawer Toggle
         function toggleMobileNav() {
             const menu = document.getElementById('mobileMenu');
             menu.classList.toggle('hidden');
         }
 
-        // ==========================================
-        // THREE.JS 3D STAGE & SHADER SYSTEM
-        // ==========================================
-        let scene, camera, renderer, treeGroup, foliageCones = [];
-        let snowParticles, snowGeo, isSnowing = true;
-        let warmLightsGroup, rgbLightsGroup, starMesh;
-        let lightingMode = 'warm'; // 'warm', 'rgb', 'off'
-        let currentEnvIndex = 0;
-        const envBackdrops = [
-            'radial-gradient(circle, rgba(11,59,36,0.4) 0%, rgba(5,24,16,1) 80%)',
-            'radial-gradient(circle, rgba(99,91,255,0.2) 0%, rgba(3,13,8,1) 80%)',
-            'radial-gradient(circle, rgba(212,175,55,0.25) 0%, rgba(2,11,6,1) 80%)'
-        ];
-
-        // Mini-Game State
-        let ornamentsPlaced = { red: false, gold: false, lights: false, star: false };
-        let totalPlacedCount = 0;
-
-        function init3DStage() {
-            const canvas = document.getElementById('tree-canvas');
-            const wrapper = document.getElementById('stageWrapper');
-            if (!canvas || !wrapper) return;
-
-            scene = new THREE.Scene();
-            camera = new THREE.PerspectiveCamera(45, wrapper.clientWidth / wrapper.clientHeight, 0.1, 1000);
-            camera.position.set(0, 1.3, 4.6);
-
-            renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
-            renderer.setSize(wrapper.clientWidth, wrapper.clientHeight);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-            // Lighting Setup
-            const ambient = new THREE.AmbientLight(0xffffff, 0.9);
-            scene.add(ambient);
-
-            const keyLight = new THREE.DirectionalLight(0xfffaed, 1.4);
-            keyLight.position.set(4, 8, 5);
-            scene.add(keyLight);
-
-            const fillLight = new THREE.DirectionalLight(0xd4af37, 0.6);
-            fillLight.position.set(-4, -2, -3);
-            scene.add(fillLight);
-
-            // Construct 3D Tree Hierarchy
-            treeGroup = new THREE.Group();
-
-            // 1. Hydration Stand & Base
-            const standGeo = new THREE.CylinderGeometry(0.45, 0.55, 0.15, 16);
-            const standMat = new THREE.MeshStandardMaterial({ color: 0x111111, roughness: 0.4, metalness: 0.8 });
-            const stand = new THREE.Mesh(standGeo, standMat);
-            stand.position.y = -0.75;
-            treeGroup.add(stand);
-
-            // 2. Timber Trunk
-            const trunkGeo = new THREE.CylinderGeometry(0.12, 0.18, 0.9, 12);
-            const trunkMat = new THREE.MeshStandardMaterial({ color: 0x3d2314, roughness: 0.9 });
-            const trunk = new THREE.Mesh(trunkGeo, trunkMat);
-            trunk.position.y = -0.35;
-            treeGroup.add(trunk);
-
-            // 3. Foliage Whorls (4 Tier Cones)
-            const fraserGreen = 0x0B3B24;
-            const foliageSpecs = [
-                { r: 1.05, h: 0.9, y: 0.05 },
-                { r: 0.88, h: 0.85, y: 0.50 },
-                { r: 0.68, h: 0.75, y: 0.95 },
-                { r: 0.45, h: 0.65, y: 1.35 }
-            ];
-
-            foliageSpecs.forEach((spec, idx) => {
-                const geo = new THREE.ConeGeometry(spec.r, spec.h, 16);
-                const mat = new THREE.MeshStandardMaterial({ 
-                    color: fraserGreen, 
-                    roughness: 0.65,
-                    flatShading: true
-                });
-                const cone = new THREE.Mesh(geo, mat);
-                cone.position.y = spec.y;
-                treeGroup.add(cone);
-                foliageCones.push(cone);
-            });
-
-            // 4. Star Crown Topper
-            const starGeo = new THREE.OctahedronGeometry(0.16, 0);
-            const starMat = new THREE.MeshStandardMaterial({ 
-                color: 0xD4AF37, 
-                emissive: 0x806200, 
-                metalness: 0.9, 
-                roughness: 0.2 
-            });
-            starMesh = new THREE.Mesh(starGeo, starMat);
-            starMesh.position.y = 1.75;
-            treeGroup.add(starMesh);
-
-            // 5. Build String Lights Groups
-            warmLightsGroup = new THREE.Group();
-            rgbLightsGroup = new THREE.Group();
-
-            const lightCount = 45;
-            for (let i = 0; i < lightCount; i++) {
-                const progress = i / lightCount;
-                const radius = (1 - progress * 0.75) * 0.85;
-                const angle = progress * Math.PI * 10;
-                const y = -0.2 + progress * 1.55;
-                const x = Math.cos(angle) * radius;
-                const z = Math.sin(angle) * radius;
-
-                // Warm Bulb
-                const warmGeo = new THREE.SphereGeometry(0.025, 8, 8);
-                const warmMat = new THREE.MeshBasicMaterial({ color: 0xffe899 });
-                const warmBulb = new THREE.Mesh(warmGeo, warmMat);
-                warmBulb.position.set(x, y, z);
-                warmLightsGroup.add(warmBulb);
-
-                // RGB Bulb
-                const rgbColors = [0xff2222, 0x22ff44, 0xffd700, 0x3388ff];
-                const rgbMat = new THREE.MeshBasicMaterial({ color: rgbColors[i % rgbColors.length] });
-                const rgbBulb = new THREE.Mesh(warmGeo, rgbMat);
-                rgbBulb.position.set(x, y, z);
-                rgbLightsGroup.add(rgbBulb);
-            }
-
-            treeGroup.add(warmLightsGroup);
-            treeGroup.add(rgbLightsGroup);
-            rgbLightsGroup.visible = false; // default warm
-
-            scene.add(treeGroup);
-
-            // Initialize Falling Particle Snow System
-            initSnowSystem();
-
-            // Drag & Orbit Control Setup
-            setupOrbitControls(canvas);
-
-            // Animation Loop
-            function animate() {
-                requestAnimationFrame(animate);
-
-                if (!isUserDragging && treeGroup) {
-                    treeGroup.rotation.y += 0.004;
-                }
-
-                if (starMesh) {
-                    starMesh.rotation.y += 0.015;
-                }
-
-                animateSnow();
-                renderer.render(scene, camera);
-            }
-            animate();
-        }
-
-        // Particle Snow System
-        function initSnowSystem() {
-            const particleCount = 1200;
-            snowGeo = new THREE.BufferGeometry();
-            const positions = new Float32Array(particleCount * 3);
-
-            for (let i = 0; i < particleCount * 3; i += 3) {
-                positions[i] = (Math.random() - 0.5) * 14;     // X
-                positions[i + 1] = Math.random() * 10 - 2;     // Y
-                positions[i + 2] = (Math.random() - 0.5) * 14; // Z
-            }
-
-            snowGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-            const snowMat = new THREE.PointsMaterial({
-                color: 0xffffff,
-                size: 0.06,
-                transparent: true,
-                opacity: 0.85
-            });
-
-            snowParticles = new THREE.Points(snowGeo, snowMat);
-            scene.add(snowParticles);
-        }
-
-        function animateSnow() {
-            if (!snowParticles || !isSnowing) return;
-            const positions = snowParticles.geometry.attributes.position.array;
-            for (let i = 1; i < positions.length; i += 3) {
-                positions[i] -= 0.025; // fall speed
-                if (positions[i] < -2) positions[i] = 8; // recycle to top
-            }
-            snowParticles.geometry.attributes.position.needsUpdate = true;
-        }
-
-        // Mouse & Touch 360 Drag Orbit
-        let isUserDragging = false;
-        let previousPos = { x: 0, y: 0 };
-
-        function setupOrbitControls(canvas) {
-            canvas.addEventListener('mousedown', (e) => {
-                isUserDragging = true;
-                previousPos = { x: e.clientX, y: e.clientY };
-            });
-            window.addEventListener('mouseup', () => { isUserDragging = false; });
-            canvas.addEventListener('mousemove', (e) => {
-                if (isUserDragging && treeGroup) {
-                    const deltaX = e.clientX - previousPos.x;
-                    treeGroup.rotation.y += deltaX * 0.008;
-                    previousPos = { x: e.clientX, y: e.clientY };
-                }
-            });
-
-            // Touch Handlers for Smartphone 360
-            canvas.addEventListener('touchstart', (e) => {
-                if (e.touches.length === 1) {
-                    isUserDragging = true;
-                    previousPos = { x: e.touches[0].clientX, y: e.touches[0].clientY };
-                }
-            });
-            window.addEventListener('touchend', () => { isUserDragging = false; });
-            canvas.addEventListener('touchmove', (e) => {
-                if (isUserDragging && treeGroup && e.touches.length === 1) {
-                    const deltaX = e.touches[0].clientX - previousPos.x;
-                    treeGroup.rotation.y += deltaX * 0.008;
-                    previousPos = { x: e.touches[0].clientX, y: e.touches[0].clientY };
-                }
-            });
-        }
-
-        // Species Switching Shader
-        function switchSpecies(species) {
-            const colors = {
-                fraser: 0x0B3B24,  // Deep Mountain Green
-                douglas: 0x1E5631, // Vibrant Citrus Emerald
-                noble: 0x072A19    // S-Curved Blue Spruce/Dark Pine
-            };
-
-            const selectedColor = colors[species] || colors.fraser;
-            foliageCones.forEach(cone => {
-                cone.material.color.setHex(selectedColor);
-            });
-
-            // UI Button Active Styling
+        // Species Switching Handler
+        function switchSpecies(speciesKey) {
             ['fraser', 'douglas', 'noble'].forEach(s => {
                 const btn = document.getElementById('btn-' + s);
                 if (btn) {
-                    if (s === species) {
+                    if (s === speciesKey) {
                         btn.className = 'px-3 py-1.5 text-xs font-bold rounded-xl bg-xmasGold text-xmasDark transition';
                     } else {
                         btn.className = 'px-3 py-1.5 text-xs font-bold rounded-xl bg-xmasPanel text-white hover:text-xmasGold transition';
                     }
                 }
             });
+            window.treeLabInstance?.setSpecies(speciesKey);
         }
 
-        // Snow Toggle Action
+        // Snow Toggle Handler
         function toggleSnow() {
-            isSnowing = !isSnowing;
-            if (snowParticles) snowParticles.visible = isSnowing;
+            window.treeLabInstance?.toggleSnow();
             const btn = document.getElementById('snowToggleBtn');
-            if (btn) {
-                btn.innerText = isSnowing ? '❄️ Snow: ON' : '❄️ Snow: OFF';
-                btn.className = isSnowing 
+            if (btn && window.treeLabInstance) {
+                const isOn = window.treeLabInstance.snowEnabled;
+                btn.innerText = isOn ? '❄️ Snow: ON' : '❄️ Snow: OFF';
+                btn.className = isOn 
                     ? 'px-3 py-1.5 rounded-xl bg-xmasGreen text-white border border-emerald-500/40 hover:border-xmasGold transition font-bold'
                     : 'px-3 py-1.5 rounded-xl bg-xmasPanel text-xmasCream/60 border border-white/10 hover:border-xmasGold transition font-bold';
             }
         }
 
-        // Holiday Lighting Mode Cycle
-        function toggleLights() {
-            const btn = document.getElementById('lightsToggleBtn');
-            if (lightingMode === 'warm') {
-                lightingMode = 'rgb';
-                warmLightsGroup.visible = false;
-                rgbLightsGroup.visible = true;
-                if (btn) btn.innerText = '✨ Glow: RGB Twinkle';
-            } else if (lightingMode === 'rgb') {
-                lightingMode = 'off';
-                warmLightsGroup.visible = false;
-                rgbLightsGroup.visible = false;
-                if (btn) btn.innerText = '✨ Glow: Unlit (Raw)';
-            } else {
-                lightingMode = 'warm';
-                warmLightsGroup.visible = true;
-                rgbLightsGroup.visible = false;
-                if (btn) btn.innerText = '✨ Glow: Warm';
-            }
+        // Glow Toggle Handler
+        function toggleGlow() {
+            window.treeLabInstance?.toggleGlow();
         }
 
-        // Backdrop Switcher
+        // Backdrop Cycle Handler
+        let backdropIdx = 0;
+        const backdrops = ['night', 'livingroom', 'studio'];
         function cycleEnvironment() {
-            currentEnvIndex = (currentEnvIndex + 1) % envBackdrops.length;
-            const wrapper = document.getElementById('stageWrapper');
-            if (wrapper) {
-                wrapper.style.background = envBackdrops[currentEnvIndex];
-            }
+            backdropIdx = (backdropIdx + 1) % backdrops.length;
+            window.treeLabInstance?.setBackdrop(backdrops[backdropIdx]);
         }
 
-        // Augmented Reality (AR) Fallback
-        function launchARView() {
-            alert("🎄 Augmented Reality Engine Activated!\n\nAim your mobile camera at an open living room floor to place your Christmas tree at 1:1 true scale.");
-        }
+        // Mini-Game Decoration Placement Handler
+        let gameItemsPlaced = 0;
+        function placeOrnament(ornamentType) {
+            window.treeLabInstance?.toggleDecoration(ornamentType);
 
-        // ==========================================
-        // MINI-GAME ENGINE: "DECK THE TREE"
-        // ==========================================
-        function placeOrnament(type) {
-            if (type === 'bauble-red' && !ornamentsPlaced.red) {
-                ornamentsPlaced.red = true;
-                spawnBaubleMesh(0xC41E3A);
-                markButtonDone('ornament-red', '✓ Red Bauble Added');
-            } else if (type === 'bauble-gold' && !ornamentsPlaced.gold) {
-                ornamentsPlaced.gold = true;
-                spawnBaubleMesh(0xD4AF37);
-                markButtonDone('ornament-gold', '✓ Gold Bauble Added');
-            } else if (type === 'lights' && !ornamentsPlaced.lights) {
-                ornamentsPlaced.lights = true;
-                warmLightsGroup.visible = true;
-                markButtonDone('ornament-lights', '✓ Fairy Lights Lit');
-            } else if (type === 'star' && !ornamentsPlaced.star) {
-                ornamentsPlaced.star = true;
-                if (starMesh) starMesh.scale.set(1.5, 1.5, 1.5);
-                markButtonDone('ornament-star', '✓ Star Crowned');
+            const btnMap = {
+                redBaubles: 'ornament-red',
+                goldBaubles: 'ornament-gold',
+                fairyLights: 'ornament-lights',
+                starCrown: 'ornament-star'
+            };
+
+            const targetBtnId = btnMap[ornamentType];
+            const btn = document.getElementById(targetBtnId);
+
+            if (btn && window.treeLabInstance?.decorations[ornamentType]) {
+                btn.className = 'px-3 py-2 bg-emerald-900/80 border border-emerald-400 text-xs font-bold text-emerald-300 rounded-xl transition shadow';
             }
 
-            totalPlacedCount = Object.values(ornamentsPlaced).filter(Boolean).length;
+            const activeCount = Object.values(window.treeLabInstance?.decorations || {}).filter(Boolean).length;
             const progress = document.getElementById('gameProgressText');
             if (progress) {
-                progress.innerText = `Decorations Active: ${totalPlacedCount} of 4 placed!`;
+                progress.innerText = `Decorations Active: ${activeCount} of 4 placed!`;
             }
 
-            if (totalPlacedCount === 4) {
+            if (activeCount === 4) {
                 setTimeout(() => {
                     const modal = document.getElementById('gameRewardModal');
                     if (modal) modal.classList.remove('hidden');
-                }, 600);
+                }, 400);
             }
         }
 
-        function spawnBaubleMesh(hexColor) {
-            if (!treeGroup) return;
-            for (let i = 0; i < 6; i++) {
-                const geo = new THREE.SphereGeometry(0.05, 12, 12);
-                const mat = new THREE.MeshStandardMaterial({ color: hexColor, roughness: 0.2, metalness: 0.8 });
-                const mesh = new THREE.Mesh(geo, mat);
-                const angle = Math.random() * Math.PI * 2;
-                const radius = 0.4 + Math.random() * 0.45;
-                const y = -0.1 + Math.random() * 1.2;
-                mesh.position.set(Math.cos(angle) * radius, y, Math.sin(angle) * radius);
-                treeGroup.add(mesh);
-            }
-        }
-
-        function markButtonDone(btnId, label) {
-            const btn = document.getElementById(btnId);
-            if (btn) {
-                btn.innerText = label;
-                btn.className = 'px-3 py-2 bg-emerald-900/80 border border-emerald-400 text-xs font-bold text-emerald-300 rounded-xl transition shadow pointer-events-none';
-            }
+        function launchARView() {
+            window.treeLabInstance?.setBackdrop('studio');
+            alert("📱 AR Studio Mode Enabled!\n\nTransparent pass-through active for real-world staging.");
         }
 
         function claimDiscountAndCheckout() {
-            // Save verified game winner flag to localStorage
-            localStorage.setItem('ctj_game_won', 'true');
             localStorage.setItem('ctj_promo_code', 'HOLIDAYJOY10');
-            // Route directly to checkout with promo parameter
-            window.location.href = 'checkout.html?promo=HOLIDAYJOY10';
+            window.location.href = 'trees.html?promo=HOLIDAYJOY10';
         }
 
         function closeGameModal() {
@@ -1005,14 +731,10 @@
             if (modal) modal.classList.add('hidden');
         }
 
-        // Window Resize & DOM Init
-        window.addEventListener('DOMContentLoaded', init3DStage);
-        window.addEventListener('resize', () => {
-            const wrapper = document.getElementById('stageWrapper');
-            if (wrapper && renderer && camera) {
-                camera.aspect = wrapper.clientWidth / wrapper.clientHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(wrapper.clientWidth, wrapper.clientHeight);
+        // Initialize WebGL Tree Specimen Lab on Page Load
+        window.addEventListener('DOMContentLoaded', () => {
+            if (typeof window.initInteractiveTreeLab === 'function') {
+                window.initInteractiveTreeLab('tree-canvas-container');
             }
         });
     </script>
