@@ -58,7 +58,7 @@
                 <span>🎄 christmastreejoe.store — Instant Reservation & White-Glove Dispatch Lock</span>
             </div>
             <div class="flex items-center space-x-4 text-[11px]">
-                <a href="tel:18005559627" class="hover:text-xmasGold transition hidden md:inline">📞 Order Concierge: 1-800-XMAS-JOE</a>
+                <a href="tel:18449627563" class="hover:text-xmasGold transition hidden md:inline">📞 Order Concierge: 1-844-962-7563</a>
                 <span class="hidden md:inline">|</span>
                 <a href="mailto:dispatch@christmastreejoe.com" class="hover:text-xmasGold transition">✉️ dispatch@christmastreejoe.com</a>
             </div>
@@ -336,9 +336,11 @@
                     <div>
                         <label class="block text-xs font-bold text-xmasGold uppercase mb-1">Plan Duration & Price Lock</label>
                         <select id="checkoutTerm" onchange="updateSummary()" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-xmasGold">
-                            <option value="3" selected>3 Year Lock — 15% Off Annual Rate (Best Value)</option>
-                            <option value="2">2 Year Lock — 10% Off Annual Rate</option>
-                            <option value="1">1 Year Recurring Subscription — Standard Rate</option>
+                            <option value="10">10-Year Legacy Estate Lock — 15% Off Annual Rate</option>
+                            <option value="5">5-Year Lock — 15% Off Annual Rate</option>
+                            <option value="3" selected>3-Year Lock — 15% Off Annual Rate (Best Value)</option>
+                            <option value="2">2-Year Lock — 10% Off Annual Rate</option>
+                            <option value="1">1-Year Recurring Subscription — Standard Rate</option>
                             <option value="0">One-Off Single Buy (Single-Season Non-Renewing)</option>
                         </select>
                     </div>
@@ -463,21 +465,25 @@
             sprout: {
                 standard: 'https://buy.stripe.com/eVqcN69947El7Q5h0vebu05',
                 lock_3yr: 'https://buy.stripe.com/14AaEY1GC1fX6M18tZebu00',
+                lock_10yr: 'https://buy.stripe.com/14AaEY1GC1fX6M18tZebu00',
                 one_off:  'https://buy.stripe.com/eVqcN69947El7Q5h0vebu05'
             },
             hearth: {
                 standard: 'https://buy.stripe.com/6oUfZi1GCcYFfix8tZebu02',
                 lock_3yr: 'https://buy.stripe.com/14A28s0Cy9MtfixfWrebu04',
+                lock_10yr: 'https://buy.stripe.com/14A28s0Cy9MtfixfWrebu04',
                 one_off:  'https://buy.stripe.com/eVq5kE2KG2k1gmB25Bebu07'
             },
             monarch: {
                 standard: 'https://buy.stripe.com/5kQfZifxs4s93zP8tZebu01',
                 lock_3yr: 'https://buy.stripe.com/5kQfZifxs4s93zP8tZebu01',
+                lock_10yr: 'https://buy.stripe.com/5kQfZifxs4s93zP8tZebu01',
                 one_off:  'https://buy.stripe.com/dRmaEYgBwbUBb2h39Febu03'
             },
             estate: {
                 standard: 'https://buy.stripe.com/00w28s1GC0bT5HX5hNebu08',
                 lock_3yr: 'https://buy.stripe.com/8x24gAclg2k1gmB5hNebu09',
+                lock_10yr: 'https://buy.stripe.com/8x24gAclg2k1gmB5hNebu09',
                 one_off:  'https://buy.stripe.com/5kQ4gAfxscYFfix9y3ebu06'
             }
         };
@@ -552,6 +558,8 @@
                 return tierLinks.one_off;
             } else if (currentTermYears === 1) {
                 return tierLinks.standard;
+            } else if (currentTermYears >= 5) {
+                return tierLinks.lock_10yr || tierLinks.lock_3yr;
             } else {
                 return tierLinks.lock_3yr;
             }
