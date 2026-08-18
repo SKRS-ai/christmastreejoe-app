@@ -58,7 +58,7 @@
                 <span>🎄 Select Your Size Tier & Multi-Year Subscription Lock</span>
             </div>
             <div class="flex items-center space-x-4 text-[11px]">
-                <a href="tel:18005559627" class="hover:text-xmasGold transition hidden md:inline">📞 1-800-XMAS-JOE</a>
+                <a href="tel:18449627563" class="hover:text-xmasGold transition hidden md:inline">📞 1-844-962-7563</a>
                 <span class="hidden md:inline">|</span>
                 <a href="mailto:support@christmastreejoe.com" class="hover:text-xmasGold transition">✉️ support@christmastreejoe.com</a>
             </div>
@@ -297,10 +297,11 @@
                 <div class="space-y-2">
                     <label class="block text-xs font-bold text-xmasGold uppercase">Subscription Duration</label>
                     <select id="term-select" onchange="calculatePrice()" class="w-full bg-xmasDark border border-white/20 rounded-xl p-3.5 text-xs text-white focus:outline-none focus:border-xmasGold">
-                        <option value="1">1 Year — Standard Rate ($0 Savings)</option>
-                        <option value="2">2 Years — 10% Off Locked Rate</option>
-                        <option value="3" selected>3 Years — 15% Off Locked Rate (Best Value)</option>
+                        <option value="10">10-Year Legacy Estate Lock — 15% Off Annual Rate</option>
                         <option value="5">5 Years — 15% Off Locked Rate</option>
+                        <option value="3" selected>3 Years — 15% Off Locked Rate (Best Value)</option>
+                        <option value="2">2 Years — 10% Off Locked Rate</option>
+                        <option value="1">1 Year — Standard Rate ($0 Savings)</option>
                         <option value="0">Single-Season Non-Renewing Purchase</option>
                     </select>
                 </div>
@@ -400,6 +401,7 @@
                 term2: 'https://buy.stripe.com/14AaEY1GC1fX6M18tZebu00', // $149.99 / yr
                 term3: 'https://buy.stripe.com/14AaEY1GC1fX6M18tZebu00', // $127.49 / yr (3-Yr Lock)
                 term5: 'https://buy.stripe.com/14AaEY1GC1fX6M18tZebu00',
+                lock_10yr: 'https://buy.stripe.com/14AaEY1GC1fX6M18tZebu00',
                 term0: 'https://buy.stripe.com/eVqcN69947El7Q5h0vebu05'
             },
             hearth: {
@@ -407,6 +409,7 @@
                 term2: 'https://buy.stripe.com/6oUfZi1GCcYFfix8tZebu02', // $209.99 / yr
                 term3: 'https://buy.stripe.com/14A28s0Cy9MtfixfWrebu04', // $178.49 / yr (3-Yr Lock)
                 term5: 'https://buy.stripe.com/14A28s0Cy9MtfixfWrebu04',
+                lock_10yr: 'https://buy.stripe.com/14A28s0Cy9MtfixfWrebu04',
                 term0: 'https://buy.stripe.com/eVq5kE2KG2k1gmB25Bebu07'
             },
             monarch: {
@@ -414,6 +417,7 @@
                 term2: 'https://buy.stripe.com/5kQfZifxs4s93zP8tZebu01', // $299.99 / yr
                 term3: 'https://buy.stripe.com/5kQfZifxs4s93zP8tZebu01', // $254.99 / yr (3-Yr Lock)
                 term5: 'https://buy.stripe.com/5kQfZifxs4s93zP8tZebu01',
+                lock_10yr: 'https://buy.stripe.com/5kQfZifxs4s93zP8tZebu01',
                 term0: 'https://buy.stripe.com/dRmaEYgBwbUBb2h39Febu03'
             },
             estate: {
@@ -421,6 +425,7 @@
                 term2: 'https://buy.stripe.com/00w28s1GC0bT5HX5hNebu08', // $382.49 / yr
                 term3: 'https://buy.stripe.com/8x24gAclg2k1gmB5hNebu09', // $382.49 / yr (3-Yr Lock)
                 term5: 'https://buy.stripe.com/8x24gAclg2k1gmB5hNebu09',
+                lock_10yr: 'https://buy.stripe.com/8x24gAclg2k1gmB5hNebu09',
                 term0: 'https://buy.stripe.com/5kQ4gAfxscYFfix9y3ebu06'
             }
         };
@@ -583,7 +588,9 @@
             const term = parseInt(document.getElementById('term-select').value, 10);
             const tierMap = liveStripeLinks[currentTierKey];
             if (tierMap) {
-                const targetUrl = tierMap['term' + term] || tierMap.term1;
+                let targetUrl = tierMap['term' + term];
+                if (!targetUrl && term >= 10) targetUrl = tierMap.lock_10yr;
+                if (!targetUrl) targetUrl = tierMap.term1;
                 window.location.href = targetUrl;
             } else {
                 console.error('Tier not found:', currentTierKey);
